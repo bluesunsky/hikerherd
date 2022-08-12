@@ -5,7 +5,7 @@ import { memo, useContext } from "react";
 
 import { Wrap } from "@chakra-ui/layout";
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/tag";
-import { FaTag, FaWeightHanging, FaClone } from "react-icons/fa";
+import { FaTag, FaWeightHanging, FaClone, FaTshirt } from "react-icons/fa";
 import { Tooltip } from "@chakra-ui/tooltip";
 
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
@@ -17,28 +17,39 @@ type GearCardValuesProps = {
   price?: number | null;
   currency?: Currency;
   quantity?: number;
+  worn?: boolean;
 };
 
 const GearCardValues: FC<GearCardValuesProps> = memo(
-  ({ weight, price, currency, quantity }) => {
+  ({ weight, price, currency, quantity, worn }) => {
     const { weightUnit } = useContext(userPreferencesContext);
 
     return (
       <Wrap>
-        <Tooltip label="weight">
-          <Tag colorScheme="teal" size="sm">
-            <TagLeftIcon as={FaWeightHanging} />
-            <TagLabel>{displayWeight(weight, weightUnit)}</TagLabel>
-          </Tag>
-        </Tooltip>
+        {!worn && (
+          <Tooltip label="Bag weight">
+            <Tag colorScheme="teal" size="sm">
+              <TagLeftIcon as={FaWeightHanging} />
+              <TagLabel>{displayWeight(weight, weightUnit)}</TagLabel>
+            </Tag>
+          </Tooltip>
+        )}
+        {worn && (
+          <Tooltip label="Weight on oneself ">
+            <Tag colorScheme="blue" size="sm">
+              <TagLeftIcon as={FaTshirt} />
+              <TagLabel>{displayWeight(weight, weightUnit)}</TagLabel>
+            </Tag>
+          </Tooltip>
+        )}
 
         {Number.isInteger(price) && (
-          <Tooltip label="price">
+          <Tooltip label="Price">
             <Tag colorScheme="purple" size="sm">
               <TagLeftIcon as={FaTag} />
               <TagLabel>
-                {displayCurrency(currency)}
                 {Number(price) / 100}
+                {displayCurrency(currency)}
               </TagLabel>
             </Tag>
           </Tooltip>

@@ -5,20 +5,19 @@ import { memo } from "react";
 import { Link, Wrap } from "@chakra-ui/layout";
 import { Tag } from "@chakra-ui/tag";
 import { Icon } from "@chakra-ui/icon";
-import { FaLink, FaRegStickyNote, FaTshirt, FaHamburger } from "react-icons/fa";
+import { FaLink, FaRegStickyNote, FaHamburger } from "react-icons/fa";
 import { Tooltip } from "@chakra-ui/tooltip";
 
 import Popover from "app/components/popover";
 
 type GearCardTagsProps = {
-  worn?: boolean;
   consumable?: boolean;
   link?: string | null;
   notes?: string | null;
 };
 
 const GearCardTags: FC<GearCardTagsProps> = memo(
-  ({ link, worn, consumable, notes }) => {
+  ({ link, consumable, notes }) => {
     return (
       <Wrap>
         {link && (
@@ -28,14 +27,6 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
                 <Icon as={FaLink} />
               </Tag>
             </Link>
-          </Tooltip>
-        )}
-
-        {worn && (
-          <Tooltip label="worn">
-            <Tag colorScheme="blue" size="sm" borderRadius="full">
-              <Icon as={FaTshirt} />
-            </Tag>
           </Tooltip>
         )}
 

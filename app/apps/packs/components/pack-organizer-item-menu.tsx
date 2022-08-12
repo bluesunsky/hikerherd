@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { useMutation } from "blitz";
 
 import { MenuItem, MenuList } from "@chakra-ui/menu";
-import { FaEdit, FaTrash, FaTshirt } from "react-icons/fa";
+import { FaEdit, FaTrash, FaTshirt, FaWeightHanging } from "react-icons/fa";
 
 import gearOrganizerContext from "app/apps/inventory/contexts/gear-organizer-context";
 import togglePackGearWornMutation from "app/apps/pack-gear/mutations/toggle-pack-gear-worn-mutation";
@@ -34,16 +34,28 @@ const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
         Remove item
       </MenuItem>
 
-      <MenuItem
-        icon={<FaTshirt />}
-        onClick={async () => {
-          await toggleWorn({ id: item.id });
-          refetch();
-        }}
-      >
-        {item.worn ? "Unmark as worn" : "Mark as worn"}
-      </MenuItem>
-
+      {item.worn && (
+        <MenuItem
+          icon={<FaWeightHanging />}
+          onClick={async () => {
+            await toggleWorn({ id: item.id });
+            refetch();
+          }}
+        >
+          Unmark as worn
+        </MenuItem>
+      )}
+      {!item.worn && (
+        <MenuItem
+          icon={<FaTshirt />}
+          onClick={async () => {
+            await toggleWorn({ id: item.id });
+            refetch();
+          }}
+        >
+          Mark as worn
+        </MenuItem>
+      )}
       <QuantityPicker
         value={item.quantity}
         isLoading={isLoading}

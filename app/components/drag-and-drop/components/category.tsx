@@ -5,21 +5,31 @@ import type { DraggableProvided } from "react-beautiful-dnd";
 import { useContext, useMemo } from "react";
 
 import { Button, IconButton } from "@chakra-ui/button";
-import { Tag, TagLabel } from "@chakra-ui/tag";
+import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/tag";
 import { HStack, Heading, Box, Flex } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/react";
 import { Menu, MenuButton } from "@chakra-ui/menu";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { Tooltip } from "@chakra-ui/tooltip";
+import { FaHamburger, FaTshirt, FaWeightHanging } from "react-icons/fa";
 
 import displayWeight from "app/helpers/display-weight";
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
+import displayCurrency from "app/helpers/display-currency";
 
 import dragAndDropContext from "../contexts/gear-dnd-context";
 
 import GearDropZone from "./gear-drop-zone";
-
 type CategoryProps = {
-  category: DragAndDropState[number] & { weight: number };
+  category: DragAndDropState[number] & {
+    weight: number;
+    eur: number;
+    usd: number;
+    gbp: number;
+    consumableWeight: number;
+    wornWeight: number;
+    baseWeight: number;
+  };
   provided: DraggableProvided;
   isDragging: boolean;
 };
@@ -57,7 +67,7 @@ const Category: BlitzPage<CategoryProps> = ({
       borderColor={isDragging ? "blue.400" : borderColor}
       borderRadius="md"
       mx={2}
-      width="290px"
+      width="400px"
       maxH="100%"
       direction="column"
     >
@@ -79,12 +89,66 @@ const Category: BlitzPage<CategoryProps> = ({
         </Heading>
 
         <HStack>
-          {!hideCategoryTotals && (
-            <Tag colorScheme="teal" size="sm">
-              <TagLabel>
-                {displayWeight(category.weight, weightUnit, true)}
-              </TagLabel>
-            </Tag>
+          {!hideCategoryTotals && category.baseWeight && (
+            <Tooltip label="Base weight">
+              <Tag colorScheme="teal" size="sm">
+                <TagLeftIcon as={FaWeightHanging} />
+                <TagLabel>
+                  {displayWeight(category.baseWeight, weightUnit, true)}
+                </TagLabel>
+              </Tag>
+            </Tooltip>
+          )}
+          {!hideCategoryTotals && category.consumableWeight && (
+            <Tooltip label="Consumable weight">
+              <Tag colorScheme="pink" size="sm">
+                <TagLeftIcon as={FaHamburger} />
+                <TagLabel>
+                  {displayWeight(category.consumableWeight, weightUnit, true)}
+                </TagLabel>
+              </Tag>
+            </Tooltip>
+          )}
+          {!hideCategoryTotals && category.wornWeight && (
+            <Tooltip label="Weight on oneself">
+              <Tag colorScheme="blue" size="sm">
+                <TagLeftIcon as={FaTshirt} />
+                <TagLabel>
+                  {displayWeight(category.wornWeight, weightUnit, true)}
+                </TagLabel>
+              </Tag>
+            </Tooltip>
+          )}
+
+          {!hideCategoryTotals && category.eur && (
+            <Tooltip label="Euros price share (€)">
+              <Tag colorScheme="purple" size="sm">
+                <TagLabel>
+                  {Number(category.eur) / 100}
+                  {displayCurrency("EUR")}
+                </TagLabel>
+              </Tag>
+            </Tooltip>
+          )}
+          {!hideCategoryTotals && category.usd && (
+            <Tooltip label="Dollars price share ($)">
+              <Tag colorScheme="purple" size="sm">
+                <TagLabel>
+                  {Number(category.usd) / 100}
+                  {displayCurrency("USD")}
+                </TagLabel>
+              </Tag>
+            </Tooltip>
+          )}
+          {!hideCategoryTotals && category.gbp && (
+            <Tooltip label="Pounds price share (£)">
+              <Tag colorScheme="purple" size="sm">
+                <TagLabel>
+                  {Number(category.gbp) / 100}
+                  {displayCurrency("GBP")}
+                </TagLabel>
+              </Tag>
+            </Tooltip>
           )}
           {categoryMenu && (
             <Menu isLazy>

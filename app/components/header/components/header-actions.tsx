@@ -35,16 +35,16 @@ const HeaderActions: FC<HeaderActionsProps> = ({ toggleDrawer }) => {
       <HeaderIconButton
         label={colorMode === "dark" ? "Day hike" : "Night hike"}
         onClick={toggleColorMode}
-        icon={<Icon as={colorMode === "dark" ? FaSun : FaMoon} w={5} h={5} />}
+        icon={<Icon as={colorMode === "dark" ? FaMoon : FaSun} w={5} h={5} />}
       />
       <HeaderIconButton
         label={
-          weightUnit === "METRIC" ? "Use imperial units" : "Use metric units"
+          weightUnit === "METRIC" ? "Use metric units" : "Use imperial units"
         }
         onClick={toggleWeightUnits}
         icon={
           <Icon
-            as={weightUnit === "METRIC" ? FaFlagUsa : FaGlobeEurope}
+            as={weightUnit === "METRIC" ? FaGlobeEurope : FaFlagUsa}
             w={5}
             h={5}
           />

@@ -53,9 +53,11 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
 
     const fuse = new Fuse(categoryGear, {
       keys: ["gear.name", "gear.notes"],
+      includeScore: true,
+      useExtendedSearch: true,
     });
 
-    return fuse.search(query).map(({ item }) => item);
+    return fuse.search("'" + query).map(({ item }) => item);
   }, [categoryGear, query]);
 
   const groupedItems = useMemo(() => {

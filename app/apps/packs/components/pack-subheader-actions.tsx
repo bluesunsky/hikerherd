@@ -14,8 +14,13 @@ import {
   FaFileExport,
   FaFileImport,
   FaShare,
+  FaHamburger,
+  FaTshirt,
+  FaWeightHanging,
 } from "react-icons/fa";
 import { FcDoughnutChart } from "react-icons/fc";
+import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/tag";
+import { Tooltip } from "@chakra-ui/tooltip";
 
 import SettingsMenuButton from "app/components/settings-menu-button";
 import downloadCsv from "app/helpers/download-csv";
@@ -33,6 +38,8 @@ const PackSubheaderActions: FC = () => {
   const toast = useToast();
   const [importing, setImporting] = useState(false);
   const { baseWeight } = useContext(packContext);
+  const { packWeight } = useContext(packContext);
+  const { totalWeight } = useContext(packContext);
   const { weightUnit } = useContext(userPreferencesContext);
 
   const { pack, showDetails, editPack, share } = useContext(packContext);
@@ -108,7 +115,42 @@ const PackSubheaderActions: FC = () => {
           colorScheme="blue"
           onClick={showDetails}
         >
-          {displayWeight(baseWeight, weightUnit, true)}
+          <Tooltip label="Bag weight">
+            <Tag size="sm">
+              <TagLabel>{displayWeight(packWeight, weightUnit, true)}</TagLabel>
+            </Tag>
+          </Tooltip>
+          <Tag colorScheme="white" size="sm">
+            <TagLabel>(</TagLabel>
+          </Tag>
+          <Tooltip label="Base weight">
+            <Tag colorScheme="teal" size="sm">
+              <TagLeftIcon as={FaWeightHanging} />
+              <TagLabel>{displayWeight(baseWeight, weightUnit, true)}</TagLabel>
+            </Tag>
+          </Tooltip>
+          <Tag colorScheme="white" size="sm">
+            <TagLabel> + </TagLabel>
+          </Tag>
+          <Tooltip label="Consumable weight">
+            <Tag colorScheme="pink" size="sm">
+              <TagLeftIcon as={FaHamburger} />
+              <TagLabel>
+                {displayWeight(packWeight - baseWeight, weightUnit, true)}
+              </TagLabel>
+            </Tag>
+          </Tooltip>
+          <Tag colorScheme="white" size="sm">
+            <TagLabel> ) + </TagLabel>
+          </Tag>
+          <Tooltip label="Weight on oneselft">
+            <Tag colorScheme="blue" size="sm">
+              <TagLeftIcon as={FaTshirt} />
+              <TagLabel>
+                {displayWeight(totalWeight - packWeight, weightUnit, true)}
+              </TagLabel>
+            </Tag>
+          </Tooltip>
         </Button>
       </HStack>
     </Fragment>

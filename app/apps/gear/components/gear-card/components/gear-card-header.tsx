@@ -40,7 +40,8 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
           trigger={
             <Avatar
               src={imageUrl || ""}
-              size="xs"
+              size="xl"
+              borderRadius="0px"
               icon={<Icon as={FaImage} />}
               bg={avatarColor}
             />

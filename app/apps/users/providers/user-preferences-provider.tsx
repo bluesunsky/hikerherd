@@ -6,8 +6,10 @@ import { WeightUnit, Currency } from "db";
 
 import useCurrentUser from "../hooks/use-current-user";
 import userPreferencesContext from "../contexts/user-preferences-context";
-
-const UserPreferencesProvider: FC = ({ children }) => {
+type Props = {
+  children?: React.ReactNode;
+};
+const UserPreferencesProvider: FC<Props> = ({ children }) => {
   const user = useCurrentUser({ suspense: false });
 
   const [weightUnit, setWeightUnit] = useState<WeightUnit>(

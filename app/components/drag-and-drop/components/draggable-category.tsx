@@ -11,7 +11,15 @@ import dragAndDropContext from "../contexts/gear-dnd-context";
 import Category from "./category";
 
 type DraggableCategoryProps = {
-  category: DragAndDropState[number] & { weight: number };
+  category: DragAndDropState[number] & {
+    weight: number;
+    eur: number;
+    usd: number;
+    gbp: number;
+    consumableWeight: number;
+    wornWeight: number;
+    baseWeight: number;
+  };
   index: number;
 };
 

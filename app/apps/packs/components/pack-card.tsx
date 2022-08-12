@@ -5,6 +5,7 @@ import type { BoxProps } from "@chakra-ui/layout";
 import { useContext } from "react";
 import { Link, Routes } from "blitz";
 
+import { Tooltip } from "@chakra-ui/tooltip";
 import { Heading, HStack, Stack, LinkOverlay } from "@chakra-ui/layout";
 import { Icon } from "@chakra-ui/icon";
 import { FcLock } from "react-icons/fc";
@@ -64,24 +65,48 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
         </Stack>
 
         <HStack>
-          <Tag colorScheme="pink" size="sm">
-            <TagLeftIcon as={FaHamburger} />
+          <Tag size="sm">
             <TagLabel>
-              {displayWeight(pack.totals.consumableWeight, weightUnit, true)}
+              {displayWeight(
+                pack.totals.baseWeight + pack.totals.consumableWeight,
+                weightUnit,
+                true
+              )}
             </TagLabel>
           </Tag>
-          <Tag colorScheme="blue" size="sm">
-            <TagLeftIcon as={FaTshirt} />
-            <TagLabel>
-              {displayWeight(pack.totals.wornWeight, weightUnit, true)}
-            </TagLabel>
+          <Tag colorScheme="white" size="sm" padding="0px" minW="0px">
+            <TagLabel> ( </TagLabel>
           </Tag>
-          <Tag colorScheme="teal" size="sm">
-            <TagLeftIcon as={FaWeightHanging} />
-            <TagLabel>
-              {displayWeight(pack.totals.baseWeight, weightUnit, true)}
-            </TagLabel>
+          <Tooltip label="Bag weight">
+            <Tag colorScheme="teal" size="sm">
+              <TagLeftIcon as={FaWeightHanging} />
+              <TagLabel>
+                {displayWeight(pack.totals.baseWeight, weightUnit, true)}
+              </TagLabel>
+            </Tag>
+          </Tooltip>
+          <Tag colorScheme="white" size="sm" padding="0px" minW="0px">
+            <TagLabel> + </TagLabel>
           </Tag>
+          <Tooltip label="Consumable weight">
+            <Tag colorScheme="pink" size="sm">
+              <TagLeftIcon as={FaHamburger} />
+              <TagLabel>
+                {displayWeight(pack.totals.consumableWeight, weightUnit, true)}
+              </TagLabel>
+            </Tag>
+          </Tooltip>
+          <Tag colorScheme="white" size="sm" padding="0px" minW="0px">
+            <TagLabel> ) + </TagLabel>
+          </Tag>
+          <Tooltip label="Weight on oneself">
+            <Tag colorScheme="blue" size="sm">
+              <TagLeftIcon as={FaTshirt} />
+              <TagLabel>
+                {displayWeight(pack.totals.wornWeight, weightUnit, true)}
+              </TagLabel>
+            </Tag>
+          </Tooltip>
         </HStack>
       </Stack>
     </LinkCard>

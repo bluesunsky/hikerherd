@@ -40,9 +40,9 @@ const GearCard: FC<GearCardProps> = ({
   dragging = false,
   children,
 }) => {
-  const bg = useColorModeValue("gray.50", "gray.800");
+  const bg = useColorModeValue("white", "gray.800");
   const border = useColorModeValue("gray.100", "gray.900");
-  const inner = useColorModeValue("white", "gray.700");
+  const inner = useColorModeValue("gray.50", "gray.700");
 
   return (
     <Flex
@@ -75,13 +75,9 @@ const GearCard: FC<GearCardProps> = ({
           price={price}
           currency={currency}
           quantity={quantity}
-        />
-        <GearCardTags
           worn={worn}
-          consumable={consumable}
-          link={link}
-          notes={notes}
         />
+        <GearCardTags consumable={consumable} link={link} notes={notes} />
       </Wrap>
 
       {children && (

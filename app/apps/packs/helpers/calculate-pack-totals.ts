@@ -28,6 +28,43 @@ const calculatePackTotals = (categories: DragAndDropState) => {
 
         return acc + itemWeight;
       }, 0),
+      consumableWeight: category.items.reduce((acc, item) => {
+        if (item.gear.consumable) {
+          acc += item.gear.weight * (item.quantity || 1);
+        }
+        return acc;
+      }, 0),
+      wornWeight: category.items.reduce((acc, item) => {
+        if (item.worn) {
+          acc += item.gear.weight * (item.quantity || 1);
+        }
+        return acc;
+      }, 0),
+      baseWeight: category.items.reduce((acc, item) => {
+        if (!item.worn && !item.gear.consumable) {
+          acc += item.gear.weight * (item.quantity || 1);
+        }
+
+        return acc;
+      }, 0),
+      eur: category.items.reduce((acc, item) => {
+        if (item.gear.currency == "EUR" && item.gear.price != null) {
+          acc += item.gear.price * (item.quantity || 1);
+        }
+        return acc;
+      }, 0),
+      usd: category.items.reduce((acc, item) => {
+        if (item.gear.currency == "USD" && item.gear.price != null) {
+          acc += item.gear.price * (item.quantity || 1);
+        }
+        return acc;
+      }, 0),
+      gbp: category.items.reduce((acc, item) => {
+        if (item.gear.currency == "GBP" && item.gear.price != null) {
+          acc += item.gear.price * (item.quantity || 1);
+        }
+        return acc;
+      }, 0),
     };
   });
 
