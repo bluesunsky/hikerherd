@@ -59,7 +59,7 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title="Edit gear"
+      title="Modifier un équipement"
       schema={updatePackGearSchema}
       size="lg"
       submitText="Update"

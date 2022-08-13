@@ -49,7 +49,7 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={`Move this gear to your ${typeName}`}
+      title={`Mettre cet équipement dans ${typeName}`}
       schema={moveCategoryGearSchema}
       initialValues={{
         index: 0,
@@ -64,8 +64,8 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
           onClose();
 
           toast({
-            title: "Your gear was moved",
-            description: `This was moved into your ${typeName} successfully`,
+            title: "Cet équipement a été déplacé",
+            description: `Il est maintenant dans ${typeName}`,
             status: "success",
           });
 
@@ -89,8 +89,8 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
             <Stack spacing={3}>
               {!categories?.length && (
                 <Text>
-                  Before you can start adding gear you need to create a category
-                  in your {typeName}
+                  Avant de commencer vous devez créer une catégorie dans{" "}
+                  {typeName}
                 </Text>
               )}
 

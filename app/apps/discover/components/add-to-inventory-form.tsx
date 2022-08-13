@@ -48,7 +48,9 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={`Add ${gear.name} to your ${displayCategoryType(type)}`}
+      title={`Ajouter l'équipement '${gear.name}' dans ${displayCategoryType(
+        type
+      )}`}
       schema={addToInventorySchema}
       submitText="Add"
       initialValues={{
@@ -81,14 +83,14 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
             <Fragment>
               {!categories?.length && (
                 <Text>
-                  Before you can start adding gear you need to create a category
-                  in your {displayCategoryType(type)}
+                  Avant de commencer vous avez besoin de créer une catégorie
+                  dans {displayCategoryType(type)}
                 </Text>
               )}
 
               <SelectField
                 name="categoryId"
-                label="Choose a category"
+                label="Choisir une catégorie"
                 isDisabled={!categories?.length}
               >
                 {categories?.map((category) => (

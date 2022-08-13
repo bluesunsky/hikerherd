@@ -13,7 +13,7 @@ const EditorAddImage = () => {
     <ModalForm
       isOpen={addingImage}
       onClose={toggleAddingImage}
-      title="Add an image"
+      title="Ajouter une image"
       schema={addImageSchema}
       initialValues={{ image: "" }}
       submitText="Add"
@@ -24,8 +24,8 @@ const EditorAddImage = () => {
       render={() => (
         <TextField
           name="image"
-          label="Image URL"
-          placeholder="Paste the url of the image"
+          label="URL de l'image"
+          placeholder="Copier l'URL de l'image"
         />
       )}
     />
