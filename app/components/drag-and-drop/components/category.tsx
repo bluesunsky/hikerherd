@@ -66,9 +66,10 @@ const Category: BlitzPage<CategoryProps> = ({
       bg={bg}
       borderColor={isDragging ? "blue.400" : borderColor}
       borderRadius="md"
-      mx={2}
+      mx={1}
       width="400px"
-      maxH="100%"
+      maxW="calc(100vw - 21px);"
+      maxH="calc(100vh - 140px);"
       direction="column"
     >
       <HStack

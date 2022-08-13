@@ -43,8 +43,8 @@ const CategoryDropZone: FC = () => {
               alignItems="flex-start"
               width="100%"
               height="100%"
-              px={3}
-              py={6}
+              px={1}
+              py={2}
             >
               {categories.map((category, index) => (
                 <DraggableCategory

@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import { useState, Fragment, useContext } from "react";
+import { useEffect, useState, Fragment, useContext } from "react";
 import { invalidateQuery, useMutation } from "blitz";
 
 import { HStack } from "@chakra-ui/layout";
@@ -54,12 +54,40 @@ const PackSubheaderActions: FC = () => {
     });
   };
 
+  const useMatchMedia = (mediaQuery: string, initialValue: boolean) => {
+    const [isMatching, setIsMatching] = useState(initialValue);
+    useEffect(() => {
+      const watcher = window.matchMedia(mediaQuery);
+      setIsMatching(watcher.matches);
+      const listener = (matches: {
+        matches: boolean | ((prevState: boolean) => boolean);
+      }) => {
+        setIsMatching(matches.matches);
+      };
+      if (watcher.addEventListener) {
+        watcher.addEventListener("change", listener);
+      } else {
+        watcher.addListener(listener);
+      }
+      return () => {
+        if (watcher.removeEventListener) {
+          return watcher.removeEventListener("change", listener);
+        } else {
+          return watcher.removeListener(listener);
+        }
+      };
+    }, [mediaQuery]);
+
+    return isMatching;
+  };
   const [exportCsv] = useMutation(packExportCsvMutation);
 
   const exportToCsv = async () => {
     const csv = await exportCsv({ id: pack.id });
     downloadCsv(pack.name || "pack", csv);
   };
+  const size500 = useMatchMedia("(min-width:500px)", true);
+  const size768 = useMatchMedia("(min-width:48em)", true);
 
   return (
     <Fragment>
@@ -118,37 +146,50 @@ const PackSubheaderActions: FC = () => {
               <TagLabel>{displayWeight(packWeight, weightUnit, true)}</TagLabel>
             </Tag>
           </Tooltip>
-          <Tag colorScheme="white" size="sm">
-            <TagLabel>(</TagLabel>
-          </Tag>
-          <Tooltip label="Base weight">
-            <Tag colorScheme="teal" size="sm">
-              <TagLeftIcon as={FaWeightHanging} />
-              <TagLabel>{displayWeight(baseWeight, weightUnit, true)}</TagLabel>
-            </Tag>
-          </Tooltip>
-          <Tag colorScheme="white" size="sm">
-            <TagLabel> + </TagLabel>
-          </Tag>
-          <Tooltip label="Consumable weight">
-            <Tag colorScheme="pink" size="sm">
-              <TagLeftIcon as={FaHamburger} />
-              <TagLabel>
-                {displayWeight(packWeight - baseWeight, weightUnit, true)}
-              </TagLabel>
-            </Tag>
-          </Tooltip>
-          <Tag colorScheme="white" size="sm">
-            <TagLabel> ) + </TagLabel>
-          </Tag>
-          <Tooltip label="Weight on oneselft">
-            <Tag colorScheme="blue" size="sm">
-              <TagLeftIcon as={FaTshirt} />
-              <TagLabel>
-                {displayWeight(totalWeight - packWeight, weightUnit, true)}
-              </TagLabel>
-            </Tag>
-          </Tooltip>
+          {size768 && (
+            <>
+              <Tag colorScheme="white" size="sm">
+                <TagLabel>(</TagLabel>
+              </Tag>
+              <Tooltip label="Base weight">
+                <Tag colorScheme="teal" size="sm">
+                  <TagLeftIcon as={FaWeightHanging} />
+                  <TagLabel>
+                    {displayWeight(baseWeight, weightUnit, true)}
+                  </TagLabel>
+                </Tag>
+              </Tooltip>
+              <Tag colorScheme="white" size="sm">
+                <TagLabel>+</TagLabel>
+              </Tag>
+              <Tooltip label="Consumable weight">
+                <Tag colorScheme="pink" size="sm">
+                  <TagLeftIcon as={FaHamburger} />
+                  <TagLabel>
+                    {displayWeight(packWeight - baseWeight, weightUnit, true)}
+                  </TagLabel>
+                </Tag>
+              </Tooltip>
+              <Tag colorScheme="white" size="sm">
+                <TagLabel>)</TagLabel>
+              </Tag>
+            </>
+          )}
+          {size500 && (
+            <>
+              <Tag colorScheme="white" size="sm">
+                <TagLabel>+</TagLabel>
+              </Tag>
+              <Tooltip label="Weight on oneselft">
+                <Tag colorScheme="blue" size="sm">
+                  <TagLeftIcon as={FaTshirt} />
+                  <TagLabel>
+                    {displayWeight(totalWeight - packWeight, weightUnit, true)}
+                  </TagLabel>
+                </Tag>
+              </Tooltip>
+            </>
+          )}
         </Button>
       </HStack>
     </Fragment>
