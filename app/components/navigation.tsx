@@ -108,14 +108,15 @@ const Navigation: FC = () => {
           <Text fontSize="sm" opacity="0.6" mt={3} py={-3} px={3}>
             <strong>Pack your pack</strong> is a fork of
             <br />
-            <strong>Hikerherd</strong>{" "}
+            <strong>Hikerherd</strong>
+            {" ("}
             <Anchor
               isExternal
               href="https://github.com/benhoneywill/hikerherd/blob/main/LICENCE"
             >
               &copy; Ben Honeywill
             </Anchor>
-            . <br></br>A free et{" "}
+            ), <br></br>a free and{" "}
             <Anchor
               textDecoration="underline"
               isExternal

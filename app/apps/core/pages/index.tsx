@@ -83,12 +83,12 @@ const HomePage: BlitzPage = () => {
           py={{ base: 12, md: 20 }}
         >
           <Heading size="xl" mb={4}>
-            Lighten your pack with hikerherd
+            Lighten your pack with <strong>Pack&nbsp;your&nbsp;pack</strong>
           </Heading>
           <Text fontSize="lg" opacity="0.8">
             Join the other hikers, backpackers & minimalists who are already
-            using <strong>hikerherd</strong> to manage their gear and plan their
-            adventures.
+            using <strong>Pack&nbsp;your&nbsp;pack</strong> to manage their gear
+            and plan their adventures.
           </Text>
           <Link href={Routes.SignupPage()} passHref>
             <Button
@@ -102,14 +102,16 @@ const HomePage: BlitzPage = () => {
             </Button>
           </Link>
           <Text fontSize="sm" opacity="0.6" mt={3}>
-            hikerherd is <strong>free</strong> and{" "}
+            <strong>Pack&nbsp;your&nbsp;pack</strong> is a fork of{" "}
+            <strong>Hikerherd</strong>, a free and{" "}
             <Anchor
               textDecoration="underline"
               isExternal
               href="https://github.com/benhoneywill/hikerherd"
             >
               open-source
-            </Anchor>
+            </Anchor>{" "}
+            website.
           </Text>
         </Container>
       </Box>
