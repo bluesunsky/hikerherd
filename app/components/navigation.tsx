@@ -4,15 +4,19 @@ import type { IconType } from "react-icons";
 
 import { Link, Routes, useRouter } from "blitz";
 
-import { Stack, HStack, Text, Heading, Box } from "@chakra-ui/layout";
 import {
-  FcLike,
+  Stack,
+  HStack,
+  Text,
+  Heading,
+  Box,
+  Link as Anchor,
+} from "@chakra-ui/layout";
+import {
   FcList,
   FcRating,
   FcTimeline,
   FcSearch,
-  FcVoicePresentation,
-  FcKindle,
   FcBinoculars,
   FcHome,
 } from "react-icons/fc";
@@ -51,35 +55,6 @@ const NavigationItem: FC<NavigationItemProps> = ({ children, icon, route }) => {
   );
 };
 
-type NavigationExternalItemProps = {
-  href: string;
-  icon: IconType;
-};
-
-const NavigationExternalItem: FC<NavigationExternalItemProps> = ({
-  children,
-  icon,
-  href,
-}) => {
-  const bgColor = useColorModeValue("gray.50", "gray.700");
-
-  return (
-    <HStack
-      as="a"
-      href={href}
-      _hover={{ bg: bgColor }}
-      borderRadius="md"
-      display="flex"
-      alignItems="center"
-      py={2}
-      px={3}
-    >
-      <Icon as={icon} w={5} h={5} mr={1} />
-      <Text fontWeight="bold">{children}</Text>
-    </HStack>
-  );
-};
-
 const NavigationSection: FC<{ title: string }> = ({ title, children }) => {
   return (
     <Stack as="section" spacing={2}>
@@ -102,7 +77,7 @@ const Navigation: FC = () => {
   return (
     <Box as="aside">
       <Stack as="aside" spacing={8}>
-        <NavigationSection title="hikerherd">
+        <NavigationSection title="Pack your pack">
           <NavigationItem route={Routes.HomePage()} icon={FcHome}>
             Home
           </NavigationItem>
@@ -129,33 +104,27 @@ const Navigation: FC = () => {
           </NavigationItem>
         </NavigationSection>
 
-        <NavigationSection title="Other">
-          {process.env.BLITZ_PUBLIC_NEWSLETTER_LINK && (
-            <NavigationExternalItem
-              href={process.env.BLITZ_PUBLIC_NEWSLETTER_LINK}
-              icon={FcKindle}
+        <NavigationSection title="A propos">
+          <Text fontSize="sm" opacity="0.6" mt={3} py={-3} px={3}>
+            <strong>Pack your pack</strong> is a fork of
+            <br />
+            <strong>Hikerherd</strong>{" "}
+            <Anchor
+              isExternal
+              href="https://github.com/benhoneywill/hikerherd/blob/main/LICENCE"
             >
-              Newsletter
-            </NavigationExternalItem>
-          )}
-
-          {process.env.BLITZ_PUBLIC_CONTACT_LINK && (
-            <NavigationExternalItem
-              href={process.env.BLITZ_PUBLIC_CONTACT_LINK}
-              icon={FcVoicePresentation}
+              &copy; Ben Honeywill
+            </Anchor>
+            . <br></br>A free et{" "}
+            <Anchor
+              textDecoration="underline"
+              isExternal
+              href="https://github.com/benhoneywill/hikerherd"
             >
-              Contact
-            </NavigationExternalItem>
-          )}
-
-          {process.env.BLITZ_PUBLIC_SUPPORT_LINK && (
-            <NavigationExternalItem
-              href={process.env.BLITZ_PUBLIC_SUPPORT_LINK}
-              icon={FcLike}
-            >
-              Buy me a coffee
-            </NavigationExternalItem>
-          )}
+              open-source
+            </Anchor>{" "}
+            website.
+          </Text>
         </NavigationSection>
       </Stack>
     </Box>

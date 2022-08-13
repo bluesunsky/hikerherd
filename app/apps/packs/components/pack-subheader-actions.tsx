@@ -9,7 +9,6 @@ import { Icon } from "@chakra-ui/icon";
 import { useToast } from "@chakra-ui/toast";
 import { MenuItem, MenuList, MenuDivider } from "@chakra-ui/menu";
 import {
-  FaArrowRight,
   FaEdit,
   FaFileExport,
   FaFileImport,
@@ -109,7 +108,6 @@ const PackSubheaderActions: FC = () => {
         <Button
           size="sm"
           leftIcon={<Icon w={5} h={5} as={FcDoughnutChart} />}
-          rightIcon={<Icon w={3} h={3} as={FaArrowRight} />}
           fontWeight="bold"
           variant="outline"
           colorScheme="blue"

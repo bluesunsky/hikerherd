@@ -21,7 +21,7 @@ const SignupPage: BlitzPage = () => {
         onSuccess={(user) => {
           router.push(Routes.StartPage());
           toast({
-            title: "Welcome to hikerherd.",
+            title: "Welcome to Pack your pack.",
             description: `Hi ${user.username}, I hope you enjoy using hikerherd.`,
             status: "success",
           });

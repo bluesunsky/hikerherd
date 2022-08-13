@@ -51,7 +51,7 @@ const LoginPage: BlitzPage = () => {
 
 LoginPage.redirectAuthenticatedTo = Routes.StartPage();
 LoginPage.getLayout = (page) => (
-  <BoxLayout title="Log in" description="Sign the trail register.">
+  <BoxLayout title="Log in" description="Sign into Pack your pack.">
     {page}
   </BoxLayout>
 );

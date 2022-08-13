@@ -12,7 +12,7 @@ const HeaderLogo: FC = () => {
       <HStack as="a">
         <LogoIcon w={8} h={8} />
         <Heading size="md" display={{ base: "none", md: "block" }}>
-          pack.serant.fr
+          Pack your pack
         </Heading>
       </HStack>
     </Link>

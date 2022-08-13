@@ -39,7 +39,7 @@ const StartPage: BlitzPage = () => {
             {user?.username}
           </Heading>
           <Text fontSize="xl" opacity="0.8">
-            Welcome to hikerherd
+            Welcome to Pack your pack
           </Text>
         </Container>
       </Box>
