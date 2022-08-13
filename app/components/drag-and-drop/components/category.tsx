@@ -68,8 +68,8 @@ const Category: BlitzPage<CategoryProps> = ({
       borderRadius="md"
       mx={1}
       width="400px"
-      maxW="calc(100vw - 21px);"
-      maxH="calc(100vh - 140px);"
+      maxW="calc(100vw - 10px);"
+      maxH="calc(100vh - 168px);"
       direction="column"
     >
       <HStack
