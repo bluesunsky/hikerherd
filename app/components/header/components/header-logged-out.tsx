@@ -11,7 +11,7 @@ const HeaderLoggedOut: FC = () => {
     <HStack spacing={1} justify="flex-end">
       <Link href={Routes.LoginPage()} passHref>
         <Button size="sm" as="a" variant="ghost">
-          Log in
+          Connexion
         </Button>
       </Link>
       <Link href={Routes.SignupPage()} passHref>
@@ -21,7 +21,7 @@ const HeaderLoggedOut: FC = () => {
           rightIcon={<FaArrowRight />}
           colorScheme="blue"
         >
-          Sign up
+          Enregistrement
         </Button>
       </Link>
     </HStack>

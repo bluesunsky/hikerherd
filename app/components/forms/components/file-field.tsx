@@ -59,7 +59,7 @@ const FileField = forwardRef<HTMLInputElement, FileFieldProps>(
             style={{ display: "none" }}
           ></input>
           <Input
-            placeholder="Select your file..."
+            placeholder="Sélectionner votre fichier…"
             onClick={() => inputRef?.current?.click()}
             variant="filled"
             cursor="pointer"

@@ -91,7 +91,7 @@ const Category: BlitzPage<CategoryProps> = ({
 
         <HStack>
           {!hideCategoryTotals && category.baseWeight && (
-            <Tooltip label="Base weight">
+            <Tooltip label="Poids de base">
               <Tag colorScheme="teal" size="sm">
                 <TagLeftIcon as={FaWeightHanging} />
                 <TagLabel>
@@ -101,7 +101,7 @@ const Category: BlitzPage<CategoryProps> = ({
             </Tooltip>
           )}
           {!hideCategoryTotals && category.consumableWeight && (
-            <Tooltip label="Consumable weight">
+            <Tooltip label="Poids des consommables">
               <Tag colorScheme="pink" size="sm">
                 <TagLeftIcon as={FaHamburger} />
                 <TagLabel>
@@ -111,7 +111,7 @@ const Category: BlitzPage<CategoryProps> = ({
             </Tooltip>
           )}
           {!hideCategoryTotals && category.wornWeight && (
-            <Tooltip label="Weight on oneself">
+            <Tooltip label="Poids sur soi">
               <Tag colorScheme="blue" size="sm">
                 <TagLeftIcon as={FaTshirt} />
                 <TagLabel>
@@ -122,7 +122,7 @@ const Category: BlitzPage<CategoryProps> = ({
           )}
 
           {!hideCategoryTotals && category.eur && (
-            <Tooltip label="Euros price share (€)">
+            <Tooltip label="Part du prix en Euros (€)">
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
                   {Number(category.eur) / 100}
@@ -132,7 +132,7 @@ const Category: BlitzPage<CategoryProps> = ({
             </Tooltip>
           )}
           {!hideCategoryTotals && category.usd && (
-            <Tooltip label="Dollars price share ($)">
+            <Tooltip label="Part du prix en Dollars ($)">
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
                   {Number(category.usd) / 100}
@@ -142,7 +142,7 @@ const Category: BlitzPage<CategoryProps> = ({
             </Tooltip>
           )}
           {!hideCategoryTotals && category.gbp && (
-            <Tooltip label="Pounds price share (£)">
+            <Tooltip label="Part du prix en Livres Sterling (£)">
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
                   {Number(category.gbp) / 100}
@@ -176,7 +176,7 @@ const Category: BlitzPage<CategoryProps> = ({
             onClick={() => addItemToCategory(category.id)}
             colorScheme="blue"
           >
-            Add
+            Ajouter
           </Button>
         </Box>
       )}

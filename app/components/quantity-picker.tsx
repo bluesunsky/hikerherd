@@ -27,7 +27,7 @@ const QuantityPicker: FC<QuantityPickerProps> = ({
     <HStack py={1} px={3} justify="space-between">
       <HStack spacing={3}>
         <Icon w={3} h={3} as={FaClone} />
-        <Text>Quantity</Text>
+        <Text>Quantité</Text>
       </HStack>
 
       <HStack border="1px solid" borderColor="gray.100" rounded="full" p="2px">

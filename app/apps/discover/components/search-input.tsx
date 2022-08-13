@@ -37,7 +37,7 @@ const SearchInput: FC<SearchInputProps> = ({ setQuery, ...props }) => {
       </InputLeftElement>
       <Input
         onChange={debouncedChangeHandler}
-        placeholder="Search..."
+        placeholder="Rechercher..."
         variant="filled"
         {...props}
       />

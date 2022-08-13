@@ -32,21 +32,21 @@ const GearOrganizerItemMenu: FC<GearOrganizerItemMenuProps> = ({
   return (
     <MenuList>
       <MenuItem icon={<FaEdit />} onClick={() => editItem(item.id)}>
-        Edit item
+        Modifier
       </MenuItem>
       <MenuItem icon={<FaTrash />} onClick={() => deleteItem(item.id)}>
-        Delete item
+        Supprimer
       </MenuItem>
 
       {type === "WISH_LIST" && (
         <MenuItem icon={<FaList />} onClick={() => toggleMetaItem(item.id)}>
-          Move to inventory
+          Mettre dans l&lsquo;inventaire
         </MenuItem>
       )}
 
       {type === "INVENTORY" && (
         <MenuItem icon={<FaStar />} onClick={() => toggleMetaItem(item.id)}>
-          Move to wish list
+          Mettre dans les souhaits
         </MenuItem>
       )}
 

@@ -3,9 +3,9 @@ import type { CategoryType } from "db";
 const displayCategoryType = (type: CategoryType) => {
   switch (type) {
     case "INVENTORY":
-      return "Inventory";
+      return "l'inventaire";
     case "WISH_LIST":
-      return "Wish List";
+      return "les souhaits";
   }
 };
 

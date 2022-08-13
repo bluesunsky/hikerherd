@@ -46,9 +46,9 @@ const PackSubheaderActions: FC = () => {
   const copyShareLink = () => {
     navigator.clipboard.writeText(packShareLink(pack.id)).then(() => {
       toast({
-        title: "Share link copied.",
+        title: "Lien de partage copié.",
         description:
-          "A share link for your pack has been copied to your clipboard.",
+          "Le lien de partage de votre pack est dans votre presse papier.",
         status: "success",
       });
     });
@@ -98,7 +98,7 @@ const PackSubheaderActions: FC = () => {
         onSuccess={() => {
           invalidateQuery(packOrganizerQuery);
           toast({
-            title: "Your gear has been imported",
+            title: "Votre inventaire a été importé",
             status: "success",
           });
         }}
@@ -109,7 +109,7 @@ const PackSubheaderActions: FC = () => {
           <SettingsMenuButton>
             <MenuList>
               <MenuItem icon={<FaEdit />} onClick={editPack}>
-                Edit
+                Modifier
               </MenuItem>
               <MenuItem
                 icon={<FaShare />}
@@ -117,17 +117,17 @@ const PackSubheaderActions: FC = () => {
                 onClick={copyShareLink}
                 isDisabled={pack.private}
               >
-                Share
+                Partagé
               </MenuItem>
               <MenuDivider />
               <MenuItem icon={<FaFileExport />} onClick={exportToCsv}>
-                Export CSV
+                Exporter vers un CSV
               </MenuItem>
               <MenuItem
                 icon={<FaFileImport />}
                 onClick={() => setImporting(true)}
               >
-                Import CSV
+                Importer depuis un CSV
               </MenuItem>
             </MenuList>
           </SettingsMenuButton>
@@ -141,7 +141,7 @@ const PackSubheaderActions: FC = () => {
           colorScheme="blue"
           onClick={showDetails}
         >
-          <Tooltip label="Bag weight">
+          <Tooltip label="Poids du sac">
             <Tag size="sm">
               <TagLabel>{displayWeight(packWeight, weightUnit, true)}</TagLabel>
             </Tag>
@@ -151,7 +151,7 @@ const PackSubheaderActions: FC = () => {
               <Tag colorScheme="white" size="sm">
                 <TagLabel>(</TagLabel>
               </Tag>
-              <Tooltip label="Base weight">
+              <Tooltip label="Poids de base">
                 <Tag colorScheme="teal" size="sm">
                   <TagLeftIcon as={FaWeightHanging} />
                   <TagLabel>
@@ -162,7 +162,7 @@ const PackSubheaderActions: FC = () => {
               <Tag colorScheme="white" size="sm">
                 <TagLabel>+</TagLabel>
               </Tag>
-              <Tooltip label="Consumable weight">
+              <Tooltip label="Poids des consommables">
                 <Tag colorScheme="pink" size="sm">
                   <TagLeftIcon as={FaHamburger} />
                   <TagLabel>
@@ -180,7 +180,7 @@ const PackSubheaderActions: FC = () => {
               <Tag colorScheme="white" size="sm">
                 <TagLabel>+</TagLabel>
               </Tag>
-              <Tooltip label="Weight on oneselft">
+              <Tooltip label="Poids sur soi">
                 <Tag colorScheme="blue" size="sm">
                   <TagLeftIcon as={FaTshirt} />
                   <TagLabel>

@@ -19,12 +19,12 @@ const ForgotPasswordPage: BlitzPage = () => {
         onSuccess={() => router.push(Routes.ForgotPasswordConfirmPage())}
       />
 
-      <TextDivider>Or</TextDivider>
+      <TextDivider>Ou</TextDivider>
 
       <Stack spacing={4}>
         <Link href={Routes.LoginPage()} passHref>
           <Button as="a" isFullWidth size="lg">
-            Log in
+            Connexion
           </Button>
         </Link>
       </Stack>
@@ -35,8 +35,8 @@ const ForgotPasswordPage: BlitzPage = () => {
 ForgotPasswordPage.redirectAuthenticatedTo = Routes.StartPage();
 ForgotPasswordPage.getLayout = (page) => (
   <BoxLayout
-    title="Forgot Your Password?"
-    description="No worries. Tell us your email and you will be sent instructions for resetting your password."
+    title="Mot de passé égaré ?"
+    description="Pas de soucis. Indiquez-nous votre mail et vous recevrez des instructions pour réinitialiser votre mot de passe."
   >
     {page}
   </BoxLayout>

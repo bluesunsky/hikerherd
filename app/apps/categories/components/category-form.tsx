@@ -51,11 +51,11 @@ const CategoryForm: FC<CategoryFormProps> = ({
       onClose={onClose}
       title={
         categoryId
-          ? `Editing ${category ? category.name : ""}`
-          : "Create a new category"
+          ? `Modifier ${category ? category.name : ""}`
+          : "Créer une nouvelle catégorie"
       }
       schema={createCategorySchema}
-      submitText={categoryId ? "Save" : "Create"}
+      submitText={categoryId ? "Modifier" : "Créer"}
       initialValues={{
         name: category ? category.name : "",
         type,
@@ -91,8 +91,8 @@ const CategoryForm: FC<CategoryFormProps> = ({
           ) : (
             <TextField
               name="name"
-              label="Name"
-              placeholder="The name of the category"
+              label="Nom"
+              placeholder="Nom de la catégorie"
             />
           )}
         </Fragment>

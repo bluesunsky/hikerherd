@@ -66,7 +66,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
       schema={updateCategoryGearSchema}
       initialValues={initialValues}
       size="lg"
-      submitText={id ? "Update" : "Create"}
+      submitText={id ? "Modifier" : "Créer"}
       onSubmit={async (values) => {
         try {
           const vals = { ...values };

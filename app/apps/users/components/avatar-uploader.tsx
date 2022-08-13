@@ -49,7 +49,7 @@ const AvatarUploader: FC = () => {
             });
           } catch (error) {
             toast({
-              title: "Oops, there was a problem changing your avatar",
+              title: "Oops, there was a problem changing your avatar ",
               status: "error",
             });
           }
@@ -64,7 +64,7 @@ const AvatarUploader: FC = () => {
     <Box {...getRootProps()}>
       <input {...getInputProps()} />
       <Button isLoading={loading} size="sm">
-        Change avatar
+        Changer l&lsquo;avatar
       </Button>
     </Box>
   );

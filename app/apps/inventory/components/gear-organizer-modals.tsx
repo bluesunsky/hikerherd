@@ -65,8 +65,8 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
       <ConfirmModal
         isOpen={!!deletingCategory}
         onClose={closeModals}
-        title="Delete this category?"
-        description="Are you sure you want to delete this category? All the items inside the category will be deleted as well."
+        title="Supprimer cette catégorie ?"
+        description="Voulez-vous vraiment supprimer cette catégorie ? Tous les équipements de la catégorie seront également supprimés."
         onConfirm={async () => {
           if (deletingCategory) {
             await deleteCategory({ id: deletingCategory });
@@ -78,8 +78,8 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
       <ConfirmModal
         isOpen={!!deletingItem}
         onClose={closeModals}
-        title="Delete this gear?"
-        description="Are you sure you want to delete this gear?"
+        title="Suppimer cet équipement ?"
+        description="Voulez-vous vraiment supprimer cet équipement ?"
         onConfirm={async () => {
           if (deletingItem) {
             await deleteGear({ id: deletingItem });

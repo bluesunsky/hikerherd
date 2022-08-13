@@ -15,11 +15,11 @@ const DiscoverPacksPage: BlitzPage = () => {
   return (
     <Fragment>
       <Heading mb={4} size="md">
-        Pack search
+        Packs partagés
       </Heading>
 
       <Text mb={5} color={textColor}>
-        Search hikerherd for packs created by other hikers.
+        Rechercher des packs créés par d&lsquo;autres utilisateurs.
       </Text>
 
       <Card>

@@ -52,8 +52,8 @@ const PackForm: FC<PackFormProps> = ({
       onClose={onClose}
       size="lg"
       schema={createPackSchema}
-      title={packId ? "Update pack" : "Create a new pack"}
-      submitText={packId ? "Update" : "Create"}
+      title={packId ? "Modifier un pack" : "Créer un nouveau pack"}
+      submitText={packId ? "Modifier" : "Créer"}
       initialValues={{
         name: pack ? pack.name : "",
         notes: pack?.notes ? JSON.parse(pack.notes) : null,
@@ -87,13 +87,13 @@ const PackForm: FC<PackFormProps> = ({
             <Fragment>
               <TextField
                 name="name"
-                label="Name"
-                placeholder="Name your pack"
+                label="Nom"
+                placeholder="Nom de votre pack"
               />
               <EditorField
                 name="notes"
                 fontSize="md"
-                label="Pack notes"
+                label="Notes"
                 features={{
                   image: true,
                   blockquote: true,
@@ -107,7 +107,7 @@ const PackForm: FC<PackFormProps> = ({
               <HStack>
                 <Tag colorScheme="orange" flexShrink={0}>
                   <TagLeftIcon as={FaLock} />
-                  <TagLabel>Make this pack private?</TagLabel>
+                  <TagLabel>Privé ?</TagLabel>
                 </Tag>
                 <CheckboxField name="private" />
               </HStack>

@@ -28,18 +28,24 @@ const HeaderActions: FC<HeaderActionsProps> = ({ toggleDrawer }) => {
   return (
     <HStack spacing={1}>
       <HeaderIconButton
-        label="Open menu"
+        label="Ouvrir le menu"
         onClick={toggleDrawer}
         icon={<Icon as={FaBars} w={5} h={5} />}
       />
       <HeaderIconButton
-        label={colorMode === "dark" ? "Day hike" : "Night hike"}
+        label={
+          colorMode === "dark"
+            ? "Utiliser le mode jour"
+            : "Utiliser le mode nuit"
+        }
         onClick={toggleColorMode}
         icon={<Icon as={colorMode === "dark" ? FaMoon : FaSun} w={5} h={5} />}
       />
       <HeaderIconButton
         label={
-          weightUnit === "METRIC" ? "Use metric units" : "Use imperial units"
+          weightUnit === "METRIC"
+            ? "Utiliser les unités impériales"
+            : "Utiliser les unités métriques"
         }
         onClick={toggleWeightUnits}
         icon={

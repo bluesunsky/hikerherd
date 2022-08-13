@@ -38,14 +38,14 @@ const ImportPackCsvForm: FC<ImportPackCsvFormProps> = ({
       isOpen={isOpen}
       onClose={onClose}
       size="xl"
-      title="Import from CSV"
+      title="Importer depuis un CSV"
       schema={packImportCsvSchema.extend({ file: z.any() })}
-      submitText="Import"
+      submitText="Importer"
       initialValues={{ id: packId, addToInventory: false }}
       onSubmit={async ({ file, addToInventory }) => {
         if (!file) {
           return {
-            [FORM_ERROR]: "A file is required.",
+            [FORM_ERROR]: "Un fichier est nécessaire.",
           };
         }
 
@@ -73,25 +73,25 @@ const ImportPackCsvForm: FC<ImportPackCsvFormProps> = ({
       render={() => (
         <Stack spacing={6}>
           <Text>
-            When you import gear it will be appended to what you already have.
-            Nothing will be deleted or modified.
+            Lorsque vous importez de l&lsquo;équipement, il sera ajouté à ce que
+            vous avez déjà. Rien ne sera supprimé ou modifié.
           </Text>
           <Text>
-            <strong>Your CSV file must be in the correct format.</strong>{" "}
+            <strong>Votre fichier CSV doit être dans le bon format.</strong>{" "}
             <Link
               href="https://blog.hikerherd.com/the-csv-import-guide/"
               isExternal
               textDecoration="underline"
             >
-              Read the importing guide
+              Lire le guide d&lsquo;importation
             </Link>{" "}
-            for more details.
+            pour plus de détail.
           </Text>
-          <FileField name="file" label="CSV file" accept="text/csv" />
+          <FileField name="file" label="Fichier CSV" accept="text/csv" />
           <HStack>
             <Tag colorScheme="blue" flexShrink={0}>
               <TagLeftIcon as={FaList} />
-              <TagLabel>Also import to inventory?</TagLabel>
+              <TagLabel>Importer aussi l&lsquo;inventaire ?</TagLabel>
             </Tag>
             <CheckboxField name="addToInventory" />
           </HStack>

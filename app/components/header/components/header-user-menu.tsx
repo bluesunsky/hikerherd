@@ -63,13 +63,13 @@ const HeaderUserMenu: FC = () => {
               passHref
             >
               <MenuItem as="a" icon={<FaUser />}>
-                My profile
+                Mon profil
               </MenuItem>
             </Link>
           )}
           <Link href={Routes.PreferencesPage()} passHref>
             <MenuItem as="a" icon={<FaCog />}>
-              My preferences
+              Mes préférences
             </MenuItem>
           </Link>
           <MenuItem
@@ -77,14 +77,14 @@ const HeaderUserMenu: FC = () => {
             onClick={() =>
               logout().then(() =>
                 toast({
-                  title: "You have been logged out",
+                  title: "Vous vous êtes déconnecté",
                   status: "success",
                 })
               )
             }
             icon={<FaSignOutAlt />}
           >
-            Logout
+            Déconnexion
           </MenuItem>
         </MenuList>
       </Menu>

@@ -53,9 +53,9 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
         <ModalFooter>
           <HStack spacing={3}>
             <Button colorScheme="red" onClick={confirm} isLoading={isLoading}>
-              Delete
+              Supprimer
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>Annuler</Button>
           </HStack>
         </ModalFooter>
       </ModalContent>

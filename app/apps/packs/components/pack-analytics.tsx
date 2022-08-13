@@ -44,10 +44,8 @@ const PackAnalytics: FC = () => {
   if (isEmpty) {
     return (
       <Stack p={5} bg={bg}>
-        <Heading size="md">This pack is empty</Heading>
-        <Text>
-          You need to add some gear to the pack before you can view analytics
-        </Text>
+        <Heading size="md">Votre pack est vide</Heading>
+        <Text>Vous devez ajouter des équipements...</Text>
       </Stack>
     );
   }

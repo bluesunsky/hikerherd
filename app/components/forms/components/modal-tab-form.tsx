@@ -58,7 +58,7 @@ const ModalTabForm: FormComponent<ModalTabFormProps> = ({
             >
               {submitText}
             </Button>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button onClick={onClose}>Annuler</Button>
           </HStack>
         </form>
       )}

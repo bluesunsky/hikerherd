@@ -33,8 +33,8 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
     setIsAdding(null);
     onSuccess();
     toast({
-      title: "Success",
-      description: "The item has been added.",
+      title: "Succès",
+      description: "L'élément a été ajouté.",
       status: "success",
     });
     onClose();
@@ -46,7 +46,7 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
       onClose={onClose}
       tabs={[
         {
-          title: "New",
+          title: "Nouveau",
           icon: FcPlus,
           content: (
             <AddCategoryGearForm
@@ -57,7 +57,7 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
           ),
         },
         {
-          title: "Search",
+          title: "Recherche",
           icon: FcSearch,
           content: (
             <GlobalGearSearch
@@ -78,7 +78,7 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
                     }
                   }}
                 >
-                  Add
+                  Ajouter
                 </Button>
               )}
             />

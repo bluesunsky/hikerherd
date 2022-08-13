@@ -14,32 +14,40 @@ import displayWeight from "app/helpers/display-weight";
 import packContext from "../contexts/pack-context";
 
 type TotalRowProps = {
-  description: string;
+  description?: string;
   name: string;
   value: number;
+  fontWeight?: string;
 };
 
-const TotalRow: FC<TotalRowProps> = ({ description, name, value }) => {
+const TotalRow: FC<TotalRowProps> = ({
+  description = "",
+  name,
+  value,
+  fontWeight = "bold",
+}) => {
   const { weightUnit } = useContext(userPreferencesContext);
 
   return (
-    <Tr fontWeight="bold">
+    <Tr fontWeight={fontWeight}>
       <Td>
-        <Popover
-          trigger={
-            <IconButton
-              size="sm"
-              minW={3}
-              h={3}
-              variant="ghost"
-              aria-label="What is this?"
-              icon={<FaInfo />}
-              color="gray.400"
-            />
-          }
-        >
-          {description}
-        </Popover>
+        {description && (
+          <Popover
+            trigger={
+              <IconButton
+                size="sm"
+                minW={3}
+                h={3}
+                variant="ghost"
+                aria-label="What is this?"
+                icon={<FaInfo />}
+                color="gray.400"
+              />
+            }
+          >
+            {description}
+          </Popover>
+        )}
       </Td>
       <Td>{name}</Td>
       <Td isNumeric>{displayWeight(value, weightUnit, true)}</Td>
@@ -63,8 +71,8 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
           <Thead>
             <Tr>
               <Th w="40px"></Th>
-              <Th>Category</Th>
-              <Th isNumeric>Weight</Th>
+              <Th>Catégorie</Th>
+              <Th isNumeric>Poids</Th>
             </Tr>
           </Thead>
 
@@ -87,21 +95,32 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
             ))}
 
             <TotalRow
-              description="Total weight is the weight of everything, including your worn items and your consumables."
-              name="Total weight"
+              description="Poids de tout, y compris vos articles portés sur soi et vos consommables."
+              name="Poids total"
               value={totalWeight}
             />
 
             <TotalRow
-              description="Pack weight is the weight of your loaded pack including consumables. Worn items are not included."
-              name="Pack weight"
+              description="Poids incluant les consommables mais sans les articles portés sur soi."
+              name="Poids du sac"
               value={packWeight}
             />
 
             <TotalRow
-              description="Base weight is the weight of your loaded pack minus the weight of any consumables."
-              name="Base weight"
+              name="Poids de base"
               value={baseWeight}
+              fontWeight="normal"
+            />
+
+            <TotalRow
+              name="Poids des consommables"
+              value={packWeight - baseWeight}
+              fontWeight="normal"
+            />
+            <TotalRow
+              description="Poids des articles portés sur soi."
+              name="Poids sur soi"
+              value={totalWeight - packWeight}
             />
           </Tbody>
         </Table>
@@ -112,7 +131,9 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
         onClick={toggleWeightUnits}
         leftIcon={weightUnit === "METRIC" ? <FaFlagUsa /> : <FaGlobeEurope />}
       >
-        {weightUnit === "IMPERIAL" ? "Use metric units" : "Use imperial units"}
+        {weightUnit === "IMPERIAL"
+          ? "Utiliser les unités métriques"
+          : "Utiliser les unités impériales"}
       </Button>
     </Stack>
   );

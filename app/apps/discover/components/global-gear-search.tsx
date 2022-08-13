@@ -31,7 +31,7 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
       <SearchInput setQuery={setQuery} />
 
       <SearchResults
-        message="Start typing to search hikerherd for gear"
+        message="Commencez à taper pour rechercher l'équipement"
         query={query}
         items={items || []}
         isLoading={isLoading}

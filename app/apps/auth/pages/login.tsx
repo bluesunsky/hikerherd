@@ -24,24 +24,24 @@ const LoginPage: BlitzPage = () => {
         onSuccess={(user) => {
           router.push(redirectTo);
           toast({
-            title: `Welcome back ${user.username}!`,
-            description: "You have logged in successfully.",
+            title: `Bienvenue ${user.username} !`,
+            description: "Vous êtes connecté.",
             status: "success",
           });
         }}
       />
 
-      <TextDivider>Or</TextDivider>
+      <TextDivider>Ou</TextDivider>
 
       <Stack spacing={4}>
         <Link href={Routes.SignupPage()} passHref>
           <Button as="a" isFullWidth size="lg">
-            Sign up
+            Enregistrement
           </Button>
         </Link>
         <Link href={Routes.ForgotPasswordPage()} passHref>
           <Button as="a" isFullWidth size="lg">
-            Reset password
+            Réinitialiser le mot de passe
           </Button>
         </Link>
       </Stack>
@@ -51,7 +51,7 @@ const LoginPage: BlitzPage = () => {
 
 LoginPage.redirectAuthenticatedTo = Routes.StartPage();
 LoginPage.getLayout = (page) => (
-  <BoxLayout title="Log in" description="Sign into Pack your pack.">
+  <BoxLayout title="Connexion" description="Entrer dans Pack your pack">
     {page}
   </BoxLayout>
 );

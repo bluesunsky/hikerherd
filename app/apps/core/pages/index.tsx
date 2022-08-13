@@ -5,19 +5,12 @@ import type { FC } from "react";
 import { useQuery, Link, Routes } from "blitz";
 import { Fragment } from "react";
 
-import {
-  Heading,
-  Box,
-  Container,
-  SimpleGrid,
-  Text,
-  Link as Anchor,
-} from "@chakra-ui/layout";
+import { Heading, Box, Container, SimpleGrid, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Icon } from "@chakra-ui/icon";
 import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/tag";
 import { Image } from "@chakra-ui/image";
-import { DarkMode, useColorModeValue } from "@chakra-ui/react";
+import { useColorModeValue } from "@chakra-ui/react";
 import { FaUser, FaArrowRight } from "react-icons/fa";
 import {
   FcBinoculars,
@@ -83,12 +76,12 @@ const HomePage: BlitzPage = () => {
           py={{ base: 12, md: 20 }}
         >
           <Heading size="xl" mb={4}>
-            Lighten your pack with <strong>Pack&nbsp;your&nbsp;pack</strong>
+            Alléger votre sac
           </Heading>
           <Text fontSize="lg" opacity="0.8">
-            Join the other hikers, backpackers & minimalists who are already
-            using <strong>Pack&nbsp;your&nbsp;pack</strong> to manage their gear
-            and plan their adventures.
+            Rejoignez les autres randonneurs, routards et minimalistes qui
+            utilisent déjà <strong>Pack&nbsp;your&nbsp;pack</strong> pour gérer
+            leurs équipements et planifier leurs aventures.
           </Text>
           <Link href={Routes.SignupPage()} passHref>
             <Button
@@ -98,21 +91,9 @@ const HomePage: BlitzPage = () => {
               rightIcon={<FaArrowRight />}
               colorScheme="blue"
             >
-              Get started today
+              S&lsquo;enregistrer
             </Button>
           </Link>
-          <Text fontSize="sm" opacity="0.6" mt={3}>
-            <strong>Pack&nbsp;your&nbsp;pack</strong> is a fork of{" "}
-            <strong>Hikerherd</strong>, a free and{" "}
-            <Anchor
-              textDecoration="underline"
-              isExternal
-              href="https://github.com/benhoneywill/hikerherd"
-            >
-              open-source
-            </Anchor>{" "}
-            website.
-          </Text>
         </Container>
       </Box>
 
@@ -124,30 +105,29 @@ const HomePage: BlitzPage = () => {
         textAlign="center"
       >
         <Heading size="lg" mb={4}>
-          How does it work?
+          Comment ça marche ?
         </Heading>
         <Text fontSize="lg" opacity="0.8">
-          Organizing your gear closet and planning packing lists has never been
-          so easy.
+          Consignez vos équipements puis organiser les dans des packs.
         </Text>
 
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mt={12}>
           <IconCard
             icon={FcList}
-            title="Organize your inventory"
-            text="hikerherd gives you a central location to manage all of your gear."
+            title="Constituez votre inventaire"
+            text="Gérez tous vos équipements qui pourraient vous être utile."
           />
 
           <IconCard
             icon={FcRating}
-            title="Track your wish list"
-            text="Track any gear you want to buy complete with links, prices and more."
+            title="Etablissez vos souhaits"
+            text="Identifiez ce que vous voulez acheter pour améliorer votre sac."
           />
 
           <IconCard
             icon={FcTimeline}
-            title="Plan packs"
-            text="Bring gear from your inventory and wish list together into packing lists."
+            title="Organisez vos Packs"
+            text="Faites des configurations de sacs pour optimiser vos expéditions."
           />
         </SimpleGrid>
       </Container>
@@ -166,27 +146,17 @@ const HomePage: BlitzPage = () => {
           >
             <Box>
               <Heading size="lg" mb={4}>
-                Pack weight analytics
+                Analyse du poids
               </Heading>
               <Text color="blue.300" fontWeight="bold" fontSize="lg" mb={2}>
-                You need to know where your weight is coming from.
+                Vous pouvez identifier rapidement les équipements les plus
+                lourds.
               </Text>
               <Text fontSize="lg" opacity="0.8">
-                The <strong>hikerherd</strong> analytics tools help you to see
-                which items are weighing you down and what to leave at home.
+                Avec la vue graphique, vous voyez rapidement l&lsquo;impact
+                d&lsquo;un type d&lsquo;équipement ou d&lsquo;un équipement afin
+                de juger s&lsquo;il convient ou nom de le prendre avec vous.
               </Text>
-              <Box display={{ base: "none", lg: "block" }} mt={8}>
-                <DarkMode>
-                  <Link
-                    href="https://www.hikerherd.com/packs/share/cl1b8mi9n01882gnlqntpniox"
-                    passHref
-                  >
-                    <Button as="a" size="lg">
-                      Check out an example pack
-                    </Button>
-                  </Link>
-                </DarkMode>
-              </Box>
             </Box>
 
             <Box>
@@ -199,19 +169,6 @@ const HomePage: BlitzPage = () => {
                 boxShadow="lg"
               />
             </Box>
-
-            <Box display={{ base: "block", lg: "none" }}>
-              <DarkMode>
-                <Link
-                  href="https://www.hikerherd.com/packs/share/cl1b8mi9n01882gnlqntpniox"
-                  passHref
-                >
-                  <Button as="a" size="lg">
-                    Check out an example pack
-                  </Button>
-                </Link>
-              </DarkMode>
-            </Box>
           </SimpleGrid>
         </Container>
       </Box>
@@ -223,34 +180,28 @@ const HomePage: BlitzPage = () => {
         textAlign="center"
       >
         <Heading size="lg" mb={4}>
-          Discovery tools
+          Découvrir
         </Heading>
         <Text fontSize="lg" opacity="0.8" maxW="container.md" mx="auto">
-          Need some inspiration? Search for packs and gear created by other
-          users.
+          Besoin d&lsquo;inspiration ? Vous pouvez rechercher parmis les
+          équipements d&lsquo;autres utilisateurs.
         </Text>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} mt={12}>
           <IconCard
             icon={FcBinoculars}
-            title="Gear search"
+            title="Equipements partagés"
             actionLink={Routes.DiscoverGearPage()}
-            actionText="Search for gear"
-            text={
-              <>
-                The hikerherd gear search is crowd-sourced by{" "}
-                <strong>you</strong>, so the more gear you add the better it
-                gets.
-              </>
-            }
+            actionText="Chercher un équipement"
+            text="Rechercher un équipement parmis ceux des autres utilisateurs"
           />
 
           <IconCard
             icon={FcSearch}
-            title="Pack search"
+            title="Packs partagées"
             actionLink={Routes.DiscoverPacksPage()}
-            actionText="Search for packs"
-            text="Search for packs made by other hikers to see what they are taking on the trails you want to hike next."
+            actionText="Chercher un pack"
+            text="Rechercher un pack parmis ceux des autres utilisateurs"
           />
         </SimpleGrid>
       </Container>
@@ -263,16 +214,15 @@ const HomePage: BlitzPage = () => {
           textAlign="center"
         >
           <Heading size="lg" mb={4}>
-            Ready to get started?
+            Prêt à commencer ?
           </Heading>
           <Text fontSize="lg" opacity="0.8">
-            Join the{" "}
+            Rejoindre les{" "}
             <Tag my="2px" fontWeight="bold" colorScheme="teal">
               <TagLeftIcon boxSize="12px" as={FaUser} />
               <TagLabel>{userCount ? userCount : "..."}</TagLabel>
             </Tag>{" "}
-            other hikers who are already using <strong>hikerherd</strong> to
-            manage their gear and reduce their pack weight.
+            autres utilisateurs qui utilisent déjà l&lsquo;application.
           </Text>
 
           <Link href={Routes.SignupPage()} passHref>
@@ -283,7 +233,7 @@ const HomePage: BlitzPage = () => {
               rightIcon={<FaArrowRight />}
               colorScheme="blue"
             >
-              Sign up for free
+              S&lsquo;enregistrer gratuitement
             </Button>
           </Link>
         </Container>

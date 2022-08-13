@@ -79,34 +79,35 @@ const Navigation: FC = () => {
       <Stack as="aside" spacing={8}>
         <NavigationSection title="Pack your pack">
           <NavigationItem route={Routes.HomePage()} icon={FcHome}>
-            Home
+            Accueil
           </NavigationItem>
         </NavigationSection>
 
-        <NavigationSection title="Gear tools">
+        <NavigationSection title="Organiser">
           <NavigationItem route={Routes.InventoryPage()} icon={FcList}>
-            Inventory
+            Inventaire
           </NavigationItem>
           <NavigationItem route={Routes.WishListPage()} icon={FcRating}>
-            Wish list
+            Souhaits
           </NavigationItem>
           <NavigationItem route={Routes.PacksPage()} icon={FcTimeline}>
             Packs
           </NavigationItem>
         </NavigationSection>
 
-        <NavigationSection title="Discover">
+        <NavigationSection title="Découvrir">
           <NavigationItem route={Routes.DiscoverGearPage()} icon={FcBinoculars}>
-            Gear search
+            Equipements partagés
           </NavigationItem>
           <NavigationItem route={Routes.DiscoverPacksPage()} icon={FcSearch}>
-            Pack search
+            Packs partagés
           </NavigationItem>
         </NavigationSection>
 
         <NavigationSection title="A propos">
           <Text fontSize="sm" opacity="0.6" mt={3} py={-3} px={3}>
-            <strong>Pack your pack</strong> is a fork of
+            <strong>Pack your pack</strong> est une déclinaison et une version
+            française de
             <br />
             <strong>Hikerherd</strong>
             {" ("}
@@ -116,15 +117,15 @@ const Navigation: FC = () => {
             >
               &copy; Ben Honeywill
             </Anchor>
-            ), <br></br>a free and{" "}
+            ), <br></br>un site gratuit et{" "}
             <Anchor
               textDecoration="underline"
               isExternal
               href="https://github.com/benhoneywill/hikerherd"
             >
               open-source
-            </Anchor>{" "}
-            website.
+            </Anchor>
+            .
           </Text>
         </NavigationSection>
       </Stack>

@@ -31,12 +31,12 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
 
   return (
     <Stack spacing={4}>
-      <TextField name="name" label="Name" placeholder="Name" />
+      <TextField name="name" label="Nom" placeholder="Nom" />
 
       <TextField
         type="number"
         name="weight"
-        label="Weight"
+        label="Poids"
         placeholder="Weight"
         suffix={weightUnit === "METRIC" ? "g" : "oz"}
         icon={<Icon color="teal.400" as={FaWeightHanging} />}
@@ -47,7 +47,7 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
       <HStack>
         <Tag colorScheme="pink" flexShrink={0}>
           <TagLeftIcon as={FaHamburger} />
-          <TagLabel>Consumable?</TagLabel>
+          <TagLabel>Consommable ?</TagLabel>
         </Tag>
         <CheckboxField name="consumable" />
       </HStack>
@@ -56,16 +56,16 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
         <HStack>
           <Tag colorScheme="blue" flexShrink={0}>
             <TagLeftIcon as={FaTshirt} />
-            <TagLabel>Worn?</TagLabel>
+            <TagLabel>Porté ?</TagLabel>
           </Tag>
           <CheckboxField name="worn" />
         </HStack>
       )}
 
-      <TextDivider>Addons</TextDivider>
+      <TextDivider>Compléments</TextDivider>
 
       <Grid templateColumns="70px 1fr" gap={2} alignItems="flex-end">
-        <SelectField label="Price" name="currency">
+        <SelectField label="Prix" name="currency">
           <option value="USD">$</option>
           <option value="GBP">£</option>
           <option value="EUR">€</option>
@@ -80,7 +80,7 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
 
       <TextField
         name="link"
-        label="Link"
+        label="Lien"
         placeholder="https://..."
         icon={<Icon color="gray.400" as={FaLink} />}
       />
@@ -95,7 +95,7 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
       <TextAreaField
         name="notes"
         label="Notes"
-        placeholder="Extra notes about this gear"
+        placeholder="Information à propos de l'équipement"
       />
     </Stack>
   );

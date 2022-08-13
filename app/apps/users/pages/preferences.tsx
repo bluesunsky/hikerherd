@@ -14,7 +14,7 @@ const PreferencesPage: BlitzPage = () => {
   return (
     <Fragment>
       <Heading size="md" mb={6}>
-        Settings
+        Mes préférences
       </Heading>
 
       <Card>
@@ -27,7 +27,7 @@ const PreferencesPage: BlitzPage = () => {
 PreferencesPage.authenticate = { redirectTo: Routes.LoginPage() };
 
 PreferencesPage.getLayout = (page) => (
-  <SidebarLayout title="My settings">{page}</SidebarLayout>
+  <SidebarLayout title="Mes préférences">{page}</SidebarLayout>
 );
 
 export default PreferencesPage;

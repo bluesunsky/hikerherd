@@ -64,7 +64,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
           {user && <UserTag size="sm" user={user} />}
         </Stack>
 
-        <HStack>
+        <HStack marginTop="10px !important">
           <Tag size="sm">
             <TagLabel>
               {displayWeight(
@@ -77,7 +77,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
           <Tag colorScheme="white" size="sm" padding="0px" minW="0px">
             <TagLabel> ( </TagLabel>
           </Tag>
-          <Tooltip label="Bag weight">
+          <Tooltip label="Poids du sac">
             <Tag colorScheme="teal" size="sm">
               <TagLeftIcon as={FaWeightHanging} />
               <TagLabel>
@@ -88,7 +88,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
           <Tag colorScheme="white" size="sm" padding="0px" minW="0px">
             <TagLabel> + </TagLabel>
           </Tag>
-          <Tooltip label="Consumable weight">
+          <Tooltip label="Poids des consommables">
             <Tag colorScheme="pink" size="sm">
               <TagLeftIcon as={FaHamburger} />
               <TagLabel>
@@ -96,10 +96,13 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
               </TagLabel>
             </Tag>
           </Tooltip>
+
           <Tag colorScheme="white" size="sm" padding="0px" minW="0px">
-            <TagLabel> ) + </TagLabel>
+            <TagLabel> )</TagLabel>
           </Tag>
-          <Tooltip label="Weight on oneself">
+        </HStack>
+        <HStack marginTop="10px !important">
+          <Tooltip label="Poids sur soi">
             <Tag colorScheme="blue" size="sm">
               <TagLeftIcon as={FaTshirt} />
               <TagLabel>

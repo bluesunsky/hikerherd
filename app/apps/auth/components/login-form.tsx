@@ -22,12 +22,12 @@ const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
   const handleError = (error: unknown) => {
     if (error instanceof AuthenticationError) {
       return {
-        [FORM_ERROR]: "Wrong email or password. Please try again.",
+        [FORM_ERROR]: "Mail ou mot de passe incorrect. Merci de recommencer.",
       };
     } else {
       return {
         [FORM_ERROR]:
-          "Oops! Something went wrong logging you in. Please try again.",
+          "Quelque chose ne s'est pas bien passé. Merci de recommencer.",
       };
     }
   };
@@ -36,7 +36,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
     <SimpleForm
       schema={loginSchema}
       initialValues={{ email: "", password: "" }}
-      submitText="Log in"
+      submitText="Connexion"
       large
       onSubmit={async (values) => {
         try {
@@ -50,14 +50,14 @@ const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
         <Fragment>
           <TextField
             name="email"
-            label="Email address"
-            placeholder="Enter your email address"
+            label="Adresse mail"
+            placeholder="Saisir votre adresse mail"
             size="lg"
           />
           <TextField
             name="password"
-            label="Password"
-            placeholder="Enter your password"
+            label="Mot de passe"
+            placeholder="Saisir votre mot de passe"
             type="password"
             size="lg"
           />

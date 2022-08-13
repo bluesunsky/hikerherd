@@ -21,8 +21,8 @@ const SignupPage: BlitzPage = () => {
         onSuccess={(user) => {
           router.push(Routes.StartPage());
           toast({
-            title: "Welcome to Pack your pack.",
-            description: `Hi ${user.username}, I hope you enjoy using hikerherd.`,
+            title: "Bienvenue dans Pack your pack",
+            description: `Bonjour ${user.username}.`,
             status: "success",
           });
         }}
@@ -31,7 +31,7 @@ const SignupPage: BlitzPage = () => {
       <TextDivider>Or</TextDivider>
       <Link href={Routes.LoginPage()} passHref>
         <Button size="lg" as="a">
-          Log in
+          Connextion
         </Button>
       </Link>
     </Stack>
@@ -41,8 +41,8 @@ const SignupPage: BlitzPage = () => {
 SignupPage.redirectAuthenticatedTo = Routes.StartPage();
 SignupPage.getLayout = (page) => (
   <BoxLayout
-    title="Sign up"
-    description="You are at the trailhead, time to take your first step."
+    title="Enregistrement"
+    description="Il est temps de faire vos premiers pas."
   >
     {page}
   </BoxLayout>

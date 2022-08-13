@@ -25,7 +25,7 @@ type InventorySubheaderProps = {
 };
 
 const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
-  const title = type === "INVENTORY" ? "Inventory" : "Wish list";
+  const title = type === "INVENTORY" ? "Inventaire" : "Souhaits";
   const icon = type === "INVENTORY" ? FcList : FcRating;
 
   const toast = useToast();
@@ -47,9 +47,9 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
         onSuccess={() => {
           invalidateQuery(inventoryQuery);
           toast({
-            title: "Your gear has been imported",
+            title: "Votre inventaire a été importé",
             description:
-              "Your new gear has been imported, you'll find it at the end of your inventory.",
+              "Votre nouvel équipement a été importé, vous le trouverez à la fin de votre inventaire.",
             status: "success",
           });
         }}
@@ -61,13 +61,13 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
         <SettingsMenuButton>
           <MenuList>
             <MenuItem icon={<FaFileExport />} onClick={exportToCsv}>
-              Export CSV
+              Exporter vers un CSV
             </MenuItem>
             <MenuItem
               icon={<FaFileImport />}
               onClick={() => setImporting(true)}
             >
-              Import CSV
+              Importer depuis un CSV
             </MenuItem>
           </MenuList>
         </SettingsMenuButton>

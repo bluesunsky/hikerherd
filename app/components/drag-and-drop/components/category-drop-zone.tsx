@@ -71,7 +71,7 @@ const CategoryDropZone: FC = () => {
                     colorScheme="blue"
                     onClick={addCategory}
                   >
-                    New category
+                    Nouvelle catégorie
                   </Button>
                 </Box>
               )}

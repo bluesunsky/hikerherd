@@ -27,7 +27,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
     return (
       <Wrap>
         {!worn && (
-          <Tooltip label="Bag weight">
+          <Tooltip label="Poids du sac">
             <Tag colorScheme="teal" size="sm">
               <TagLeftIcon as={FaWeightHanging} />
               <TagLabel>{displayWeight(weight, weightUnit)}</TagLabel>
@@ -35,7 +35,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
           </Tooltip>
         )}
         {worn && (
-          <Tooltip label="Weight on oneself ">
+          <Tooltip label="Poids sur soi">
             <Tag colorScheme="blue" size="sm">
               <TagLeftIcon as={FaTshirt} />
               <TagLabel>{displayWeight(weight, weightUnit)}</TagLabel>
@@ -44,7 +44,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
         )}
 
         {Number.isInteger(price) && (
-          <Tooltip label="Price">
+          <Tooltip label="Prix">
             <Tag colorScheme="purple" size="sm">
               <TagLeftIcon as={FaTag} />
               <TagLabel>
@@ -56,7 +56,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
         )}
 
         {(quantity === 0 || (quantity && quantity > 1)) && (
-          <Tooltip label="quantity">
+          <Tooltip label="Quantité">
             <Tag colorScheme="orange" size="sm">
               <TagLeftIcon as={FaClone} />
               <TagLabel>{quantity}</TagLabel>

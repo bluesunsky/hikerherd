@@ -18,7 +18,7 @@ const Analytics = () => {
 class Document extends BlitzDocument {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="fr">
         <DocumentHead />
         <body>
           <Main />

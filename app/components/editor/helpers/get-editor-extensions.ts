@@ -23,7 +23,10 @@ const getEditorExtensions = (features: EditorFeatures = {}) => {
 
   const extensions: Extensions = [
     StarterKit.configure(starterKitOptions),
-    Placeholder,
+    Placeholder.configure({
+      // Use a placeholder:
+      placeholder: "Ecrire quelque chose…",
+    }),
     Focus,
     Link.configure({ openOnClick: false }),
   ];

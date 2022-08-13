@@ -20,11 +20,11 @@ const PackOrganizerCategoryMenu: FC<PackOrganizerCategoryMenuProps> = ({
   return (
     <MenuList>
       <MenuItem icon={<FaEdit />} onClick={() => editCategory(category.id)}>
-        Edit category
+        Modifier
       </MenuItem>
 
       <MenuItem icon={<FaTrash />} onClick={() => deleteCategory(category.id)}>
-        Delete category
+        Supprimer
       </MenuItem>
     </MenuList>
   );

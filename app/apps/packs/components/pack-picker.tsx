@@ -47,12 +47,12 @@ const PackPicker: FC<PackPickerProps> = ({ icon, title }) => {
       <MenuList>
         <Link href={Routes.InventoryPage()} passHref>
           <MenuItem as="a" icon={<FcList />}>
-            Inventory
+            Inventaire
           </MenuItem>
         </Link>
         <Link href={Routes.WishListPage()} passHref>
           <MenuItem as="a" icon={<FcRating />}>
-            Wish list
+            Souhaits
           </MenuItem>
         </Link>
 

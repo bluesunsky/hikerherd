@@ -7,14 +7,11 @@ import { SimpleGrid, Container, Heading, Box, Text } from "@chakra-ui/layout";
 import {
   FcBinoculars,
   FcPortraitMode,
-  FcKindle,
-  FcLike,
   FcList,
   FcRating,
   FcSearch,
   FcSettings,
   FcTimeline,
-  FcVoicePresentation,
 } from "react-icons/fc";
 import { useColorModeValue } from "@chakra-ui/react";
 
@@ -39,7 +36,7 @@ const StartPage: BlitzPage = () => {
             {user?.username}
           </Heading>
           <Text fontSize="xl" opacity="0.8">
-            Welcome to Pack your pack
+            Bienvenue dans Pack your pack
           </Text>
         </Container>
       </Box>
@@ -51,28 +48,28 @@ const StartPage: BlitzPage = () => {
           textTransform="uppercase"
           mb={4}
         >
-          Gear tools
+          Organiser
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
           <IndexCard
             icon={FcList}
             href={Routes.InventoryPage()}
-            title="Inventory"
-            text="Manage your backpacking gear"
+            title="Inventaire"
+            text="Gérer les équipements que vous possédez"
           />
 
           <IndexCard
             icon={FcRating}
             href={Routes.WishListPage()}
-            title="Wish list"
-            text="Track the gear you want to buy"
+            title="Souhaits"
+            text="Suiver les équipements que vous voulez acheter"
           />
 
           <IndexCard
             icon={FcTimeline}
             href={Routes.PacksPage()}
             title="Packs"
-            text="Organize your gear into packs"
+            text="Organiser vos équipements dans des packs"
           />
         </SimpleGrid>
 
@@ -83,21 +80,21 @@ const StartPage: BlitzPage = () => {
           mb={4}
           mt={8}
         >
-          Discover
+          Découvrir
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
           <IndexCard
             icon={FcBinoculars}
             href={Routes.DiscoverGearPage()}
-            title="Gear search"
-            text="Search the hikerherd database for gear"
+            title="Equipements partagés"
+            text="Rechercher un équipement parmis ceux des autres utilisateurs"
           />
 
           <IndexCard
             icon={FcSearch}
             href={Routes.DiscoverPacksPage()}
-            title="Pack search"
-            text="Look for packs created by other hikers"
+            title="Packs partagées"
+            text="Rechercher un pack parmis ceux des autres utilisateurs"
           />
         </SimpleGrid>
 
@@ -108,60 +105,22 @@ const StartPage: BlitzPage = () => {
           mb={4}
           mt={8}
         >
-          Settings
+          Configurer
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
           <IndexCard
             icon={FcSettings}
             href={Routes.PreferencesPage()}
-            title="Your preferences"
-            text="Set your preferred units and currency"
+            title="Mes préférences"
+            text="Définiser votre unité et votre monnaie"
           />
 
           <IndexCard
             icon={FcPortraitMode}
             href={Routes.ProfilePage({ username: user?.username || "" })}
-            title="Your profile"
-            text="View your own hikerherd profile page"
+            title="Votre profil"
+            text="Consulter votre profil"
           />
-        </SimpleGrid>
-
-        <Heading
-          fontSize="sm"
-          color="gray.500"
-          textTransform="uppercase"
-          mb={4}
-          mt={8}
-        >
-          Other
-        </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
-          {process.env.BLITZ_PUBLIC_NEWSLETTER_LINK && (
-            <IndexCard
-              icon={FcKindle}
-              href={process.env.BLITZ_PUBLIC_NEWSLETTER_LINK}
-              title="Newsletter"
-              text="Stay up to date with hikerherd news"
-            />
-          )}
-
-          {process.env.BLITZ_PUBLIC_CONTACT_LINK && (
-            <IndexCard
-              icon={FcVoicePresentation}
-              href={process.env.BLITZ_PUBLIC_CONTACT_LINK}
-              title="Contact me"
-              text="Leave me feedback or ask a question"
-            />
-          )}
-
-          {process.env.BLITZ_PUBLIC_SUPPORT_LINK && (
-            <IndexCard
-              icon={FcLike}
-              href={process.env.BLITZ_PUBLIC_SUPPORT_LINK}
-              title="Buy me a coffee"
-              text="Support the development of hikerherd"
-            />
-          )}
         </SimpleGrid>
       </Container>
     </Fragment>

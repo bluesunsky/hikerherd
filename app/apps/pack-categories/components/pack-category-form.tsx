@@ -48,9 +48,9 @@ const PackCategoryForm: FC<PackCategoryFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={categoryId ? "Edit category" : "Create a category"}
+      title={categoryId ? "Modifier une catégorie" : "Créer une catégorie"}
       schema={createPackCategorySchema}
-      submitText={categoryId ? "Update" : "Create"}
+      submitText={categoryId ? "Modifier" : "Créer"}
       initialValues={{
         name: category ? category.name : "",
         packId,
@@ -84,7 +84,7 @@ const PackCategoryForm: FC<PackCategoryFormProps> = ({
               <Spinner />
             </Center>
           ) : (
-            <TextField name="name" label="Name" placeholder="Name" />
+            <TextField name="name" label="Nom" placeholder="Nom" />
           )}
         </Fragment>
       )}

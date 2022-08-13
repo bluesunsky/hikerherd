@@ -24,13 +24,13 @@ const UserPreferencesForm: BlitzPage = () => {
     <SimpleForm
       schema={updatePreferencesSchema}
       initialValues={{ weightUnit: user?.weightUnit, currency: user?.currency }}
-      submitText="Save preferences"
+      submitText="Modifier"
       onSubmit={async (values) => {
         try {
           await updatePreferences(values);
           toast({
-            title: "Preferences updated.",
-            description: "Your new user preferences have been saved.",
+            title: "Préférences modifiées.",
+            description: "Vos préférences d'utilisateur ont été enregistrées.",
             status: "success",
           });
         } catch (error) {
@@ -42,14 +42,14 @@ const UserPreferencesForm: BlitzPage = () => {
       }}
       render={() => (
         <Fragment>
-          <SelectField name="weightUnit" label="Weight units">
-            <option value={WeightUnit.METRIC}>Metric (g / kg)</option>
-            <option value={WeightUnit.IMPERIAL}>Imperial (oz / lb)</option>
+          <SelectField name="weightUnit" label="Unité de poids">
+            <option value={WeightUnit.METRIC}>Métrique (g / kg)</option>
+            <option value={WeightUnit.IMPERIAL}>Impériale (oz / lb)</option>
           </SelectField>
 
-          <SelectField name="currency" label="Currency">
+          <SelectField name="currency" label="Monnaie">
             <option value={Currency.USD}>Dollars ($)</option>
-            <option value={Currency.GBP}>Pounds (£)</option>
+            <option value={Currency.GBP}>Livres Sterling (£)</option>
             <option value={Currency.EUR}>Euros (€)</option>
           </SelectField>
         </Fragment>

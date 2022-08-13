@@ -83,7 +83,7 @@ const ModalForm: FormComponent<ModalFormProps> = ({
                   >
                     {submitText}
                   </Button>
-                  <Button onClick={onClose}>Cancel</Button>
+                  <Button onClick={onClose}>Annuler</Button>
                 </HStack>
               </ModalFooter>
             </ModalContent>

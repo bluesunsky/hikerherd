@@ -21,7 +21,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
     return (
       <Wrap>
         {link && (
-          <Tooltip label="link">
+          <Tooltip label="Lien">
             <Link href={link} isExternal display="inline-flex">
               <Tag size="sm" borderRadius="full">
                 <Icon as={FaLink} />
@@ -31,7 +31,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
         )}
 
         {consumable && (
-          <Tooltip label="consumable">
+          <Tooltip label="Consommable">
             <Tag colorScheme="pink" size="sm" borderRadius="full">
               <Icon as={FaHamburger} />
             </Tag>

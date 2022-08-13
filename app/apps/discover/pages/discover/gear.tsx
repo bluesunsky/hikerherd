@@ -36,23 +36,25 @@ const DiscoverGearPage: BlitzPage = () => {
         onSuccess={() => {
           setAdding(null);
           toast({
-            title: "Success",
-            description: "The gear was added successfully.",
+            title: "Succès",
+            description: "L'équipement a été ajouté.",
             status: "success",
           });
         }}
       />
 
       <Heading mb={4} size="md">
-        Gear search
+        Equipements partagés
       </Heading>
 
       <Text mb={2} color={textColor}>
-        Whenever new gear is added to hikerherd it can be found here.
+        Chaque fois que de nouveaux équipements sont ajoutés, ils peuvent être
+        trouvés ici.
       </Text>
       <Text mb={5} color={textColor}>
-        The gear data is crowd-sourced by <strong>you</strong>, so the more you
-        use hikerherd the better it will get!
+        Les données sur l&lsquo;équipement sont collectées par{" "}
+        <strong>vous</strong>, donc plus vous utilisez application, plus il
+        s&lsquo;améliorera !
       </Text>
 
       <Card>
@@ -67,7 +69,7 @@ const DiscoverGearPage: BlitzPage = () => {
                     leftIcon={<FcList />}
                     onClick={() => setAdding({ type: "INVENTORY", gear })}
                   >
-                    Add to inventory
+                    Ajouter à l&lsquo;inventaire
                   </Button>
                   <Button
                     isFullWidth
@@ -75,7 +77,7 @@ const DiscoverGearPage: BlitzPage = () => {
                     leftIcon={<FcRating />}
                     onClick={() => setAdding({ type: "WISH_LIST", gear })}
                   >
-                    Add to wish list
+                    Ajouter aux souhaits
                   </Button>
                 </HStack>
               )}

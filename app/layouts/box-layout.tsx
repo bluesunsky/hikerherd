@@ -58,7 +58,7 @@ const BoxLayout: BlitzLayout<BoxLayoutProps> = ({
 
             <Link href={Routes.HomePage()} passHref>
               <Button as="a" size="lg" isFullWidth>
-                Go back home
+                Retour à l&lsquo;accueil
               </Button>
             </Link>
           </Stack>

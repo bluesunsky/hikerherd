@@ -38,8 +38,8 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
   const handleSuccess = () => {
     onSuccess();
     toast({
-      title: "Success",
-      description: "The item has been added to your pack.",
+      title: "Succès",
+      description: "Cet équipement a été ajouté à votre pack.",
       status: "success",
     });
   };
@@ -57,21 +57,21 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
       onClose={onClose}
       tabs={[
         {
-          title: "Inventory",
+          title: "Inventaire",
           icon: FcList,
           content: (
             <PackAddInventoryItem type="INVENTORY" addToPack={addToPack} />
           ),
         },
         {
-          title: "Wish List",
+          title: "Souhaits",
           icon: FcRating,
           content: (
             <PackAddInventoryItem type="WISH_LIST" addToPack={addToPack} />
           ),
         },
         {
-          title: "New",
+          title: "Nouveau",
           icon: FcPlus,
           content: (
             <AddPackGearForm
@@ -85,7 +85,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
           ),
         },
         {
-          title: "Search",
+          title: "Recherche",
           icon: FcSearch,
           content: (
             <GlobalGearSearch
@@ -103,7 +103,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
                     }
                   }}
                 >
-                  Add
+                  Ajouter
                 </Button>
               )}
             />

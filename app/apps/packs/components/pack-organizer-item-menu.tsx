@@ -23,15 +23,14 @@ const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
   const [updateQuantity, { isLoading }] = useMutation(
     updatePackGearQuantityMutation
   );
-
   return (
     <MenuList>
       <MenuItem icon={<FaEdit />} onClick={() => editItem(item.id)}>
-        Edit item
+        Modifier
       </MenuItem>
 
       <MenuItem icon={<FaTrash />} onClick={() => deleteItem(item.id)}>
-        Remove item
+        Supprimer
       </MenuItem>
 
       {item.worn && (
@@ -42,7 +41,7 @@ const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
             refetch();
           }}
         >
-          Unmark as worn
+          Mettre dans le sac
         </MenuItem>
       )}
       {!item.worn && (
@@ -53,7 +52,7 @@ const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
             refetch();
           }}
         >
-          Mark as worn
+          Porter sur soi
         </MenuItem>
       )}
       <QuantityPicker

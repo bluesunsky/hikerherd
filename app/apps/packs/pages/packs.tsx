@@ -49,7 +49,7 @@ const PacksPage: BlitzPage = () => {
       {packs.length === 0 && (
         <Stack align="center" p={6} borderRadius="md" spacing={6} bg={emptyBg}>
           <Text size="md" opacity="0.4">
-            You have not created any packs yet
+            Vous n&lsquo;avez pas encore de pack
           </Text>
 
           <Button
@@ -57,7 +57,7 @@ const PacksPage: BlitzPage = () => {
             leftIcon={<FaPlus />}
             colorScheme="green"
           >
-            Create my first pack
+            Créer mon premier pack
           </Button>
         </Stack>
       )}
@@ -77,7 +77,7 @@ const PacksPage: BlitzPage = () => {
               key={pack.id}
               pack={pack}
               actions={
-                <Tooltip label="Delete this pack">
+                <Tooltip label="Supprimer ce pack">
                   <IconButton
                     size="sm"
                     icon={<MdDelete />}
@@ -102,7 +102,7 @@ const PacksPage: BlitzPage = () => {
             color="green.400"
             borderColor={buttonBorder}
           >
-            Create new pack
+            Créer un nouveau pack
           </Button>
         </SimpleGrid>
       )}
@@ -110,16 +110,16 @@ const PacksPage: BlitzPage = () => {
       <ConfirmModal
         isOpen={!!deletingPack}
         onClose={() => setDeletingPack(null)}
-        title="Delete this pack"
-        description="Are you sure? This will also delete the categories and gear inside of the pack."
+        title="Supprimer ce pack"
+        description="Voulez-vous vraiment supprimer ce pack ? Tous les équiments et les catégories de ce pack seront également supprimés."
         onConfirm={async () => {
           if (deletingPack) {
             await deletePack({ id: deletingPack });
             refetch();
             toast({
-              title: "The pack was deleted",
+              title: "Le pack et son contenu ont été supprimés",
               description:
-                "Your pack was deleted along with the categories and gear inside.",
+                "Votre pack a été supprimé ainsi que les catégories et les équipements qu'elle contenait.",
               status: "success",
             });
           }

@@ -83,7 +83,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
 
       <SearchResults
         query={query}
-        message={`Search your ${typeName} for gear to add`}
+        message={`Rechercher dans ${typeName}`}
         isLoading={isLoading}
         items={filteredItems}
       >
@@ -124,7 +124,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                         });
                       }}
                     >
-                      Add to pack
+                      Ajouter
                     </Button>
                   </GearCard>
                 ))}
