@@ -19,9 +19,7 @@ services:
         value: production
 
       - key: DATABASE_URL
-        fromDatabase:
-          name: hikerherd_database
-          property: connectionString
+        sync: false # (Keep secrets out of version control)
 
       - key: SESSION_SECRET_KEY
         generateValue: true
