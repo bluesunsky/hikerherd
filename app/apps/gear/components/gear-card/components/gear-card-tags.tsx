@@ -5,7 +5,12 @@ import { memo } from "react";
 import { Link, Wrap } from "@chakra-ui/layout";
 import { Tag } from "@chakra-ui/tag";
 import { Icon } from "@chakra-ui/icon";
-import { FaLink, FaRegStickyNote, FaHamburger } from "react-icons/fa";
+import {
+  FaLink,
+  FaRegStickyNote,
+  FaHamburger,
+  FaExclamationTriangle,
+} from "react-icons/fa";
 import { Tooltip } from "@chakra-ui/tooltip";
 
 import Popover from "app/components/popover";
@@ -14,10 +19,11 @@ type GearCardTagsProps = {
   consumable?: boolean;
   link?: string | null;
   notes?: string | null;
+  kind?: string | null;
 };
 
 const GearCardTags: FC<GearCardTagsProps> = memo(
-  ({ link, consumable, notes }) => {
+  ({ link, consumable, notes, kind }) => {
     return (
       <Wrap>
         {link && (
@@ -37,7 +43,13 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
             </Tag>
           </Tooltip>
         )}
-
+        {kind == "WISH_LIST" && (
+          <Tooltip label="Non possédé">
+            <Tag colorScheme="facebook" size="sm" borderRadius="full">
+              <Icon as={FaExclamationTriangle} />
+            </Tag>
+          </Tooltip>
+        )}
         {notes && (
           <Popover
             trigger={

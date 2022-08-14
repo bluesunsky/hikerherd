@@ -62,7 +62,7 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
       title="Modifier un équipement"
       schema={updatePackGearSchema}
       size="lg"
-      submitText="Update"
+      submitText="Modifier"
       initialValues={initialValues}
       onSubmit={async (values) => {
         try {

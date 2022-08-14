@@ -45,6 +45,16 @@ const packOrganizerQuery = resolver.pipe(
                     link: true,
                     notes: true,
                     imageUrl: true,
+                    categoryItems: {
+                      select: {
+                        category: {
+                          select: {
+                            name: true,
+                            type: true,
+                          },
+                        },
+                      },
+                    },
                   },
                 },
               },

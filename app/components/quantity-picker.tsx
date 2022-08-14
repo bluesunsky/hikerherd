@@ -5,7 +5,8 @@ import { useState } from "react";
 import { HStack, Text } from "@chakra-ui/layout";
 import { Icon } from "@chakra-ui/icon";
 import { IconButton } from "@chakra-ui/button";
-import { FaClone, FaMinus, FaPlus } from "react-icons/fa";
+import { FaMinus, FaPlus } from "react-icons/fa";
+import { GrClose } from "react-icons/gr";
 
 type QuantityPickerProps = {
   isLoading: boolean;
@@ -26,7 +27,7 @@ const QuantityPicker: FC<QuantityPickerProps> = ({
   return (
     <HStack py={1} px={3} justify="space-between">
       <HStack spacing={3}>
-        <Icon w={3} h={3} as={FaClone} />
+        <Icon w={3} h={3} as={GrClose} />
         <Text>Quantité</Text>
       </HStack>
 

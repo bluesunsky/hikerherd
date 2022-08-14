@@ -24,3 +24,11 @@ body.chakra-ui-dark {
 body.is-fixed {
   overflow: hidden;
 }
+
+:root {
+  --chakra-shadows-outline: 0 !important;
+}
+button[aria-selected="true"] {
+  background-color: var(--chakra-colors-blue-600);
+  color: white !important;
+}

@@ -5,7 +5,8 @@ import { memo, useContext } from "react";
 
 import { Wrap } from "@chakra-ui/layout";
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/tag";
-import { FaTag, FaWeightHanging, FaClone, FaTshirt } from "react-icons/fa";
+import { FaTag, FaWeightHanging, FaTshirt } from "react-icons/fa";
+import { GrClose } from "react-icons/gr";
 import { Tooltip } from "@chakra-ui/tooltip";
 
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
@@ -27,7 +28,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
     return (
       <Wrap>
         {!worn && (
-          <Tooltip label="Poids du sac">
+          <Tooltip label="Poids dans le sac">
             <Tag colorScheme="teal" size="sm">
               <TagLeftIcon as={FaWeightHanging} />
               <TagLabel>{displayWeight(weight, weightUnit)}</TagLabel>
@@ -58,7 +59,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
         {(quantity === 0 || (quantity && quantity > 1)) && (
           <Tooltip label="Quantité">
             <Tag colorScheme="orange" size="sm">
-              <TagLeftIcon as={FaClone} />
+              <TagLeftIcon as={GrClose} />
               <TagLabel>{quantity}</TagLabel>
             </Tag>
           </Tooltip>

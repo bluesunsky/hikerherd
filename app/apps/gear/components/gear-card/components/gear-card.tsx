@@ -18,6 +18,7 @@ type GearCardProps = {
   consumable?: boolean;
   link?: string | null;
   notes?: string | null;
+  kind?: string | null;
   quantity?: number;
   onHeadingClick?: () => void;
   menu?: JSX.Element | null;
@@ -36,6 +37,7 @@ const GearCard: FC<GearCardProps> = ({
   consumable,
   link,
   notes,
+  kind,
   menu = null,
   dragging = false,
   children,
@@ -77,7 +79,12 @@ const GearCard: FC<GearCardProps> = ({
           quantity={quantity}
           worn={worn}
         />
-        <GearCardTags consumable={consumable} link={link} notes={notes} />
+        <GearCardTags
+          consumable={consumable}
+          link={link}
+          notes={notes}
+          kind={kind}
+        />
       </Wrap>
 
       {children && (

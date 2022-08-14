@@ -22,6 +22,10 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
   const menu = useMemo(() => {
     return itemMenu && itemMenu(item);
   }, [item]); //eslint-disable-line
+  const kind =
+    item.gear.categoryItems && item.gear.categoryItems.length > 0
+      ? item.gear.categoryItems[0]?.category?.type
+      : null;
 
   return (
     <Box
@@ -42,6 +46,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
         consumable={item.gear.consumable}
         link={item.gear.link}
         notes={item.notes || item.gear.notes}
+        kind={kind}
         dragging={isDragging}
         quantity={item.quantity}
         menu={menu}

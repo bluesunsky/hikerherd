@@ -56,7 +56,7 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
         id: itemId || "",
         categoryId: categories?.[0]?.id,
       }}
-      submitText="Move"
+      submitText="Déplacer"
       onSubmit={async (values) => {
         try {
           const result = await moveGear(values);
@@ -95,7 +95,7 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
               )}
 
               {categories?.length && (
-                <SelectField name="categoryId" label="Choose a category">
+                <SelectField name="categoryId" label="Choisir une catégorie">
                   {categories?.map((category) => (
                     <option value={category.id} key={category.id}>
                       {category.name}
