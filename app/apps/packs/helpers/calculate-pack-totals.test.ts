@@ -16,6 +16,7 @@ const categories: DragAndDropState = [
         id: faker.datatype.uuid(),
         ...getPackCategoryItemData({ worn: true, quantity: 2 }),
         gear: {
+          id: "test",
           ...getGearData({ weight: 100 }),
         },
       },
@@ -23,6 +24,7 @@ const categories: DragAndDropState = [
         id: faker.datatype.uuid(),
         ...getPackCategoryItemData({ worn: false, quantity: 1 }),
         gear: {
+          id: "test",
           ...getGearData({ weight: 20, consumable: true }),
         },
       },
@@ -36,6 +38,7 @@ const categories: DragAndDropState = [
         id: faker.datatype.uuid(),
         ...getPackCategoryItemData({ worn: false, quantity: 3 }),
         gear: {
+          id: "test",
           ...getGearData({ weight: 5, consumable: false }),
         },
       },
