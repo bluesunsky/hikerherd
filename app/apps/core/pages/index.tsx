@@ -12,6 +12,7 @@ import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/tag";
 import { Image } from "@chakra-ui/image";
 import { useColorModeValue } from "@chakra-ui/react";
 import { FaUser, FaArrowRight } from "react-icons/fa";
+import { RiLayoutGridFill } from "react-icons/ri";
 import {
   FcBinoculars,
   FcList,
@@ -20,6 +21,8 @@ import {
   FcTimeline,
 } from "react-icons/fc";
 
+import LogoIcon from "app/icons/logo";
+import LogoIcon2 from "app/icons/logo2";
 import PlainLayout from "app/layouts/plain-layout";
 
 import userCountQuery from "../queries/user-count-query";
@@ -75,13 +78,20 @@ const HomePage: BlitzPage = () => {
           textAlign="center"
           py={{ base: 12, md: 20 }}
         >
-          <Heading size="xl" mb={4}>
-            Alléger votre sac
+          <Heading size="xl" mb={4} display="flex" justifyContent="center">
+            <LogoIcon w={20} h={20} />
+            <div>
+              Pack your pack
+              <Text fontSize="lg" opacity="0.8" mt={2}>
+                Fait ton sac
+              </Text>
+            </div>
+            <LogoIcon2 w={20} h={20} />
           </Heading>
           <Text fontSize="lg" opacity="0.8">
             Rejoignez les autres randonneurs, routards et minimalistes qui
             utilisent déjà <strong>Pack&nbsp;your&nbsp;pack</strong> pour gérer
-            leurs équipements et planifier leurs aventures.
+            leurs équipements, alléger leur sac et planifier leurs aventures.
           </Text>
           <Link href={Routes.SignupPage()} passHref>
             <Button
@@ -92,6 +102,18 @@ const HomePage: BlitzPage = () => {
               colorScheme="blue"
             >
               S&lsquo;enregistrer
+            </Button>
+          </Link>
+          <Link href="/packs/share/cl6trymg601300gjqt9mthm37" passHref>
+            <Button
+              ml={6}
+              mt={8}
+              size="lg"
+              as="a"
+              rightIcon={<RiLayoutGridFill />}
+              colorScheme="gray"
+            >
+              Voir un exemple
             </Button>
           </Link>
         </Container>
@@ -115,7 +137,7 @@ const HomePage: BlitzPage = () => {
           <IconCard
             icon={FcList}
             title="Constituez votre inventaire"
-            text="Gérez tous vos équipements qui pourraient vous être utile."
+            text="Gérez tous vos équipements qui pourraient vous être utiles."
           />
 
           <IconCard
