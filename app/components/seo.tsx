@@ -7,11 +7,11 @@ type SeoProps = {
   description?: string | null;
 };
 
-const DEFAULT_TITLE = "hikerherd - Manage your gear, get a lighter pack.";
+const DEFAULT_TITLE = "Pack your pack";
 
 const DEFAULT_DESCRIPTION = `
-  hikerherd is for hikers, backpackers, and minimalists on the go. Our free gear management
-  tools will help you minimize your pack weight and organize your gear closet.
+  Pack your pack est pour les randonneurs, routards et minimalistes un moyen
+  de gérer et d'alléger leurs équipements afin de planifier leurs aventures.
 `;
 
 const Seo: FC<SeoProps> = ({ title, description }) => (
