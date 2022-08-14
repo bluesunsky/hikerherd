@@ -14,6 +14,7 @@ export type GearValues = {
 };
 
 const getGearData = (values: GearValues = {}) => ({
+  id: faker.random.number({ min: 1, max: 1000 }),
   name: faker.random.word(),
   weight: faker.datatype.number({ min: 20, max: 1200 }),
   imageUrl: faker.internet.url(),
