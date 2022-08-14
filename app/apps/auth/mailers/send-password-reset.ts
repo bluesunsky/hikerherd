@@ -20,8 +20,8 @@ const sendPasswordReset = (user: User, { token }: SendPasswordResetOptions) => {
       product_name: "pack your pack / fait ton sac",
       name: user.username,
       action_url: resetUrl,
-      company_name: "serant",
-      company_address: "serant.fr",
+      company_name: "Pack your pack",
+      company_address: "https://pack.serant.fr",
     },
   });
 };
