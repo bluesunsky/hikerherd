@@ -24,7 +24,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
   }, [item]); //eslint-disable-line
   const kind =
     item.gear.categoryItems && item.gear.categoryItems.length > 0
-      ? item.gear.categoryItems[0]?.category?.type
+      ? item.gear.categoryItems[0]?.category.type
       : null;
 
   return (

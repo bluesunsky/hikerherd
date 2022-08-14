@@ -36,7 +36,7 @@ const StartPage: BlitzPage = () => {
             {user?.username}
           </Heading>
           <Text fontSize="xl" opacity="0.8">
-            Bienvenue dans Pack your pack
+            Bienvenue dans Pack&nbsp;your&nbsp;pack
           </Text>
         </Container>
       </Box>

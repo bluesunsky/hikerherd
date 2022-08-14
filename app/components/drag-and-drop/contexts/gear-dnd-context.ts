@@ -1,6 +1,13 @@
-import type { CategoryItem, Currency } from "db";
+import type { Currency } from "db";
 
 import { createContext } from "react";
+
+type CategoryItems = {
+  category: {
+    name: string;
+    type: string;
+  };
+};
 
 export type DragAndDropItem = {
   id: string;
@@ -16,7 +23,7 @@ export type DragAndDropItem = {
     link: string | null;
     notes: string | null;
     imageUrl: string | null;
-    categoryItems: CategoryItem[];
+    categoryItems?: CategoryItems[];
   };
 };
 
