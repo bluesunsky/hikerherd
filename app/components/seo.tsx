@@ -16,12 +16,12 @@ const DEFAULT_DESCRIPTION = `
 
 const Seo: FC<SeoProps> = ({ title, description }) => (
   <Head>
-    <title>{title ? `${title} | hikerherd` : DEFAULT_TITLE}</title>
+    <title>{title ? `${title} | Pack your pack` : DEFAULT_TITLE}</title>
     <meta name="description" content={description || DEFAULT_DESCRIPTION} />
 
     <meta
       property="og:title"
-      content={title ? `${title} | hikerherd` : DEFAULT_TITLE}
+      content={title ? `${title} | Pack your pack` : DEFAULT_TITLE}
     />
     <meta
       property="og:description"
