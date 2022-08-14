@@ -15,8 +15,8 @@ const ResetPasswordPage: BlitzPage = () => {
   const handleSuccess = () => {
     router.push(Routes.StartPage());
     toast({
-      title: "Password changed",
-      description: "You have successfully changed your password.",
+      title: "Mot de passe modifié",
+      description: "Vous avez changé de mot de passe.",
       status: "success",
     });
   };
@@ -26,8 +26,8 @@ const ResetPasswordPage: BlitzPage = () => {
 
 ResetPasswordPage.getLayout = (page) => (
   <BoxLayout
-    title="Reset Your Password"
-    description="What would you like your new password to be?"
+    title="Réinitialisez votre mot de passe"
+    description="Quel serait votre nouveau mot de passe ?"
   >
     {page}
   </BoxLayout>

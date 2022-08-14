@@ -47,7 +47,7 @@ const SignupForm: FC<SignupFormProps> = ({ onSuccess }) => {
     <SimpleForm
       schema={signupSchema}
       initialValues={{ email: "", username: "", password: "" }}
-      submitText="Join hikerherd"
+      submitText="Rejoindre Pack your pack"
       large
       onSubmit={async (values) => {
         try {

@@ -22,7 +22,7 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ onSuccess }) => {
     <SimpleForm
       schema={forgotPasswordSchema}
       initialValues={{ email: "" }}
-      submitText="Send reset email"
+      submitText="Envoyer un mail de réinitialisation"
       large
       onSubmit={async (values) => {
         try {
@@ -38,8 +38,8 @@ const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ onSuccess }) => {
       render={() => (
         <TextField
           name="email"
-          label="Email address"
-          placeholder="Enter the email address you signed up with"
+          label="Adresse mail"
+          placeholder="Saisir l'adresse mail associée à votre compte"
           size="lg"
         />
       )}

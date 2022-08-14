@@ -31,7 +31,7 @@ const SignupPage: BlitzPage = () => {
       <TextDivider>Or</TextDivider>
       <Link href={Routes.LoginPage()} passHref>
         <Button size="lg" as="a">
-          Connextion
+          Connexion
         </Button>
       </Link>
     </Stack>

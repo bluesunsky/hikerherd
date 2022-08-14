@@ -41,7 +41,7 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({ onSuccess }) => {
     <SimpleForm
       schema={resetPasswordSchema}
       initialValues={initialValues}
-      submitText="Reset password"
+      submitText="Réinitialiser le mot de passe"
       large
       onSubmit={async (values) => {
         try {
@@ -53,10 +53,14 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({ onSuccess }) => {
       }}
       render={() => (
         <Fragment>
-          <TextField name="password" label="New Password" type="password" />
+          <TextField
+            name="password"
+            label="Nouveau mot de passe"
+            type="password"
+          />
           <TextField
             name="passwordConfirmation"
-            label="Confirm New Password"
+            label="Confirmer votre mot de passe"
             type="password"
           />
         </Fragment>
