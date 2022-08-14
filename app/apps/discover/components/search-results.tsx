@@ -36,7 +36,7 @@ const SearchResults: FC<SearchResultsProps> = ({
 
       {query && !isLoading && items?.length === 0 && (
         <Text pl={3} fontSize="lg" color={textColor}>
-          No results found for &quot;{query}&quot;.
+          Pas de résultat pour &quot;{query}&quot;.
         </Text>
       )}
 
