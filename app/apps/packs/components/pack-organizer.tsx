@@ -25,7 +25,7 @@ const PackOrganizer: FC<PackOrganizerProps> = ({ id }) => {
 
   return (
     <GearOrganizerProvider state={state} setState={setState} refetch={refetch}>
-      <PackOrganizerModals id={id} />
+      <PackOrganizerModals id={id} categories={data.categories} />
       <PackOrganizerDragAndDrop />
     </GearOrganizerProvider>
   );

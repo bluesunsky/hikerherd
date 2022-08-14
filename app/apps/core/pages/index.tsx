@@ -198,7 +198,7 @@ const HomePage: BlitzPage = () => {
 
           <IconCard
             icon={FcSearch}
-            title="Packs partagées"
+            title="Packs partagés"
             actionLink={Routes.DiscoverPacksPage()}
             actionText="Chercher un pack"
             text="Rechercher un pack parmis ceux des autres utilisateurs"

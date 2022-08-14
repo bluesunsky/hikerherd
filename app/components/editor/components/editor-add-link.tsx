@@ -13,10 +13,10 @@ const EditorAddLink = () => {
     <ModalForm
       isOpen={addingLink}
       onClose={toggleAddingLink}
-      title="Add a link"
+      title="Ajouter un lien"
       schema={addLinkSchema}
       initialValues={{ link: editor.getAttributes("link").href || "" }}
-      submitText="Add"
+      submitText="Ajouter"
       onSubmit={({ link }) => {
         if (!link || link === "") {
           editor.chain().focus().extendMarkRange("link").unsetLink().run();

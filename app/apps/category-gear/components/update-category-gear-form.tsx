@@ -62,7 +62,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={`Editing ${gearItem ? gearItem?.gear.name : ""}`}
+      title={`Modifier ${gearItem ? gearItem?.gear.name : ""}`}
       schema={updateCategoryGearSchema}
       initialValues={initialValues}
       size="lg"

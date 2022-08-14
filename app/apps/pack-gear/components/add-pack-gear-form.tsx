@@ -48,7 +48,7 @@ const AddPackGearForm: FC<AddPackGearFormProps> = ({
     <ModalTabForm
       schema={createPackGearSchema}
       onClose={onClose}
-      submitText="Add"
+      submitText="Ajouter"
       initialValues={initialValues}
       onSubmit={async (values) => {
         try {

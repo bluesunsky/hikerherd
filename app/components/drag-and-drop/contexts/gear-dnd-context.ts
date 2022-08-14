@@ -15,6 +15,7 @@ export type DragAndDropItem = {
   quantity: number;
   notes?: string | null;
   gear: {
+    id: string;
     name: string;
     weight: number;
     price: number | null;

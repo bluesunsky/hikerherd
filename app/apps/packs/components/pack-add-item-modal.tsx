@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import type { DragAndDropState } from "app/components/drag-and-drop/contexts/gear-dnd-context";
 
 import { useState } from "react";
 import { useMutation } from "blitz";
@@ -17,6 +18,7 @@ import PackAddInventoryItem from "./pack-add-inventory-item";
 
 type PackAddItemModalProps = {
   categoryId: string | null;
+  categories: DragAndDropState;
   isOpen: boolean;
   onClose: () => void;
   onSuccess: () => void;
@@ -24,6 +26,7 @@ type PackAddItemModalProps = {
 
 const PackAddItemModal: FC<PackAddItemModalProps> = ({
   categoryId,
+  categories,
   isOpen,
   onClose,
   onSuccess,
@@ -60,14 +63,22 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
           title: "Inventaire",
           icon: FcList,
           content: (
-            <PackAddInventoryItem type="INVENTORY" addToPack={addToPack} />
+            <PackAddInventoryItem
+              type="INVENTORY"
+              addToPack={addToPack}
+              categories={categories}
+            />
           ),
         },
         {
           title: "Souhaits",
           icon: FcRating,
           content: (
-            <PackAddInventoryItem type="WISH_LIST" addToPack={addToPack} />
+            <PackAddInventoryItem
+              type="WISH_LIST"
+              addToPack={addToPack}
+              categories={categories}
+            />
           ),
         },
         {

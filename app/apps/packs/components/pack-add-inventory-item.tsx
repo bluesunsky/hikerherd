@@ -1,10 +1,12 @@
 import type { FC } from "react";
+import type { DragAndDropState } from "app/components/drag-and-drop/contexts/gear-dnd-context";
 import type { CategoryType } from "db";
 import type { PromiseReturnType } from "blitz";
 
 import { useMemo, useState } from "react";
 import { useQuery } from "blitz";
 
+import { Tooltip } from "@chakra-ui/tooltip";
 import Fuse from "fuse.js";
 import { SimpleGrid, Stack, Heading, Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
@@ -24,11 +26,13 @@ type GroupedItems = {
 
 type PackAddInventoryItemProps = {
   type: CategoryType;
+  categories: DragAndDropState;
   addToPack: (gearId: string) => Promise<void>;
 };
 
 const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
   type,
+  categories,
   addToPack,
 }) => {
   const [query, setQuery] = useState("");
@@ -37,6 +41,14 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
   const bg = useColorModeValue("gray.50", "gray.600");
   const fg = useColorModeValue("white", "gray.700");
   const border = useColorModeValue("gray.200", "gray.800");
+
+  let usedItems: Array<string> = new Array<string>();
+
+  categories.forEach((category) => {
+    category.items.forEach((item) => {
+      usedItems.push(item.gear.id);
+    });
+  });
 
   const [categoryGear, { isLoading }] = useQuery(
     listCategoryGearQuery,
@@ -112,20 +124,40 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                     notes={item.gear.notes}
                     imageUrl={item.gear.imageUrl}
                   >
-                    <Button
-                      size="sm"
-                      colorScheme="green"
-                      isFullWidth
-                      isLoading={isAddingTo === item.id}
-                      onClick={() => {
-                        setIsAddingTo(item.id);
-                        addToPack(item.gear.id).then(() => {
-                          setIsAddingTo(null);
-                        });
-                      }}
-                    >
-                      Ajouter
-                    </Button>
+                    {usedItems.some((id) => id == item.gear.id) && (
+                      <Tooltip label="L'équipement est déjà dans le pack">
+                        <Button
+                          size="sm"
+                          colorScheme="gray"
+                          isFullWidth
+                          isLoading={isAddingTo === item.id}
+                          onClick={() => {
+                            setIsAddingTo(item.id);
+                            addToPack(item.gear.id).then(() => {
+                              setIsAddingTo(null);
+                            });
+                          }}
+                        >
+                          Ajouter
+                        </Button>
+                      </Tooltip>
+                    )}
+                    {!usedItems.some((id) => id == item.gear.id) && (
+                      <Button
+                        size="sm"
+                        colorScheme="green"
+                        isFullWidth
+                        isLoading={isAddingTo === item.id}
+                        onClick={() => {
+                          setIsAddingTo(item.id);
+                          addToPack(item.gear.id).then(() => {
+                            setIsAddingTo(null);
+                          });
+                        }}
+                      >
+                        Ajouter
+                      </Button>
+                    )}
                   </GearCard>
                 ))}
               </SimpleGrid>

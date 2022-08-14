@@ -93,7 +93,7 @@ const StartPage: BlitzPage = () => {
           <IndexCard
             icon={FcSearch}
             href={Routes.DiscoverPacksPage()}
-            title="Packs partagées"
+            title="Packs partagés"
             text="Rechercher un pack parmis ceux des autres utilisateurs"
           />
         </SimpleGrid>

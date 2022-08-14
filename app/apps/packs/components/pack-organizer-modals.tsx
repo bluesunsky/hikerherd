@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import type { DragAndDropState } from "app/components/drag-and-drop/contexts/gear-dnd-context";
 
 import { useContext, Fragment } from "react";
 import { useMutation } from "blitz";
@@ -14,9 +15,13 @@ import PackAddItemModal from "./pack-add-item-modal";
 
 type PackOrganizerModalsProps = {
   id: string;
+  categories: DragAndDropState;
 };
 
-const PackOrganizerModals: FC<PackOrganizerModalsProps> = ({ id }) => {
+const PackOrganizerModals: FC<PackOrganizerModalsProps> = ({
+  id,
+  categories,
+}) => {
   const {
     refetch,
 
@@ -33,7 +38,6 @@ const PackOrganizerModals: FC<PackOrganizerModalsProps> = ({ id }) => {
 
   const [deleteCategory] = useMutation(deletePackCategoryMutation);
   const [deleteGear] = useMutation(deletePackGearMutation);
-
   return (
     <Fragment>
       <PackCategoryForm
@@ -46,6 +50,7 @@ const PackOrganizerModals: FC<PackOrganizerModalsProps> = ({ id }) => {
 
       <PackAddItemModal
         categoryId={addingItemToCategory}
+        categories={categories}
         isOpen={!!addingItemToCategory}
         onSuccess={refetch}
         onClose={closeModals}

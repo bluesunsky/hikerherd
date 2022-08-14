@@ -50,7 +50,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
       schema={createCategoryGearSchema}
       initialValues={initialValues}
       onClose={onClose}
-      submitText="Add"
+      submitText="Ajouter"
       onSubmit={async (values) => {
         try {
           const vals = { ...values };
@@ -63,7 +63,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
             vals.price = Math.floor(values.price * 100);
           }
 
-          if (!categoryId) throw new Error("Category required");
+          if (!categoryId) throw new Error("Catégorie nécessaire");
           const result = await createGear(vals);
 
           onClose();
