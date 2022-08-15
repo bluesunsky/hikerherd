@@ -22,6 +22,20 @@ type GearCardValuesProps = {
   purchaseDate?: Date | null;
 };
 
+const months = [
+  "janvier",
+  "février",
+  "mars",
+  "avril",
+  "mai",
+  "juin",
+  "juillet",
+  "août",
+  "septembre",
+  "octobre",
+  "novembre",
+  "décembre",
+];
 const GearCardValues: FC<GearCardValuesProps> = memo(
   ({ weight, price, currency, quantity, worn, purchaseDate }) => {
     const { weightUnit } = useContext(userPreferencesContext);
@@ -64,9 +78,15 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
       }
     }
 
+    const purchasePeriod: string =
+      "" +
+      months[purchaseDate ? purchaseDate.getMonth() : 0] +
+      " " +
+      purchaseDate?.getUTCFullYear();
+
     return (
       <Wrap>
-        {!worn && (
+        {!worn && weight != 0 && (
           <Tooltip label="Poids dans le sac">
             <Tag colorScheme="teal" size="sm">
               <TagLeftIcon as={FaWeightHanging} />
@@ -74,7 +94,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
             </Tag>
           </Tooltip>
         )}
-        {worn && (
+        {worn && weight != 0 && (
           <Tooltip label="Poids sur soi">
             <Tag colorScheme="blue" size="sm">
               <TagLeftIcon as={FaTshirt} />
@@ -104,11 +124,20 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
           </Tooltip>
         )}
 
-        {purchaseDate && age && (
-          <Tooltip label={"Age / Acheté en " + purchaseDate.getUTCFullYear()}>
+        {purchaseDate && (
+          <Tooltip
+            label={
+              "Acheté en " +
+              purchasePeriod +
+              (age
+                ? ", " +
+                  (age == "Aujourd'hui" ? "aujourd'hui" : "il y a " + age)
+                : "")
+            }
+          >
             <Tag colorScheme="gray" size="sm">
               <TagLeftIcon as={FaClock} />
-              <TagLabel>{age}</TagLabel>
+              <TagLabel>{age ? age : purchasePeriod}</TagLabel>
             </Tag>
           </Tooltip>
         )}

@@ -50,6 +50,21 @@ const DateField = forwardRef<HTMLInputElement, TextFieldProps>(
     });
 
     const error = getFieldErrorMessage(meta);
+    const weekDays = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
+    const months = [
+      "Janv",
+      "Févr",
+      "Mars",
+      "Avr",
+      "Mai",
+      "Juin",
+      "Juil",
+      "Août",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Déc",
+    ];
 
     return (
       <FormControl isInvalid={meta.touched && error}>
@@ -58,6 +73,19 @@ const DateField = forwardRef<HTMLInputElement, TextFieldProps>(
         <InputGroup>
           {icon && <InputLeftElement>{icon}</InputLeftElement>}
           <DatePicker
+            arrow={false}
+            weekDays={weekDays}
+            months={months}
+            weekStartDayIndex={1}
+            showOtherDays
+            mapDays={({ date }) => {
+              let props: any = {};
+              let isWeekend = [0, 6].includes(date.weekDay.index);
+
+              if (isWeekend) props.className = "highlight highlight-red";
+
+              return props;
+            }}
             ref={datePickerRef as React.MutableRefObject<any>}
             value={value}
             onChange={(value) => {
@@ -73,7 +101,28 @@ const DateField = forwardRef<HTMLInputElement, TextFieldProps>(
             }}
             {...props}
             style={{ display: "none" }}
-          ></DatePicker>
+          >
+            {" "}
+            <button
+              style={{ margin: "5px", marginRight: "20px" }}
+              onClick={() => {
+                input.onChange("");
+                const current: any = datePickerRef?.current;
+                current.closeCalendar();
+              }}
+            >
+              Effacer
+            </button>
+            <button
+              style={{ margin: "5px" }}
+              onClick={() => {
+                const current: any = datePickerRef?.current;
+                current.closeCalendar();
+              }}
+            >
+              Fermer
+            </button>
+          </DatePicker>
           <Input
             placeholder="Sélectionner une date…"
             onClick={() => {
