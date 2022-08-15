@@ -35,6 +35,7 @@ const listCategoryGearQuery = resolver.pipe(
             imageUrl: true,
             notes: true,
             consumable: true,
+            purchaseDate: true,
           },
         },
       },

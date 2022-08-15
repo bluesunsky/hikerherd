@@ -46,6 +46,7 @@ const updatePackGearMutation = resolver.pipe(
             consumable: values.consumable,
             price: values.price,
             currency: values.currency,
+            purchaseDate: null,
           },
         },
       },

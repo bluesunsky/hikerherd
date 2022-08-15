@@ -46,6 +46,7 @@ const packOrganizerQuery = resolver.pipe(
                     link: true,
                     notes: true,
                     imageUrl: true,
+                    purchaseDate: true,
                     categoryItems: {
                       select: {
                         category: {

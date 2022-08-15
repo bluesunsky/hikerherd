@@ -45,6 +45,7 @@ const addToInventoryMutation = resolver.pipe(
         currency: gear.currency,
         userId: ctx.session.userId,
         clonedFromId: gear.id,
+        purchaseDate: gear.purchaseDate,
       },
     });
 

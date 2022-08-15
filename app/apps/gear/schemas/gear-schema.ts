@@ -13,6 +13,7 @@ const gearSchema = z.object({
   price: z.number().nullable().default(null),
   currency: z.nativeEnum(Currency),
   link: z.string().url().nullable().default(null),
+  purchaseDate: z.date().nullable().default(null),
 });
 
 export default gearSchema;

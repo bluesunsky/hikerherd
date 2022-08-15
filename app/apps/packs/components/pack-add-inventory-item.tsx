@@ -123,6 +123,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                     link={item.gear.link}
                     notes={item.gear.notes}
                     imageUrl={item.gear.imageUrl}
+                    purchaseDate={item.gear.purchaseDate}
                   >
                     {usedItems.some((id) => id == item.gear.id) && (
                       <Tooltip label="L'équipement est déjà dans le pack">

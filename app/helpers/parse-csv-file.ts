@@ -24,6 +24,7 @@ const csvItemSchema = z.object({
   consumable: z.union([z.string(), z.boolean()]).nullable().optional(),
   worn: z.union([z.string(), z.boolean()]).nullable().optional(),
   quantity: z.number().int().min(0).nullable().optional(),
+  purchaseDate: z.date().nullable().optional(),
 });
 
 const parseCsvFile = (file: string): ParsedCsvResult => {
@@ -41,6 +42,7 @@ const parseCsvFile = (file: string): ParsedCsvResult => {
       notes: true,
       link: true,
       image: true,
+      purchaseDate: true,
     },
   });
 
@@ -61,6 +63,7 @@ const parseCsvFile = (file: string): ParsedCsvResult => {
         link: valid.link || null,
         notes: valid.notes || null,
         imageUrl: valid.image || null,
+        purchaseDate: valid.purchaseDate || null,
       },
     };
   });

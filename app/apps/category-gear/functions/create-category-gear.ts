@@ -13,6 +13,7 @@ type Params = {
     consumable: boolean;
     price: number | null;
     currency: Currency;
+    purchaseDate: Date | null;
   };
 };
 
@@ -42,6 +43,7 @@ const createCategoryGear: TransactionFunction<Params, CategoryItem> = async (
           price: values.price,
           currency: values.currency,
           userId: ctx.session.userId,
+          purchaseDate: values.purchaseDate,
         },
       },
     },

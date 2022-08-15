@@ -23,6 +23,7 @@ type GearCardProps = {
   onHeadingClick?: () => void;
   menu?: JSX.Element | null;
   dragging?: boolean;
+  purchaseDate?: Date | null;
 };
 
 const GearCard: FC<GearCardProps> = ({
@@ -41,6 +42,7 @@ const GearCard: FC<GearCardProps> = ({
   menu = null,
   dragging = false,
   children,
+  purchaseDate,
 }) => {
   const bg = useColorModeValue("white", "gray.800");
   const border = useColorModeValue("gray.100", "gray.900");
@@ -78,6 +80,7 @@ const GearCard: FC<GearCardProps> = ({
           currency={currency}
           quantity={quantity}
           worn={worn}
+          purchaseDate={purchaseDate}
         />
         <GearCardTags
           consumable={consumable}

@@ -24,6 +24,7 @@ const categoryGearQuery = resolver.pipe(
             imageUrl: true,
             notes: true,
             consumable: true,
+            purchaseDate: true,
           },
         },
         category: {

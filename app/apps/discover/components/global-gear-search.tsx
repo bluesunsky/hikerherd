@@ -48,6 +48,7 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
               link={item.link}
               notes={item.notes}
               imageUrl={item.imageUrl}
+              purchaseDate={item.purchaseDate}
             >
               {gearActions(item)}
             </GearCard>

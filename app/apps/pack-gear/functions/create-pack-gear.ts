@@ -15,6 +15,7 @@ type Params = {
     currency: Currency;
     worn: boolean;
     quantity?: number;
+    purchaseDate: Date | null;
   };
 };
 
@@ -47,6 +48,7 @@ const createPackGear: TransactionFunction<Params, CategoryItem> = async (
           price: values.price,
           currency: values.currency,
           userId: ctx.session.userId,
+          purchaseDate: values.purchaseDate,
         },
       },
     },

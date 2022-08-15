@@ -52,6 +52,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
         menu={menu}
         imageUrl={item.gear.imageUrl}
         onHeadingClick={editItem && (() => editItem(item.id))}
+        purchaseDate={item.gear.purchaseDate}
       />
     </Box>
   );

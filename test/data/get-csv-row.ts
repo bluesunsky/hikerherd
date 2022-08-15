@@ -29,6 +29,7 @@ const getCsvRow = (values: CsvRowValues = {}) => {
     gear.consumable ? "consumable" : "",
     values.worn ? "worn" : "",
     `${values.quantity || 1}`,
+    gear.purchaseDate || "",
   ];
 };
 

@@ -53,6 +53,7 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
     notes: gearItem?.gear.notes,
     consumable: gearItem?.gear.consumable,
     worn: gearItem?.worn,
+    purchaseDate: gearItem?.gear.purchaseDate,
   };
 
   return (
@@ -65,6 +66,7 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
       submitText="Modifier"
       initialValues={initialValues}
       onSubmit={async (values) => {
+        console.log(values);
         try {
           const vals = { ...values };
 

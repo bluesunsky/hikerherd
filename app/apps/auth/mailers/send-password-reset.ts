@@ -17,7 +17,7 @@ const sendPasswordReset = (user: User, { token }: SendPasswordResetOptions) => {
     TemplateAlias: "password-reset",
     TemplateModel: {
       product_url: APP_ORIGIN,
-      product_name: "pack your pack / fait ton sac",
+      product_name: "Pack your pack / Fait ton sac",
       name: user.username,
       action_url: resetUrl,
       company_name: "Pack your pack",

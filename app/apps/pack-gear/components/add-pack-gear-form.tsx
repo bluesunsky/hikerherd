@@ -42,6 +42,7 @@ const AddPackGearForm: FC<AddPackGearFormProps> = ({
     consumable: false,
     categoryId,
     worn: false,
+    purchaseDate: null,
   };
 
   return (

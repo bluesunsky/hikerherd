@@ -19,6 +19,7 @@ export type ParsedCsvItem = {
     link: string | null;
     notes: string | null;
     imageUrl: string | null;
+    purchaseDate: Date | null;
   };
 };
 
@@ -35,6 +36,7 @@ export type CsvItem = {
   consumable: string | null;
   worn: string | null;
   quantity: number;
+  purchaseDate: Date | null;
 };
 
 const itemToCsvFormat = ({
@@ -61,6 +63,7 @@ const itemToCsvFormat = ({
     consumable: item.gear.consumable ? "consumable" : null,
     worn: item.worn ? "worn" : null,
     quantity: item.quantity || 1,
+    purchaseDate: item.gear.purchaseDate,
   };
 };
 

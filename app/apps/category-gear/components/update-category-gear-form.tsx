@@ -56,6 +56,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
     imageUrl: gearItem?.gear.imageUrl,
     notes: gearItem?.gear.notes,
     consumable: gearItem?.gear.consumable,
+    purchaseDate: gearItem?.gear.purchaseDate,
   };
 
   return (
@@ -68,6 +69,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
       size="lg"
       submitText={id ? "Modifier" : "Créer"}
       onSubmit={async (values) => {
+        console.log(values);
         try {
           const vals = { ...values };
 

@@ -46,6 +46,7 @@ describe("parseCsvFile", () => {
         link: gear.link,
         notes: gear.notes,
         imageUrl: gear.image,
+        purchaseDate: gear.purchaseDate,
       },
     });
   });
@@ -161,6 +162,7 @@ describe("parseCsvFile", () => {
         link: null,
         notes: null,
         imageUrl: null,
+        purchaseDate: null,
       },
     });
   });

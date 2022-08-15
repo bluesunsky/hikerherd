@@ -9,7 +9,7 @@ const resetPasswordSchema = z
     token: z.string(),
   })
   .refine((data) => data.password === data.passwordConfirmation, {
-    message: "Passwords don't match",
+    message: "Les mots de passe ne sont pas identiques",
     path: ["passwordConfirmation"],
   });
 

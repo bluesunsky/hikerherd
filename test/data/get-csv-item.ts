@@ -19,6 +19,7 @@ export type TestCsvItem = {
   consumable: string;
   worn: string;
   quantity: string;
+  purchaseDate: Date | null;
 };
 
 const getCsvItem = (values: Partial<TestCsvItem> = {}): TestCsvItem => {
@@ -37,6 +38,7 @@ const getCsvItem = (values: Partial<TestCsvItem> = {}): TestCsvItem => {
     consumable: gear.consumable ? "consumable" : "",
     worn: "",
     quantity: `${1}`,
+    purchaseDate: null,
     ...values,
   };
 };

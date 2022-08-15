@@ -5,7 +5,7 @@ import { memo, useContext } from "react";
 
 import { Wrap } from "@chakra-ui/layout";
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/tag";
-import { FaTag, FaWeightHanging, FaTshirt } from "react-icons/fa";
+import { FaTag, FaWeightHanging, FaTshirt, FaClock } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import { Tooltip } from "@chakra-ui/tooltip";
 
@@ -19,11 +19,50 @@ type GearCardValuesProps = {
   currency?: Currency;
   quantity?: number;
   worn?: boolean;
+  purchaseDate?: Date | null;
 };
 
 const GearCardValues: FC<GearCardValuesProps> = memo(
-  ({ weight, price, currency, quantity, worn }) => {
+  ({ weight, price, currency, quantity, worn, purchaseDate }) => {
     const { weightUnit } = useContext(userPreferencesContext);
+
+    var age = "";
+    if (purchaseDate) {
+      var today = new Date();
+      if (today > purchaseDate) {
+        var y = today.getFullYear() - purchaseDate.getFullYear();
+        var m = today.getMonth() - purchaseDate.getMonth();
+        var d = today.getDate() - purchaseDate.getDate();
+        if (d < 0) {
+          m--;
+          var m0 = today.getMonth();
+          var y0 = today.getFullYear();
+          if (m0 < 0) {
+            y0 -= 1;
+          }
+          d += new Date(y0, m0, 0).getDate();
+        }
+        if (m < 0 || (m === 0 && d < 0)) {
+          y--;
+        }
+        if (m < 0) m += 12;
+        console.log(d, m, y);
+        if (y > 0) {
+          if (y < 10) y = Math.round((y + m / 12) * 10) / 10;
+
+          if (y >= 2) age += y + " ans";
+          else age += y + " an";
+        }
+        if (!age) {
+          if (m > 0) age += " " + m + " mois";
+        }
+        if (!age) {
+          if (d > 1) age += " " + d + " jours";
+          else if (d > 0) age += " " + d + " jour";
+        }
+        if (!age) age = "Aujourd'hui";
+      }
+    }
 
     return (
       <Wrap>
@@ -61,6 +100,15 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
             <Tag colorScheme="orange" size="sm">
               <TagLeftIcon as={GrClose} />
               <TagLabel>{quantity}</TagLabel>
+            </Tag>
+          </Tooltip>
+        )}
+
+        {purchaseDate && age && (
+          <Tooltip label={"Age / Acheté en " + purchaseDate.getUTCFullYear()}>
+            <Tag colorScheme="gray" size="sm">
+              <TagLeftIcon as={FaClock} />
+              <TagLabel>{age}</TagLabel>
             </Tag>
           </Tooltip>
         )}

@@ -25,6 +25,7 @@ export type DragAndDropItem = {
     notes: string | null;
     imageUrl: string | null;
     categoryItems?: CategoryItems[];
+    purchaseDate: Date | null;
   };
 };
 

@@ -11,6 +11,7 @@ export type GearValues = {
   consumable?: boolean;
   price?: number;
   currency?: Currency;
+  purchaseDate?: Date | null;
 };
 
 const getGearData = (values: GearValues = {}) => ({
@@ -22,6 +23,7 @@ const getGearData = (values: GearValues = {}) => ({
   consumable: faker.datatype.boolean(),
   price: faker.datatype.number({ min: 100, max: 1000000 }),
   currency: "USD" as Currency,
+  purchaseDate: faker.datatype.datetime(),
   ...values,
 });
 

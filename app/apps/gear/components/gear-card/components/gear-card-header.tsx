@@ -41,7 +41,7 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
             <Avatar
               src={imageUrl || ""}
               size="xl"
-              borderRadius="0px"
+              borderRadius="5px"
               icon={<Icon as={FaImage} />}
               bg={avatarColor}
             />

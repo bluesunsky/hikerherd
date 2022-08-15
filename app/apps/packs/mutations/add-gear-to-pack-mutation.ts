@@ -53,7 +53,7 @@ const addGearToPackMutation = resolver.pipe(
           weight: gear.weight,
           price: gear.price,
           currency: gear.currency,
-
+          purchaseDate: gear.purchaseDate,
           userId: ctx.session.userId,
           clonedFromId: gear.id,
         },

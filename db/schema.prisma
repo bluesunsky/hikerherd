@@ -99,17 +99,17 @@ model Gear {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  name       String
-  imageUrl   String?
-  link       String?
-  notes      String?
-  consumable Boolean  @default(false)
-  weight     Float
-  price      Int?
-  currency   Currency @default(USD)
-
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+  name         String
+  imageUrl     String?
+  link         String?
+  notes        String?
+  consumable   Boolean   @default(false)
+  weight       Float
+  price        Int?
+  currency     Currency  @default(USD)
+  purchaseDate DateTime?
+  user         User      @relation(fields: [userId], references: [id])
+  userId       String
 
   clonedFromId String?
   clonedFrom   Gear?   @relation("ClonedFrom", fields: [clonedFromId], references: [id])

@@ -10,6 +10,7 @@ import {
   FaHamburger,
   FaWeightHanging,
   FaTshirt,
+  FaCalendarAlt,
 } from "react-icons/fa";
 import { Icon } from "@chakra-ui/icon";
 import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/tag";
@@ -21,6 +22,7 @@ import TextField from "app/components/forms/components/text-field";
 import TextAreaField from "app/components/forms/components/text-area-field";
 import CheckboxField from "app/components/forms/components/checkbox-field";
 import SelectField from "app/components/forms/components/select-field";
+import DateField from "app/components/forms/components/date-field";
 
 type GearFormFieldsProps = {
   includeWorn?: boolean;
@@ -28,7 +30,12 @@ type GearFormFieldsProps = {
 
 const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
   const { weightUnit } = useContext(userPreferencesContext);
-
+  /*
+<DatePicker
+        label="Date d'achat"
+        name="purchaseDate"
+      />
+      */
   return (
     <Stack spacing={4}>
       <TextField name="name" label="Nom" placeholder="Nom" />
@@ -37,7 +44,7 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
         type="number"
         name="weight"
         label="Poids"
-        placeholder="Weight"
+        placeholder="Poids"
         suffix={weightUnit === "METRIC" ? "g" : "oz"}
         icon={<Icon color="teal.400" as={FaWeightHanging} />}
       />
@@ -63,6 +70,11 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
       )}
 
       <TextDivider>Compléments</TextDivider>
+      <DateField
+        label="Date d'achat"
+        name="purchaseDate"
+        icon={<Icon as={FaCalendarAlt} />}
+      />
 
       <Grid templateColumns="70px 1fr" gap={2} alignItems="flex-end">
         <SelectField label="Prix" name="currency">

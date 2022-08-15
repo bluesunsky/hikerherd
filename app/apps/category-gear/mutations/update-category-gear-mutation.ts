@@ -36,6 +36,7 @@ const updateCategoryGearMutation = resolver.pipe(
         notes: values.notes,
         price: values.price,
         currency: values.currency,
+        purchaseDate: values.purchaseDate,
       },
     });
   }

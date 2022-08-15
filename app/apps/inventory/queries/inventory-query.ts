@@ -34,6 +34,7 @@ const inventoryQuery = resolver.pipe(
                     link: true,
                     notes: true,
                     imageUrl: true,
+                    purchaseDate: true,
                   },
                 },
               },

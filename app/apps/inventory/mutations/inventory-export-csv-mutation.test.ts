@@ -109,6 +109,7 @@ describe("inventoryExportCsvMutation", () => {
         consumable: item.gear.consumable ? "consumable" : "",
         worn: "",
         quantity: "1",
+        purchaseDate: null,
       });
     });
   });

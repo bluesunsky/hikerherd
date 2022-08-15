@@ -135,6 +135,7 @@ describe("packExportCsvMutation", () => {
         consumable: item.gear.consumable ? "consumable" : "",
         worn: item.worn ? "worn" : "",
         quantity: `${item.quantity || 1}`,
+        purchaseDate: null,
       });
     });
   });
