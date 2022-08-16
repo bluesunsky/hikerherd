@@ -16,7 +16,7 @@ const EditorAddImage = () => {
       title="Ajouter une image"
       schema={addImageSchema}
       initialValues={{ image: "" }}
-      submitText="Add"
+      submitText="Ajouter"
       onSubmit={({ image }) => {
         editor.chain().focus().setImage({ src: image }).run();
         toggleAddingImage();

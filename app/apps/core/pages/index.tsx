@@ -83,7 +83,7 @@ const HomePage: BlitzPage = () => {
             <div>
               Pack your pack
               <Text fontSize="lg" opacity="0.8" mt={2}>
-                Fait ton sac
+                Prépare ton sac
               </Text>
             </div>
             <LogoIcon2 w={20} h={20} />
@@ -95,6 +95,8 @@ const HomePage: BlitzPage = () => {
           </Text>
           <Link href={Routes.SignupPage()} passHref>
             <Button
+              ml={3}
+              mr={3}
               mt={8}
               size="lg"
               as="a"
@@ -106,7 +108,8 @@ const HomePage: BlitzPage = () => {
           </Link>
           <Link href="/packs/share/cl6trymg601300gjqt9mthm37" passHref>
             <Button
-              ml={6}
+              ml={3}
+              mr={3}
               mt={8}
               size="lg"
               as="a"

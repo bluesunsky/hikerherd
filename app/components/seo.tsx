@@ -17,6 +17,7 @@ const DEFAULT_DESCRIPTION = `
 const Seo: FC<SeoProps> = ({ title, description }) => (
   <Head>
     <title>{title ? `${title} | Pack your pack` : DEFAULT_TITLE}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
     <meta name="description" content={description || DEFAULT_DESCRIPTION} />
 
     <meta
