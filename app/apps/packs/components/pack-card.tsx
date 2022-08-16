@@ -48,7 +48,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
   return (
     <LinkCard actions={actions} {...props}>
       <Stack align="center" spacing={5} py={1}>
-        <Stack maxW="100%" px={8} align="center" spacing={2}>
+        <Stack maxW="100%" px={0} align="center" spacing={2}>
           <HStack maxW="100%">
             {pack.private && <Icon as={FcLock} h={4} w={4} />}
 

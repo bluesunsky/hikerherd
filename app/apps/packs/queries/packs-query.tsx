@@ -10,6 +10,7 @@ const packsQuery = resolver.pipe(
   async (values, ctx) => {
     const packs = await db.pack.findMany({
       where: { userId: ctx.session.userId },
+      orderBy: { updatedAt: "desc" },
       include: {
         categories: {
           include: {

@@ -19,6 +19,7 @@ const userQuery = resolver.pipe(
         avatar_version: true,
         packs: {
           where: { private: false },
+          orderBy: { updatedAt: "desc" },
           include: {
             categories: {
               include: {

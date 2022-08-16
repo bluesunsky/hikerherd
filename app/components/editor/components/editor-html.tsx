@@ -65,7 +65,7 @@ const EditorHtml = styled(Box)`
     max-width: 700px;
     max-height: calc(var(--chakra-lineHeights-base) * 25em);
     height: auto;
-    margin: calc(var(--chakra-lineHeights-base) * 2em) auto;
+    margin: calc(var(--chakra-lineHeights-base) * 1em) auto;
   }
 
   blockquote {
@@ -85,7 +85,7 @@ const EditorHtml = styled(Box)`
     border-radius: 2px;
     background: var(--chakra-colors-gray-100);
     border: none;
-    margin: calc(var(--chakra-lineHeights-base) * 2em) auto;
+    margin: calc(var(--chakra-lineHeights-base) * 1em) auto;
   }
 `;
 
