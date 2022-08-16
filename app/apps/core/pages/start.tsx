@@ -22,7 +22,9 @@ import IndexCard from "../components/index-card";
 
 const StartPage: BlitzPage = () => {
   const user = useCurrentUser();
-
+  const username = user
+    ? user.username.charAt(0).toUpperCase() + user.username.slice(1)
+    : "";
   return (
     <Fragment>
       <Box bg={useColorModeValue("gray.50", "gray.800")}>
@@ -33,7 +35,7 @@ const StartPage: BlitzPage = () => {
           py={{ base: 12, md: 20 }}
         >
           <Heading size="2xl" mb={2}>
-            {user?.username}
+            {username}
           </Heading>
           <Text fontSize="xl" opacity="0.8">
             Bienvenue dans Pack&nbsp;your&nbsp;pack

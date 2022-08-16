@@ -34,19 +34,21 @@ const ProfilePage: BlitzPage = () => {
   });
 
   const emptyBg = useColorModeValue("gray.200", "gray.700");
-
+  const username = user
+    ? user.username.charAt(0).toUpperCase() + user.username.slice(1)
+    : "";
   return (
     <Fragment>
       <Seo
         title={user.username}
-        description={`${user.username} is on hikerherd. Check out their gear lists and then use the hikerherd gear tools to create your own.`}
+        description={`${user.username} est sur Pack your pack. Consulter ses listes d'équipements et pourquoi pas créer les vôtres.`}
       />
 
       <Box bg={useColorModeValue("gray.50", "gray.800")}>
         <Container as="main" maxW="container.lg" py={{ base: 12, md: 20 }}>
           <Stack align="center" spacing={4}>
             <Avatar size="2xl" src={getAvatarUrl(user, 300)} />
-            <Heading size="xl">{user.username}</Heading>
+            <Heading size="xl">{username}</Heading>
             {user.id === currentUser?.id && <AvatarUploader />}
           </Stack>
         </Container>
@@ -64,7 +66,7 @@ const ProfilePage: BlitzPage = () => {
         {!user.packs.length && (
           <Center p={6} borderRadius="md" bg={emptyBg}>
             <Text size="md" opacity="0.4">
-              {user.username} has not made any packs yet
+              {username} n&lsquo;a pas encore de packs
             </Text>
           </Center>
         )}

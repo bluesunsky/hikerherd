@@ -17,6 +17,9 @@ type UserTagProps = {
 };
 
 const UserTag: FC<UserTagProps> = ({ user, size = "lg" }) => {
+  const username =
+    user?.username.charAt(0).toUpperCase() + user?.username.slice(1);
+
   return (
     <Link href={Routes.ProfilePage({ username: user?.username })} passHref>
       <Tag
@@ -34,7 +37,7 @@ const UserTag: FC<UserTagProps> = ({ user, size = "lg" }) => {
           ml={-1}
           mr={size === "sm" ? 1 : 2}
         />
-        <TagLabel>{user?.username}</TagLabel>
+        <TagLabel>{username}</TagLabel>
       </Tag>
     </Link>
   );
