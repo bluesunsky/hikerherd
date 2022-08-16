@@ -11,13 +11,13 @@ import { useToast } from "@chakra-ui/react";
 import uploadImageToCloudinary from "app/apps/core/helpers/upload-image-to-cloudinary";
 
 import useCurrentUser from "../hooks/use-current-user";
-import changeAvatarMutation from "../mutations/change-avatar-mutation";
+import changeCoverMutation from "../mutations/change-cover-mutation";
 import userQuery from "../queries/user-query";
 import currentUserQuery from "../queries/current-user-query";
 
-const AvatarUploader: FC = () => {
+const CoverUploader: FC = () => {
   const currentUser = useCurrentUser();
-  const [changeAvatar] = useMutation(changeAvatarMutation);
+  const [changeCover] = useMutation(changeCoverMutation);
   const toast = useToast();
 
   const [loading, setLoading] = useState(false);
@@ -34,22 +34,22 @@ const AvatarUploader: FC = () => {
         if (file) {
           try {
             const data = await uploadImageToCloudinary(file, {
-              folder: "avatars",
+              folder: "covers",
               filename: currentUser.username,
             });
 
-            await changeAvatar(data);
+            await changeCover(data);
 
             invalidateQuery(userQuery, { username: currentUser.username });
             invalidateQuery(currentUserQuery);
 
             toast({
-              title: "Votre avatar a bien été modifié",
+              title: "Votre image de couverture a bien été modifiée",
               status: "success",
             });
           } catch (error) {
             toast({
-              title: "Oops, there was a problem changing your avatar ",
+              title: "Oops, there was a problem changing your cover ",
               status: "error",
             });
           }
@@ -64,10 +64,10 @@ const AvatarUploader: FC = () => {
     <Box {...getRootProps()}>
       <input {...getInputProps()} />
       <Button isLoading={loading} size="sm">
-        Changer l&lsquo;avatar
+        Changer l&lsquo;image de couverture
       </Button>
     </Box>
   );
 };
 
-export default AvatarUploader;
+export default CoverUploader;

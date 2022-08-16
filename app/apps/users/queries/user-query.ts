@@ -17,6 +17,8 @@ const userQuery = resolver.pipe(
         username: true,
         avatar_id: true,
         avatar_version: true,
+        cover_id: true,
+        cover_version: true,
         packs: {
           where: { private: false },
           orderBy: { updatedAt: "desc" },

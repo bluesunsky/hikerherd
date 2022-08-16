@@ -38,6 +38,8 @@ model User {
   hashedPassword String?
   avatar_id      String?
   avatar_version Int?
+  cover_id       String?
+  cover_version  Int?
   weightUnit     WeightUnit @default(METRIC)
   currency       Currency   @default(USD)
   role           UserRole   @default(USER)

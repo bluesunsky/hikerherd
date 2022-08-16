@@ -14,6 +14,8 @@ const currentUserQuery = resolver.pipe(async (_, ctx) => {
       role: true,
       avatar_id: true,
       avatar_version: true,
+      cover_id: true,
+      cover_version: true,
       weightUnit: true,
       currency: true,
     },

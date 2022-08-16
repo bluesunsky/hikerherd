@@ -32,7 +32,7 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
     <HStack justify="space-between" p={2} pb={0}>
       <HStack width={menu ? "calc(100% - 35px)" : "100%"}>
         <Popover
-          maxH="250px"
+          maxH="300px"
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -49,7 +49,6 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
         >
           <Image
             maxW="100%"
-            maxH="230px"
             display="inline-block"
             src={imageUrl || ""}
             alt={name}
