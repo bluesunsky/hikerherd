@@ -51,7 +51,8 @@ const ProfilePage: BlitzPage = () => {
       justifyContent: "center",
     },
     username: {
-      textShadow: "0 0 5px #fff",
+      color: "#fff",
+      textShadow: "0 0 5px #000",
     },
   };
   return (

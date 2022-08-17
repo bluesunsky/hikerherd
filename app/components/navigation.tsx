@@ -19,10 +19,12 @@ import {
   FcSearch,
   FcBinoculars,
   FcHome,
+  FcDecision,
 } from "react-icons/fc";
 import { Icon } from "@chakra-ui/icon";
 import { useColorModeValue } from "@chakra-ui/react";
 
+import useCurrentUser from "../apps/users/hooks/use-current-user";
 type NavigationItemProps = {
   route: RouteUrlObject;
   icon: IconType;
@@ -74,6 +76,7 @@ const NavigationSection: FC<{ title: string }> = ({ title, children }) => {
 };
 
 const Navigation: FC = () => {
+  const currentUser = useCurrentUser();
   return (
     <Box as="aside">
       <Stack as="aside" spacing={8}>
@@ -103,6 +106,14 @@ const Navigation: FC = () => {
             Packs partagés
           </NavigationItem>
         </NavigationSection>
+
+        {currentUser?.role == "ADMIN" && (
+          <NavigationSection title="Administration">
+            <NavigationItem route={Routes.UsersPage()} icon={FcDecision}>
+              Utilisateurs
+            </NavigationItem>
+          </NavigationSection>
+        )}
 
         <NavigationSection title="A propos">
           <Text fontSize="sm" opacity="0.6" mt={3} py={-3} px={3}>

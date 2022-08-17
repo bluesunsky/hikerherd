@@ -30,7 +30,6 @@ const authenticateOrError = async (rawEmail: string, rawPassword: string) => {
       data: { hashedPassword: improvedHash },
     });
   }
-
   return userWithoutPassword;
 };
 
