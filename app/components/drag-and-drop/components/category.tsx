@@ -11,7 +11,12 @@ import { useColorModeValue } from "@chakra-ui/react";
 import { Menu, MenuButton } from "@chakra-ui/menu";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Tooltip } from "@chakra-ui/tooltip";
-import { FaHamburger, FaTshirt, FaWeightHanging } from "react-icons/fa";
+import {
+  FaHamburger,
+  FaTshirt,
+  FaWeightHanging,
+  FaClone,
+} from "react-icons/fa";
 
 import displayWeight from "app/helpers/display-weight";
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
@@ -90,62 +95,101 @@ const Category: BlitzPage<CategoryProps> = ({
         </Heading>
 
         <HStack>
+          <Tooltip label="Nombre d'équipements différents">
+            <Tag colorScheme="gray" size="sm">
+              <TagLeftIcon as={FaClone} />
+              <TagLabel>{category.items.length}</TagLabel>
+            </Tag>
+          </Tooltip>
+
           {!hideCategoryTotals && category.baseWeight && (
-            <Tooltip label="Poids de base">
+            <Tooltip
+              label={
+                "Poids de base : " +
+                displayWeight(category.baseWeight, weightUnit, true)
+              }
+            >
               <Tag colorScheme="teal" size="sm">
                 <TagLeftIcon as={FaWeightHanging} />
                 <TagLabel>
-                  {displayWeight(category.baseWeight, weightUnit, true)}
+                  {displayWeight(category.baseWeight, weightUnit, true, 1)}
                 </TagLabel>
               </Tag>
             </Tooltip>
           )}
           {!hideCategoryTotals && category.consumableWeight && (
-            <Tooltip label="Poids des consommables">
+            <Tooltip
+              label={
+                "Poids des consommables : " +
+                displayWeight(category.consumableWeight, weightUnit, true)
+              }
+            >
               <Tag colorScheme="pink" size="sm">
                 <TagLeftIcon as={FaHamburger} />
                 <TagLabel>
-                  {displayWeight(category.consumableWeight, weightUnit, true)}
+                  {displayWeight(
+                    category.consumableWeight,
+                    weightUnit,
+                    true,
+                    1
+                  )}
                 </TagLabel>
               </Tag>
             </Tooltip>
           )}
           {!hideCategoryTotals && category.wornWeight && (
-            <Tooltip label="Poids sur soi">
+            <Tooltip
+              label={
+                "Poids sur soi : " +
+                displayWeight(category.wornWeight, weightUnit, true)
+              }
+            >
               <Tag colorScheme="blue" size="sm">
                 <TagLeftIcon as={FaTshirt} />
                 <TagLabel>
-                  {displayWeight(category.wornWeight, weightUnit, true)}
+                  {displayWeight(category.wornWeight, weightUnit, true, 1)}
                 </TagLabel>
               </Tag>
             </Tooltip>
           )}
 
           {!hideCategoryTotals && category.eur && (
-            <Tooltip label="Part du prix en Euros (€)">
+            <Tooltip
+              label={
+                "Part du prix en Euros : " + Number(category.eur) / 100 + "€"
+              }
+            >
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
-                  {Number(category.eur) / 100}
+                  {(Number(category.eur) / 100).toFixed(0)}
                   {displayCurrency("EUR")}
                 </TagLabel>
               </Tag>
             </Tooltip>
           )}
           {!hideCategoryTotals && category.usd && (
-            <Tooltip label="Part du prix en Dollars ($)">
+            <Tooltip
+              label={"Part du prix en Dollars : $" + Number(category.usd) / 100}
+            >
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
-                  {Number(category.usd) / 100}
+                  {(Number(category.usd) / 100).toFixed(0)}
                   {displayCurrency("USD")}
                 </TagLabel>
               </Tag>
             </Tooltip>
           )}
           {!hideCategoryTotals && category.gbp && (
-            <Tooltip label="Part du prix en Livres Sterling (£)">
+            <Tooltip
+              label={
+                "Part du prix en Livres Sterling : " +
+                Number(category.gbp) / 100 +
+                "£"
+              }
+            >
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
-                  {Number(category.gbp) / 100}
+                  {(Number(category.gbp) / 100).toFixed(0)}
                   {displayCurrency("GBP")}
                 </TagLabel>
               </Tag>

@@ -27,15 +27,16 @@ export const withDecimalPlaces = (weight: number, length: number = 2) => {
 export const displayWeight = (
   weight: number,
   unit: WeightUnit,
-  large?: boolean
+  large?: boolean,
+  length?: number
 ) => {
   if (unit === WeightUnit.METRIC) {
     return large
-      ? `${withDecimalPlaces(gToKg(weight))}kg`
+      ? `${withDecimalPlaces(gToKg(weight), length)}kg`
       : `${withDecimalPlaces(weight, 0)}g`;
   } else {
     return large
-      ? `${withDecimalPlaces(ozToLb(gToOz(weight)))}lb`
+      ? `${withDecimalPlaces(ozToLb(gToOz(weight)), length)}lb`
       : `${withDecimalPlaces(gToOz(weight))}oz`;
   }
 };
