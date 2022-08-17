@@ -1,6 +1,6 @@
 import type { BlitzPage, GetServerSideProps } from "blitz";
 
-import { NotFoundError, useQuery, useRouter } from "blitz";
+import { NotFoundError, useQuery, useRouter, getSession } from "blitz";
 import { Fragment } from "react";
 
 import FixedLayout from "app/layouts/fixed-layout";
@@ -55,8 +55,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const packId = ctx.params?.packId as string;
     const pack = await client.prefetchQuery(packOrganizerQuery, { id: packId });
+    const session = await getSession(ctx.req, ctx.res);
 
-    if (pack.private) {
+    if (pack.private && session.role === "USER") {
       throw new NotFoundError();
     }
   } catch (error) {

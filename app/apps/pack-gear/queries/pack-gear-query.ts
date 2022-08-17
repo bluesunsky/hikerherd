@@ -45,7 +45,10 @@ const packGearQuery = resolver.pipe(
       throw new NotFoundError();
     }
 
-    if (item.category.pack.userId !== ctx.session.userId) {
+    if (
+      item.category.pack.userId !== ctx.session.userId &&
+      ctx.session.role === "USER"
+    ) {
       throw new AuthorizationError();
     }
 

@@ -2,7 +2,7 @@ import type { FC } from "react";
 import type { RouteUrlObject } from "blitz";
 import type { IconType } from "react-icons";
 
-import { Link, Routes, useRouter } from "blitz";
+import { Link, Routes, useRouter, useSession } from "blitz";
 
 import {
   Stack,
@@ -24,7 +24,6 @@ import {
 import { Icon } from "@chakra-ui/icon";
 import { useColorModeValue } from "@chakra-ui/react";
 
-import useCurrentUser from "../apps/users/hooks/use-current-user";
 type NavigationItemProps = {
   route: RouteUrlObject;
   icon: IconType;
@@ -76,7 +75,7 @@ const NavigationSection: FC<{ title: string }> = ({ title, children }) => {
 };
 
 const Navigation: FC = () => {
-  const currentUser = useCurrentUser();
+  const session = useSession({ suspense: false });
   return (
     <Box as="aside">
       <Stack as="aside" spacing={8}>
@@ -107,8 +106,8 @@ const Navigation: FC = () => {
           </NavigationItem>
         </NavigationSection>
 
-        {currentUser?.role == "ADMIN" && (
-          <NavigationSection title="Administration">
+        {session.role && session.role !== "USER" && (
+          <NavigationSection title="Modérer">
             <NavigationItem route={Routes.UsersPage()} icon={FcDecision}>
               Utilisateurs
             </NavigationItem>

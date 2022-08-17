@@ -45,7 +45,7 @@ UsersPage.authenticate = { redirectTo: Routes.LoginPage() };
 UsersPage.getLayout = (page) => <SidebarLayout>{page}</SidebarLayout>;
 
 UsersPage.redirectAuthenticatedTo = ({ session }) => {
-  if (session.role !== "ADMIN") return Routes.HomePage();
+  if (session.role === "USER") return Routes.HomePage();
   return "";
 };
 

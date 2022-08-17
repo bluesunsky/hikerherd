@@ -30,7 +30,10 @@ const addGearToPackMutation = resolver.pipe(
       throw new NotFoundError();
     }
 
-    if (category.pack.userId !== ctx.session.userId) {
+    if (
+      category.pack.userId !== ctx.session.userId &&
+      ctx.session.role === "USER"
+    ) {
       throw new AuthorizationError();
     }
 
@@ -42,7 +45,7 @@ const addGearToPackMutation = resolver.pipe(
 
     let itemGearId = gear.id;
 
-    if (gear.userId !== ctx.session.userId) {
+    if (gear.userId !== ctx.session.userId && ctx.session.role === "USER") {
       const clone = await db.gear.create({
         data: {
           name: gear.name,

@@ -69,7 +69,6 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
       size="lg"
       submitText={id ? "Modifier" : "Créer"}
       onSubmit={async (values) => {
-        console.log(values);
         try {
           const vals = { ...values };
 

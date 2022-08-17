@@ -26,7 +26,10 @@ const deleteCategoryGearMutation = resolver.pipe(
       throw new NotFoundError();
     }
 
-    if (item.category.userId !== ctx.session.userId) {
+    if (
+      item.category.userId !== ctx.session.userId &&
+      ctx.session.role === "USER"
+    ) {
       throw new AuthorizationError();
     }
 

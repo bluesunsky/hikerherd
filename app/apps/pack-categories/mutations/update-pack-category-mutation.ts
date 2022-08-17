@@ -22,7 +22,10 @@ const updatePackCategoryMutation = resolver.pipe(
       throw new NotFoundError();
     }
 
-    if (category.pack.userId !== ctx.session.userId) {
+    if (
+      category.pack.userId !== ctx.session.userId &&
+      ctx.session.role === "USER"
+    ) {
       throw new AuthorizationError();
     }
 

@@ -30,7 +30,10 @@ const moveCategoryGearMutation = resolver.pipe(
         throw new NotFoundError();
       }
 
-      if (categoryItem.category.userId !== ctx.session.userId) {
+      if (
+        categoryItem.category.userId !== ctx.session.userId &&
+        ctx.session.role === "USER"
+      ) {
         throw new AuthorizationError();
       }
 
@@ -43,7 +46,10 @@ const moveCategoryGearMutation = resolver.pipe(
         throw new NotFoundError();
       }
 
-      if (category.userId !== ctx.session.userId) {
+      if (
+        category.userId !== ctx.session.userId &&
+        ctx.session.role === "USER"
+      ) {
         throw new AuthorizationError();
       }
 

@@ -9,7 +9,7 @@ import getUserSchema from "../schemas/get-user-schema";
 const userQuery = resolver.pipe(
   resolver.zod(getUserSchema),
 
-  async ({ username }) => {
+  async ({ username, withPrivate }) => {
     const user = await db.user.findUnique({
       where: { username },
       select: {
@@ -20,7 +20,7 @@ const userQuery = resolver.pipe(
         cover_id: true,
         cover_version: true,
         packs: {
-          where: { private: false },
+          where: !withPrivate ? { private: false } : {},
           orderBy: { updatedAt: "desc" },
           include: {
             categories: {

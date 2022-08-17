@@ -29,7 +29,10 @@ const createPackGearMutation = resolver.pipe(
       throw new NotFoundError();
     }
 
-    if (packCategory.pack.userId !== ctx.session.userId) {
+    if (
+      packCategory.pack.userId !== ctx.session.userId &&
+      ctx.session.role === "USER"
+    ) {
       throw new AuthorizationError();
     }
 

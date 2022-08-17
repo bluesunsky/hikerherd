@@ -19,7 +19,7 @@ const deletePackMutation = resolver.pipe(
       throw new NotFoundError();
     }
 
-    if (pack.userId !== ctx.session.userId) {
+    if (pack.userId !== ctx.session.userId && ctx.session.role === "USER") {
       throw new AuthorizationError();
     }
 

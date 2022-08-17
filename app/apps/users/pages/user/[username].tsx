@@ -33,6 +33,7 @@ const ProfilePage: BlitzPage = () => {
 
   const [user] = useQuery(userQuery, {
     username: router.query.username as string,
+    withPrivate: true,
   });
 
   const emptyBg = useColorModeValue("gray.200", "gray.700");
@@ -50,11 +51,17 @@ const ProfilePage: BlitzPage = () => {
       display: "flex",
       justifyContent: "center",
     },
-    username: {
+    username: {},
+  };
+  if (user.cover_id)
+    styles.username = {
       color: "#fff",
       textShadow: "0 0 5px #000",
-    },
-  };
+    };
+  else
+    styles.username = {
+      textShadow: "0 0 5px #fff",
+    };
   return (
     <Fragment>
       <Seo
@@ -94,7 +101,7 @@ const ProfilePage: BlitzPage = () => {
         {!user.packs.length && (
           <Center p={6} borderRadius="md" bg={emptyBg}>
             <Text size="md" opacity="0.4">
-              {username} n&lsquo;a pas encore de packs
+              {username} n&lsquo;a pas encore de packs publics
             </Text>
           </Center>
         )}

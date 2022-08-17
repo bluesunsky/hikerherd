@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
 import { useEffect, useState, Fragment, useContext } from "react";
-import { invalidateQuery, useMutation } from "blitz";
+import { invalidateQuery, useMutation, Routes, useSession, Link } from "blitz";
 
 import { HStack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
@@ -16,6 +16,7 @@ import {
   FaHamburger,
   FaTshirt,
   FaWeightHanging,
+  FaUserSecret,
 } from "react-icons/fa";
 import { FcDoughnutChart } from "react-icons/fc";
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/tag";
@@ -89,6 +90,8 @@ const PackSubheaderActions: FC = () => {
   const size500 = useMatchMedia("(min-width:500px)", true);
   const size768 = useMatchMedia("(min-width:48em)", true);
 
+  const route = share ? Routes.PackPage : Routes.PackSharePage;
+  const session = useSession({ suspense: false });
   return (
     <Fragment>
       <ImportPackCsvForm
@@ -113,12 +116,19 @@ const PackSubheaderActions: FC = () => {
               </MenuItem>
               <MenuItem
                 icon={<FaShare />}
-                command={pack.private ? "private" : ""}
+                command={pack.private ? "Privé" : ""}
                 onClick={copyShareLink}
                 isDisabled={pack.private}
               >
                 Partagé
               </MenuItem>
+              {session.role && session.role !== "USER" && (
+                <Link href={route({ packId: pack.id })} passHref>
+                  <MenuItem icon={<FaUserSecret />} as="a">
+                    Voir le pack partagé
+                  </MenuItem>
+                </Link>
+              )}
               <MenuDivider />
               <MenuItem icon={<FaFileExport />} onClick={exportToCsv}>
                 Exporter vers un CSV
@@ -129,6 +139,17 @@ const PackSubheaderActions: FC = () => {
               >
                 Importer depuis un CSV
               </MenuItem>
+            </MenuList>
+          </SettingsMenuButton>
+        )}
+        {share && session.role && session.role !== "USER" && (
+          <SettingsMenuButton>
+            <MenuList>
+              <Link href={route({ packId: pack.id })} passHref>
+                <MenuItem icon={<FaUserSecret />} as="a">
+                  Modérer le pack
+                </MenuItem>
+              </Link>
             </MenuList>
           </SettingsMenuButton>
         )}

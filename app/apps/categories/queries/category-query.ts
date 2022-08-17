@@ -23,7 +23,7 @@ const categoryQuery = resolver.pipe(
       throw new NotFoundError();
     }
 
-    if (category.userId !== ctx.session.userId) {
+    if (category.userId !== ctx.session.userId && ctx.session.role === "USER") {
       throw new AuthorizationError();
     }
 

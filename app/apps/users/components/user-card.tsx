@@ -35,7 +35,7 @@ const UserCard: FC<UserCardProps & BoxProps> = ({ user, ...props }) => {
   //const { weightUnit } = useContext(userPreferencesContext);
 
   const route = Routes.ProfilePage;
-  const styles = {
+  var styles = {
     box: {
       backgroundImage: `url(${getCoverUrl(user, 1024)})`,
       backgroundSize: "cover",
@@ -46,11 +46,17 @@ const UserCard: FC<UserCardProps & BoxProps> = ({ user, ...props }) => {
       display: "flex",
       justifyContent: "center",
     },
-    username: {
+    username: {},
+  };
+  if (user.cover_id)
+    styles.username = {
       color: "#fff",
       textShadow: "0 0 5px #000",
-    },
-  };
+    };
+  else
+    styles.username = {
+      textShadow: "0 0 5px #fff",
+    };
   const username = user
     ? user.username.charAt(0).toUpperCase() + user.username.slice(1)
     : "";
