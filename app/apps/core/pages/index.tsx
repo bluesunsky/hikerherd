@@ -247,7 +247,7 @@ const HomePage: BlitzPage = () => {
               <TagLeftIcon boxSize="12px" as={FaUser} />
               <TagLabel>{userCount ? userCount : "..."}</TagLabel>
             </Tag>{" "}
-            autres utilisateurs qui utilisent déjà l&lsquo;application.
+            autres utilisateurs de <strong>Pack&nbsp;your&nbsp;pack</strong>
           </Text>
 
           <Link href={Routes.SignupPage()} passHref>

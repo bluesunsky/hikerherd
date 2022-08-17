@@ -17,7 +17,6 @@ import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/tag";
 import { FormLabel } from "@chakra-ui/form-control";
 
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
-import TextDivider from "app/components/text-divider";
 import TextField from "app/components/forms/components/text-field";
 import TextAreaField from "app/components/forms/components/text-area-field";
 import CheckboxField from "app/components/forms/components/checkbox-field";
@@ -39,17 +38,19 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
   return (
     <Stack spacing={4}>
       <TextField name="name" label="Nom" placeholder="Nom" />
-
+      <TextAreaField
+        name="notes"
+        label="Description"
+        placeholder="Information à propos de l'équipement"
+      />
       <TextField
         type="number"
         name="weight"
-        label="Poids"
+        label="Poids & Type de poids"
         placeholder="Poids"
         suffix={weightUnit === "METRIC" ? "g" : "oz"}
         icon={<Icon color="teal.400" as={FaWeightHanging} />}
       />
-
-      <FormLabel>Tags</FormLabel>
 
       <HStack>
         <Tag colorScheme="pink" flexShrink={0}>
@@ -57,27 +58,19 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
           <TagLabel>Consommable ?</TagLabel>
         </Tag>
         <CheckboxField name="consumable" />
+        {includeWorn && (
+          <>
+            <Tag colorScheme="blue" flexShrink={0}>
+              <TagLeftIcon as={FaTshirt} />
+              <TagLabel>Porté ?</TagLabel>
+            </Tag>
+            <CheckboxField name="worn" />
+          </>
+        )}
       </HStack>
-
-      {includeWorn && (
-        <HStack>
-          <Tag colorScheme="blue" flexShrink={0}>
-            <TagLeftIcon as={FaTshirt} />
-            <TagLabel>Porté ?</TagLabel>
-          </Tag>
-          <CheckboxField name="worn" />
-        </HStack>
-      )}
-
-      <TextDivider>Compléments</TextDivider>
-      <DateField
-        label="Date d'achat"
-        name="purchaseDate"
-        icon={<Icon as={FaCalendarAlt} />}
-      />
-
+      <FormLabel>Coût & Date d&lsquo;achat</FormLabel>
       <Grid templateColumns="70px 1fr" gap={2} alignItems="flex-end">
-        <SelectField label="Prix" name="currency">
+        <SelectField name="currency">
           <option value="USD">$</option>
           <option value="GBP">£</option>
           <option value="EUR">€</option>
@@ -89,13 +82,7 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
           icon={<Icon color="purple.400" as={FaTag} />}
         />
       </Grid>
-
-      <TextField
-        name="link"
-        label="Lien"
-        placeholder="https://..."
-        icon={<Icon color="gray.400" as={FaLink} />}
-      />
+      <DateField name="purchaseDate" icon={<Icon as={FaCalendarAlt} />} />
 
       <TextField
         name="imageUrl"
@@ -103,11 +90,11 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
         placeholder="https://..."
         icon={<Icon color="gray.400" as={FaImage} />}
       />
-
-      <TextAreaField
-        name="notes"
-        label="Notes"
-        placeholder="Information à propos de l'équipement"
+      <TextField
+        name="link"
+        label="Lien"
+        placeholder="https://..."
+        icon={<Icon color="gray.400" as={FaLink} />}
       />
     </Stack>
   );

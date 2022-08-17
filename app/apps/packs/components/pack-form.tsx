@@ -93,7 +93,7 @@ const PackForm: FC<PackFormProps> = ({
               <EditorField
                 name="notes"
                 fontSize="md"
-                label="Notes"
+                label="Description"
                 features={{
                   image: true,
                   blockquote: true,

@@ -103,7 +103,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
         )}
 
         {Number.isInteger(price) && (
-          <Tooltip label="Prix">
+          <Tooltip label="Coût">
             <Tag colorScheme="purple" size="sm">
               <TagLeftIcon as={FaTag} />
               <TagLabel>

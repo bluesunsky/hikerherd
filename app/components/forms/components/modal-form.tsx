@@ -51,7 +51,7 @@ const ModalForm: FormComponent<ModalFormProps> = ({
         onSubmit={onSubmit}
         render={(form) => (
           <form onSubmit={form.handleSubmit} {...props}>
-            <ModalContent>
+            <ModalContent maxH={"calc(100% - 6.5rem)"}>
               <ModalHeader>{title}</ModalHeader>
               <ModalCloseButton />
 
