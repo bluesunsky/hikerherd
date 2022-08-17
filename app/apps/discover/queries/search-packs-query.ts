@@ -9,13 +9,12 @@ import searchPacksSchema from "../schemas/search-packs-schema";
 const searchPacksQuery = resolver.pipe(
   resolver.zod(searchPacksSchema),
 
-  async ({ query }) => {
-    if (!query) return [];
-
+  async ({ query, skip, take }) => {
     const search = query.split(" ").join(" | ");
 
     const packs = await db.pack.findMany({
-      take: 24,
+      take: take,
+      skip: skip,
 
       include: {
         user: {
@@ -56,8 +55,8 @@ const searchPacksQuery = resolver.pipe(
           { notes: { contains: query, mode: "insensitive" } },
         ],
       },
-
-      orderBy: [
+      orderBy: [{ name: "asc" }],
+      /*orderBy: [
         {
           _relevance: {
             fields: ["name", "notes"],
@@ -65,7 +64,7 @@ const searchPacksQuery = resolver.pipe(
             sort: "desc",
           },
         },
-      ],
+      ],*/
     });
 
     return packs.map((pack) => {

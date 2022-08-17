@@ -1,37 +1,30 @@
-import type { Pack } from "db";
 import type { FC } from "react";
 
 import { useQuery } from "blitz";
 import { useState } from "react";
 
 import { SimpleGrid, Stack, HStack, Text } from "@chakra-ui/layout";
-import { useColorModeValue } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/button";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-import PackCard from "app/apps/packs/components/pack-card";
+import UserCard from "app/apps/users/components/user-card";
 
-import searchPacksQuery from "../queries/search-packs-query";
+import searchUsersQuery from "../queries/search-users-query";
 
 import SearchInput from "./search-input";
 import SearchResults from "./search-results";
 
-type GlobalPacksSearchProps = {
-  packActions?: (item: Pack) => JSX.Element;
-};
+type GlobalUsersSearchProps = {};
 
-const GlobalPacksSearch: FC<GlobalPacksSearchProps> = ({ packActions }) => {
+const GlobalUsersSearch: FC<GlobalUsersSearchProps> = () => {
   const [query, setQuery] = useState("");
-
-  const cardBg = useColorModeValue("gray.50", "gray.800");
-  const border = useColorModeValue("gray.100", "gray.900");
 
   const take = 10;
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(0);
 
   const [items, { isLoading }] = useQuery(
-    searchPacksQuery,
+    searchUsersQuery,
     { query, take, skip },
     { suspense: false }
   );
@@ -90,15 +83,7 @@ const GlobalPacksSearch: FC<GlobalPacksSearchProps> = ({ packActions }) => {
       <SearchResults query={query} items={items || []} isLoading={isLoading}>
         <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={3}>
           {items?.map((item) => (
-            <PackCard
-              key={item.id}
-              pack={item}
-              user={item.user}
-              actions={packActions && packActions(item)}
-              shareLink
-              bg={cardBg}
-              borderColor={border}
-            />
+            <UserCard key={item.id} user={item} />
           ))}
         </SimpleGrid>
       </SearchResults>
@@ -106,4 +91,4 @@ const GlobalPacksSearch: FC<GlobalPacksSearchProps> = ({ packActions }) => {
   );
 };
 
-export default GlobalPacksSearch;
+export default GlobalUsersSearch;

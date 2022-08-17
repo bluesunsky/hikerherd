@@ -7,13 +7,14 @@ import searchGearSchema from "../schemas/search-gear-schema";
 const searchGearQuery = resolver.pipe(
   resolver.zod(searchGearSchema),
 
-  async ({ query, minWeight, maxWeight }) => {
-    if (!query) return [];
+  async ({ query, minWeight, maxWeight, skip, take }) => {
+    //if (!query) return [];
 
     const search = query.split(" ").join(" | ");
 
     return db.gear.findMany({
-      take: 24,
+      take: take,
+      skip: skip,
 
       where: {
         OR: [
@@ -32,12 +33,13 @@ const searchGearQuery = resolver.pipe(
         },
       },
 
-      orderBy: [
+      orderBy: [{ name: "asc" }],
+      /*orderBy: [
         {
           _relevance: {
             fields: ["name", "notes"],
             search,
-            sort: "desc",
+            sort: "asc",
           },
         },
         {
@@ -45,7 +47,7 @@ const searchGearQuery = resolver.pipe(
             _count: "desc",
           },
         },
-      ],
+      ],*/
     });
   }
 );

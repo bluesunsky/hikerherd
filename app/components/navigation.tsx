@@ -2,7 +2,7 @@ import type { FC } from "react";
 import type { RouteUrlObject } from "blitz";
 import type { IconType } from "react-icons";
 
-import { Link, Routes, useRouter, useSession } from "blitz";
+import { Link, Routes, useRouter } from "blitz";
 
 import {
   Stack,
@@ -19,7 +19,7 @@ import {
   FcSearch,
   FcBinoculars,
   FcHome,
-  FcDecision,
+  FcContacts,
 } from "react-icons/fc";
 import { Icon } from "@chakra-ui/icon";
 import { useColorModeValue } from "@chakra-ui/react";
@@ -75,7 +75,6 @@ const NavigationSection: FC<{ title: string }> = ({ title, children }) => {
 };
 
 const Navigation: FC = () => {
-  const session = useSession({ suspense: false });
   return (
     <Box as="aside">
       <Stack as="aside" spacing={8}>
@@ -104,15 +103,10 @@ const Navigation: FC = () => {
           <NavigationItem route={Routes.DiscoverPacksPage()} icon={FcSearch}>
             Packs partagés
           </NavigationItem>
+          <NavigationItem route={Routes.DiscoverUsersPage()} icon={FcContacts}>
+            Utilisateurs
+          </NavigationItem>
         </NavigationSection>
-
-        {session.role && session.role !== "USER" && (
-          <NavigationSection title="Modérer">
-            <NavigationItem route={Routes.UsersPage()} icon={FcDecision}>
-              Utilisateurs
-            </NavigationItem>
-          </NavigationSection>
-        )}
 
         <NavigationSection title="A propos">
           <Text fontSize="sm" opacity="0.6" mt={3} py={-3} px={3}>

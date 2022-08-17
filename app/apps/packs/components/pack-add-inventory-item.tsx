@@ -15,7 +15,6 @@ import { useColorModeValue } from "@chakra-ui/react";
 import GearCard from "app/apps/gear/components/gear-card/components/gear-card";
 import SearchInput from "app/apps/discover/components/search-input";
 import listCategoryGearQuery from "app/apps/category-gear/queries/list-category-gear-query";
-import displayCategoryType from "app/apps/categories/helpers/display-category-type";
 import SearchResults from "app/apps/discover/components/search-results";
 
 type GroupedItems = {
@@ -87,18 +86,11 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
     }, [] as GroupedItems[]);
   }, [filteredItems]);
 
-  const typeName = displayCategoryType(type);
-
   return (
     <Stack spacing={3}>
       <SearchInput setQuery={setQuery} />
 
-      <SearchResults
-        query={query}
-        message={`Rechercher dans ${typeName}`}
-        isLoading={isLoading}
-        items={filteredItems}
-      >
+      <SearchResults query={query} isLoading={isLoading} items={filteredItems}>
         <Stack spacing={4} bg={bg} m={-4} mt={2} p={4}>
           {groupedItems.map((group) => (
             <Box
