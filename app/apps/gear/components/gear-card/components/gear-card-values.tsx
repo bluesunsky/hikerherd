@@ -60,7 +60,6 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
           y--;
         }
         if (m < 0) m += 12;
-        console.log(d, m, y);
         if (y > 0) {
           if (y < 10) y = Math.round((y + m / 12) * 10) / 10;
 

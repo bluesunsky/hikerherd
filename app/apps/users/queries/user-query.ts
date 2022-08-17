@@ -9,7 +9,8 @@ import getUserSchema from "../schemas/get-user-schema";
 const userQuery = resolver.pipe(
   resolver.zod(getUserSchema),
 
-  async ({ username, withPrivate }) => {
+  async ({ username }, ctx) => {
+    const withPrivate = ctx.session.role && ctx.session.role !== "USER";
     const user = await db.user.findUnique({
       where: { username },
       select: {

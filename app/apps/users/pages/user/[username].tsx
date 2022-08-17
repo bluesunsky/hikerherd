@@ -33,7 +33,6 @@ const ProfilePage: BlitzPage = () => {
 
   const [user] = useQuery(userQuery, {
     username: router.query.username as string,
-    withPrivate: true,
   });
 
   const emptyBg = useColorModeValue("gray.200", "gray.700");
