@@ -66,7 +66,6 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
       submitText="Modifier"
       initialValues={initialValues}
       onSubmit={async (values) => {
-        console.log(values);
         try {
           const vals = { ...values };
 

@@ -31,7 +31,7 @@ const AppErrorFallback: FC<ErrorFallbackProps> = ({
   }
 
   if (error instanceof NotFoundError) {
-    return <BoxLayout title="Introuvable" description="Êtes vous perdu ?" />;
+    return <BoxLayout title="Introuvable" description="Êtes-vous perdu ?" />;
   }
 
   return (
