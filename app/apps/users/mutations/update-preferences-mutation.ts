@@ -8,12 +8,14 @@ const updatePreferencesMutation = resolver.pipe(
   resolver.zod(updatePreferencesSchema),
   resolver.authorize(),
 
-  async ({ weightUnit, currency }, ctx) => {
+  async ({ weightUnit, currency, firstname, lastname }, ctx) => {
     return await db.user.update({
       where: { id: ctx.session.userId },
       data: {
         weightUnit,
         currency,
+        firstname,
+        lastname,
       },
     });
   }

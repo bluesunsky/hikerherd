@@ -21,8 +21,10 @@ const searchUsersQuery = resolver.pipe(
         OR: [
           { username: { search, mode: "insensitive" } },
           { username: { contains: query, mode: "insensitive" } },
-          //{ email: { search, mode: "insensitive" } },
-          //{ email: { contains: query, mode: "insensitive" } },
+          { firstname: { search, mode: "insensitive" } },
+          { firstname: { contains: query, mode: "insensitive" } },
+          { lastname: { search, mode: "insensitive" } },
+          { lastname: { contains: query, mode: "insensitive" } },
         ],
       },
 

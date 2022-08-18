@@ -10,6 +10,8 @@ const currentUserQuery = resolver.pipe(async (_, ctx) => {
     select: {
       id: true,
       username: true,
+      firstname: true,
+      lastname: true,
       email: true,
       role: true,
       avatar_id: true,

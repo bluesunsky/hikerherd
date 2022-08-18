@@ -8,6 +8,7 @@ import { FORM_ERROR } from "final-form";
 
 import SimpleForm from "app/components/forms/components/simple-form";
 import SelectField from "app/components/forms/components/select-field";
+import TextField from "app/components/forms/components/text-field";
 
 import { Currency, WeightUnit } from "db";
 
@@ -23,7 +24,12 @@ const UserPreferencesForm: BlitzPage = () => {
   return (
     <SimpleForm
       schema={updatePreferencesSchema}
-      initialValues={{ weightUnit: user?.weightUnit, currency: user?.currency }}
+      initialValues={{
+        weightUnit: user?.weightUnit,
+        currency: user?.currency,
+        firstname: user?.firstname,
+        lastname: user?.lastname,
+      }}
       submitText="Modifier"
       onSubmit={async (values) => {
         try {
@@ -42,6 +48,18 @@ const UserPreferencesForm: BlitzPage = () => {
       }}
       render={() => (
         <Fragment>
+          <TextField
+            name="firstname"
+            label="Prénom"
+            placeholder="Saisir votre prénom"
+            size="lg"
+          />
+          <TextField
+            name="lastname"
+            label="Nom"
+            placeholder="Saisir votre nom"
+            size="lg"
+          />
           <SelectField name="weightUnit" label="Unité de poids">
             <option value={WeightUnit.METRIC}>Métrique (g / kg)</option>
             <option value={WeightUnit.IMPERIAL}>Impériale (oz / lb)</option>

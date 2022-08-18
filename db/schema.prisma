@@ -35,6 +35,8 @@ model User {
 
   email          String     @unique
   username       String     @unique
+  firstname      String?
+  lastname       String?
   hashedPassword String?
   avatar_id      String?
   avatar_version Int?
