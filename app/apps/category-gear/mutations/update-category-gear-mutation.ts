@@ -36,6 +36,7 @@ const updateCategoryGearMutation = resolver.pipe(
         imageUrl: values.imageUrl,
         link: values.link,
         consumable: values.consumable,
+        replaceable: values.replaceable,
         notes: values.notes,
         price: values.price,
         currency: values.currency,

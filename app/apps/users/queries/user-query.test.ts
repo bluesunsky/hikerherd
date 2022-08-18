@@ -22,6 +22,7 @@ beforeEach(async () => {
     userId: user.id,
     weight: 100,
     consumable: true,
+    replaceable: true,
   });
   await createPackCategoryItem({
     gearId: gear.id,

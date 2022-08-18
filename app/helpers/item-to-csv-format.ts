@@ -16,6 +16,7 @@ export type ParsedCsvItem = {
     price: number | null;
     currency: Currency;
     consumable: boolean;
+    replaceable: boolean;
     link: string | null;
     notes: string | null;
     imageUrl: string | null;
@@ -34,6 +35,7 @@ export type CsvItem = {
   link: string | null;
   image: string | null;
   consumable: string | null;
+  replaceable: string | null;
   worn: string | null;
   quantity: number;
   purchaseDate: Date | null;
@@ -61,6 +63,7 @@ const itemToCsvFormat = ({
     link: item.gear.link,
     image: item.gear.imageUrl,
     consumable: item.gear.consumable ? "consumable" : null,
+    replaceable: item.gear.replaceable ? "replaceable" : null,
     worn: item.worn ? "worn" : null,
     quantity: item.quantity || 1,
     purchaseDate: item.gear.purchaseDate,

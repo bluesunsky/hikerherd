@@ -17,13 +17,14 @@ import Popover from "app/components/popover";
 
 type GearCardTagsProps = {
   consumable?: boolean;
+  replaceable?: boolean;
   link?: string | null;
   notes?: string | null;
   kind?: string | null;
 };
 
 const GearCardTags: FC<GearCardTagsProps> = memo(
-  ({ link, consumable, notes, kind }) => {
+  ({ link, consumable, replaceable, notes, kind }) => {
     return (
       <Wrap>
         {link && (
@@ -43,12 +44,25 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
             </Tag>
           </Tooltip>
         )}
-        {kind == "WISH_LIST" && (
-          <Tooltip label="Non possédé">
-            <Tag colorScheme="facebook" size="sm" borderRadius="full">
-              <Icon as={FaExclamationTriangle} />
-            </Tag>
-          </Tooltip>
+        {(replaceable || kind == "WISH_LIST") && (
+          <Popover
+            trigger={
+              <Tag bg="red" color="white" size="sm" borderRadius="full">
+                <Icon as={FaExclamationTriangle} />
+              </Tag>
+            }
+          >
+            {replaceable && (
+              <>
+                A remplacer ! <br />
+              </>
+            )}
+            {kind == "WISH_LIST" && (
+              <>
+                Non possédé <br />
+              </>
+            )}
+          </Popover>
         )}
         {notes && (
           <Popover

@@ -107,6 +107,7 @@ describe("inventoryExportCsvMutation", () => {
         link: item.gear.link || "",
         image: item.gear.imageUrl || "",
         consumable: item.gear.consumable ? "consumable" : "",
+        replaceable: item.gear.replaceable ? "replaceable" : "",
         worn: "",
         quantity: "1",
         purchaseDate: null,

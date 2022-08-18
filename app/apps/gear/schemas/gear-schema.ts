@@ -10,6 +10,7 @@ const gearSchema = z.object({
   imageUrl: z.string().url().nullable().default(null),
   notes: z.string().nullable().default(null),
   consumable: z.boolean().default(false),
+  replaceable: z.boolean().default(false),
   price: z.number().nullable().default(null),
   currency: z.nativeEnum(Currency),
   link: z.string().url().nullable().default(null),

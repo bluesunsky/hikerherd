@@ -52,6 +52,7 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
     imageUrl: gearItem?.gear.imageUrl,
     notes: gearItem?.gear.notes,
     consumable: gearItem?.gear.consumable,
+    replaceable: gearItem?.gear.replaceable,
     worn: gearItem?.worn,
     purchaseDate: gearItem?.gear.purchaseDate,
   };

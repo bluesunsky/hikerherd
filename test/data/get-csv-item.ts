@@ -17,6 +17,7 @@ export type TestCsvItem = {
   link: string;
   image: string;
   consumable: string;
+  replaceable: string;
   worn: string;
   quantity: string;
   purchaseDate: Date | null;
@@ -36,6 +37,7 @@ const getCsvItem = (values: Partial<TestCsvItem> = {}): TestCsvItem => {
     weight: `${gear.weight}`,
     price: `${gear.price / 100}`,
     consumable: gear.consumable ? "consumable" : "",
+    replaceable: gear.replaceable ? "replaceable" : "",
     worn: "",
     quantity: `${1}`,
     purchaseDate: null,

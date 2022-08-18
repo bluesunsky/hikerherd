@@ -26,6 +26,7 @@ const packGearQuery = resolver.pipe(
             imageUrl: true,
             notes: true,
             consumable: true,
+            replaceable: true,
             purchaseDate: true,
           },
         },

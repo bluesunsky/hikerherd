@@ -133,6 +133,7 @@ describe("packExportCsvMutation", () => {
         link: item.gear.link || "",
         image: item.gear.imageUrl || "",
         consumable: item.gear.consumable ? "consumable" : "",
+        replaceable: item.gear.replaceable ? "replaceable" : "",
         worn: item.worn ? "worn" : "",
         quantity: `${item.quantity || 1}`,
         purchaseDate: null,

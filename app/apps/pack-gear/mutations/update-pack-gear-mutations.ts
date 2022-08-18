@@ -47,6 +47,7 @@ const updatePackGearMutation = resolver.pipe(
             link: values.link,
             notes: values.notes,
             consumable: values.consumable,
+            replaceable: values.replaceable,
             price: values.price,
             currency: values.currency,
             purchaseDate: values.purchaseDate,

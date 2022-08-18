@@ -27,6 +27,7 @@ const getCsvRow = (values: CsvRowValues = {}) => {
     gear.link || "",
     gear.imageUrl || "",
     gear.consumable ? "consumable" : "",
+    gear.replaceable ? "replaceable" : "",
     values.worn ? "worn" : "",
     `${values.quantity || 1}`,
     gear.purchaseDate || "",

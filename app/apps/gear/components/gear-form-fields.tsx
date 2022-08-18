@@ -11,6 +11,7 @@ import {
   FaWeightHanging,
   FaTshirt,
   FaCalendarAlt,
+  FaExclamationTriangle,
 } from "react-icons/fa";
 import { Icon } from "@chakra-ui/icon";
 import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/tag";
@@ -29,12 +30,6 @@ type GearFormFieldsProps = {
 
 const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
   const { weightUnit } = useContext(userPreferencesContext);
-  /*
-<DatePicker
-        label="Date d'achat"
-        name="purchaseDate"
-      />
-      */
   return (
     <Stack spacing={4}>
       <TextField name="name" label="Nom" placeholder="Nom" />
@@ -43,6 +38,7 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
         label="Description"
         placeholder="Information à propos de l'équipement"
       />
+
       <TextField
         type="number"
         name="weight"
@@ -96,6 +92,14 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
         placeholder="https://..."
         icon={<Icon color="gray.400" as={FaLink} />}
       />
+      <FormLabel>Compléments</FormLabel>
+      <HStack>
+        <Tag bg="red" color="white" flexShrink={0}>
+          <TagLeftIcon as={FaExclamationTriangle} />
+          <TagLabel>A remplacer ?</TagLabel>
+        </Tag>
+        <CheckboxField name="replaceable" />
+      </HStack>
     </Stack>
   );
 };

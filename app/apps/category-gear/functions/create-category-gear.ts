@@ -11,6 +11,7 @@ type Params = {
     link: string | null;
     notes: string | null;
     consumable: boolean;
+    replaceable: boolean;
     price: number | null;
     currency: Currency;
     purchaseDate: Date | null;
@@ -40,6 +41,7 @@ const createCategoryGear: TransactionFunction<Params, CategoryItem> = async (
           link: values.link,
           notes: values.notes,
           consumable: values.consumable,
+          replaceable: values.replaceable,
           price: values.price,
           currency: values.currency,
           userId: ctx.session.userId,

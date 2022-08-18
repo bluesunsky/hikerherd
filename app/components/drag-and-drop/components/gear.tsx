@@ -44,6 +44,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
         currency={item.gear.currency}
         worn={item.worn}
         consumable={item.gear.consumable}
+        replaceable={item.gear.replaceable}
         link={item.gear.link}
         notes={item.notes || item.gear.notes}
         kind={kind}

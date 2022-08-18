@@ -43,6 +43,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
     imageUrl: null,
     notes: null,
     consumable: false,
+    replaceable: false,
     purchaseDate: null,
   };
 

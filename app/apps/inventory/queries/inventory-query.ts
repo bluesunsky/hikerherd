@@ -31,6 +31,7 @@ const inventoryQuery = resolver.pipe(
                     price: true,
                     currency: true,
                     consumable: true,
+                    replaceable: true,
                     link: true,
                     notes: true,
                     imageUrl: true,

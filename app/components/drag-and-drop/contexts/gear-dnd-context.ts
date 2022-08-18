@@ -21,6 +21,7 @@ export type DragAndDropItem = {
     price: number | null;
     currency: Currency;
     consumable: boolean;
+    replaceable: boolean;
     link: string | null;
     notes: string | null;
     imageUrl: string | null;

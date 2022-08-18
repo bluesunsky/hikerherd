@@ -13,6 +13,7 @@ export const CSV_HEADING = [
   "link",
   "image",
   "consumable",
+  "replaceable",
   "worn",
   "quantity",
 ] as const;

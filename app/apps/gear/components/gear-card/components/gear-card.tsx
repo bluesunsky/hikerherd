@@ -16,6 +16,7 @@ type GearCardProps = {
   currency?: Currency;
   worn?: boolean;
   consumable?: boolean;
+  replaceable?: boolean;
   link?: string | null;
   notes?: string | null;
   kind?: string | null;
@@ -36,6 +37,7 @@ const GearCard: FC<GearCardProps> = ({
   quantity,
   worn,
   consumable,
+  replaceable,
   link,
   notes,
   kind,
@@ -84,6 +86,7 @@ const GearCard: FC<GearCardProps> = ({
         />
         <GearCardTags
           consumable={consumable}
+          replaceable={replaceable}
           link={link}
           notes={notes}
           kind={kind}

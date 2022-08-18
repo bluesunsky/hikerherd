@@ -56,6 +56,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
     imageUrl: gearItem?.gear.imageUrl,
     notes: gearItem?.gear.notes,
     consumable: gearItem?.gear.consumable,
+    replaceable: gearItem?.gear.replaceable,
     purchaseDate: gearItem?.gear.purchaseDate,
   };
 

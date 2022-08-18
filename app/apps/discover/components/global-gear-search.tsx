@@ -103,6 +103,7 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
               price={item.price}
               currency={item.currency}
               consumable={item.consumable}
+              replaceable={item.replaceable}
               link={item.link}
               notes={item.notes}
               imageUrl={item.imageUrl}

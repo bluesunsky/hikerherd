@@ -112,6 +112,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                     price={item.gear.price}
                     currency={item.gear.currency}
                     consumable={item.gear.consumable}
+                    replaceable={item.gear.replaceable}
                     link={item.gear.link}
                     notes={item.gear.notes}
                     imageUrl={item.gear.imageUrl}

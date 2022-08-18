@@ -40,6 +40,7 @@ const AddPackGearForm: FC<AddPackGearFormProps> = ({
     imageUrl: null,
     notes: null,
     consumable: false,
+    replaceable: false,
     categoryId,
     worn: false,
     purchaseDate: null,

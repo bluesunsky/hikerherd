@@ -53,6 +53,7 @@ const addGearToPackMutation = resolver.pipe(
           link: gear.link,
           notes: gear.notes,
           consumable: gear.consumable,
+          replaceable: gear.replaceable,
           weight: gear.weight,
           price: gear.price,
           currency: gear.currency,

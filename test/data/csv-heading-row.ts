@@ -9,6 +9,7 @@ const csvHeadingRow = [
   "link",
   "image",
   "consumable",
+  "replaceable",
   "worn",
   "quantity",
 ];

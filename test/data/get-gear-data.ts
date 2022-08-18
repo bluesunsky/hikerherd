@@ -9,6 +9,7 @@ export type GearValues = {
   link?: string;
   notes?: string;
   consumable?: boolean;
+  replaceable?: boolean;
   price?: number;
   currency?: Currency;
   purchaseDate?: Date | null;
@@ -21,6 +22,7 @@ const getGearData = (values: GearValues = {}) => ({
   link: faker.internet.url(),
   notes: faker.random.words(10),
   consumable: faker.datatype.boolean(),
+  replaceable: faker.datatype.boolean(),
   price: faker.datatype.number({ min: 100, max: 1000000 }),
   currency: "USD" as Currency,
   purchaseDate: faker.datatype.datetime(),
