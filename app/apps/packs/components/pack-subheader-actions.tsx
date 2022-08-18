@@ -164,7 +164,9 @@ const PackSubheaderActions: FC = () => {
         >
           <Tooltip label="Poids du sac">
             <Tag size="sm">
-              <TagLabel>{displayWeight(packWeight, weightUnit, true)}</TagLabel>
+              <TagLabel>
+                {displayWeight(packWeight, weightUnit, true, 1)}
+              </TagLabel>
             </Tag>
           </Tooltip>
           {size768 && (
@@ -176,7 +178,7 @@ const PackSubheaderActions: FC = () => {
                 <Tag colorScheme="teal" size="sm">
                   <TagLeftIcon as={FaWeightHanging} />
                   <TagLabel>
-                    {displayWeight(baseWeight, weightUnit, true)}
+                    {displayWeight(baseWeight, weightUnit, true, 1)}
                   </TagLabel>
                 </Tag>
               </Tooltip>
@@ -187,7 +189,12 @@ const PackSubheaderActions: FC = () => {
                 <Tag colorScheme="pink" size="sm">
                   <TagLeftIcon as={FaHamburger} />
                   <TagLabel>
-                    {displayWeight(packWeight - baseWeight, weightUnit, true)}
+                    {displayWeight(
+                      packWeight - baseWeight,
+                      weightUnit,
+                      true,
+                      1
+                    )}
                   </TagLabel>
                 </Tag>
               </Tooltip>
@@ -205,7 +212,12 @@ const PackSubheaderActions: FC = () => {
                 <Tag colorScheme="blue" size="sm">
                   <TagLeftIcon as={FaTshirt} />
                   <TagLabel>
-                    {displayWeight(totalWeight - packWeight, weightUnit, true)}
+                    {displayWeight(
+                      totalWeight - packWeight,
+                      weightUnit,
+                      true,
+                      1
+                    )}
                   </TagLabel>
                 </Tag>
               </Tooltip>

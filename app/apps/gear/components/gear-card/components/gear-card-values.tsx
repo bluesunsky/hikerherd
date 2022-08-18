@@ -86,28 +86,50 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
     return (
       <Wrap>
         {!worn && weight != 0 && (
-          <Tooltip label="Poids dans le sac">
+          <Tooltip
+            label={
+              (quantity && quantity > 1 ? quantity + " x " : "") +
+              displayWeight(weight, weightUnit) +
+              " dans le sac"
+            }
+          >
             <Tag colorScheme="teal" size="sm">
               <TagLeftIcon as={FaWeightHanging} />
-              <TagLabel>{displayWeight(weight, weightUnit)}</TagLabel>
+              <TagLabel>
+                {displayWeight((quantity ? quantity : 1) * weight, weightUnit)}
+              </TagLabel>
             </Tag>
           </Tooltip>
         )}
         {worn && weight != 0 && (
-          <Tooltip label="Poids sur soi">
+          <Tooltip
+            label={
+              (quantity && quantity > 1 ? quantity + " x " : "") +
+              displayWeight(weight, weightUnit) +
+              " sur soi"
+            }
+          >
             <Tag colorScheme="blue" size="sm">
               <TagLeftIcon as={FaTshirt} />
-              <TagLabel>{displayWeight(weight, weightUnit)}</TagLabel>
+              <TagLabel>
+                {displayWeight((quantity ? quantity : 1) * weight, weightUnit)}
+              </TagLabel>
             </Tag>
           </Tooltip>
         )}
 
         {Number.isInteger(price) && (
-          <Tooltip label="Coût">
+          <Tooltip
+            label={
+              (quantity && quantity > 1 ? quantity + " x " : "") +
+              Number(price) / 100 +
+              displayCurrency(currency)
+            }
+          >
             <Tag colorScheme="purple" size="sm">
               <TagLeftIcon as={FaTag} />
               <TagLabel>
-                {Number(price) / 100}
+                {((quantity ? quantity : 1) * Number(price)) / 100}
                 {displayCurrency(currency)}
               </TagLabel>
             </Tag>
