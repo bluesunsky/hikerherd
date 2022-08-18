@@ -55,6 +55,7 @@ const userQuery = resolver.pipe(
         name: pack.name,
         id: pack.id,
         private: pack.private,
+        updatedAt: pack.updatedAt,
         totals: {
           baseWeight,
           totalWeight,

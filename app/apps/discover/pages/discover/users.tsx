@@ -20,7 +20,7 @@ const DiscoverUsersPage: BlitzPage = () => {
       </Heading>
 
       <Text mb={5} color={textColor}>
-        Rechercher les utilisateurs de Pack your pack.
+        Rechercher des utilisateurs de Pack your pack.
       </Text>
 
       <Card>

@@ -4,11 +4,17 @@ import type { FC } from "react";
 import { useQuery } from "blitz";
 import { useState } from "react";
 
+import { useColorModeValue } from "@chakra-ui/react";
+import { format } from "date-fns";
+import { Tooltip } from "@chakra-ui/tooltip";
 import { SimpleGrid, Stack, HStack, Text } from "@chakra-ui/layout";
+import { Icon } from "@chakra-ui/icon";
+import { Tag } from "@chakra-ui/tag";
 import { IconButton } from "@chakra-ui/button";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { FaMinus, FaPlus, FaCalendarAlt } from "react-icons/fa";
 
 import GearCard from "app/apps/gear/components/gear-card/components/gear-card";
+import UserTag from "app/components/user-tag";
 
 import searchGearQuery from "../queries/search-gear-query";
 
@@ -25,7 +31,10 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
   const take = 10;
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(0);
-
+  const updateBgColor = useColorModeValue(
+    "rgba(0,0,0,0.05)",
+    "rgba(255,255,255,0.05)"
+  );
   const [items, { isLoading }] = useQuery(
     searchGearQuery,
     { query, take, skip },
@@ -100,6 +109,16 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
               purchaseDate={item.purchaseDate}
             >
               {gearActions(item)}
+              <HStack justifyContent="space-between" mt={2}>
+                <Tooltip label="Mise à jour">
+                  <Tag size="sm" borderRadius="full" bg={updateBgColor}>
+                    <Icon as={FaCalendarAlt} />
+                    &nbsp;
+                    {format(item.updatedAt, "dd/MM/yyyy")}
+                  </Tag>
+                </Tooltip>
+                <UserTag size="sm" user={item.user} />
+              </HStack>
             </GearCard>
           ))}
         </SimpleGrid>

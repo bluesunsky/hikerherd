@@ -31,6 +31,13 @@ const searchGearQuery = resolver.pipe(
         _count: {
           select: { clones: true },
         },
+        user: {
+          select: {
+            avatar_id: true,
+            avatar_version: true,
+            username: true,
+          },
+        },
       },
 
       orderBy: [{ name: "asc" }],

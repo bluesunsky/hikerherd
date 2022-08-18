@@ -19,6 +19,7 @@ import {
   FcRating,
   FcSearch,
   FcTimeline,
+  FcContacts,
 } from "react-icons/fc";
 
 import LogoIcon from "app/icons/logo";
@@ -212,7 +213,7 @@ const HomePage: BlitzPage = () => {
           équipements d&lsquo;autres utilisateurs.
         </Text>
 
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} mt={12}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} mt={12}>
           <IconCard
             icon={FcBinoculars}
             title="Equipements partagés"
@@ -227,6 +228,13 @@ const HomePage: BlitzPage = () => {
             actionLink={Routes.DiscoverPacksPage()}
             actionText="Chercher un pack"
             text="Rechercher un pack parmis ceux des autres utilisateurs"
+          />
+          <IconCard
+            icon={FcContacts}
+            title="Utilisateurs"
+            actionLink={Routes.DiscoverUsersPage()}
+            actionText="Chercher un pack"
+            text="Rechercher un utilisateur"
           />
         </SimpleGrid>
       </Container>

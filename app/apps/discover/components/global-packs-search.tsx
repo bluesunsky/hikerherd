@@ -98,7 +98,7 @@ const GlobalPacksSearch: FC<GlobalPacksSearchProps> = ({ packActions }) => {
               shareLink
               bg={cardBg}
               borderColor={border}
-            />
+            ></PackCard>
           ))}
         </SimpleGrid>
       </SearchResults>

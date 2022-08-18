@@ -12,6 +12,7 @@ import {
   FcSearch,
   FcSettings,
   FcTimeline,
+  FcContacts,
 } from "react-icons/fc";
 import { useColorModeValue } from "@chakra-ui/react";
 
@@ -97,6 +98,12 @@ const StartPage: BlitzPage = () => {
             href={Routes.DiscoverPacksPage()}
             title="Packs partagés"
             text="Rechercher un pack parmis ceux des autres utilisateurs"
+          />
+          <IndexCard
+            icon={FcContacts}
+            href={Routes.DiscoverUsersPage()}
+            title="Utilisateurs"
+            text="Rechercher un utilisateur"
           />
         </SimpleGrid>
 

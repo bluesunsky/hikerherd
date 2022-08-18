@@ -6,7 +6,7 @@ import { Fragment, useState } from "react";
 
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
-import { Heading, HStack, Text } from "@chakra-ui/layout";
+import { Heading, SimpleGrid, Text } from "@chakra-ui/layout";
 import { FcList, FcRating } from "react-icons/fc";
 import { useColorModeValue } from "@chakra-ui/react";
 
@@ -62,7 +62,11 @@ const DiscoverGearPage: BlitzPage = () => {
           gearActions={(gear) => (
             <Fragment>
               {session.userId && (
-                <HStack spacing={2}>
+                <SimpleGrid
+                  columns={{ base: 1, sm: 2 }}
+                  spacing={2}
+                  alignItems="center"
+                >
                   <Button
                     isFullWidth
                     size="sm"
@@ -79,7 +83,7 @@ const DiscoverGearPage: BlitzPage = () => {
                   >
                     Ajouter aux souhaits
                   </Button>
-                </HStack>
+                </SimpleGrid>
               )}
             </Fragment>
           )}
