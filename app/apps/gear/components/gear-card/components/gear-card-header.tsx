@@ -16,7 +16,7 @@ import Popover from "app/components/popover";
 type GearCardHeaderProps = {
   menu?: JSX.Element | null;
   name: string;
-  manufacturer: string;
+  manufacturer: string | null;
   imageUrl?: string | null;
   onHeadingClick?: () => void;
 };

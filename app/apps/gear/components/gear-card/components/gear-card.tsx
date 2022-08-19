@@ -10,7 +10,7 @@ import GearCardTags from "./gear-card-tags";
 
 type GearCardProps = {
   name: string;
-  manufacturer: string;
+  manufacturer: string | null;
   weight: number;
   imageUrl?: string | null;
   price?: number | null;
