@@ -36,6 +36,7 @@ const addToInventoryMutation = resolver.pipe(
     const clone = await db.gear.create({
       data: {
         name: gear.name,
+        manufacturer: gear.manufacturer,
         imageUrl: gear.imageUrl,
         link: gear.link,
         notes: gear.notes,

@@ -108,6 +108,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                   <GearCard
                     key={item.id}
                     name={item.gear.name}
+                    manufacturer={item.gear.manufacturer}
                     weight={item.gear.weight}
                     price={item.gear.price}
                     currency={item.gear.currency}

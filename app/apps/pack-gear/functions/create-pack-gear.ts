@@ -6,6 +6,7 @@ type Params = {
   index: number;
   values: {
     name: string;
+    manufacturer: string;
     weight: number;
     imageUrl: string | null;
     link: string | null;
@@ -41,6 +42,7 @@ const createPackGear: TransactionFunction<Params, CategoryItem> = async (
       gear: {
         create: {
           name: values.name,
+          manufacturer: values.manufacturer,
           weight: values.weight,
           imageUrl: values.imageUrl,
           link: values.link,

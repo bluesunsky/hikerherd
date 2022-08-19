@@ -12,6 +12,7 @@ export type ParsedCsvItem = {
   notes?: string | null;
   gear: {
     name: string;
+    manufacturer: string | null;
     weight: number;
     price: number | null;
     currency: Currency;
@@ -26,6 +27,7 @@ export type ParsedCsvItem = {
 
 export type CsvItem = {
   name: string;
+  manufacturer: string | null;
   category: string;
   weight: number;
   unit: WeightSymbol;
@@ -52,6 +54,7 @@ const itemToCsvFormat = ({
 }): CsvItem => {
   return {
     name: item.gear.name,
+    manufacturer: item.gear.manufacturer,
     category: category,
     weight: withDecimalPlaces(
       weightUnit === "METRIC" ? item.gear.weight : gToOz(item.gear.weight)

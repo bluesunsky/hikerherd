@@ -1,5 +1,6 @@
 const csvHeadingRow = [
   "name",
+  "manufacturer",
   "category",
   "weight",
   "unit",

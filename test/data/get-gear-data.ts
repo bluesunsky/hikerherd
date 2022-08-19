@@ -4,6 +4,7 @@ import { faker } from "@faker-js/faker";
 
 export type GearValues = {
   name?: string;
+  manufacturer?: string;
   weight?: number;
   imageUrl?: string;
   link?: string;
@@ -17,6 +18,7 @@ export type GearValues = {
 
 const getGearData = (values: GearValues = {}) => ({
   name: faker.random.word(),
+  manufacturer: faker.random.words(10),
   weight: faker.datatype.number({ min: 20, max: 1200 }),
   imageUrl: faker.internet.url(),
   link: faker.internet.url(),

@@ -6,6 +6,7 @@ import { Currency } from "db";
 
 const gearSchema = z.object({
   name: requiredStringSchema(),
+  manufacturer: z.string().nullable().default(null),
   weight: z.number(),
   imageUrl: z.string().url().nullable().default(null),
   notes: z.string().nullable().default(null),

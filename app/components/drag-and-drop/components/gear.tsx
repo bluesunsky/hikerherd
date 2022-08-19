@@ -39,6 +39,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
     >
       <GearCard
         name={item.gear.name}
+        manufacturer={item.gear.manufacturer}
         weight={item.gear.weight}
         price={item.gear.price}
         currency={item.gear.currency}

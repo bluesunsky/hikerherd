@@ -39,6 +39,7 @@ describe("parseCsvFile", () => {
       notes: gear.notes,
       gear: {
         name: gear.name,
+        manufacturer: gear.manufacturer,
         weight: Number(gear.weight),
         price: Math.round(Number(gear.price) * 100),
         currency: signToCurrency(gear.currency),
@@ -127,12 +128,14 @@ describe("parseCsvFile", () => {
   it("should otherwise succeed with minimal data provided", () => {
     const category = faker.random.word();
     const name = faker.random.word();
+    const manufacturer = faker.random.word();
     const weight = faker.datatype.number();
 
     const data = {
       "": [
         getCsvItem({
           name,
+          manufacturer,
           category,
           weight: `${weight}`,
           notes: "",
@@ -157,6 +160,7 @@ describe("parseCsvFile", () => {
       notes: null,
       gear: {
         name,
+        manufacturer,
         weight: Number(weight),
         price: null,
         currency: "USD",

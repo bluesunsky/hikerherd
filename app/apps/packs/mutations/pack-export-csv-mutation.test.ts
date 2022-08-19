@@ -124,6 +124,7 @@ describe("packExportCsvMutation", () => {
 
       expect(row).toMatchObject({
         name: item.gear.name,
+        manufacturer: item.gear.manufacturer,
         category: item.category.name,
         weight: `${item.gear.weight}`,
         unit: "gram",

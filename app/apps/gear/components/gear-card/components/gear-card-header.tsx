@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import { Heading, HStack } from "@chakra-ui/layout";
+import { Heading, HStack, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 import { Avatar } from "@chakra-ui/avatar";
 import { Icon } from "@chakra-ui/icon";
@@ -16,6 +16,7 @@ import Popover from "app/components/popover";
 type GearCardHeaderProps = {
   menu?: JSX.Element | null;
   name: string;
+  manufacturer: string;
   imageUrl?: string | null;
   onHeadingClick?: () => void;
 };
@@ -23,6 +24,7 @@ type GearCardHeaderProps = {
 const GearCardHeader: FC<GearCardHeaderProps> = ({
   menu,
   name,
+  manufacturer,
   imageUrl,
   onHeadingClick,
 }) => {
@@ -57,11 +59,12 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
 
         <Heading
           size="xs"
-          noOfLines={2}
+          noOfLines={4}
           cursor={onHeadingClick ? "pointer" : "inherit"}
           onClick={onHeadingClick}
         >
           {name}
+          <Text fontWeight="normal">{manufacturer}</Text>
         </Heading>
       </HStack>
 

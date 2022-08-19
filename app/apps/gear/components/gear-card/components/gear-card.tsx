@@ -10,6 +10,7 @@ import GearCardTags from "./gear-card-tags";
 
 type GearCardProps = {
   name: string;
+  manufacturer: string;
   weight: number;
   imageUrl?: string | null;
   price?: number | null;
@@ -29,6 +30,7 @@ type GearCardProps = {
 
 const GearCard: FC<GearCardProps> = ({
   name,
+  manufacturer,
   imageUrl,
   onHeadingClick,
   weight,
@@ -62,6 +64,7 @@ const GearCard: FC<GearCardProps> = ({
       <GearCardHeader
         menu={menu}
         name={name}
+        manufacturer={manufacturer}
         imageUrl={imageUrl}
         onHeadingClick={onHeadingClick}
       />

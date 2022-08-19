@@ -1,8 +1,9 @@
 // learn more about this file: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgres"
-  url      = env("DATABASE_URL")
+  provider          = "postgres"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 generator client {
@@ -107,6 +108,7 @@ model Gear {
   imageUrl     String?
   link         String?
   notes        String?
+  manufacturer String?
   consumable   Boolean   @default(false)
   replaceable  Boolean   @default(false)
   weight       Float

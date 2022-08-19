@@ -42,6 +42,7 @@ const updatePackGearMutation = resolver.pipe(
         gear: {
           update: {
             name: values.name,
+            manufacturer: values.manufacturer,
             weight: values.weight,
             imageUrl: values.imageUrl,
             link: values.link,

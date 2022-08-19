@@ -99,6 +99,7 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
             <GearCard
               key={item.id}
               name={item.name}
+              manufacturer={item.manufacturer}
               weight={item.weight}
               price={item.price}
               currency={item.currency}

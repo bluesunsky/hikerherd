@@ -32,6 +32,7 @@ const AddPackGearForm: FC<AddPackGearFormProps> = ({
 
   const initialValues = {
     name: "",
+    manufacturer: null,
     weight: 0,
     price: null,
     type: null,

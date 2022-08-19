@@ -4,6 +4,7 @@ import papaparse from "papaparse";
 
 export const CSV_HEADING = [
   "name",
+  "manufacturer",
   "category",
   "weight",
   "unit",

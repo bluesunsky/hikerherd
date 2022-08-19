@@ -13,6 +13,7 @@ type ParsedCsvResult = {
 
 const csvItemSchema = z.object({
   name: z.string().min(1),
+  manufacturer: z.string().min(1).nullable().optional(),
   category: z.string().min(1),
   weight: z.number().min(0),
   unit: z.enum(["gram", "ounce"]),
@@ -34,6 +35,7 @@ const parseCsvFile = (file: string): ParsedCsvResult => {
     skipEmptyLines: true,
     transformHeader: (header) => header.toLowerCase(),
     dynamicTyping: {
+      manufacturer: true,
       weight: true,
       price: true,
       currency: true,
@@ -58,6 +60,7 @@ const parseCsvFile = (file: string): ParsedCsvResult => {
       notes: valid.notes || null,
       gear: {
         name: valid.name,
+        manufacturer: valid.manufacturer || null,
         weight: valid.unit === "gram" ? valid.weight : ozTog(valid.weight),
         price: valid.price ? Math.round(valid.price * 100) : null,
         currency: signToCurrency(valid.currency),

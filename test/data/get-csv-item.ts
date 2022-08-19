@@ -8,6 +8,7 @@ import getGearData from "./get-gear-data";
 
 export type TestCsvItem = {
   name: string;
+  manufacturer: string;
   category: string;
   weight: string;
   unit: string;
@@ -28,6 +29,7 @@ const getCsvItem = (values: Partial<TestCsvItem> = {}): TestCsvItem => {
 
   return {
     name: gear.name,
+    manufacturer: gear.manufacturer,
     category: faker.random.word(),
     unit: "gram",
     notes: gear.notes,

@@ -33,6 +33,7 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
   return (
     <Stack spacing={4}>
       <TextField name="name" label="Nom" placeholder="Nom" />
+      <TextField name="manufacturer" label="Marque" placeholder="Marque" />
       <TextAreaField
         name="notes"
         label="Description"

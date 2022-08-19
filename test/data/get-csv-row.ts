@@ -18,6 +18,7 @@ const getCsvRow = (values: CsvRowValues = {}) => {
 
   return [
     gear.name,
+    gear.manufacturer || "",
     values.categoryName || faker.random.word(),
     `${gear.weight}`,
     values.unit || "gram",

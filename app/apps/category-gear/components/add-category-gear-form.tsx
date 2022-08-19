@@ -36,6 +36,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
   const initialValues = {
     categoryId,
     name: "",
+    manufacturer: "",
     weight: 0,
     price: null,
     currency: currency,

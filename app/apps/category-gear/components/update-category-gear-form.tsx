@@ -46,6 +46,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
   const initialValues = {
     id,
     name: gearItem?.gear.name,
+    manufacturer: gearItem?.gear.manufacturer,
     weight:
       weightUnit === "IMPERIAL"
         ? withDecimalPlaces(gToOz(gearItem?.gear.weight || 0), 2)

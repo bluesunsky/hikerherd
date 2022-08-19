@@ -39,6 +39,7 @@ const packOrganizerQuery = resolver.pipe(
                   select: {
                     id: true,
                     name: true,
+                    manufacturer: true,
                     weight: true,
                     price: true,
                     currency: true,

@@ -32,6 +32,7 @@ const updateCategoryGearMutation = resolver.pipe(
       where: { id: item.gearId },
       data: {
         name: values.name,
+        manufacturer: values.name,
         weight: values.weight,
         imageUrl: values.imageUrl,
         link: values.link,
