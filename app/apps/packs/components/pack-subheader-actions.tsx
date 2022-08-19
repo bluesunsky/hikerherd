@@ -162,7 +162,11 @@ const PackSubheaderActions: FC = () => {
           colorScheme="blue"
           onClick={showDetails}
         >
-          <Tooltip label="Poids du sac">
+          <Tooltip
+            label={
+              displayWeight(packWeight, weightUnit, true, 2) + " dans le sac"
+            }
+          >
             <Tag size="sm">
               <TagLabel>
                 {displayWeight(packWeight, weightUnit, true, 1)}
@@ -174,7 +178,11 @@ const PackSubheaderActions: FC = () => {
               <Tag colorScheme="white" size="sm">
                 <TagLabel>(</TagLabel>
               </Tag>
-              <Tooltip label="Poids de base">
+              <Tooltip
+                label={
+                  displayWeight(baseWeight, weightUnit, true, 2) + " de base"
+                }
+              >
                 <Tag colorScheme="teal" size="sm">
                   <TagLeftIcon as={FaWeightHanging} />
                   <TagLabel>
@@ -185,7 +193,12 @@ const PackSubheaderActions: FC = () => {
               <Tag colorScheme="white" size="sm">
                 <TagLabel>+</TagLabel>
               </Tag>
-              <Tooltip label="Poids des consommables">
+              <Tooltip
+                label={
+                  displayWeight(packWeight - baseWeight, weightUnit, true, 2) +
+                  " de consommables"
+                }
+              >
                 <Tag colorScheme="pink" size="sm">
                   <TagLeftIcon as={FaHamburger} />
                   <TagLabel>
@@ -208,7 +221,12 @@ const PackSubheaderActions: FC = () => {
               <Tag colorScheme="white" size="sm">
                 <TagLabel>+</TagLabel>
               </Tag>
-              <Tooltip label="Poids sur soi">
+              <Tooltip
+                label={
+                  displayWeight(totalWeight - packWeight, weightUnit, true, 2) +
+                  " sur soi"
+                }
+              >
                 <Tag colorScheme="blue" size="sm">
                   <TagLeftIcon as={FaTshirt} />
                   <TagLabel>

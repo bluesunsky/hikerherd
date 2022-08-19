@@ -9,7 +9,7 @@ import { Center } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 
 import ModalForm from "app/components/forms/components/modal-form";
-import { gToOz, ozTog, withDecimalPlaces } from "app/helpers/display-weight";
+import { gToOz, ozTog } from "app/helpers/display-weight";
 import GearFormFields from "app/apps/gear/components/gear-form-fields";
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
 
@@ -45,8 +45,8 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
     manufacturer: gearItem?.gear.manufacturer,
     weight:
       weightUnit === "IMPERIAL"
-        ? withDecimalPlaces(gToOz(gearItem?.gear.weight || 0), 2)
-        : withDecimalPlaces(gearItem?.gear.weight || 0, 0),
+        ? Math.round(gToOz(gearItem?.gear.weight || 0) * 100) / 100
+        : Math.round(gearItem?.gear.weight || 0),
     price: gearItem?.gear.price && gearItem?.gear.price / 100,
     currency: gearItem?.gear.currency,
     link: gearItem?.gear.link,

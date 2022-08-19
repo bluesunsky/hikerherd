@@ -70,6 +70,8 @@ const CategoryDropZone: FC = () => {
                     size="sm"
                     colorScheme="blue"
                     onClick={addCategory}
+                    width="400px"
+                    maxWidth="calc(100vw - 10px)"
                   >
                     Nouvelle catégorie
                   </Button>

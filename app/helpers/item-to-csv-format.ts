@@ -3,7 +3,7 @@ import type { CurrencySign } from "./sign-to-currency";
 import type { WeightSymbol } from "./weight-unit-to-symbol";
 
 import weightUnitToSymbol from "./weight-unit-to-symbol";
-import { gToOz, withDecimalPlaces } from "./display-weight";
+import { gToOz } from "./display-weight";
 import displayCurrency from "./display-currency";
 
 export type ParsedCsvItem = {
@@ -56,9 +56,8 @@ const itemToCsvFormat = ({
     name: item.gear.name,
     manufacturer: item.gear.manufacturer,
     category: category,
-    weight: withDecimalPlaces(
-      weightUnit === "METRIC" ? item.gear.weight : gToOz(item.gear.weight)
-    ),
+    weight:
+      weightUnit === "METRIC" ? item.gear.weight : gToOz(item.gear.weight),
     unit: weightUnitToSymbol(weightUnit),
     notes: item.notes || item.gear.notes,
     price: item.gear.price && item.gear.price / 100,

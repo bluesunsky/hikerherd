@@ -5,6 +5,9 @@ const calculatePackTotals = (categories: DragAndDropState) => {
   let wornWeight = 0;
   let consumableWeight = 0;
   let baseWeight = 0;
+  let eur = 0;
+  let usd = 0;
+  let gbp = 0;
 
   const weightedCategories = categories.map((category) => {
     return {
@@ -13,6 +16,15 @@ const calculatePackTotals = (categories: DragAndDropState) => {
         const itemWeight = item.gear.weight * (item.quantity || 0);
 
         totalWeight += itemWeight;
+        if (item.gear.price != null && item.quantity) {
+          if (item.gear.currency == "EUR") {
+            eur += item.gear.price * item.quantity;
+          } else if (item.gear.currency == "USD") {
+            usd += item.gear.price * item.quantity;
+          } else if (item.gear.currency == "GBP") {
+            gbp += item.gear.price * item.quantity;
+          }
+        }
 
         if (item.worn) {
           wornWeight += itemWeight;
@@ -44,7 +56,6 @@ const calculatePackTotals = (categories: DragAndDropState) => {
         if (!item.worn && !item.gear.consumable) {
           acc += item.gear.weight * (item.quantity || 0);
         }
-
         return acc;
       }, 0),
       eur: category.items.reduce((acc, item) => {
@@ -67,7 +78,6 @@ const calculatePackTotals = (categories: DragAndDropState) => {
       }, 0),
     };
   });
-
   return {
     categories: weightedCategories,
     totalWeight,
@@ -75,6 +85,9 @@ const calculatePackTotals = (categories: DragAndDropState) => {
     baseWeight,
     wornWeight,
     consumableWeight,
+    eur,
+    usd,
+    gbp,
   };
 };
 

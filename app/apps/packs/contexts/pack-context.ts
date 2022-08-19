@@ -26,6 +26,9 @@ type PackContext = {
   totalWeight: number;
   packWeight: number;
   baseWeight: number;
+  eur: number;
+  usd: number;
+  gbp: number;
 
   refetchOrganizer: () => void;
 };

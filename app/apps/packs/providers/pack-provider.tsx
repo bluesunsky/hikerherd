@@ -32,7 +32,7 @@ const PackProvider: FC<PackProviderProps> = ({ id, share, children }) => {
     { id }
   );
 
-  const { categories, totalWeight, packWeight, baseWeight } =
+  const { categories, totalWeight, packWeight, baseWeight, eur, usd, gbp } =
     useCalculatePackTotals(packOrganizer?.categories || []);
 
   return (
@@ -56,6 +56,9 @@ const PackProvider: FC<PackProviderProps> = ({ id, share, children }) => {
         totalWeight,
         packWeight,
         baseWeight,
+        eur,
+        usd,
+        gbp,
 
         refetchOrganizer,
       }}

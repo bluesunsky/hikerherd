@@ -1,29 +1,31 @@
-import type { FC } from "react";
+import type { FC, ReactElement } from "react";
 
 import { useContext } from "react";
 
-import { Button, IconButton } from "@chakra-ui/button";
-import { Box, Stack } from "@chakra-ui/layout";
+import { IconButton } from "@chakra-ui/button";
+import { Box, Stack, Text } from "@chakra-ui/layout";
 import { Table, Thead, Tr, Th, Tbody, Td } from "@chakra-ui/table";
-import { FaFlagUsa, FaGlobeEurope, FaInfo } from "react-icons/fa";
+import { FaInfo } from "react-icons/fa";
 
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
 import Popover from "app/components/popover";
-import displayWeight from "app/helpers/display-weight";
+import { displayWeight, withDecimalPlaces } from "app/helpers/display-weight";
 
 import packContext from "../contexts/pack-context";
 
 type TotalRowProps = {
   description?: string;
   name: string;
-  value: number;
+  price?: ReactElement;
+  weight: number;
   fontWeight?: string;
 };
 
 const TotalRow: FC<TotalRowProps> = ({
   description = "",
   name,
-  value,
+  weight,
+  price,
   fontWeight = "bold",
 }) => {
   const { weightUnit } = useContext(userPreferencesContext);
@@ -50,7 +52,8 @@ const TotalRow: FC<TotalRowProps> = ({
         )}
       </Td>
       <Td>{name}</Td>
-      <Td isNumeric>{displayWeight(value, weightUnit, true)}</Td>
+      <Td isNumeric>{price}</Td>
+      <Td isNumeric>{displayWeight(weight, weightUnit, true)}</Td>
     </Tr>
   );
 };
@@ -60,9 +63,9 @@ type PackTableProps = {
 };
 
 const PackTable: FC<PackTableProps> = ({ colors }) => {
-  const { categories, totalWeight, packWeight, baseWeight } =
+  const { categories, totalWeight, packWeight, baseWeight, eur, usd, gbp } =
     useContext(packContext);
-  const { weightUnit, toggleWeightUnits } = useContext(userPreferencesContext);
+  const { weightUnit } = useContext(userPreferencesContext);
 
   return (
     <Stack w="100%" align="flex-end" spacing={6}>
@@ -72,6 +75,7 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
             <Tr>
               <Th w="40px"></Th>
               <Th>Catégorie</Th>
+              <Th isNumeric>Coût</Th>
               <Th isNumeric>Poids</Th>
             </Tr>
           </Thead>
@@ -89,52 +93,62 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
                 </Td>
                 <Td>{category.name}</Td>
                 <Td isNumeric>
+                  {category.eur != 0 && (
+                    <Text>
+                      {withDecimalPlaces(Number(category.eur) / 100, 0)}€
+                    </Text>
+                  )}
+                  {category.usd != 0 && (
+                    <Text>
+                      {withDecimalPlaces(Number(category.usd) / 100, 0)}$
+                    </Text>
+                  )}
+                  {category.gbp != 0 && (
+                    <Text>
+                      {withDecimalPlaces(Number(category.gbp) / 100, 0)}£
+                    </Text>
+                  )}
+                </Td>
+                <Td isNumeric>
                   {displayWeight(category.weight, weightUnit, true)}
                 </Td>
               </Tr>
             ))}
 
             <TotalRow
-              description="Poids de tout, y compris vos articles portés sur soi et vos consommables."
-              name="Poids total"
-              value={totalWeight}
+              description="Tout, y compris les articles portés sur soi et vos consommables."
+              name="Total"
+              price={
+                <>
+                  {eur != 0 && <Text>{withDecimalPlaces(eur / 100, 0)}€</Text>}
+                  {usd != 0 && <Text>{withDecimalPlaces(usd / 100, 0)}$</Text>}
+                  {gbp != 0 && <Text>{withDecimalPlaces(gbp / 100, 0)}£</Text>}
+                </>
+              }
+              weight={totalWeight}
             />
 
             <TotalRow
-              description="Poids incluant les consommables mais sans les articles portés sur soi."
-              name="Poids du sac"
-              value={packWeight}
+              description="Prise en compte des consommables mais sans les articles portés sur soi."
+              name="Dans le sac"
+              weight={packWeight}
             />
 
+            <TotalRow name="Base" weight={baseWeight} fontWeight="normal" />
+
             <TotalRow
-              name="Poids de base"
-              value={baseWeight}
+              name="Consommables"
+              weight={packWeight - baseWeight}
               fontWeight="normal"
             />
-
             <TotalRow
-              name="Poids des consommables"
-              value={packWeight - baseWeight}
-              fontWeight="normal"
-            />
-            <TotalRow
-              description="Poids des articles portés sur soi."
-              name="Poids sur soi"
-              value={totalWeight - packWeight}
+              description="Articles portés sur soi."
+              name="Sur soi"
+              weight={totalWeight - packWeight}
             />
           </Tbody>
         </Table>
       </Stack>
-
-      <Button
-        size="xs"
-        onClick={toggleWeightUnits}
-        leftIcon={weightUnit === "METRIC" ? <FaFlagUsa /> : <FaGlobeEurope />}
-      >
-        {weightUnit === "IMPERIAL"
-          ? "Utiliser les unités métriques"
-          : "Utiliser les unités impériales"}
-      </Button>
     </Stack>
   );
 };
