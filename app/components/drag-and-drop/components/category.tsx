@@ -18,7 +18,7 @@ import {
   FaClone,
 } from "react-icons/fa";
 
-import displayWeight from "app/helpers/display-weight";
+import { displayWeight, withDecimalPlaces } from "app/helpers/display-weight";
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
 import displayCurrency from "app/helpers/display-currency";
 
@@ -95,7 +95,13 @@ const Category: BlitzPage<CategoryProps> = ({
         </Heading>
 
         <HStack>
-          <Tooltip label="Nombre d'équipements différents">
+          <Tooltip
+            label={
+              category.items.length
+                ? category.items.length + " équipements différents"
+                : "Aucun équipement"
+            }
+          >
             <Tag colorScheme="gray" size="sm">
               <TagLeftIcon as={FaClone} />
               <TagLabel>{category.items.length}</TagLabel>
@@ -153,43 +159,48 @@ const Category: BlitzPage<CategoryProps> = ({
             </Tooltip>
           )}
 
-          {!hideCategoryTotals && category.eur && (
+          {category.eur && (
             <Tooltip
               label={
-                "Part du prix en Euros : " + Number(category.eur) / 100 + "€"
+                "Part du prix en Euros : " +
+                withDecimalPlaces(Number(category.eur) / 100, 2) +
+                "€"
               }
             >
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
-                  {(Number(category.eur) / 100).toFixed(0)}
+                  {withDecimalPlaces(Number(category.eur) / 100, 0)}
                   {displayCurrency("EUR")}
                 </TagLabel>
               </Tag>
             </Tooltip>
           )}
-          {!hideCategoryTotals && category.usd && (
+          {category.usd && (
             <Tooltip
-              label={"Part du prix en Dollars : $" + Number(category.usd) / 100}
+              label={
+                "Part du prix en Dollars : $" +
+                withDecimalPlaces(Number(category.usd) / 100, 2)
+              }
             >
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
-                  {(Number(category.usd) / 100).toFixed(0)}
+                  {withDecimalPlaces(Number(category.usd) / 100, 0)}
                   {displayCurrency("USD")}
                 </TagLabel>
               </Tag>
             </Tooltip>
           )}
-          {!hideCategoryTotals && category.gbp && (
+          {category.gbp && (
             <Tooltip
               label={
                 "Part du prix en Livres Sterling : " +
-                Number(category.gbp) / 100 +
+                withDecimalPlaces(Number(category.gbp) / 100, 2) +
                 "£"
               }
             >
               <Tag colorScheme="purple" size="sm">
                 <TagLabel>
-                  {(Number(category.gbp) / 100).toFixed(0)}
+                  {withDecimalPlaces(Number(category.gbp) / 100, 0)}
                   {displayCurrency("GBP")}
                 </TagLabel>
               </Tag>

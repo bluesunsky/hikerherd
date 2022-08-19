@@ -10,8 +10,8 @@ import { GrClose } from "react-icons/gr";
 import { Tooltip } from "@chakra-ui/tooltip";
 
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
-import displayWeight from "app/helpers/display-weight";
 import displayCurrency from "app/helpers/display-currency";
+import { displayWeight, withDecimalPlaces } from "app/helpers/display-weight";
 
 type GearCardValuesProps = {
   weight: number;
@@ -122,14 +122,17 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
           <Tooltip
             label={
               (quantity && quantity > 1 ? quantity + " x " : "") +
-              Number(price) / 100 +
+              withDecimalPlaces(Number(price) / 100, 2) +
               displayCurrency(currency)
             }
           >
             <Tag colorScheme="purple" size="sm">
               <TagLeftIcon as={FaTag} />
               <TagLabel>
-                {((quantity ? quantity : 1) * Number(price)) / 100}
+                {withDecimalPlaces(
+                  ((quantity ? quantity : 1) * Number(price)) / 100,
+                  0
+                )}
                 {displayCurrency(currency)}
               </TagLabel>
             </Tag>
