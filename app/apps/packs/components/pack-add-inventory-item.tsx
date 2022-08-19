@@ -63,7 +63,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
     }
 
     const fuse = new Fuse(categoryGear, {
-      keys: ["gear.name", "gear.notes"],
+      keys: ["gear.name", "gear.notes", "gear.manufacturer"],
       includeScore: true,
       useExtendedSearch: true,
     });
