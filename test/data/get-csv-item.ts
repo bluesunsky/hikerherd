@@ -8,7 +8,7 @@ import getGearData from "./get-gear-data";
 
 export type TestCsvItem = {
   name: string;
-  manufacturer: string;
+  manufacturer: string | null;
   category: string;
   weight: string;
   unit: string;

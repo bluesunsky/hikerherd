@@ -6,7 +6,7 @@ type Params = {
   index: number;
   values: {
     name: string;
-    manufacturer: string;
+    manufacturer: string | null;
     weight: number;
     imageUrl: string | null;
     link: string | null;
