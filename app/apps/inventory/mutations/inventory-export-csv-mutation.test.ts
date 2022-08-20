@@ -99,6 +99,7 @@ describe("inventoryExportCsvMutation", () => {
       expect(row).toMatchObject({
         name: item.gear.name,
         manufacturer: item.gear.manufacturer,
+        kind: item.gear.kind,
         category: item.category.name,
         weight: `${item.gear.weight}`,
         unit: "gram",
@@ -109,6 +110,7 @@ describe("inventoryExportCsvMutation", () => {
         image: item.gear.imageUrl || "",
         consumable: item.gear.consumable ? "consumable" : "",
         replaceable: item.gear.replaceable ? "replaceable" : "",
+        private: item.gear.private ? "private" : "",
         worn: "",
         quantity: "1",
         purchaseDate: null,

@@ -50,11 +50,13 @@ const addGearToPackMutation = resolver.pipe(
         data: {
           name: gear.name,
           manufacturer: gear.manufacturer,
+          kind: gear.kind,
           imageUrl: gear.imageUrl,
           link: gear.link,
           notes: gear.notes,
           consumable: gear.consumable,
           replaceable: gear.replaceable,
+          private: gear.private,
           weight: gear.weight,
           price: gear.price,
           currency: gear.currency,

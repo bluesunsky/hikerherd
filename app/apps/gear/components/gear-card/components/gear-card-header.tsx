@@ -17,6 +17,7 @@ type GearCardHeaderProps = {
   menu?: JSX.Element | null;
   name: string;
   manufacturer: string | null;
+  kind: string | null;
   imageUrl?: string | null;
   onHeadingClick?: () => void;
 };
@@ -25,6 +26,7 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
   menu,
   name,
   manufacturer,
+  kind,
   imageUrl,
   onHeadingClick,
 }) => {
@@ -63,6 +65,7 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
           cursor={onHeadingClick ? "pointer" : "inherit"}
           onClick={onHeadingClick}
         >
+          <Text>{kind}</Text>
           {name}
           <Text fontWeight="normal">{manufacturer}</Text>
         </Heading>

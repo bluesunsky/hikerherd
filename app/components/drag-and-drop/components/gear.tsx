@@ -22,7 +22,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
   const menu = useMemo(() => {
     return itemMenu && itemMenu(item);
   }, [item]); //eslint-disable-line
-  const kind =
+  const list =
     item.gear.categoryItems && item.gear.categoryItems.length > 0
       ? item.gear.categoryItems[0]?.category.type
       : null;
@@ -40,15 +40,17 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
       <GearCard
         name={item.gear.name}
         manufacturer={item.gear.manufacturer}
+        kind={item.gear.kind}
         weight={item.gear.weight}
         price={item.gear.price}
         currency={item.gear.currency}
         worn={item.worn}
         consumable={item.gear.consumable}
         replaceable={item.gear.replaceable}
+        private={item.gear.private}
         link={item.gear.link}
         notes={item.notes || item.gear.notes}
-        kind={kind}
+        list={list}
         dragging={isDragging}
         quantity={item.quantity}
         menu={menu}

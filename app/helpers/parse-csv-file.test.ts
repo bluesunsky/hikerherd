@@ -40,11 +40,13 @@ describe("parseCsvFile", () => {
       gear: {
         name: gear.name,
         manufacturer: gear.manufacturer,
+        kind: gear.kind,
         weight: Number(gear.weight),
         price: Math.round(Number(gear.price) * 100),
         currency: signToCurrency(gear.currency),
         consumable: !!gear.consumable,
         replaceable: !!gear.replaceable,
+        private: !!gear.private,
         link: gear.link,
         notes: gear.notes,
         imageUrl: gear.image,
@@ -129,6 +131,7 @@ describe("parseCsvFile", () => {
     const category = faker.random.word();
     const name = faker.random.word();
     const manufacturer = faker.random.word();
+    const kind = faker.random.word();
     const weight = faker.datatype.number();
 
     const data = {
@@ -136,6 +139,7 @@ describe("parseCsvFile", () => {
         getCsvItem({
           name,
           manufacturer,
+          kind,
           category,
           weight: `${weight}`,
           notes: "",
@@ -145,6 +149,7 @@ describe("parseCsvFile", () => {
           image: "",
           consumable: "",
           replaceable: "",
+          private: "",
           worn: "",
           quantity: "",
         }),
@@ -161,11 +166,13 @@ describe("parseCsvFile", () => {
       gear: {
         name,
         manufacturer,
+        kind,
         weight: Number(weight),
         price: null,
         currency: "USD",
         consumable: false,
         replaceable: false,
+        private: false,
         link: null,
         notes: null,
         imageUrl: null,

@@ -7,12 +7,14 @@ type Params = {
   values: {
     name: string;
     manufacturer: string | null;
+    kind: string | null;
     weight: number;
     imageUrl: string | null;
     link: string | null;
     notes?: string | null;
     consumable: boolean;
     replaceable: boolean;
+    private: boolean;
     price: number | null;
     currency: Currency;
     worn: boolean;
@@ -43,12 +45,14 @@ const createPackGear: TransactionFunction<Params, CategoryItem> = async (
         create: {
           name: values.name,
           manufacturer: values.manufacturer,
+          kind: values.kind,
           weight: values.weight,
           imageUrl: values.imageUrl,
           link: values.link,
           notes: values.notes,
           consumable: values.consumable,
           replaceable: values.replaceable,
+          private: values.private,
           price: values.price,
           currency: values.currency,
           userId: ctx.session.userId,

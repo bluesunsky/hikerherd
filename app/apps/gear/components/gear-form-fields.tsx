@@ -12,6 +12,7 @@ import {
   FaTshirt,
   FaCalendarAlt,
   FaExclamationTriangle,
+  FaLock,
 } from "react-icons/fa";
 import { Icon } from "@chakra-ui/icon";
 import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/tag";
@@ -32,8 +33,13 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
   const { weightUnit } = useContext(userPreferencesContext);
   return (
     <Stack spacing={4}>
-      <TextField name="name" label="Nom" placeholder="Nom" />
-      <TextField name="manufacturer" label="Marque" placeholder="Marque" />
+      <TextField name="name" label="Nom" placeholder="Nom (Obligatoire)" />
+      <TextField name="kind" label="Type" placeholder="Type (Facultatif)" />
+      <TextField
+        name="manufacturer"
+        label="Marque"
+        placeholder="Marque (Facultatif)"
+      />
       <TextAreaField
         name="notes"
         label="Description"
@@ -100,6 +106,11 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
           <TagLabel>A remplacer ?</TagLabel>
         </Tag>
         <CheckboxField name="replaceable" />
+        <Tag flexShrink={0}>
+          <TagLeftIcon as={FaLock} />
+          <TagLabel>Privé ?</TagLabel>
+        </Tag>
+        <CheckboxField name="private" />
       </HStack>
     </Stack>
   );

@@ -11,6 +11,7 @@ import GearCardTags from "./gear-card-tags";
 type GearCardProps = {
   name: string;
   manufacturer: string | null;
+  kind: string | null;
   weight: number;
   imageUrl?: string | null;
   price?: number | null;
@@ -18,9 +19,10 @@ type GearCardProps = {
   worn?: boolean;
   consumable?: boolean;
   replaceable?: boolean;
+  private?: boolean;
   link?: string | null;
   notes?: string | null;
-  kind?: string | null;
+  list?: string | null;
   quantity?: number;
   onHeadingClick?: () => void;
   menu?: JSX.Element | null;
@@ -31,6 +33,7 @@ type GearCardProps = {
 const GearCard: FC<GearCardProps> = ({
   name,
   manufacturer,
+  kind,
   imageUrl,
   onHeadingClick,
   weight,
@@ -42,7 +45,7 @@ const GearCard: FC<GearCardProps> = ({
   replaceable,
   link,
   notes,
-  kind,
+  list,
   menu = null,
   dragging = false,
   children,
@@ -65,6 +68,7 @@ const GearCard: FC<GearCardProps> = ({
         menu={menu}
         name={name}
         manufacturer={manufacturer}
+        kind={kind}
         imageUrl={imageUrl}
         onHeadingClick={onHeadingClick}
       />
@@ -92,7 +96,7 @@ const GearCard: FC<GearCardProps> = ({
           replaceable={replaceable}
           link={link}
           notes={notes}
-          kind={kind}
+          list={list}
         />
       </Wrap>
 

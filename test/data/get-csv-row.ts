@@ -19,6 +19,7 @@ const getCsvRow = (values: CsvRowValues = {}) => {
   return [
     gear.name,
     gear.manufacturer || "",
+    gear.kind || "",
     values.categoryName || faker.random.word(),
     `${gear.weight}`,
     values.unit || "gram",
@@ -29,6 +30,7 @@ const getCsvRow = (values: CsvRowValues = {}) => {
     gear.imageUrl || "",
     gear.consumable ? "consumable" : "",
     gear.replaceable ? "replaceable" : "",
+    gear.private ? "private" : "",
     values.worn ? "worn" : "",
     `${values.quantity || 1}`,
     gear.purchaseDate || "",

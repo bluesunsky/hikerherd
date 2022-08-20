@@ -63,7 +63,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
     }
 
     const fuse = new Fuse(categoryGear, {
-      keys: ["gear.name", "gear.notes", "gear.manufacturer"],
+      keys: ["gear.name", "gear.notes", "gear.manufacturer", "gear.kind"],
       includeScore: true,
       useExtendedSearch: true,
     });
@@ -109,11 +109,13 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                     key={item.id}
                     name={item.gear.name}
                     manufacturer={item.gear.manufacturer}
+                    kind={item.gear.kind}
                     weight={item.gear.weight}
                     price={item.gear.price}
                     currency={item.gear.currency}
                     consumable={item.gear.consumable}
                     replaceable={item.gear.replaceable}
+                    private={item.gear.private}
                     link={item.gear.link}
                     notes={item.gear.notes}
                     imageUrl={item.gear.imageUrl}

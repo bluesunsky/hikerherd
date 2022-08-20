@@ -1,6 +1,7 @@
 const csvHeadingRow = [
   "name",
   "manufacturer",
+  "kind",
   "category",
   "weight",
   "unit",
@@ -11,6 +12,7 @@ const csvHeadingRow = [
   "image",
   "consumable",
   "replaceable",
+  "private",
   "worn",
   "quantity",
 ];

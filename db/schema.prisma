@@ -109,8 +109,10 @@ model Gear {
   link         String?
   notes        String?
   manufacturer String?
+  kind         String?
   consumable   Boolean   @default(false)
   replaceable  Boolean   @default(false)
+  private      Boolean   @default(false)
   weight       Float
   price        Int?
   currency     Currency  @default(USD)

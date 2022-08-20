@@ -18,11 +18,13 @@ export type DragAndDropItem = {
     id: string;
     name: string;
     manufacturer: string | null;
+    kind: string | null;
     weight: number;
     price: number | null;
     currency: Currency;
     consumable: boolean;
     replaceable: boolean;
+    private: boolean;
     link: string | null;
     notes: string | null;
     imageUrl: string | null;

@@ -47,6 +47,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
     id,
     name: gearItem?.gear.name,
     manufacturer: gearItem?.gear.manufacturer,
+    kind: gearItem?.gear.kind,
     weight:
       weightUnit === "IMPERIAL"
         ? Math.round(gToOz(gearItem?.gear.weight || 0) * 100) / 100
@@ -58,6 +59,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
     notes: gearItem?.gear.notes,
     consumable: gearItem?.gear.consumable,
     replaceable: gearItem?.gear.replaceable,
+    private: gearItem?.gear.private,
     purchaseDate: gearItem?.gear.purchaseDate,
   };
 

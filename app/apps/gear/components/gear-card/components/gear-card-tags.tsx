@@ -20,11 +20,11 @@ type GearCardTagsProps = {
   replaceable?: boolean;
   link?: string | null;
   notes?: string | null;
-  kind?: string | null;
+  list?: string | null;
 };
 
 const GearCardTags: FC<GearCardTagsProps> = memo(
-  ({ link, consumable, replaceable, notes, kind }) => {
+  ({ link, consumable, replaceable, notes, list }) => {
     return (
       <Wrap>
         {link && (
@@ -44,7 +44,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
             </Tag>
           </Tooltip>
         )}
-        {(replaceable || kind == "WISH_LIST") && (
+        {(replaceable || list == "WISH_LIST") && (
           <Popover
             trigger={
               <Tag bg="red" color="white" size="sm" borderRadius="full">
@@ -57,7 +57,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
                 A remplacer ! <br />
               </>
             )}
-            {kind == "WISH_LIST" && (
+            {list == "WISH_LIST" && (
               <>
                 Non possédé <br />
               </>

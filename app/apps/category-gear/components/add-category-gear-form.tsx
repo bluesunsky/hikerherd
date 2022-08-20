@@ -37,6 +37,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
     categoryId,
     name: "",
     manufacturer: "",
+    kind: "",
     weight: 0,
     price: null,
     currency: currency,
@@ -45,6 +46,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
     notes: null,
     consumable: false,
     replaceable: false,
+    private: false,
     purchaseDate: null,
   };
 

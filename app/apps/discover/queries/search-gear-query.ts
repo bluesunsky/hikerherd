@@ -22,6 +22,8 @@ const searchGearQuery = resolver.pipe(
           { name: { contains: query, mode: "insensitive" } },
           { manufacturer: { search, mode: "insensitive" } },
           { manufacturer: { contains: query, mode: "insensitive" } },
+          { kind: { search, mode: "insensitive" } },
+          { kind: { contains: query, mode: "insensitive" } },
           { notes: { search, mode: "insensitive" } },
           { notes: { contains: query, mode: "insensitive" } },
         ],
