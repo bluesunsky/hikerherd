@@ -23,6 +23,7 @@ type ModalFormProps = {
   onClose: () => void;
   size?: ModalProps["size"];
   title: string;
+  isDisabled?: boolean;
 };
 
 const ModalForm: FormComponent<ModalFormProps> = ({
@@ -35,6 +36,7 @@ const ModalForm: FormComponent<ModalFormProps> = ({
   onClose,
   size,
   title,
+  isDisabled,
   ...props
 }) => {
   return (
@@ -80,6 +82,7 @@ const ModalForm: FormComponent<ModalFormProps> = ({
                     colorScheme="green"
                     isLoading={form.submitting}
                     type="submit"
+                    isDisabled={isDisabled}
                   >
                     {submitText}
                   </Button>

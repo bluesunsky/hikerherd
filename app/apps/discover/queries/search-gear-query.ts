@@ -28,6 +28,7 @@ const searchGearQuery = resolver.pipe(
           { notes: { contains: query, mode: "insensitive" } },
         ],
         clonedFromId: null,
+        private: false,
         weight: { gte: minWeight, lte: maxWeight },
       },
 

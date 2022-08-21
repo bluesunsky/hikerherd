@@ -78,6 +78,11 @@ const packOrganizerQuery = resolver.pipe(
     ) {
       throw new NotFoundError();
     }
+    if (pack.userId !== ctx.session.userId) {
+      pack.categories.forEach(
+        (cat) => (cat.items = cat.items.filter((item) => !item.gear.private))
+      );
+    }
 
     return pack;
   }

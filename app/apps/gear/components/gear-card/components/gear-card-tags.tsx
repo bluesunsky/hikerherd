@@ -10,6 +10,7 @@ import {
   FaRegStickyNote,
   FaHamburger,
   FaExclamationTriangle,
+  FaLock,
 } from "react-icons/fa";
 import { Tooltip } from "@chakra-ui/tooltip";
 
@@ -21,10 +22,11 @@ type GearCardTagsProps = {
   link?: string | null;
   notes?: string | null;
   list?: string | null;
+  isprivate?: boolean;
 };
 
 const GearCardTags: FC<GearCardTagsProps> = memo(
-  ({ link, consumable, replaceable, notes, list }) => {
+  ({ link, consumable, replaceable, notes, list, isprivate }) => {
     return (
       <Wrap>
         {link && (
@@ -74,6 +76,14 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
           >
             {notes}
           </Popover>
+        )}
+
+        {isprivate && (
+          <Tooltip label="Privé">
+            <Tag bg="black" color="white" size="sm" borderRadius="full">
+              <Icon as={FaLock} />
+            </Tag>
+          </Tooltip>
         )}
       </Wrap>
     );

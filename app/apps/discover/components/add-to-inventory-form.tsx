@@ -51,6 +51,7 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
       title={`Ajouter l'équipement '${gear.name}' dans ${displayCategoryType(
         type
       )}`}
+      isDisabled={!categories?.length}
       schema={addToInventorySchema}
       submitText="Ajouter"
       initialValues={{
@@ -88,17 +89,15 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
                 </Text>
               )}
 
-              <SelectField
-                name="categoryId"
-                label="Choisir une catégorie"
-                isDisabled={!categories?.length}
-              >
-                {categories?.map((category) => (
-                  <option value={category.id} key={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </SelectField>
+              {!!categories?.length && (
+                <SelectField name="categoryId" label="Choisir une catégorie">
+                  {categories?.map((category) => (
+                    <option value={category.id} key={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </SelectField>
+              )}
             </Fragment>
           )}
         </Fragment>

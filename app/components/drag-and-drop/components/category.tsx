@@ -98,7 +98,11 @@ const Category: BlitzPage<CategoryProps> = ({
           <Tooltip
             label={
               category.items.length
-                ? category.items.length + " équipements différents"
+                ? category.items.length +
+                  " " +
+                  (category.items.length == 1
+                    ? "équipement différent"
+                    : "équipements différents")
                 : "Aucun équipement"
             }
           >

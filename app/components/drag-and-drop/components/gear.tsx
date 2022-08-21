@@ -47,7 +47,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
         worn={item.worn}
         consumable={item.gear.consumable}
         replaceable={item.gear.replaceable}
-        private={item.gear.private}
+        isprivate={item.gear.private}
         link={item.gear.link}
         notes={item.notes || item.gear.notes}
         list={list}

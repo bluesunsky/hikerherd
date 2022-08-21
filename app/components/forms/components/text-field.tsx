@@ -46,6 +46,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             {...input}
             disabled={meta.submitting}
             variant="filled"
+            step="any"
             {...props}
             ref={ref}
           />
