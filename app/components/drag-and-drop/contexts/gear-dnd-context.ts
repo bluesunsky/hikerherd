@@ -45,7 +45,7 @@ export type DragAndDropContext = {
   readonly?: boolean;
   hideCategoryTotals?: boolean;
   state: DragAndDropState;
-
+  username?: String | String[];
   addCategory?: () => void;
   addItemToCategory?: (categoryId: string) => void;
   editCategory?: (id: string) => void;

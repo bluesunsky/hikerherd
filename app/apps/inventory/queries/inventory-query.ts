@@ -8,9 +8,17 @@ const inventoryQuery = resolver.pipe(
   resolver.authorize(),
   resolver.zod(getInventorySchema),
 
-  async ({ type }, ctx) => {
+  async ({ type, username }, ctx) => {
+    var userWhere, withPrivate;
+    if (username) {
+      userWhere = { username: username };
+      withPrivate = false;
+    } else {
+      userWhere = { id: ctx.session.userId };
+      withPrivate = true;
+    }
     const user = await db.user.findUnique({
-      where: { id: ctx.session.userId },
+      where: userWhere,
       select: {
         categories: {
           where: { type },
@@ -47,6 +55,12 @@ const inventoryQuery = resolver.pipe(
         },
       },
     });
+
+    if (!withPrivate && user) {
+      user.categories.forEach(
+        (cat) => (cat.items = cat.items.filter((item) => !item.gear.private))
+      );
+    }
 
     return user?.categories || [];
   }

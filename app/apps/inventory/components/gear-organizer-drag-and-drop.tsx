@@ -20,10 +20,12 @@ import GearOrganizerItemMenu from "./gear-organizer-item-menu";
 
 type GearOrganizerDragAndDropProps = {
   type: CategoryType;
+  username?: String | String[];
 };
 
 const GearOrganizerDragAndDrop: FC<GearOrganizerDragAndDropProps> = ({
   type,
+  username,
 }) => {
   const {
     state,
@@ -93,7 +95,15 @@ const GearOrganizerDragAndDrop: FC<GearOrganizerDragAndDropProps> = ({
       });
     }
   };
-
+  if (username)
+    return (
+      <DragAndDrop
+        state={state}
+        hideCategoryTotals
+        username={username}
+        readonly={!!username}
+      />
+    );
   return (
     <DragAndDrop
       handleDrop={handleDrop}

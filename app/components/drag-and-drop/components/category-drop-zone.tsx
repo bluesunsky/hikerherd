@@ -15,12 +15,12 @@ import DraggableCategory from "./draggable-category";
 import HorizontalScroller from "./horizontal-scroller";
 
 const CategoryDropZone: FC = () => {
-  const { addCategory, state, readonly } = useContext(dragAndDropContext);
+  const { addCategory, state, readonly, username } =
+    useContext(dragAndDropContext);
 
   const { categories } = useCalculatePackTotals(state);
 
   const dragColor = useColorModeValue("blue.200", "blue.700");
-
   return (
     <HorizontalScroller>
       <Droppable
@@ -56,7 +56,7 @@ const CategoryDropZone: FC = () => {
 
               {provided.placeholder}
 
-              {addCategory && (
+              {!username && addCategory && (
                 <Box
                   width="290px"
                   flex="0 0 290px"

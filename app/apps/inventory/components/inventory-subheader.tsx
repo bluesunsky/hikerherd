@@ -2,13 +2,14 @@ import type { FC } from "react";
 import type { CategoryType } from "db";
 
 import { useState } from "react";
-import { invalidateQuery, useMutation } from "blitz";
+import { invalidateQuery, useMutation, useRouter } from "blitz";
 
-import { HStack } from "@chakra-ui/layout";
+import { Heading, HStack } from "@chakra-ui/layout";
 import { MenuItem, MenuList } from "@chakra-ui/menu";
 import { FaFileExport, FaFileImport } from "react-icons/fa";
-import { FcList, FcRating } from "react-icons/fc";
+import { FcList, FcRating, FcTimeline } from "react-icons/fc";
 import { useToast } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/icon";
 
 import PackPicker from "app/apps/packs/components/pack-picker";
 import Subheader from "app/components/subheader";
@@ -25,6 +26,7 @@ type InventorySubheaderProps = {
 };
 
 const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
+  const router = useRouter();
   const title = type === "INVENTORY" ? "Inventaire" : "Souhaits";
   const icon = type === "INVENTORY" ? FcList : FcRating;
 
@@ -37,7 +39,20 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
     const csv = await exportCsv({ type });
     downloadCsv(type.toLowerCase(), csv);
   };
-
+  var username = router.query.username;
+  if (typeof username == "string") {
+    username = username.charAt(0).toUpperCase() + username.slice(1);
+    return (
+      <Subheader>
+        <HStack pl={1} isTruncated>
+          <Icon as={FcTimeline} w={5} h={5} />
+          <Heading size="sm" isTruncated>
+            {title} de {username}
+          </Heading>
+        </HStack>
+      </Subheader>
+    );
+  }
   return (
     <Subheader>
       <ImportInventoryCsvForm

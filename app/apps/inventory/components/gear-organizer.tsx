@@ -13,16 +13,26 @@ import GearOrganizerDragAndDrop from "./gear-organizer-drag-and-drop";
 
 type GearOrganizerProps = {
   type: CategoryType;
+  username?: String | String[];
 };
 
-const GearOrganizer: FC<GearOrganizerProps> = ({ type }) => {
-  const [data, { refetch }] = useQuery(inventoryQuery, { type });
+const GearOrganizer: FC<GearOrganizerProps> = ({ type, username }) => {
+  const [data, { refetch }] = useQuery(inventoryQuery, { type, username });
   const [state, setState] = useState<DragAndDropState>(data);
 
   useEffect(() => {
     setState(data);
   }, [data]);
-
+  if (username)
+    return (
+      <GearOrganizerProvider
+        state={state}
+        setState={setState}
+        refetch={refetch}
+      >
+        <GearOrganizerDragAndDrop type={type} username={username} />
+      </GearOrganizerProvider>
+    );
   return (
     <GearOrganizerProvider state={state} setState={setState} refetch={refetch}>
       <GearOrganizerModals type={type} />

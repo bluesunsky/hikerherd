@@ -44,8 +44,13 @@ const Category: BlitzPage<CategoryProps> = ({
   isDragging,
   provided,
 }) => {
-  const { categoryMenu, addItemToCategory, editCategory, hideCategoryTotals } =
-    useContext(dragAndDropContext);
+  const {
+    categoryMenu,
+    addItemToCategory,
+    editCategory,
+    hideCategoryTotals,
+    username,
+  } = useContext(dragAndDropContext);
   const { weightUnit } = useContext(userPreferencesContext);
 
   const bg = useColorModeValue("white", "gray.700");
@@ -227,7 +232,7 @@ const Category: BlitzPage<CategoryProps> = ({
 
       <GearDropZone droppableId={category.id} items={category.items} />
 
-      {addItemToCategory && (
+      {!username && addItemToCategory && (
         <Box p={1}>
           <Button
             isFullWidth
