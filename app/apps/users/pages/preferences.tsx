@@ -3,6 +3,7 @@ import type { BlitzPage } from "blitz";
 import { Routes } from "blitz";
 import { Fragment } from "react";
 
+import { t } from "i18next";
 import { Heading } from "@chakra-ui/layout";
 
 import SidebarLayout from "app/layouts/sidebar-layout";
@@ -14,7 +15,7 @@ const PreferencesPage: BlitzPage = () => {
   return (
     <Fragment>
       <Heading size="md" mb={6}>
-        Mes préférences
+        {t("Settings", "Settings")}
       </Heading>
 
       <Card>
@@ -27,7 +28,7 @@ const PreferencesPage: BlitzPage = () => {
 PreferencesPage.authenticate = { redirectTo: Routes.LoginPage() };
 
 PreferencesPage.getLayout = (page) => (
-  <SidebarLayout title="Mes préférences">{page}</SidebarLayout>
+  <SidebarLayout title={t("Settings", "Settings")}>{page}</SidebarLayout>
 );
 
 export default PreferencesPage;

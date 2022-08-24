@@ -3,6 +3,7 @@ import type { BlitzPage } from "blitz";
 import { Routes } from "blitz";
 import { Fragment } from "react";
 
+import { t } from "i18next";
 import { SimpleGrid, Container, Heading, Box, Text } from "@chakra-ui/layout";
 import {
   FcBinoculars,
@@ -39,7 +40,9 @@ const StartPage: BlitzPage = () => {
             {username}
           </Heading>
           <Text fontSize="xl" opacity="0.8">
-            Bienvenue dans Pack&nbsp;your&nbsp;pack
+            {t("WelcomeTo", "Welcome to {{appliname}}", {
+              appliname: t("AppliName", "Pack your pack"),
+            })}
           </Text>
         </Container>
       </Box>
@@ -51,28 +54,28 @@ const StartPage: BlitzPage = () => {
           textTransform="uppercase"
           mb={4}
         >
-          Organiser
+          {t("GearTools", "Gear tools")}
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
           <IndexCard
             icon={FcList}
             href={Routes.InventoryPage()}
-            title="Inventaire"
-            text="Gérer les équipements que vous possédez"
+            title={t("Inventory", "Inventory")}
+            text={t("InventoryDescription", "Manage your backpacking gear")}
           />
 
           <IndexCard
             icon={FcRating}
             href={Routes.WishListPage()}
-            title="Souhaits"
-            text="Suiver les équipements que vous voulez acheter"
+            title={t("WishList", "Wish list")}
+            text={t("WishListDescription", "Track the gear you want to buy")}
           />
 
           <IndexCard
             icon={FcTimeline}
             href={Routes.PacksPage()}
-            title="Packs"
-            text="Organiser vos équipements dans des packs"
+            title={t("Packs", "Packs")}
+            text={t("PacksDescription", "Organize your gear into packs")}
           />
         </SimpleGrid>
 
@@ -83,27 +86,33 @@ const StartPage: BlitzPage = () => {
           mb={4}
           mt={8}
         >
-          Découvrir
+          {t("Discover", "Discover")}
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
           <IndexCard
             icon={FcBinoculars}
             href={Routes.DiscoverGearPage()}
-            title="Equipements partagés"
-            text="Rechercher un équipement parmis ceux des autres utilisateurs"
+            title={t("GearSearch", "Gear search")}
+            text={t(
+              "GearSearchDescription",
+              "Search the hikerherd database for gear"
+            )}
           />
 
           <IndexCard
             icon={FcSearch}
             href={Routes.DiscoverPacksPage()}
-            title="Packs partagés"
-            text="Rechercher un pack parmis ceux des autres utilisateurs"
+            title={t("PackSearch", "Pack search")}
+            text={t(
+              "PackSearchDescription",
+              "Look for packs created by other hikers"
+            )}
           />
           <IndexCard
             icon={FcContacts}
             href={Routes.DiscoverUsersPage()}
-            title="Utilisateurs"
-            text="Rechercher un utilisateur"
+            title={t("UserSearch", "User search")}
+            text={t("UserSearchDescription", "Look for hiker")}
           />
         </SimpleGrid>
 
@@ -114,21 +123,27 @@ const StartPage: BlitzPage = () => {
           mb={4}
           mt={8}
         >
-          Configurer
+          {t("Settings", "Settings")}
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
           <IndexCard
             icon={FcSettings}
             href={Routes.PreferencesPage()}
-            title="Mes préférences"
-            text="Définiser votre unité et votre monnaie"
+            title={t("Preferences", "Your preferences")}
+            text={t(
+              "PreferencesDescription",
+              "Set your preferred units and currency"
+            )}
           />
 
           <IndexCard
             icon={FcPortraitMode}
             href={Routes.ProfilePage({ username: user?.username || "" })}
-            title="Votre profil"
-            text="Consulter votre profil"
+            title={t("Profile", "Your profile")}
+            text={t(
+              "ProfileDescription",
+              "View your own hikerherd profile page"
+            )}
           />
         </SimpleGrid>
       </Container>

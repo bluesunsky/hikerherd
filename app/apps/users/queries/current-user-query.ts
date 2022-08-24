@@ -20,6 +20,7 @@ const currentUserQuery = resolver.pipe(async (_, ctx) => {
       cover_version: true,
       weightUnit: true,
       currency: true,
+      language: true,
     },
   });
 

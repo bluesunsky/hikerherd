@@ -2,7 +2,9 @@ import type { FC } from "react";
 
 import { useEffect, useState } from "react";
 
-import { WeightUnit, Currency } from "db";
+import i18n from "app/i18n";
+
+import { Language, WeightUnit, Currency } from "db";
 
 import useCurrentUser from "../hooks/use-current-user";
 import userPreferencesContext from "../contexts/user-preferences-context";
@@ -20,9 +22,14 @@ const UserPreferencesProvider: FC<Props> = ({ children }) => {
     user?.currency || Currency.USD
   );
 
+  const [language, changeLanguage] = useState<Language>(
+    user?.language || Language.EN
+  );
+
   useEffect(() => {
     if (user?.weightUnit) setWeightUnit(user.weightUnit);
     if (user?.currency) setCurrency(user.currency);
+    if (user?.language) setLanguage(user.language);
   }, [user]);
 
   const toggleWeightUnits = () => {
@@ -34,6 +41,11 @@ const UserPreferencesProvider: FC<Props> = ({ children }) => {
     setWeightUnit(newWeightUnit);
   };
 
+  const setLanguage = (language: Language) => {
+    i18n.changeLanguage(language);
+    changeLanguage(language);
+  };
+
   return (
     <userPreferencesContext.Provider
       value={{
@@ -41,6 +53,8 @@ const UserPreferencesProvider: FC<Props> = ({ children }) => {
         toggleWeightUnits,
         currency,
         setCurrency,
+        language,
+        setLanguage,
       }}
     >
       {children}

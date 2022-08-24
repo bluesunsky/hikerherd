@@ -3,6 +3,7 @@ import type { BlitzPage } from "blitz";
 import { useRouter, Routes } from "blitz";
 
 import { useToast } from "@chakra-ui/toast";
+import { t } from "i18next";
 
 import BoxLayout from "app/layouts/box-layout";
 
@@ -15,8 +16,11 @@ const ResetPasswordPage: BlitzPage = () => {
   const handleSuccess = () => {
     router.push(Routes.StartPage());
     toast({
-      title: "Mot de passe modifié",
-      description: "Vous avez changé de mot de passe.",
+      title: t("ResetPasswordSuccess", "Password changed"),
+      description: t(
+        "ResetPasswordSuccessDescription",
+        "You have successfully changed your password."
+      ),
       status: "success",
     });
   };
@@ -26,8 +30,11 @@ const ResetPasswordPage: BlitzPage = () => {
 
 ResetPasswordPage.getLayout = (page) => (
   <BoxLayout
-    title="Réinitialisez votre mot de passe"
-    description="Quel serait votre nouveau mot de passe ?"
+    title={t("ResetPassword", "Reset Your Password")}
+    description={t(
+      "ResetPasswordDescription",
+      "What would you like your new password to be?"
+    )}
   >
     {page}
   </BoxLayout>

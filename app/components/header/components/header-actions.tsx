@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import Icon from "@chakra-ui/icon";
 import { useColorMode } from "@chakra-ui/react";
+import { WeightUnit } from "@prisma/client";
 
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
 
@@ -25,6 +26,25 @@ const HeaderActions: FC<HeaderActionsProps> = ({ toggleDrawer }) => {
   const { toggleWeightUnits, weightUnit } = useContext(userPreferencesContext);
   const { colorMode, toggleColorMode } = useColorMode();
 
+  /*
+<HeaderIconButton
+        label={
+          language === Language.FR
+            ? "Utiliser la version anglaise"
+            : "Utiliser la version française"
+        }
+        onClick={() =>
+          setLanguage(language === Language.FR ? Language.EN : Language.FR)
+        }
+        icon={
+          <Icon
+            as={language === Language.FR ? GiBread : GiHamburger}
+            w={5}
+            h={5}
+          />
+        }
+      />
+  */
   return (
     <HStack spacing={1}>
       <HeaderIconButton
@@ -43,14 +63,14 @@ const HeaderActions: FC<HeaderActionsProps> = ({ toggleDrawer }) => {
       />
       <HeaderIconButton
         label={
-          weightUnit === "METRIC"
+          weightUnit === WeightUnit.METRIC
             ? "Utiliser les unités impériales"
             : "Utiliser les unités métriques"
         }
         onClick={toggleWeightUnits}
         icon={
           <Icon
-            as={weightUnit === "METRIC" ? FaGlobeEurope : FaFlagUsa}
+            as={weightUnit === WeightUnit.METRIC ? FaGlobeEurope : FaFlagUsa}
             w={5}
             h={5}
           />

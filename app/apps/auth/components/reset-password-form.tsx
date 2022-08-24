@@ -5,6 +5,7 @@ import { Fragment } from "react";
 import { useRouterQuery, useMutation } from "blitz";
 
 import { FORM_ERROR } from "final-form";
+import { t } from "i18next";
 
 import TextField from "app/components/forms/components/text-field";
 import SimpleForm from "app/components/forms/components/simple-form";
@@ -32,7 +33,10 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({ onSuccess }) => {
       return { [FORM_ERROR]: error.message };
     } else {
       return {
-        [FORM_ERROR]: "Sorry, there was an unexpected error. Please try again.",
+        [FORM_ERROR]: t(
+          "SendResetEmailError",
+          "Oops! Something went wrong sending your password reset email. Please try again."
+        ),
       };
     }
   };
@@ -41,7 +45,7 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({ onSuccess }) => {
     <SimpleForm
       schema={resetPasswordSchema}
       initialValues={initialValues}
-      submitText="Réinitialiser le mot de passe"
+      submitText={t("ResetPassword", "Reset password")}
       large
       onSubmit={async (values) => {
         try {
@@ -55,12 +59,12 @@ const ResetPasswordForm: FC<ResetPasswordFormProps> = ({ onSuccess }) => {
         <Fragment>
           <TextField
             name="password"
-            label="Nouveau mot de passe"
+            label={t("NewPassword", "New Password")}
             type="password"
           />
           <TextField
             name="passwordConfirmation"
-            label="Confirmer votre mot de passe"
+            label={t("ConfirmNewPassword", "Confirm New Password")}
             type="password"
           />
         </Fragment>

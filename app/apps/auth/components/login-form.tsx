@@ -5,6 +5,7 @@ import { Fragment } from "react";
 import { AuthenticationError, useMutation } from "blitz";
 
 import { FORM_ERROR } from "final-form";
+import { t } from "i18next";
 
 import TextField from "app/components/forms/components/text-field";
 import SimpleForm from "app/components/forms/components/simple-form";
@@ -22,12 +23,17 @@ const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
   const handleError = (error: unknown) => {
     if (error instanceof AuthenticationError) {
       return {
-        [FORM_ERROR]: "Mail ou mot de passe incorrect. Merci de recommencer.",
+        [FORM_ERROR]: t(
+          "WrongLoginError",
+          "Wrong email or password. Please try again."
+        ),
       };
     } else {
       return {
-        [FORM_ERROR]:
-          "Quelque chose ne s'est pas bien passé. Merci de recommencer.",
+        [FORM_ERROR]: t(
+          "WrongLoginUnknownError",
+          "Oops! Something went wrong logging you in. Please try again."
+        ),
       };
     }
   };
@@ -36,7 +42,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
     <SimpleForm
       schema={loginSchema}
       initialValues={{ email: "", password: "" }}
-      submitText="Connexion"
+      submitText={t("Login", "Log in")}
       large
       onSubmit={async (values) => {
         try {
@@ -50,14 +56,17 @@ const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
         <Fragment>
           <TextField
             name="email"
-            label="Adresse mail"
-            placeholder="Saisir votre adresse mail"
+            label={t("EmailAddress", "Email address")}
+            placeholder={t(
+              "EmailAddressLoginPlaceholder",
+              "Enter your email address"
+            )}
             size="lg"
           />
           <TextField
             name="password"
-            label="Mot de passe"
-            placeholder="Saisir votre mot de passe"
+            label={t("Password", "Password")}
+            placeholder={t("PasswordPlaceholder", "Enter your password")}
             type="password"
             size="lg"
           />

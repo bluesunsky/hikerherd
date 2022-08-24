@@ -5,6 +5,7 @@ import { useRouter, Link, Routes } from "blitz";
 import { Stack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
+import { t } from "i18next";
 
 import BoxLayout from "app/layouts/box-layout";
 import TextDivider from "app/components/text-divider";
@@ -24,24 +25,31 @@ const LoginPage: BlitzPage = () => {
         onSuccess={(user) => {
           router.push(redirectTo);
           toast({
-            title: `Bienvenue ${user.username} !`,
-            description: "Vous êtes connecté.",
+            title: t("WelcomeUser", "Welcome {{username}}", {
+              username: user
+                ? user.username.charAt(0).toUpperCase() + user.username.slice(1)
+                : "",
+            }),
+            description: t(
+              "LoginSuccessDescription",
+              "You have logged in successfully."
+            ),
             status: "success",
           });
         }}
       />
 
-      <TextDivider>Ou</TextDivider>
+      <TextDivider>{t("Or", "Or")}</TextDivider>
 
       <Stack spacing={4}>
         <Link href={Routes.SignupPage()} passHref>
           <Button as="a" isFullWidth size="lg">
-            Enregistrement
+            {t("Signup", "Sign up")}
           </Button>
         </Link>
         <Link href={Routes.ForgotPasswordPage()} passHref>
           <Button as="a" isFullWidth size="lg">
-            Réinitialiser le mot de passe
+            {t("ResetPassword", "Reset password")}
           </Button>
         </Link>
       </Stack>
@@ -51,7 +59,10 @@ const LoginPage: BlitzPage = () => {
 
 LoginPage.redirectAuthenticatedTo = Routes.StartPage();
 LoginPage.getLayout = (page) => (
-  <BoxLayout title="Connexion" description="Entrer dans Pack your pack">
+  <BoxLayout
+    title={t("Login", "Log in")}
+    description={t("LoginDescription", "Sign the trail register.")}
+  >
     {page}
   </BoxLayout>
 );

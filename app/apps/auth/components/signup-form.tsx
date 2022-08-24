@@ -5,6 +5,7 @@ import { Fragment } from "react";
 import { useMutation } from "blitz";
 
 import { FORM_ERROR } from "final-form";
+import { t } from "i18next";
 
 import TextField from "app/components/forms/components/text-field";
 import SimpleForm from "app/components/forms/components/simple-form";
@@ -23,14 +24,19 @@ const SignupForm: FC<SignupFormProps> = ({ onSuccess }) => {
   const handleError = (error: unknown) => {
     if (error instanceof UserCreateError && error.emailTaken) {
       return {
-        email: "Ce mail est déjà utilisé. Essayer de vous connecter avec.",
+        email: t(
+          "EmailAddressAlreadyUsedError",
+          "This email address is already in use. Try logging in instead."
+        ),
       };
     }
 
     if (error instanceof UserCreateError && error.usernameTaken) {
       return {
-        username:
-          "Ce pseudonyme est déjà utilisé. Merci d'en choisir un autre.",
+        username: t(
+          "UsernameAlreadyUsedError",
+          "This username is already being used. Please pick a new one."
+        ),
       };
     }
 
@@ -39,8 +45,10 @@ const SignupForm: FC<SignupFormProps> = ({ onSuccess }) => {
     }
 
     return {
-      [FORM_ERROR]:
-        "Oops! Something went wrong while your account was being created. Please try again.",
+      [FORM_ERROR]: t(
+        "SignupError",
+        "Oops! Something went wrong while your account was being created. Please try again."
+      ),
     };
   };
 
@@ -48,7 +56,7 @@ const SignupForm: FC<SignupFormProps> = ({ onSuccess }) => {
     <SimpleForm
       schema={signupSchema}
       initialValues={{ email: "", username: "", password: "" }}
-      submitText="Rejoindre Pack your pack"
+      submitText={t("Join", "Join")}
       large
       onSubmit={async (values) => {
         try {
@@ -62,20 +70,23 @@ const SignupForm: FC<SignupFormProps> = ({ onSuccess }) => {
         <Fragment>
           <TextField
             name="email"
-            label="Adresse mail"
-            placeholder="Saisir votre adresse mail"
+            label={t("EmailAddress", "Email address")}
+            placeholder={t(
+              "EmailAddressPlaceholder",
+              "Enter your email address"
+            )}
             size="lg"
           />
           <TextField
             name="username"
-            label="Pseudonyme"
-            placeholder="Saisir votre pseudonyme"
+            label={t("Username", "Username")}
+            placeholder={t("UsernamePlaceholder", "Pick an online trail-name")}
             size="lg"
           />
           <TextField
             name="password"
-            label="Mot de passe"
-            placeholder="Saisir votre mot de passe"
+            label={t("Password", "Password")}
+            placeholder={t("PasswordPlaceholder", "Enter your password")}
             type="password"
             size="lg"
           />

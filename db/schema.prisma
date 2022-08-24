@@ -29,6 +29,11 @@ enum Currency {
   EUR
 }
 
+enum Language {
+  EN
+  FR
+}
+
 model User {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
@@ -45,6 +50,7 @@ model User {
   cover_version  Int?
   weightUnit     WeightUnit @default(METRIC)
   currency       Currency   @default(USD)
+  language       Language   @default(EN)
   role           UserRole   @default(USER)
 
   packs      Pack[]

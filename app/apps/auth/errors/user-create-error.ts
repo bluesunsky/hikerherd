@@ -1,7 +1,7 @@
 import SuperJson from "superjson";
+import { t } from "i18next";
 
 import { Prisma } from "db";
-
 class UserCreateError extends Error {
   name = "UserCreateError";
   emailTaken = false;
@@ -9,7 +9,9 @@ class UserCreateError extends Error {
 
   constructor(error: unknown) {
     super(
-      error instanceof Error ? error.message : "There was an error signing up"
+      error instanceof Error
+        ? error.message
+        : t("UserCreateError", "There was an error signing up")
     );
 
     if (error instanceof Prisma.PrismaClientKnownRequestError) {

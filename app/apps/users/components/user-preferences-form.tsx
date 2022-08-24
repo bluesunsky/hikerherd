@@ -5,12 +5,14 @@ import { Fragment } from "react";
 
 import { useToast } from "@chakra-ui/toast";
 import { FORM_ERROR } from "final-form";
+import { t } from "i18next";
 
 import SimpleForm from "app/components/forms/components/simple-form";
 import SelectField from "app/components/forms/components/select-field";
 import TextField from "app/components/forms/components/text-field";
+import i18n from "app/i18n";
 
-import { Currency, WeightUnit } from "db";
+import { Currency, WeightUnit, Language } from "db";
 
 import useCurrentUser from "../hooks/use-current-user";
 import updatePreferencesSchema from "../schemas/update-preferences-schema";
@@ -29,14 +31,19 @@ const UserPreferencesForm: BlitzPage = () => {
         currency: user?.currency,
         firstname: user?.firstname,
         lastname: user?.lastname,
+        language: user?.language,
       }}
-      submitText="Modifier"
+      submitText={t("Save", "Save")}
       onSubmit={async (values) => {
         try {
           await updatePreferences(values);
+          i18n.changeLanguage(values.language);
           toast({
-            title: "Préférences modifiées.",
-            description: "Vos préférences d'utilisateur ont été enregistrées.",
+            title: t("UpdatePreferencesSuccess", "Preferences updated."),
+            description: t(
+              "UpdatePreferencesSuccessDescription",
+              "Your new user preferences have been saved."
+            ),
             status: "success",
           });
         } catch (error) {
@@ -50,25 +57,43 @@ const UserPreferencesForm: BlitzPage = () => {
         <Fragment>
           <TextField
             name="firstname"
-            label="Prénom"
-            placeholder="Saisir votre prénom"
+            label={t("Firstname", "Firstname")}
+            placeholder={t("FirstnamePlaceholder", "Enter your firstname")}
             size="lg"
           />
           <TextField
             name="lastname"
-            label="Nom"
-            placeholder="Saisir votre nom"
+            label={t("Lastname", "Lastname")}
+            placeholder={t("LastnamePlaceholder", "Enter your lastname")}
             size="lg"
           />
-          <SelectField name="weightUnit" label="Unité de poids">
-            <option value={WeightUnit.METRIC}>Métrique (g / kg)</option>
-            <option value={WeightUnit.IMPERIAL}>Impériale (oz / lb)</option>
+          <SelectField name="language" label={t("Language", "Language")}>
+            <option value="DE" hidden>
+              🍺 Deutsh (German)
+            </option>
+            <option value={Language.EN}>☕ English</option>
+            <option value="ES" hidden>
+              🥘 Español (Spanish)
+            </option>
+            <option value={Language.FR}>🧀 Français (French)</option>
           </SelectField>
 
-          <SelectField name="currency" label="Monnaie">
-            <option value={Currency.USD}>Dollars ($)</option>
-            <option value={Currency.GBP}>Livres Sterling (£)</option>
-            <option value={Currency.EUR}>Euros (€)</option>
+          <SelectField
+            name="weightUnit"
+            label={t("WeightUnits", "Weight units")}
+          >
+            <option value={WeightUnit.METRIC}>
+              {t("Metric", "Metric (g / kg)")}
+            </option>
+            <option value={WeightUnit.IMPERIAL}>
+              {t("Imperial", "Imperial (oz / lb)")}
+            </option>
+          </SelectField>
+
+          <SelectField name="currency" label={t("Currency", "Currency")}>
+            <option value={Currency.USD}>{t("Dollars", "Dollars ($)")}</option>
+            <option value={Currency.GBP}>{t("Pounds", "Pounds (£)")}</option>
+            <option value={Currency.EUR}>{t("Euros", "Euros (€)")}</option>
           </SelectField>
         </Fragment>
       )}

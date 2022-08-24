@@ -4,6 +4,7 @@ import { useRouter, Link, Routes } from "blitz";
 
 import { Stack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
+import { t } from "i18next";
 
 import BoxLayout from "app/layouts/box-layout";
 import TextDivider from "app/components/text-divider";
@@ -19,12 +20,12 @@ const ForgotPasswordPage: BlitzPage = () => {
         onSuccess={() => router.push(Routes.ForgotPasswordConfirmPage())}
       />
 
-      <TextDivider>Ou</TextDivider>
+      <TextDivider>{t("Or", "Or")}</TextDivider>
 
       <Stack spacing={4}>
         <Link href={Routes.LoginPage()} passHref>
           <Button as="a" isFullWidth size="lg">
-            Connexion
+            {t("Login", "Log in")}
           </Button>
         </Link>
       </Stack>
@@ -35,8 +36,11 @@ const ForgotPasswordPage: BlitzPage = () => {
 ForgotPasswordPage.redirectAuthenticatedTo = Routes.StartPage();
 ForgotPasswordPage.getLayout = (page) => (
   <BoxLayout
-    title="Mot de passé égaré ?"
-    description="Pas de soucis. Indiquez-nous votre mail et vous recevrez des instructions pour réinitialiser votre mot de passe."
+    title={t("ForgotYourPassword", "Forgot Your Password?")}
+    description={t(
+      "ForgotYourPasswordDescription",
+      "No worries. Tell us your email and you will be sent instructions for resetting your password."
+    )}
   >
     {page}
   </BoxLayout>
