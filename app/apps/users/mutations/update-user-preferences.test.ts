@@ -21,7 +21,7 @@ describe("updatePreferencesMutation", () => {
 
     await expect(
       updatePreferencesMutation(
-        { weightUnit: "IMPERIAL", currency: "EUR" },
+        { weightUnit: "IMPERIAL", currency: "EUR", language: "EN" },
         ctx
       )
     ).rejects.toThrow(AuthenticationError);
@@ -31,7 +31,7 @@ describe("updatePreferencesMutation", () => {
     const { ctx } = await createMockContext({ user });
 
     await updatePreferencesMutation(
-      { weightUnit: "IMPERIAL", currency: "EUR" },
+      { weightUnit: "IMPERIAL", currency: "EUR", language: "EN" },
       ctx
     );
 
@@ -41,5 +41,6 @@ describe("updatePreferencesMutation", () => {
 
     expect(fetched?.weightUnit).toEqual("IMPERIAL");
     expect(fetched?.currency).toEqual("EUR");
+    expect(fetched?.language).toEqual("EN");
   });
 });
