@@ -4,7 +4,6 @@ import { useContext } from "react";
 
 import { Tooltip } from "@chakra-ui/tooltip";
 import { useTranslation } from "react-i18next";
-import { Heading, HStack } from "@chakra-ui/layout";
 import { Icon } from "@chakra-ui/icon";
 import { Button } from "@chakra-ui/button";
 import {
@@ -126,10 +125,7 @@ const LngPicker: FC<LngPickerProps> = () => {
     <Tooltip label={label} whiteSpace="pre-wrap">
       <Menu>
         <MenuButton as={Button} size="sm" variant="ghost" px={1} isTruncated>
-          <HStack>
-            <Icon as={icon} w={5} h={5} />
-            <Heading size="sm" isTruncated></Heading>
-          </HStack>
+          <Icon as={icon} w={5} h={5} />
         </MenuButton>
 
         <MenuList>

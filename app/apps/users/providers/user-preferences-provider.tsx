@@ -77,6 +77,7 @@ const UserPreferencesProvider: FC<Props> = ({ children }) => {
     if (user?.weightUnit) setWeightUnit(user.weightUnit);
     if (user?.currency) setCurrency(user.currency);
     if (user?.language) setLanguage(user.language);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const toggleWeightUnits = () => {
