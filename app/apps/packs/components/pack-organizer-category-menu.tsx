@@ -3,6 +3,7 @@ import type { DragAndDropState } from "app/components/drag-and-drop/contexts/gea
 
 import { useContext } from "react";
 
+import { useTranslation } from "react-i18next";
 import { MenuItem, MenuList } from "@chakra-ui/menu";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
@@ -16,15 +17,15 @@ const PackOrganizerCategoryMenu: FC<PackOrganizerCategoryMenuProps> = ({
   category,
 }) => {
   const { editCategory, deleteCategory } = useContext(gearOrganizerContext);
-
+  const { t } = useTranslation();
   return (
     <MenuList>
       <MenuItem icon={<FaEdit />} onClick={() => editCategory(category.id)}>
-        Modifier
+        {t("EditCategory", "Edit")}
       </MenuItem>
 
       <MenuItem icon={<FaTrash />} onClick={() => deleteCategory(category.id)}>
-        Supprimer
+        {t("DeleteCategory", "Delete")}
       </MenuItem>
     </MenuList>
   );

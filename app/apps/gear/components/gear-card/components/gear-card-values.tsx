@@ -96,7 +96,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
               (quantity && quantity > 1 ? quantity + " x " : "") +
               displayWeight(weight, weightUnit) +
               " " +
-              t("InTheBackpack", "in the backpack")
+              t("InTheBackpack", "In the backpack").toLowerCase()
             }
           >
             <Tag colorScheme="teal" size="sm">
@@ -113,7 +113,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
               (quantity && quantity > 1 ? quantity + " x " : "") +
               displayWeight(weight, weightUnit) +
               " " +
-              t("OnMe", "on me")
+              t("OnOneself", "On oneself").toLowerCase()
             }
           >
             <Tag colorScheme="blue" size="sm">

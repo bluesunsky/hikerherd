@@ -4,6 +4,7 @@ import type { PromiseReturnType } from "blitz";
 import { Fragment } from "react";
 import { useQuery, useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Center, HStack } from "@chakra-ui/layout";
 import { FORM_ERROR } from "final-form";
 import { Spinner } from "@chakra-ui/spinner";
@@ -39,7 +40,7 @@ const PackForm: FC<PackFormProps> = ({
 }) => {
   const [createPack] = useMutation(createPackMutation);
   const [updatePack] = useMutation(updatePackMutation);
-
+  const { t } = useTranslation();
   const [pack, { isLoading }] = useQuery(
     packQuery,
     { id: packId },
@@ -52,8 +53,12 @@ const PackForm: FC<PackFormProps> = ({
       onClose={onClose}
       size="lg"
       schema={createPackSchema}
-      title={packId ? "Modifier un pack" : "Créer un nouveau pack"}
-      submitText={packId ? "Modifier" : "Créer"}
+      title={
+        packId
+          ? t("UpdatePack", "Update pack")
+          : t("CreatePack", "Create a new pack")
+      }
+      submitText={packId ? t("Update", "Update") : t("Create", "Create")}
       initialValues={{
         name: pack ? pack.name : "",
         notes: pack?.notes ? JSON.parse(pack.notes) : null,
@@ -72,8 +77,10 @@ const PackForm: FC<PackFormProps> = ({
           if (onSuccess) onSuccess(result);
         } catch (error: unknown) {
           return {
-            [FORM_ERROR]:
-              "Sorry, there was an unexpected error. Please try again.",
+            [FORM_ERROR]: t(
+              "UpdatePackError",
+              "Sorry, there was an unexpected error. Please try again."
+            ),
           };
         }
       }}
@@ -87,13 +94,13 @@ const PackForm: FC<PackFormProps> = ({
             <Fragment>
               <TextField
                 name="name"
-                label="Nom"
-                placeholder="Nom de votre pack"
+                label={t("PackName", "Name")}
+                placeholder={t("PackNamePlaceholder", "Name your pack")}
               />
               <EditorField
                 name="notes"
                 fontSize="md"
-                label="Description"
+                label={t("Notes", "Notes")}
                 features={{
                   image: true,
                   blockquote: true,
@@ -107,7 +114,7 @@ const PackForm: FC<PackFormProps> = ({
               <HStack>
                 <Tag colorScheme="orange" flexShrink={0}>
                   <TagLeftIcon as={FaLock} />
-                  <TagLabel>Privé ?</TagLabel>
+                  <TagLabel>{t("Private?", "Private?")}</TagLabel>
                 </Tag>
                 <CheckboxField name="private" />
               </HStack>

@@ -4,6 +4,7 @@ import type { PromiseReturnType } from "blitz";
 import { Fragment, useContext } from "react";
 import { useMutation, useQuery } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { FORM_ERROR } from "final-form";
 import { Center } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
@@ -32,7 +33,7 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
 }) => {
   const [updateGear] = useMutation(updatePackGearMutation);
   const { weightUnit } = useContext(userPreferencesContext);
-
+  const { t } = useTranslation();
   const [gearItem, { isLoading }] = useQuery(
     packGearQuery,
     { id },
@@ -64,10 +65,10 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title="Modifier un équipement"
+      title={t("EditGearTitle", "Edit gear")}
       schema={updatePackGearSchema}
       size="lg"
-      submitText="Modifier"
+      submitText={t("Update", "Update")}
       initialValues={initialValues}
       onSubmit={async (values) => {
         try {
@@ -89,8 +90,10 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
           }
         } catch (error: unknown) {
           return {
-            [FORM_ERROR]:
-              "Sorry, there was an unexpected error. Please try again.",
+            [FORM_ERROR]: t(
+              "EditGearError",
+              "Sorry, there was an unexpected error. Please try again."
+            ),
           };
         }
       }}

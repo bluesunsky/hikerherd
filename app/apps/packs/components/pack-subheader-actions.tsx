@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { useEffect, useState, Fragment, useContext } from "react";
 import { invalidateQuery, useMutation, Routes, useSession, Link } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { HStack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Icon } from "@chakra-ui/icon";
@@ -41,15 +42,17 @@ const PackSubheaderActions: FC = () => {
   const { packWeight } = useContext(packContext);
   const { totalWeight } = useContext(packContext);
   const { weightUnit } = useContext(userPreferencesContext);
-
+  const { t } = useTranslation();
   const { pack, showDetails, editPack, share } = useContext(packContext);
 
   const copyShareLink = () => {
     navigator.clipboard.writeText(packShareLink(pack.id)).then(() => {
       toast({
-        title: "Lien de partage copié.",
-        description:
-          "Le lien de partage de votre pack est dans votre presse papier.",
+        title: t("CopyLinkConfirm", "Share link copied."),
+        description: t(
+          "CopyLinkConfirmDescription",
+          "A share link for your pack has been copied to your clipboard."
+        ),
         status: "success",
       });
     });
@@ -101,7 +104,7 @@ const PackSubheaderActions: FC = () => {
         onSuccess={() => {
           invalidateQuery(packOrganizerQuery);
           toast({
-            title: "Votre inventaire a été importé",
+            title: t("ImportPack", "Your gear has been imported"),
             status: "success",
           });
         }}
@@ -112,32 +115,32 @@ const PackSubheaderActions: FC = () => {
           <SettingsMenuButton>
             <MenuList>
               <MenuItem icon={<FaEdit />} onClick={editPack}>
-                Modifier
+                {t("Edit", "Edit")}
               </MenuItem>
               <MenuItem
                 icon={<FaShare />}
-                command={pack.private ? "Privé" : ""}
+                command={pack.private ? t("Private", "Private") : ""}
                 onClick={copyShareLink}
                 isDisabled={pack.private}
               >
-                Partagé
+                {t("Share", "Share")}
               </MenuItem>
               {session.role && session.role !== "USER" && (
                 <Link href={route({ packId: pack.id })} passHref>
                   <MenuItem icon={<FaUserSecret />} as="a">
-                    Voir le pack partagé
+                    {t("SeeSharedPack", "See the shared pack")}
                   </MenuItem>
                 </Link>
               )}
               <MenuDivider />
               <MenuItem icon={<FaFileExport />} onClick={exportToCsv}>
-                Exporter vers un CSV
+                {t("ExportCSV", "Export CSV")}
               </MenuItem>
               <MenuItem
                 icon={<FaFileImport />}
                 onClick={() => setImporting(true)}
               >
-                Importer depuis un CSV
+                {t("ImportCSV", "Import CSV")}
               </MenuItem>
             </MenuList>
           </SettingsMenuButton>
@@ -147,7 +150,7 @@ const PackSubheaderActions: FC = () => {
             <MenuList>
               <Link href={route({ packId: pack.id })} passHref>
                 <MenuItem icon={<FaUserSecret />} as="a">
-                  Modérer le pack
+                  {t("ModeratePack", "Moderate pack")}
                 </MenuItem>
               </Link>
             </MenuList>
@@ -164,7 +167,9 @@ const PackSubheaderActions: FC = () => {
         >
           <Tooltip
             label={
-              displayWeight(packWeight, weightUnit, true, 2) + " dans le sac"
+              displayWeight(packWeight, weightUnit, true, 2) +
+              " " +
+              t("PackWeight", "in the packback")
             }
           >
             <Tag size="sm">
@@ -180,7 +185,9 @@ const PackSubheaderActions: FC = () => {
               </Tag>
               <Tooltip
                 label={
-                  displayWeight(baseWeight, weightUnit, true, 2) + " de base"
+                  displayWeight(baseWeight, weightUnit, true, 2) +
+                  " " +
+                  t("OfBase", "of base gears")
                 }
               >
                 <Tag colorScheme="teal" size="sm">
@@ -196,7 +203,8 @@ const PackSubheaderActions: FC = () => {
               <Tooltip
                 label={
                   displayWeight(packWeight - baseWeight, weightUnit, true, 2) +
-                  " de consommables"
+                  " " +
+                  t("OfConsumables", "of consumables")
                 }
               >
                 <Tag colorScheme="pink" size="sm">
@@ -224,7 +232,8 @@ const PackSubheaderActions: FC = () => {
               <Tooltip
                 label={
                   displayWeight(totalWeight - packWeight, weightUnit, true, 2) +
-                  " sur soi"
+                  " " +
+                  t("OnOneself", "On oneself")
                 }
               >
                 <Tag colorScheme="blue" size="sm">

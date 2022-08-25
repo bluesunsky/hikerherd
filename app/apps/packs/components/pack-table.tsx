@@ -2,6 +2,7 @@ import type { FC, ReactElement } from "react";
 
 import { useContext } from "react";
 
+import { useTranslation } from "react-i18next";
 import { IconButton } from "@chakra-ui/button";
 import { Box, Stack, Text } from "@chakra-ui/layout";
 import { Table, Thead, Tr, Th, Tbody, Td } from "@chakra-ui/table";
@@ -66,7 +67,7 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
   const { categories, totalWeight, packWeight, baseWeight, eur, usd, gbp } =
     useContext(packContext);
   const { weightUnit } = useContext(userPreferencesContext);
-
+  const { t } = useTranslation();
   return (
     <Stack w="100%" align="flex-end" spacing={6}>
       <Stack alignSelf="stretch">
@@ -74,9 +75,9 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
           <Thead>
             <Tr>
               <Th w="40px"></Th>
-              <Th>Catégorie</Th>
-              <Th isNumeric>Coût</Th>
-              <Th isNumeric>Poids</Th>
+              <Th>{t("Category", "Category")}</Th>
+              <Th isNumeric>{t("Price", "Price")}</Th>
+              <Th isNumeric>{t("Weight", "Weight")}</Th>
             </Tr>
           </Thead>
 
@@ -116,8 +117,11 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
             ))}
 
             <TotalRow
-              description="Tout, y compris les articles portés sur soi et vos consommables."
-              name="Total"
+              description={t(
+                "TotalDescription",
+                "Total including your worn items and your consumables."
+              )}
+              name={t("Total", "Total")}
               price={
                 <>
                   {eur != 0 && <Text>{withDecimalPlaces(eur / 100, 0)}€</Text>}
@@ -129,21 +133,28 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
             />
 
             <TotalRow
-              description="Prise en compte des consommables mais sans les articles portés sur soi."
-              name="Dans le sac"
+              description={t(
+                "TotalBackpack",
+                "Total including your consumables but without your worn items."
+              )}
+              name={t("InTheBackpack", "In The Backpack")}
               weight={packWeight}
             />
 
-            <TotalRow name="Base" weight={baseWeight} fontWeight="normal" />
+            <TotalRow
+              name={t("Base", "Base gears")}
+              weight={baseWeight}
+              fontWeight="normal"
+            />
 
             <TotalRow
-              name="Consommables"
+              name={t("Consumables", "Consumables")}
               weight={packWeight - baseWeight}
               fontWeight="normal"
             />
             <TotalRow
-              description="Articles portés sur soi."
-              name="Sur soi"
+              description={t("OnOneselfDescription", "Items Worn on oneself")}
+              name={t("OnOneself", "On oneself")}
               weight={totalWeight - packWeight}
             />
           </Tbody>

@@ -4,6 +4,7 @@ import type { PromiseReturnType } from "blitz";
 import { Fragment } from "react";
 import { useMutation, useQuery } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Center } from "@chakra-ui/layout";
 import { FORM_ERROR } from "final-form";
 import { Spinner } from "@chakra-ui/spinner";
@@ -37,7 +38,7 @@ const PackCategoryForm: FC<PackCategoryFormProps> = ({
 }) => {
   const [createPackCategory] = useMutation(createPackCategoryMutation);
   const [updatePackCategory] = useMutation(updatePackCategoryMutation);
-
+  const { t } = useTranslation();
   const [category, { isLoading }] = useQuery(
     packCategoryQuery,
     { id: categoryId },
@@ -48,9 +49,13 @@ const PackCategoryForm: FC<PackCategoryFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={categoryId ? "Modifier une catégorie" : "Créer une catégorie"}
+      title={
+        categoryId
+          ? t("EditCategory", "Edit category")
+          : t("CreateCategory", "Create a category")
+      }
       schema={createPackCategorySchema}
-      submitText={categoryId ? "Modifier" : "Créer"}
+      submitText={categoryId ? t("Update", "Update") : t("Create", "Create")}
       initialValues={{
         name: category ? category.name : "",
         packId,
@@ -84,7 +89,14 @@ const PackCategoryForm: FC<PackCategoryFormProps> = ({
               <Spinner />
             </Center>
           ) : (
-            <TextField name="name" label="Nom" placeholder="Nom" />
+            <TextField
+              name="name"
+              label={t("CategoryName", "Name")}
+              placeholder={t(
+                "CategoryNamePlaceholder",
+                "The name of the category"
+              )}
+            />
           )}
         </Fragment>
       )}

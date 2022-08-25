@@ -3,6 +3,7 @@ import type { BlitzPage } from "blitz";
 import { useMutation, useRouter, Routes, useQuery } from "blitz";
 import { Fragment, useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Button, IconButton } from "@chakra-ui/button";
 import { Heading, SimpleGrid, Stack, Text } from "@chakra-ui/layout";
 import { MdDelete } from "react-icons/md";
@@ -22,7 +23,7 @@ import PackCard from "../components/pack-card";
 const PacksPage: BlitzPage = () => {
   const router = useRouter();
   const toast = useToast();
-
+  const { t } = useTranslation();
   const [addingNewPack, setAddingNewPack] = useState(false);
   const [deletingPack, setDeletingPack] = useState<string | null>(null);
 
@@ -34,7 +35,7 @@ const PacksPage: BlitzPage = () => {
     onError() {
       setDeletingPack(null);
       toast({
-        title: "There was an error deleting the pack",
+        title: t("DeletePackError", "There was an error deleting the pack"),
         status: "error",
       });
     },
@@ -44,7 +45,7 @@ const PacksPage: BlitzPage = () => {
     <SidebarLayout>
       <Fragment>
         <Heading size="md" mb={6}>
-          Packs
+          {t("Packs", "Packs")}
         </Heading>
 
         {packs.length === 0 && (
@@ -56,7 +57,7 @@ const PacksPage: BlitzPage = () => {
             bg={emptyBg}
           >
             <Text size="md" opacity="0.4">
-              Vous n&lsquo;avez pas encore de pack
+              {t("NoPacksError", "You have not created any packs yet")}
             </Text>
 
             <Button
@@ -64,7 +65,7 @@ const PacksPage: BlitzPage = () => {
               leftIcon={<FaPlus />}
               colorScheme="green"
             >
-              Créer mon premier pack
+              {t("CreateFirstPack", "Create my first pack")}
             </Button>
           </Stack>
         )}
@@ -84,7 +85,7 @@ const PacksPage: BlitzPage = () => {
                 key={pack.id}
                 pack={pack}
                 actions={
-                  <Tooltip label="Supprimer ce pack">
+                  <Tooltip label={t("DeletePack", "Delete this pack")}>
                     <IconButton
                       size="sm"
                       icon={<MdDelete />}
@@ -109,7 +110,7 @@ const PacksPage: BlitzPage = () => {
               color="green.400"
               borderColor={buttonBorder}
             >
-              Créer un nouveau pack
+              {t("CreatePack", "Create new pack")}
             </Button>
           </SimpleGrid>
         )}
@@ -117,16 +118,21 @@ const PacksPage: BlitzPage = () => {
         <ConfirmModal
           isOpen={!!deletingPack}
           onClose={() => setDeletingPack(null)}
-          title="Supprimer ce pack"
-          description="Voulez-vous vraiment supprimer ce pack ? Tous les équiments et les catégories de ce pack seront également supprimés."
+          title={t("DeletePackConfirm", "Delete pack")}
+          description={t(
+            "DeletePackConfirmDescription",
+            "Are you sure? This will also delete the categories and gear inside of the pack."
+          )}
           onConfirm={async () => {
             if (deletingPack) {
               await deletePack({ id: deletingPack });
               refetch();
               toast({
-                title: "Le pack et son contenu ont été supprimés",
-                description:
-                  "Votre pack a été supprimé ainsi que les catégories et les équipements qu'elle contenait.",
+                title: t("DeletePackSuccess", "The pack was deleted"),
+                description: t(
+                  "DeletePackSuccessDescription",
+                  "Your pack was deleted along with the categories and gear inside."
+                ),
                 status: "success",
               });
             }

@@ -3,6 +3,7 @@ import type { ColorHues } from "@chakra-ui/react";
 
 import { useContext } from "react";
 
+import { useTranslation } from "react-i18next";
 import { useColorModeValue, useTheme } from "@chakra-ui/react";
 import { Stack, Heading, Text } from "@chakra-ui/layout";
 
@@ -38,14 +39,19 @@ const PackAnalytics: FC = () => {
   );
 
   const isEmpty = !categories.find(({ weight }) => !!weight);
-
+  const { t } = useTranslation();
   const bg = useColorModeValue("gray.50", "gray.800");
 
   if (isEmpty) {
     return (
       <Stack p={5} bg={bg}>
-        <Heading size="md">Votre pack est vide</Heading>
-        <Text>Vous devez ajouter des équipements...</Text>
+        <Heading size="md">{t("PackEmpty", "This pack is empty")}</Heading>
+        <Text>
+          {t(
+            "PackEmptyDescription",
+            "You need to add some gear to the pack before you can view analytics"
+          )}
+        </Text>
       </Stack>
     );
   }

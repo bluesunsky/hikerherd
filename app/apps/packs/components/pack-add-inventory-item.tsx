@@ -6,6 +6,7 @@ import type { PromiseReturnType } from "blitz";
 import { useMemo, useState } from "react";
 import { useQuery } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Tooltip } from "@chakra-ui/tooltip";
 import Fuse from "fuse.js";
 import { SimpleGrid, Stack, Heading, Box } from "@chakra-ui/layout";
@@ -36,7 +37,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
 }) => {
   const [query, setQuery] = useState("");
   const [isAddingTo, setIsAddingTo] = useState<string | null>(null);
-
+  const { t } = useTranslation();
   const bg = useColorModeValue("gray.50", "gray.600");
   const fg = useColorModeValue("white", "gray.700");
   const border = useColorModeValue("gray.200", "gray.800");
@@ -122,7 +123,12 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                     purchaseDate={item.gear.purchaseDate}
                   >
                     {usedItems.some((id) => id == item.gear.id) && (
-                      <Tooltip label="L'équipement est déjà dans le pack">
+                      <Tooltip
+                        label={t(
+                          "GearAlreadyInside",
+                          "This gear is already in the pack"
+                        )}
+                      >
                         <Button
                           size="sm"
                           colorScheme="gray"
@@ -135,7 +141,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                             });
                           }}
                         >
-                          Ajouter
+                          {t("Add", "Add")}
                         </Button>
                       </Tooltip>
                     )}
@@ -152,7 +158,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                           });
                         }}
                       >
-                        Ajouter
+                        {t("Add", "Add")}
                       </Button>
                     )}
                   </GearCard>

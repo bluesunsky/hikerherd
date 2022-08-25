@@ -150,15 +150,15 @@ adventures.",
 
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mt={12}>
             <IconCard
-              icon={FcList}
-              title={t("Inventory", "Inventory")}
-              text={t("InventoryDescription", "Manage your backpacking gear")}
-            />
-
-            <IconCard
               icon={FcRating}
               title={t("WishList", "Wish list")}
               text={t("WishListDescription", "Track the gear you want to buy")}
+            />
+
+            <IconCard
+              icon={FcList}
+              title={t("Inventory", "Inventory")}
+              text={t("InventoryDescription", "Manage your backpacking gear")}
             />
 
             <IconCard

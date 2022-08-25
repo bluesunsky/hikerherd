@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { useMutation } from "blitz";
 
 import { useToast } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 import reorder from "app/components/drag-and-drop/helpers/reorder";
 import reorderNested from "app/components/drag-and-drop/helpers/reorder-nested";
@@ -27,7 +28,7 @@ const PackOrganizerDragAndDrop: FC = () => {
     editItem,
   } = useContext(gearOrganizerContext);
   const toast = useToast();
-
+  const { t } = useTranslation();
   const [movePackCategory] = useMutation(movePackCategoryMutation);
   const [movePackGear] = useMutation(movePackGearMutation);
 
@@ -79,8 +80,11 @@ const PackOrganizerDragAndDrop: FC = () => {
     } catch (err) {
       refetch();
       toast({
-        title: "Something went wrong",
-        description: "There was a problem moving that item.",
+        title: t("ItemDropError", "Something went wrong"),
+        description: t(
+          "ItemDropErrorDescription",
+          "There was a problem moving that item."
+        ),
         status: "error",
       });
     }

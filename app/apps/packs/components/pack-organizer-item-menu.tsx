@@ -4,6 +4,7 @@ import type { DragAndDropState } from "app/components/drag-and-drop/contexts/gea
 import { useContext } from "react";
 import { useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { MenuItem, MenuList } from "@chakra-ui/menu";
 import { FaEdit, FaTrash, FaTshirt, FaWeightHanging } from "react-icons/fa";
 
@@ -18,7 +19,7 @@ type PackOrganizerItemMenuProps = {
 
 const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
   const { refetch, editItem, deleteItem } = useContext(gearOrganizerContext);
-
+  const { t } = useTranslation();
   const [toggleWorn] = useMutation(togglePackGearWornMutation);
   const [updateQuantity, { isLoading }] = useMutation(
     updatePackGearQuantityMutation
@@ -26,11 +27,11 @@ const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
   return (
     <MenuList>
       <MenuItem icon={<FaEdit />} onClick={() => editItem(item.id)}>
-        Modifier
+        {t("EditGear", "Edit")}
       </MenuItem>
 
       <MenuItem icon={<FaTrash />} onClick={() => deleteItem(item.id)}>
-        Supprimer
+        {t("DeleteGear", "Delete")}
       </MenuItem>
 
       {item.worn && (
@@ -41,7 +42,7 @@ const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
             refetch();
           }}
         >
-          Mettre dans le sac
+          {t("PutInBag", "Put it in the backpack")}
         </MenuItem>
       )}
       {!item.worn && (
@@ -52,7 +53,7 @@ const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
             refetch();
           }}
         >
-          Porter sur soi
+          {t("WormIt", "Worm it")}
         </MenuItem>
       )}
       <QuantityPicker

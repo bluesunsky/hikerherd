@@ -5,6 +5,7 @@ import type { BoxProps } from "@chakra-ui/layout";
 import { useContext } from "react";
 import { Link, Routes } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { format } from "date-fns";
 import { useColorModeValue } from "@chakra-ui/react";
 import { Tooltip } from "@chakra-ui/tooltip";
@@ -51,7 +52,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
   ...props
 }) => {
   const { weightUnit } = useContext(userPreferencesContext);
-
+  const { t } = useTranslation();
   const route = shareLink ? Routes.PackSharePage : Routes.PackPage;
   const updateBgColor = useColorModeValue(
     "rgba(0,0,0,0.05)",
@@ -88,7 +89,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
           <Tag colorScheme="white" size="sm" padding="0px" minW="0px">
             <TagLabel> ( </TagLabel>
           </Tag>
-          <Tooltip label="Poids du sac">
+          <Tooltip label={t("BaseWeight", "Base weight")}>
             <Tag colorScheme="teal" size="sm">
               <TagLeftIcon as={FaWeightHanging} />
               <TagLabel>
@@ -99,7 +100,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
           <Tag colorScheme="white" size="sm" padding="0px" minW="0px">
             <TagLabel> + </TagLabel>
           </Tag>
-          <Tooltip label="Poids des consommables">
+          <Tooltip label={t("ConsumableWeight", "Consumable weight")}>
             <Tag colorScheme="pink" size="sm">
               <TagLeftIcon as={FaHamburger} />
               <TagLabel>
@@ -118,7 +119,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
           </Tag>
         </HStack>
         <HStack marginTop="10px !important">
-          <Tooltip label="Poids sur soi">
+          <Tooltip label={t("WornWeight", "Worn weight")}>
             <Tag colorScheme="blue" size="sm">
               <TagLeftIcon as={FaTshirt} />
               <TagLabel>
@@ -129,7 +130,7 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
         </HStack>
 
         <HStack justifyContent="space-between" mt={2} width="100%">
-          <Tooltip label="Mise à jour">
+          <Tooltip label={t("UpdateTime", "Update time")}>
             <Tag size="sm" borderRadius="full" bg={updateBgColor}>
               <Icon as={FaCalendarAlt} />
               &nbsp;

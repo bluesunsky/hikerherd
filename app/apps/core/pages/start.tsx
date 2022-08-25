@@ -60,17 +60,17 @@ const StartPage: BlitzPage = () => {
           </Heading>
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
             <IndexCard
-              icon={FcList}
-              href={Routes.InventoryPage()}
-              title={t("Inventory", "Inventory")}
-              text={t("InventoryDescription", "Manage your backpacking gear")}
-            />
-
-            <IndexCard
               icon={FcRating}
               href={Routes.WishListPage()}
               title={t("WishList", "Wish list")}
               text={t("WishListDescription", "Track the gear you want to buy")}
+            />
+
+            <IndexCard
+              icon={FcList}
+              href={Routes.InventoryPage()}
+              title={t("Inventory", "Inventory")}
+              text={t("InventoryDescription", "Manage your backpacking gear")}
             />
 
             <IndexCard

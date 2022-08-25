@@ -87,11 +87,11 @@ const Navigation: FC = () => {
         </NavigationSection>
 
         <NavigationSection title={t("GearTools", "Gear tools")}>
-          <NavigationItem route={Routes.InventoryPage()} icon={FcList}>
-            {t("Inventory", "Inventory")}
-          </NavigationItem>
           <NavigationItem route={Routes.WishListPage()} icon={FcRating}>
             {t("WishList", "Wish list")}
+          </NavigationItem>
+          <NavigationItem route={Routes.InventoryPage()} icon={FcList}>
+            {t("Inventory", "Inventory")}
           </NavigationItem>
           <NavigationItem route={Routes.PacksPage()} icon={FcTimeline}>
             {t("Packs", "Packs")}

@@ -2,6 +2,7 @@ import type { FC } from "react";
 
 import { useContext } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Box, HStack } from "@chakra-ui/layout";
 import { Droppable } from "react-beautiful-dnd";
 import { Button } from "@chakra-ui/button";
@@ -17,7 +18,7 @@ import HorizontalScroller from "./horizontal-scroller";
 const CategoryDropZone: FC = () => {
   const { addCategory, state, readonly, username } =
     useContext(dragAndDropContext);
-
+  const { t } = useTranslation();
   const { categories } = useCalculatePackTotals(state);
 
   const dragColor = useColorModeValue("blue.200", "blue.700");
@@ -73,7 +74,7 @@ const CategoryDropZone: FC = () => {
                     width="400px"
                     maxWidth="calc(100vw - 10px)"
                   >
-                    Nouvelle catégorie
+                    {t("NewCategory", "New category")}
                   </Button>
                 </Box>
               )}
