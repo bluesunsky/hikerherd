@@ -58,7 +58,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
             name="email"
             label={t("EmailAddress", "Email address")}
             placeholder={t(
-              "EmailAddressLoginPlaceholder",
+              "EmailAddressPlaceholder",
               "Enter your email address"
             )}
             size="lg"

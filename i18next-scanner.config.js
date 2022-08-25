@@ -37,7 +37,7 @@ module.exports = {
         sourceType: "module", // defaults to 'module'
       },
     },
-    lngs: ["EN", "FR"],
+    lngs: ["DE", "EN", "ES", "FR", "IT", "US"],
     ns: ["resource"],
     defaultLng: "EN",
     defaultNs: "resource",

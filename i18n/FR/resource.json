@@ -49,7 +49,6 @@
   "EmailAddress": "Adresse mail",
   "EmailAddressAlreadyUsedError": "Ce mail est déjà utilisé. Essayer de vous connecter avec.",
   "EmailAddressForgetPasswordPlaceholder": "Saisir l'adresse mail associée à votre compte",
-  "EmailAddressLoginPlaceholder": "Saisir votre adresse mail",
   "EmailAddressPlaceholder": "Saisir votre mot de passe",
   "EnTo": "You'r using engish version. \nClick to change language",
   "EnToFr": "Vous utilisez la version anglaise. \nCliquez pour utiliser la version française",

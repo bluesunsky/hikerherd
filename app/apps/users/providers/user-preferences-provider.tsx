@@ -1,19 +1,26 @@
 import type { FC } from "react";
 
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+  //useContext
+} from "react";
+import { useMutation } from "blitz";
 
+import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
 import i18n from "app/i18n";
 
 import { Language, WeightUnit, Currency } from "db";
 
 import useCurrentUser from "../hooks/use-current-user";
-import userPreferencesContext from "../contexts/user-preferences-context";
+import updateLanguageMutation from "../mutations/update-language-mutation";
 type Props = {
   children?: React.ReactNode;
 };
 const UserPreferencesProvider: FC<Props> = ({ children }) => {
   const user = useCurrentUser({ suspense: false });
-
+  const [updateLanguage] = useMutation(updateLanguageMutation);
+  //const { setLanguage } = useContext(userPreferencesContext);
   const [weightUnit, setWeightUnit] = useState<WeightUnit>(
     user?.weightUnit || WeightUnit.METRIC
   );
@@ -48,6 +55,24 @@ const UserPreferencesProvider: FC<Props> = ({ children }) => {
 
   const [language, changeLanguage] = useState<Language>(userlanguage);
 
+  const setLanguage = (language: Language) => {
+    i18n.changeLanguage(language);
+    changeLanguage(language);
+    localStorage.setItem("lng", language);
+
+    if (user) {
+      const values = {
+        language: language,
+      };
+      try {
+        return updateLanguage(values);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    return;
+  };
+
   useEffect(() => {
     if (user?.weightUnit) setWeightUnit(user.weightUnit);
     if (user?.currency) setCurrency(user.currency);
@@ -61,13 +86,6 @@ const UserPreferencesProvider: FC<Props> = ({ children }) => {
         : WeightUnit.METRIC;
 
     setWeightUnit(newWeightUnit);
-  };
-
-  const setLanguage = (language: Language) => {
-    i18n.changeLanguage(language);
-    changeLanguage(language);
-    localStorage.setItem("lng", language);
-    console.log(language);
   };
 
   return (

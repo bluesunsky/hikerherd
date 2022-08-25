@@ -2,6 +2,10 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import languageDetector from "i18next-browser-languagedetector";
 
+import common_de from "i18n/DE/resource.json";
+import common_es from "i18n/ES/resource.json";
+import common_it from "i18n/IT/resource.json";
+import common_us from "i18n/US/resource.json";
 import common_fr from "i18n/FR/resource.json";
 import common_en from "i18n/EN/resource.json";
 
@@ -46,11 +50,23 @@ i18n
     interpolation: { escapeValue: false }, // React already does escaping
     //lng: "EN", // language to use
     resources: {
+      DE: {
+        translation: common_de,
+      },
       EN: {
-        translation: common_en, // 'common' is our custom namespace
+        translation: common_en,
+      },
+      ES: {
+        translation: common_es,
       },
       FR: {
         translation: common_fr,
+      },
+      IT: {
+        translation: common_it,
+      },
+      US: {
+        translation: common_us,
       },
     },
   });
