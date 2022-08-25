@@ -9,7 +9,7 @@ const HeaderIconButton: FC<{
   icon: ReactElement;
 }> = ({ label, onClick, icon }) => {
   return (
-    <Tooltip label={label}>
+    <Tooltip label={label} whiteSpace="pre-wrap">
       <IconButton
         size="sm"
         variant="ghost"

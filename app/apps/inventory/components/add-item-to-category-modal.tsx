@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { useState } from "react";
 import { useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { FcPlus, FcSearch } from "react-icons/fc";
 import { useToast } from "@chakra-ui/toast";
 import { Button } from "@chakra-ui/button";
@@ -25,6 +26,7 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
   onClose,
   onSuccess,
 }) => {
+  const { t } = useTranslation();
   const toast = useToast();
   const [addToInventory] = useMutation(addToInventoryMutation);
   const [isAdding, setIsAdding] = useState<string | null>(null);
@@ -33,8 +35,8 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
     setIsAdding(null);
     onSuccess();
     toast({
-      title: "Succès",
-      description: "L'élément a été ajouté.",
+      title: t("Success", "Success"),
+      description: t("AddItemSuccess", "The item has been added."),
       status: "success",
     });
     onClose();
@@ -46,7 +48,7 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
       onClose={onClose}
       tabs={[
         {
-          title: "Nouveau",
+          title: t("New", "New"),
           icon: FcPlus,
           content: (
             <AddCategoryGearForm
@@ -57,7 +59,7 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
           ),
         },
         {
-          title: "Recherche",
+          title: t("Search", "Search"),
           icon: FcSearch,
           content: (
             <GlobalGearSearch
@@ -78,7 +80,7 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
                     }
                   }}
                 >
-                  Ajouter
+                  {t("Add", "Add")}
                 </Button>
               )}
             />

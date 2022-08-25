@@ -14,22 +14,22 @@ const DiscoverUsersPage: BlitzPage = () => {
   const textColor = useColorModeValue("gray.600", "gray.400");
 
   return (
-    <Fragment>
-      <Heading mb={4} size="md">
-        Utilisateurs
-      </Heading>
+    <SidebarLayout>
+      <Fragment>
+        <Heading mb={4} size="md">
+          Utilisateurs
+        </Heading>
 
-      <Text mb={5} color={textColor}>
-        Rechercher des utilisateurs de Pack your pack.
-      </Text>
+        <Text mb={5} color={textColor}>
+          Rechercher des utilisateurs de Pack your pack.
+        </Text>
 
-      <Card>
-        <GlobalUsersSearch />
-      </Card>
-    </Fragment>
+        <Card>
+          <GlobalUsersSearch />
+        </Card>
+      </Fragment>
+    </SidebarLayout>
   );
 };
-
-DiscoverUsersPage.getLayout = (page) => <SidebarLayout>{page}</SidebarLayout>;
 
 export default DiscoverUsersPage;

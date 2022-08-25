@@ -3,6 +3,7 @@ import type { Currency } from "db";
 
 import { memo, useContext } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Wrap } from "@chakra-ui/layout";
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/tag";
 import { FaTag, FaWeightHanging, FaTshirt, FaClock } from "react-icons/fa";
@@ -22,24 +23,24 @@ type GearCardValuesProps = {
   purchaseDate?: Date | null;
 };
 
-const months = [
-  "janvier",
-  "février",
-  "mars",
-  "avril",
-  "mai",
-  "juin",
-  "juillet",
-  "août",
-  "septembre",
-  "octobre",
-  "novembre",
-  "décembre",
-];
 const GearCardValues: FC<GearCardValuesProps> = memo(
   ({ weight, price, currency, quantity, worn, purchaseDate }) => {
     const { weightUnit } = useContext(userPreferencesContext);
-
+    const { t } = useTranslation();
+    const months = [
+      t("Month01", "january"),
+      t("Month02", "february"),
+      t("Month03", "march"),
+      t("Month04", "april"),
+      t("Month05", "may"),
+      t("Month06", "june"),
+      t("Month07", "july"),
+      t("Month08", "august"),
+      t("Month09", "september"),
+      t("Month10", "october"),
+      t("Month11", "november"),
+      t("Month12", "december"),
+    ];
     var age = "";
     if (purchaseDate) {
       var today = new Date();
@@ -60,20 +61,24 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
           y--;
         }
         if (m < 0) m += 12;
+        // the plurial rules are not the same regarding languages
         if (y > 0) {
           if (y < 10) y = Math.round((y + m / 12) * 10) / 10;
-
-          if (y >= 2) age += y + " ans";
-          else age += y + " an";
+          if (y == 1) age += y + " " + t("Year", "year");
+          else if (y >= 2) age += y + " " + t("Years", "years");
+          else age += y + " " + t("Year(s)", "years");
         }
         if (!age) {
-          if (m > 0) age += " " + m + " mois";
+          if (m == 1) age += " " + m + " " + t("Month", "month");
+          else if (m >= 2) age += " " + m + " " + t("Months", "months");
+          else if (m > 0) age += " " + m + " " + t("Month(s)", "months");
         }
         if (!age) {
-          if (d > 1) age += " " + d + " jours";
-          else if (d > 0) age += " " + d + " jour";
+          if (d == 1) age += " " + d + " " + t("Day", "day");
+          else if (d >= 2) age += " " + d + " " + t("Days", "days");
+          else if (d > 0) age += " " + d + " " + t("Day(s)", "days");
         }
-        if (!age) age = "Aujourd'hui";
+        if (!age) age = t("Today", "Today");
       }
     }
 
@@ -90,7 +95,8 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
             label={
               (quantity && quantity > 1 ? quantity + " x " : "") +
               displayWeight(weight, weightUnit) +
-              " dans le sac"
+              " " +
+              t("InTheBackpack", "in the backpack")
             }
           >
             <Tag colorScheme="teal" size="sm">
@@ -106,7 +112,8 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
             label={
               (quantity && quantity > 1 ? quantity + " x " : "") +
               displayWeight(weight, weightUnit) +
-              " sur soi"
+              " " +
+              t("OnMe", "on me")
             }
           >
             <Tag colorScheme="blue" size="sm">
@@ -140,7 +147,7 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
         )}
 
         {(quantity === 0 || (quantity && quantity > 1)) && (
-          <Tooltip label="Quantité">
+          <Tooltip label={t("Quantity", "Quantity")}>
             <Tag colorScheme="orange" size="sm">
               <TagLeftIcon as={GrClose} />
               <TagLabel>{quantity}</TagLabel>
@@ -151,11 +158,14 @@ const GearCardValues: FC<GearCardValuesProps> = memo(
         {purchaseDate && (
           <Tooltip
             label={
-              "Acheté en " +
+              t("BoughtIn", "Bought in") +
+              " " +
               purchasePeriod +
               (age
                 ? ", " +
-                  (age == "Aujourd'hui" ? "aujourd'hui" : "il y a " + age)
+                  (age == t("Today", "Today")
+                    ? age.toLowerCase()
+                    : t("Ago", "{{age}} ago", { age: age }))
                 : "")
             }
           >

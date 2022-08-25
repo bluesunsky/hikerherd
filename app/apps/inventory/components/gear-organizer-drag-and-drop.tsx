@@ -5,6 +5,7 @@ import type { CategoryType } from "db";
 import { useContext } from "react";
 import { useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { useToast } from "@chakra-ui/react";
 
 import DragAndDrop from "app/components/drag-and-drop/components/drag-and-drop";
@@ -37,7 +38,7 @@ const GearOrganizerDragAndDrop: FC<GearOrganizerDragAndDropProps> = ({
     editItem,
   } = useContext(gearOrganizerContext);
   const toast = useToast();
-
+  const { t } = useTranslation();
   const [moveCategory] = useMutation(moveCategoryMutation);
   const [moveGear] = useMutation(moveCategoryGearMutation);
 
@@ -89,8 +90,11 @@ const GearOrganizerDragAndDrop: FC<GearOrganizerDragAndDropProps> = ({
     } catch (err) {
       refetch();
       toast({
-        title: "Something went wrong",
-        description: "There was a problem moving that item.",
+        title: t("ItemDropError", "Something went wrong"),
+        description: t(
+          "ItemDropErrorDescription",
+          "There was a problem moving that item."
+        ),
         status: "error",
       });
     }

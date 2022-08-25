@@ -3,6 +3,7 @@ import type { IconType } from "react-icons";
 
 import { Link, Routes, useQuery } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Heading, HStack } from "@chakra-ui/layout";
 import { Icon } from "@chakra-ui/icon";
 import { Button } from "@chakra-ui/button";
@@ -25,7 +26,7 @@ type PackPickerProps = {
 
 const PackPicker: FC<PackPickerProps> = ({ icon, title }) => {
   const [packs] = useQuery(packsQuery, {}, { suspense: false });
-
+  const { t } = useTranslation();
   return (
     <Menu>
       <MenuButton
@@ -47,12 +48,12 @@ const PackPicker: FC<PackPickerProps> = ({ icon, title }) => {
       <MenuList>
         <Link href={Routes.InventoryPage()} passHref>
           <MenuItem as="a" icon={<FcList />}>
-            Inventaire
+            {t("Inventory", "Inventory")}
           </MenuItem>
         </Link>
         <Link href={Routes.WishListPage()} passHref>
           <MenuItem as="a" icon={<FcRating />}>
-            Souhaits
+            {t("WishList", "Whish list")}
           </MenuItem>
         </Link>
 

@@ -5,6 +5,7 @@ import type { PromiseReturnType } from "blitz";
 import { Fragment } from "react";
 import { useMutation, useQuery } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Center } from "@chakra-ui/layout";
 import { FORM_ERROR } from "final-form";
 import { Spinner } from "@chakra-ui/spinner";
@@ -38,7 +39,7 @@ const CategoryForm: FC<CategoryFormProps> = ({
 }) => {
   const [createCategory] = useMutation(createCategoryMutation);
   const [updateCategory] = useMutation(updateCategoryMutation);
-
+  const { t } = useTranslation();
   const [category, { isLoading }] = useQuery(
     getCategoryQuery,
     { id: categoryId },
@@ -51,11 +52,13 @@ const CategoryForm: FC<CategoryFormProps> = ({
       onClose={onClose}
       title={
         categoryId
-          ? `Modifier ${category ? category.name : ""}`
-          : "Créer une nouvelle catégorie"
+          ? t("UpdateCategory", "Editing {{categoryname}}", {
+              categoryname: category ? category.name : "",
+            })
+          : t("CreateCategory", "Create a new category")
       }
       schema={createCategorySchema}
-      submitText={categoryId ? "Modifier" : "Créer"}
+      submitText={categoryId ? t("Update", "Update") : t("Create", "Create")}
       initialValues={{
         name: category ? category.name : "",
         type,
@@ -77,8 +80,10 @@ const CategoryForm: FC<CategoryFormProps> = ({
           }
         } catch (error: unknown) {
           return {
-            [FORM_ERROR]:
-              "Sorry, there was an unexpected error. Please try again.",
+            [FORM_ERROR]: t(
+              "SaveCategoryError",
+              "Sorry, there was an unexpected error. Please try again."
+            ),
           };
         }
       }}
@@ -91,8 +96,11 @@ const CategoryForm: FC<CategoryFormProps> = ({
           ) : (
             <TextField
               name="name"
-              label="Nom"
-              placeholder="Nom de la catégorie"
+              label={t("CategoryName", "Name")}
+              placeholder={t(
+                "CategoryNamePlaceholder",
+                "The name of the category"
+              )}
             />
           )}
         </Fragment>

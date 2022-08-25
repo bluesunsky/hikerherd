@@ -2,6 +2,7 @@ import type { BlitzPage } from "blitz";
 
 import { Link, useRouter, Routes } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Stack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
@@ -14,38 +15,42 @@ import SignupForm from "../components/signup-form";
 const SignupPage: BlitzPage = () => {
   const router = useRouter();
   const toast = useToast();
-
+  const { t } = useTranslation();
   return (
-    <Stack spacing={8}>
-      <SignupForm
-        onSuccess={(user) => {
-          router.push(Routes.StartPage());
-          toast({
-            title: "Bienvenue dans Pack your pack",
-            description: `Bonjour ${user.username}.`,
-            status: "success",
-          });
-        }}
-      />
+    <BoxLayout
+      title={t("Signup", "Sign up")}
+      description={t(
+        "SignupDescription",
+        "You are at the trailhead, time to take your first step."
+      )}
+    >
+      <Stack spacing={8}>
+        <SignupForm
+          onSuccess={(user) => {
+            router.push(Routes.StartPage());
+            toast({
+              title: t("WelcomeTo", "Welcome to {{appliname}}", {
+                appliname: t("AppliName"),
+              }),
+              description: t("HiUser", "Hi {{username}}", {
+                username: user.username,
+              }),
+              status: "success",
+            });
+          }}
+        />
 
-      <TextDivider>Or</TextDivider>
-      <Link href={Routes.LoginPage()} passHref>
-        <Button size="lg" as="a">
-          Connexion
-        </Button>
-      </Link>
-    </Stack>
+        <TextDivider>{t("Or", "Or")}</TextDivider>
+        <Link href={Routes.LoginPage()} passHref>
+          <Button size="lg" as="a">
+            {t("Login", "Log in")}
+          </Button>
+        </Link>
+      </Stack>
+    </BoxLayout>
   );
 };
 
 SignupPage.redirectAuthenticatedTo = Routes.StartPage();
-SignupPage.getLayout = (page) => (
-  <BoxLayout
-    title="Enregistrement"
-    description="Il est temps de faire vos premiers pas."
-  >
-    {page}
-  </BoxLayout>
-);
 
 export default SignupPage;

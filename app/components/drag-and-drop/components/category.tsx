@@ -4,6 +4,7 @@ import type { DraggableProvided } from "react-beautiful-dnd";
 
 import { useContext, useMemo } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Button, IconButton } from "@chakra-ui/button";
 import { Tag, TagLeftIcon, TagLabel } from "@chakra-ui/tag";
 import { HStack, Heading, Box, Flex } from "@chakra-ui/layout";
@@ -52,7 +53,7 @@ const Category: BlitzPage<CategoryProps> = ({
     username,
   } = useContext(dragAndDropContext);
   const { weightUnit } = useContext(userPreferencesContext);
-
+  const { t } = useTranslation();
   const bg = useColorModeValue("white", "gray.700");
   const borderColor = useColorModeValue("gray.200", "gray.800");
   const borderWidth = useColorModeValue("2px", "1px");
@@ -106,9 +107,9 @@ const Category: BlitzPage<CategoryProps> = ({
                 ? category.items.length +
                   " " +
                   (category.items.length == 1
-                    ? "équipement différent"
-                    : "équipements différents")
-                : "Aucun équipement"
+                    ? t("DifferentGear", "different gear")
+                    : t("DifferentGears", "different gears"))
+                : t("NoGear", "No gear")
             }
           >
             <Tag colorScheme="gray" size="sm">
@@ -120,7 +121,8 @@ const Category: BlitzPage<CategoryProps> = ({
           {!hideCategoryTotals && category.baseWeight && (
             <Tooltip
               label={
-                "Poids de base : " +
+                t("WeightBase", "Base weight:") +
+                " " +
                 displayWeight(category.baseWeight, weightUnit, true)
               }
             >
@@ -135,7 +137,8 @@ const Category: BlitzPage<CategoryProps> = ({
           {!hideCategoryTotals && category.consumableWeight && (
             <Tooltip
               label={
-                "Poids des consommables : " +
+                t("WeightConsumable", "Consumable weight:") +
+                " " +
                 displayWeight(category.consumableWeight, weightUnit, true)
               }
             >
@@ -155,7 +158,7 @@ const Category: BlitzPage<CategoryProps> = ({
           {!hideCategoryTotals && category.wornWeight && (
             <Tooltip
               label={
-                "Poids sur soi : " +
+                t("WeightWorn", "Worn weight:") +
                 displayWeight(category.wornWeight, weightUnit, true)
               }
             >
@@ -171,7 +174,8 @@ const Category: BlitzPage<CategoryProps> = ({
           {category.eur && (
             <Tooltip
               label={
-                "Part du prix en Euros : " +
+                t("EurSharePrice", "Price share in euros:") +
+                " " +
                 withDecimalPlaces(Number(category.eur) / 100, 2) +
                 "€"
               }
@@ -187,7 +191,8 @@ const Category: BlitzPage<CategoryProps> = ({
           {category.usd && (
             <Tooltip
               label={
-                "Part du prix en Dollars : $" +
+                t("UsdSharePrice", "Price share in dollars:") +
+                " $" +
                 withDecimalPlaces(Number(category.usd) / 100, 2)
               }
             >
@@ -202,7 +207,8 @@ const Category: BlitzPage<CategoryProps> = ({
           {category.gbp && (
             <Tooltip
               label={
-                "Part du prix en Livres Sterling : " +
+                t("GbpSharePrice", "Price share in pounds:") +
+                " " +
                 withDecimalPlaces(Number(category.gbp) / 100, 2) +
                 "£"
               }
@@ -240,7 +246,7 @@ const Category: BlitzPage<CategoryProps> = ({
             onClick={() => addItemToCategory(category.id)}
             colorScheme="blue"
           >
-            Ajouter
+            {t("Add", "Add")}
           </Button>
         </Box>
       )}

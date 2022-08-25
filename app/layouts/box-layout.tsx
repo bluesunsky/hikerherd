@@ -3,9 +3,12 @@ import type { BlitzLayout } from "blitz";
 import { Routes, Link } from "blitz";
 import { Fragment } from "react";
 
+import { useTranslation } from "react-i18next";
 import { useColorModeValue } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/button";
 import { Flex, Box, Heading, Text, Stack } from "@chakra-ui/layout";
+
+import Header from "app/components/header/components/header";
 
 import Seo from "../components/seo";
 
@@ -21,14 +24,15 @@ const BoxLayout: BlitzLayout<BoxLayoutProps> = ({
 }) => {
   const background = useColorModeValue("gray.100", "gray.900");
   const boxBackground = useColorModeValue("white", "gray.700");
-
+  const { t } = useTranslation();
   return (
     <Fragment>
       <Seo title={title} description={description} />
+      <Header />
 
       <Flex
         w="100%"
-        minH="100vh"
+        minH="calc(100vh - 60px)"
         align="center"
         justify="center"
         direction="column"
@@ -58,7 +62,7 @@ const BoxLayout: BlitzLayout<BoxLayoutProps> = ({
 
             <Link href={Routes.HomePage()} passHref>
               <Button as="a" size="lg" isFullWidth>
-                Retour à l&lsquo;accueil
+                {t("GoBackHome", "Go back home")}
               </Button>
             </Link>
           </Stack>

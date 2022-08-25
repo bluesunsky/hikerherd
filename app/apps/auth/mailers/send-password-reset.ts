@@ -13,16 +13,16 @@ const sendPasswordReset = (user: User, { token }: SendPasswordResetOptions) => {
   const resetUrl = `${APP_ORIGIN}/reset-password?token=${token}`;
 
   return postmark.sendEmailWithTemplate({
-    From: t("AppliMail", "packyourpack@serant.fr"),
+    From: t("AppliMail"),
     To: user.email,
     TemplateAlias: "password-reset",
     TemplateModel: {
       product_url: APP_ORIGIN,
-      product_name: t("AppliName", "Pack your pack"),
+      product_name: t("AppliName"),
       name: user.username,
       action_url: resetUrl,
-      company_name: t("AppliName", "Pack your pack"),
-      company_address: t("AppliUrl", "https://pack.serant.fr"),
+      company_name: t("AppliName"),
+      company_address: t("AppliUrl"),
     },
   });
 };

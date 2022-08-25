@@ -23,14 +23,13 @@ import InventorySubheader from "../../../components/inventory-subheader";
 
 const InventorySharePage: BlitzPage = () => {
   const router = useRouter();
-  return <GearOrganizer type="INVENTORY" username={router.query.username} />;
+  return (
+    <FixedLayout subheader={<InventorySubheader type="INVENTORY" />}>
+      <GearOrganizer type="INVENTORY" username={router.query.username} />
+    </FixedLayout>
+  );
 };
 
 InventorySharePage.authenticate = { redirectTo: Routes.LoginPage() };
-InventorySharePage.getLayout = (page) => (
-  <FixedLayout subheader={<InventorySubheader type="INVENTORY" />}>
-    {page}
-  </FixedLayout>
-);
 
 export default InventorySharePage;

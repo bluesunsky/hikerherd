@@ -4,6 +4,7 @@ import type { CategoryType } from "db";
 import { useState } from "react";
 import { invalidateQuery, useMutation, useRouter } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Heading, HStack } from "@chakra-ui/layout";
 import { MenuItem, MenuList } from "@chakra-ui/menu";
 import { FaFileExport, FaFileImport } from "react-icons/fa";
@@ -26,8 +27,12 @@ type InventorySubheaderProps = {
 };
 
 const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
+  const { t } = useTranslation();
   const router = useRouter();
-  const title = type === "INVENTORY" ? "Inventaire" : "Souhaits";
+  const title =
+    type === "INVENTORY"
+      ? t("Inventory", "Inventory")
+      : t("WishList", "Wish list");
   const icon = type === "INVENTORY" ? FcList : FcRating;
 
   const toast = useToast();
@@ -39,15 +44,19 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
     const csv = await exportCsv({ type });
     downloadCsv(type.toLowerCase(), csv);
   };
-  var username = router.query.username;
+  const username = router.query.username;
   if (typeof username == "string") {
-    username = username.charAt(0).toUpperCase() + username.slice(1);
+    var listname = t("UsersList", "{{username}}'s {{title}}", {
+      username: username.charAt(0).toUpperCase() + username.slice(1),
+      title: title.toLowerCase(),
+    });
+    listname = listname.charAt(0).toUpperCase() + listname.slice(1);
     return (
       <Subheader>
         <HStack pl={1} isTruncated>
           <Icon as={FcTimeline} w={5} h={5} />
           <Heading size="sm" isTruncated>
-            {title} de {username}
+            {listname}
           </Heading>
         </HStack>
       </Subheader>
@@ -62,9 +71,11 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
         onSuccess={() => {
           invalidateQuery(inventoryQuery);
           toast({
-            title: "Votre inventaire a été importé",
-            description:
-              "Votre nouvel équipement a été importé, vous le trouverez à la fin de votre inventaire.",
+            title: t("ImportInventorySuccess", "Your gear has been imported"),
+            description: t(
+              "ImportInventorySuccessDescription",
+              "Your new gear has been imported, you'll find it at the end of your inventory."
+            ),
             status: "success",
           });
         }}
@@ -76,13 +87,13 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
         <SettingsMenuButton>
           <MenuList>
             <MenuItem icon={<FaFileExport />} onClick={exportToCsv}>
-              Exporter vers un CSV
+              {t("ExportCSV", "Export CSV")}
             </MenuItem>
             <MenuItem
               icon={<FaFileImport />}
               onClick={() => setImporting(true)}
             >
-              Importer depuis un CSV
+              {t("ImportCSV", "Import CSV")}
             </MenuItem>
           </MenuList>
         </SettingsMenuButton>

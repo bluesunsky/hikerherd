@@ -3,6 +3,8 @@ import type { ErrorFallbackProps } from "blitz";
 
 import { AuthenticationError, AuthorizationError, NotFoundError } from "blitz";
 
+import { useTranslation } from "react-i18next";
+
 import LoginForm from "app/apps/auth/components/login-form";
 import BoxLayout from "app/layouts/box-layout";
 
@@ -10,11 +12,15 @@ const AppErrorFallback: FC<ErrorFallbackProps> = ({
   error,
   resetErrorBoundary,
 }) => {
+  const { t } = useTranslation();
   if (error instanceof AuthenticationError) {
     return (
       <BoxLayout
-        title="Connexion"
-        description="Vous devenez vous connecter pour continuer."
+        title={t("LoginRequired", "Log in")}
+        description={t(
+          "LoginRequiredDescription",
+          "You aren't logged in! You need to log in to continue."
+        )}
       >
         <LoginForm onSuccess={resetErrorBoundary} />
       </BoxLayout>
@@ -24,19 +30,27 @@ const AppErrorFallback: FC<ErrorFallbackProps> = ({
   if (error instanceof AuthorizationError) {
     return (
       <BoxLayout
-        title="Interdiction"
-        description="Vous n'êtes pas autorisé à faire cela."
+        title={t("Unauthorized", "Unauthorized")}
+        description={t(
+          "UnauthorizedDescription",
+          "Sorry, you are not allowed to do that."
+        )}
       />
     );
   }
 
   if (error instanceof NotFoundError) {
-    return <BoxLayout title="Introuvable" description="Êtes-vous perdu ?" />;
+    return (
+      <BoxLayout
+        title={t("NotFound", "Not found")}
+        description={t("NotFoundDescription", "Are you lost?")}
+      />
+    );
   }
 
   return (
     <BoxLayout
-      title="Il y a une erreur"
+      title={t("ThereWasAnError", "There was an error")}
       description={error.message || error.name}
     />
   );

@@ -4,7 +4,7 @@ import type { PromiseReturnType } from "blitz";
 import { useMutation } from "blitz";
 
 import { FORM_ERROR } from "final-form";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 import TextField from "app/components/forms/components/text-field";
 import SimpleForm from "app/components/forms/components/simple-form";
@@ -18,7 +18,7 @@ type ForgotPasswordFormProps = {
 
 const ForgotPasswordForm: FC<ForgotPasswordFormProps> = ({ onSuccess }) => {
   const [forgotPassword] = useMutation(forgotPasswordMutation);
-
+  const { t } = useTranslation();
   return (
     <SimpleForm
       schema={forgotPasswordSchema}

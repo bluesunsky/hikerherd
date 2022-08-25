@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { Link, Routes, useMutation } from "blitz";
 import { Suspense } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Button } from "@chakra-ui/button";
 import { Avatar } from "@chakra-ui/avatar";
 import { Fade } from "@chakra-ui/transition";
@@ -48,7 +49,7 @@ const UserMenuButton: FC = () => {
 const HeaderUserMenu: FC = () => {
   const [logout] = useMutation(logoutMutation);
   const user = useCurrentUser({ suspense: false });
-
+  const { t } = useTranslation();
   const toast = useToast();
 
   return (
@@ -63,13 +64,13 @@ const HeaderUserMenu: FC = () => {
               passHref
             >
               <MenuItem as="a" icon={<FaUser />}>
-                Mon profil
+                {t("Profile", "My profile")}
               </MenuItem>
             </Link>
           )}
           <Link href={Routes.PreferencesPage()} passHref>
             <MenuItem as="a" icon={<FaCog />}>
-              Mes préférences
+              {t("Preferences", "My preferences")}
             </MenuItem>
           </Link>
           <MenuItem
@@ -77,14 +78,14 @@ const HeaderUserMenu: FC = () => {
             onClick={() =>
               logout().then(() =>
                 toast({
-                  title: "Vous vous êtes déconnecté",
+                  title: t("LogoutSuccess", "You have been logged out"),
                   status: "success",
                 })
               )
             }
             icon={<FaSignOutAlt />}
           >
-            Déconnexion
+            {t("Logout", "Logout")}
           </MenuItem>
         </MenuList>
       </Menu>

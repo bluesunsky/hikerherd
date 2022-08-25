@@ -27,72 +27,72 @@ const DiscoverGearPage: BlitzPage = () => {
   } | null>(null);
 
   return (
-    <Fragment>
-      <AddToInventoryForm
-        isOpen={!!adding}
-        onClose={() => setAdding(null)}
-        gear={adding?.gear}
-        type={adding?.type}
-        onSuccess={() => {
-          setAdding(null);
-          toast({
-            title: "Succès",
-            description: "L'équipement a été ajouté.",
-            status: "success",
-          });
-        }}
-      />
-
-      <Heading mb={4} size="md">
-        Equipements partagés
-      </Heading>
-
-      <Text mb={2} color={textColor}>
-        Chaque fois que de nouveaux équipements sont ajoutés, ils peuvent être
-        trouvés ici.
-      </Text>
-      <Text mb={5} color={textColor}>
-        Les données sur l&lsquo;équipement sont collectées par{" "}
-        <strong>vous</strong>, donc plus vous utilisez application, plus il
-        s&lsquo;améliorera !
-      </Text>
-
-      <Card>
-        <GlobalGearSearch
-          gearActions={(gear) => (
-            <Fragment>
-              {session.userId && (
-                <SimpleGrid
-                  columns={{ base: 1, sm: 2 }}
-                  spacing={2}
-                  alignItems="center"
-                >
-                  <Button
-                    isFullWidth
-                    size="sm"
-                    leftIcon={<FcList />}
-                    onClick={() => setAdding({ type: "INVENTORY", gear })}
-                  >
-                    Ajouter à l&lsquo;inventaire
-                  </Button>
-                  <Button
-                    isFullWidth
-                    size="sm"
-                    leftIcon={<FcRating />}
-                    onClick={() => setAdding({ type: "WISH_LIST", gear })}
-                  >
-                    Ajouter aux souhaits
-                  </Button>
-                </SimpleGrid>
-              )}
-            </Fragment>
-          )}
+    <SidebarLayout>
+      <Fragment>
+        <AddToInventoryForm
+          isOpen={!!adding}
+          onClose={() => setAdding(null)}
+          gear={adding?.gear}
+          type={adding?.type}
+          onSuccess={() => {
+            setAdding(null);
+            toast({
+              title: "Succès",
+              description: "L'équipement a été ajouté.",
+              status: "success",
+            });
+          }}
         />
-      </Card>
-    </Fragment>
+
+        <Heading mb={4} size="md">
+          Equipements partagés
+        </Heading>
+
+        <Text mb={2} color={textColor}>
+          Chaque fois que de nouveaux équipements sont ajoutés, ils peuvent être
+          trouvés ici.
+        </Text>
+        <Text mb={5} color={textColor}>
+          Les données sur l&lsquo;équipement sont collectées par{" "}
+          <strong>vous</strong>, donc plus vous utilisez application, plus il
+          s&lsquo;améliorera !
+        </Text>
+
+        <Card>
+          <GlobalGearSearch
+            gearActions={(gear) => (
+              <Fragment>
+                {session.userId && (
+                  <SimpleGrid
+                    columns={{ base: 1, sm: 2 }}
+                    spacing={2}
+                    alignItems="center"
+                  >
+                    <Button
+                      isFullWidth
+                      size="sm"
+                      leftIcon={<FcList />}
+                      onClick={() => setAdding({ type: "INVENTORY", gear })}
+                    >
+                      Ajouter à l&lsquo;inventaire
+                    </Button>
+                    <Button
+                      isFullWidth
+                      size="sm"
+                      leftIcon={<FcRating />}
+                      onClick={() => setAdding({ type: "WISH_LIST", gear })}
+                    >
+                      Ajouter aux souhaits
+                    </Button>
+                  </SimpleGrid>
+                )}
+              </Fragment>
+            )}
+          />
+        </Card>
+      </Fragment>
+    </SidebarLayout>
   );
 };
-
-DiscoverGearPage.getLayout = (page) => <SidebarLayout>{page}</SidebarLayout>;
 
 export default DiscoverGearPage;

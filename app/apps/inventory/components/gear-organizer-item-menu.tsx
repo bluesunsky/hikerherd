@@ -5,6 +5,7 @@ import type { DragAndDropItem } from "app/components/drag-and-drop/contexts/gear
 import { useContext } from "react";
 import { useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { MenuItem, MenuList } from "@chakra-ui/menu";
 import { FaEdit, FaList, FaStar, FaTrash } from "react-icons/fa";
 
@@ -22,6 +23,7 @@ const GearOrganizerItemMenu: FC<GearOrganizerItemMenuProps> = ({
   item,
   type,
 }) => {
+  const { t } = useTranslation();
   const { editItem, deleteItem, toggleMetaItem, refetch } =
     useContext(gearOrganizerContext);
 
@@ -32,21 +34,21 @@ const GearOrganizerItemMenu: FC<GearOrganizerItemMenuProps> = ({
   return (
     <MenuList>
       <MenuItem icon={<FaEdit />} onClick={() => editItem(item.id)}>
-        Modifier
+        {t("EditGear", "Edit")}
       </MenuItem>
       <MenuItem icon={<FaTrash />} onClick={() => deleteItem(item.id)}>
-        Supprimer
+        {t("DeleteGear", "Delete")}
       </MenuItem>
 
       {type === "WISH_LIST" && (
         <MenuItem icon={<FaList />} onClick={() => toggleMetaItem(item.id)}>
-          Mettre dans l&lsquo;inventaire
+          {t("MoveToInventory", "Move to inventory")}
         </MenuItem>
       )}
 
       {type === "INVENTORY" && (
         <MenuItem icon={<FaStar />} onClick={() => toggleMetaItem(item.id)}>
-          Mettre dans les souhaits
+          {t("MoveToWishList", "Move to wish list")}
         </MenuItem>
       )}
 

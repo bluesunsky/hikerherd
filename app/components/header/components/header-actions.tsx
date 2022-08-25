@@ -2,6 +2,7 @@ import type { FC } from "react";
 
 import { useContext } from "react";
 
+import { useTranslation } from "react-i18next";
 import { HStack } from "@chakra-ui/layout";
 import {
   FaSun,
@@ -17,6 +18,7 @@ import { WeightUnit } from "@prisma/client";
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
 
 import HeaderIconButton from "./header-icon-button";
+import LngPicker from "./lng-picker";
 
 type HeaderActionsProps = {
   toggleDrawer: () => void;
@@ -25,38 +27,19 @@ type HeaderActionsProps = {
 const HeaderActions: FC<HeaderActionsProps> = ({ toggleDrawer }) => {
   const { toggleWeightUnits, weightUnit } = useContext(userPreferencesContext);
   const { colorMode, toggleColorMode } = useColorMode();
-
-  /*
-<HeaderIconButton
-        label={
-          language === Language.FR
-            ? "Utiliser la version anglaise"
-            : "Utiliser la version française"
-        }
-        onClick={() =>
-          setLanguage(language === Language.FR ? Language.EN : Language.FR)
-        }
-        icon={
-          <Icon
-            as={language === Language.FR ? GiBread : GiHamburger}
-            w={5}
-            h={5}
-          />
-        }
-      />
-  */
+  const { t } = useTranslation();
   return (
     <HStack spacing={1}>
       <HeaderIconButton
-        label="Ouvrir le menu"
+        label={t("OpenMenu", "Open menu")}
         onClick={toggleDrawer}
         icon={<Icon as={FaBars} w={5} h={5} />}
       />
       <HeaderIconButton
         label={
           colorMode === "dark"
-            ? "Utiliser le mode jour"
-            : "Utiliser le mode nuit"
+            ? t("NightToDay", "You'r using night hike. \nClick to use day hike")
+            : t("DayToNight", "You'r using day hike. \nClick to use night hike")
         }
         onClick={toggleColorMode}
         icon={<Icon as={colorMode === "dark" ? FaMoon : FaSun} w={5} h={5} />}
@@ -64,8 +47,14 @@ const HeaderActions: FC<HeaderActionsProps> = ({ toggleDrawer }) => {
       <HeaderIconButton
         label={
           weightUnit === WeightUnit.METRIC
-            ? "Utiliser les unités impériales"
-            : "Utiliser les unités métriques"
+            ? t(
+                "MetricToImperial",
+                "You'r using metric units. \nClick to use imperial units"
+              )
+            : t(
+                "ImperialToMetric",
+                "You'r using imperial units. \nClick to use metric units"
+              )
         }
         onClick={toggleWeightUnits}
         icon={
@@ -76,6 +65,7 @@ const HeaderActions: FC<HeaderActionsProps> = ({ toggleDrawer }) => {
           />
         }
       />
+      <LngPicker></LngPicker>
     </HStack>
   );
 };

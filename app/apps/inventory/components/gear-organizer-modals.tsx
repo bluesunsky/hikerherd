@@ -4,6 +4,8 @@ import type { CategoryType } from "db";
 import { useMutation } from "blitz";
 import { useContext, Fragment } from "react";
 
+import { useTranslation } from "react-i18next";
+
 import deleteCategoryMutation from "app/apps/categories/mutations/delete-category-mutation";
 import deleteCategoryGearMutation from "app/apps/category-gear/mutations/delete-category-gear-mutation";
 import ConfirmModal from "app/components/confirm-modal";
@@ -34,7 +36,7 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
 
     closeModals,
   } = useContext(gearOrganizerContext);
-
+  const { t } = useTranslation();
   const [deleteCategory] = useMutation(deleteCategoryMutation);
   const [deleteGear] = useMutation(deleteCategoryGearMutation);
 
@@ -65,8 +67,11 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
       <ConfirmModal
         isOpen={!!deletingCategory}
         onClose={closeModals}
-        title="Supprimer cette catégorie ?"
-        description="Voulez-vous vraiment supprimer cette catégorie ? Tous les équipements de la catégorie seront également supprimés."
+        title={t("DeleteCategoryConfirm", "Delete this category?")}
+        description={t(
+          "DeleteCategoryConfirmDescription",
+          "Are you sure you want to delete this category? All the items inside the category will be deleted as well."
+        )}
         onConfirm={async () => {
           if (deletingCategory) {
             await deleteCategory({ id: deletingCategory });
@@ -78,8 +83,11 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
       <ConfirmModal
         isOpen={!!deletingItem}
         onClose={closeModals}
-        title="Suppimer cet équipement ?"
-        description="Voulez-vous vraiment supprimer cet équipement ?"
+        title={t("DeleteGearConfirm", "Delete this gear?")}
+        description={t(
+          "DeleteGearConfirmDescription",
+          "Are you sure you want to delete this gear?"
+        )}
         onConfirm={async () => {
           if (deletingItem) {
             await deleteGear({ id: deletingItem });

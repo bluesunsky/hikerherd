@@ -3,7 +3,7 @@ import type { BlitzPage } from "blitz";
 import { useRouter, Routes } from "blitz";
 
 import { useToast } from "@chakra-ui/toast";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 import BoxLayout from "app/layouts/box-layout";
 
@@ -12,7 +12,7 @@ import ResetPasswordForm from "../components/reset-password-form";
 const ResetPasswordPage: BlitzPage = () => {
   const router = useRouter();
   const toast = useToast();
-
+  const { t } = useTranslation();
   const handleSuccess = () => {
     router.push(Routes.StartPage());
     toast({
@@ -25,19 +25,17 @@ const ResetPasswordPage: BlitzPage = () => {
     });
   };
 
-  return <ResetPasswordForm onSuccess={handleSuccess} />;
+  return (
+    <BoxLayout
+      title={t("ResetPassword", "Reset Your Password")}
+      description={t(
+        "ResetPasswordDescription",
+        "What would you like your new password to be?"
+      )}
+    >
+      <ResetPasswordForm onSuccess={handleSuccess} />
+    </BoxLayout>
+  );
 };
-
-ResetPasswordPage.getLayout = (page) => (
-  <BoxLayout
-    title={t("ResetPassword", "Reset Your Password")}
-    description={t(
-      "ResetPasswordDescription",
-      "What would you like your new password to be?"
-    )}
-  >
-    {page}
-  </BoxLayout>
-);
 
 export default ResetPasswordPage;

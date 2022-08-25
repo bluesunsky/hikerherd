@@ -17,14 +17,14 @@ import packQuery from "../../queries/pack-query";
 
 const PackPage: BlitzPage = () => {
   const router = useRouter();
-  return <PackOrganizer id={router.query.packId as string} />;
+  return (
+    <FixedLayout subheader={<PackSubheader />}>
+      <PackOrganizer id={router.query.packId as string} />
+    </FixedLayout>
+  );
 };
 
 PackPage.authenticate = { redirectTo: Routes.LoginPage() };
-
-PackPage.getLayout = (page) => {
-  return <FixedLayout subheader={<PackSubheader />}>{page}</FixedLayout>;
-};
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const client = new PrefetchQueryClient(ctx);

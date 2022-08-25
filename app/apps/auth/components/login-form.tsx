@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { AuthenticationError, useMutation } from "blitz";
 
 import { FORM_ERROR } from "final-form";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 import TextField from "app/components/forms/components/text-field";
 import SimpleForm from "app/components/forms/components/simple-form";
@@ -19,7 +19,7 @@ type LoginFormProps = {
 
 const LoginForm: FC<LoginFormProps> = ({ onSuccess }) => {
   const [login] = useMutation(loginMutation);
-
+  const { t } = useTranslation();
   const handleError = (error: unknown) => {
     if (error instanceof AuthenticationError) {
       return {

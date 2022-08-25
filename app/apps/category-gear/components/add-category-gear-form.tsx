@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { useMutation } from "blitz";
 
 import { FORM_ERROR } from "final-form";
+import { useTranslation } from "react-i18next";
 
 import { ozTog } from "app/helpers/display-weight";
 import GearFormFields from "app/apps/gear/components/gear-form-fields";
@@ -28,7 +29,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
   onClose,
 }) => {
   const [createGear] = useMutation(createCategoryGearMutation);
-
+  const { t } = useTranslation();
   const { weightUnit, currency } = useContext(userPreferencesContext);
 
   if (!categoryId) return null;
@@ -55,7 +56,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
       schema={createCategoryGearSchema}
       initialValues={initialValues}
       onClose={onClose}
-      submitText="Ajouter"
+      submitText={t("Add", "Add")}
       onSubmit={async (values) => {
         try {
           const vals = { ...values };
@@ -68,7 +69,8 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
             vals.price = Math.floor(values.price * 100);
           }
 
-          if (!categoryId) throw new Error("Catégorie nécessaire");
+          if (!categoryId)
+            throw new Error(t("CategoryRequired", "Category required"));
           const result = await createGear(vals);
 
           onClose();
@@ -77,8 +79,10 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
           }
         } catch (error: unknown) {
           return {
-            [FORM_ERROR]:
-              "Sorry, there was an unexpected error. Please try again.",
+            [FORM_ERROR]: t(
+              "SaveCategoryError",
+              "Sorry, there was an unexpected error. Please try again."
+            ),
           };
         }
       }}

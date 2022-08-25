@@ -5,6 +5,7 @@ import type { PromiseReturnType } from "blitz";
 import { Fragment } from "react";
 import { useMutation, useQuery } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Center, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import { Spinner } from "@chakra-ui/spinner";
@@ -34,6 +35,7 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
   type,
   onClose,
 }) => {
+  const { t } = useTranslation();
   const toast = useToast();
   const [moveGear] = useMutation(moveCategoryGearMutation);
 
@@ -49,14 +51,16 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={`Mettre cet équipement dans ${typeName}`}
+      title={t("MoveGearTo", "Move this gear to your {{typename}}", {
+        typename: typeName,
+      })}
       schema={moveCategoryGearSchema}
       initialValues={{
         index: 0,
         id: itemId || "",
         categoryId: categories?.[0]?.id,
       }}
-      submitText="Déplacer"
+      submitText={t("Move", "Move")}
       onSubmit={async (values) => {
         try {
           const result = await moveGear(values);
@@ -64,8 +68,12 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
           onClose();
 
           toast({
-            title: "Cet équipement a été déplacé",
-            description: `Il est maintenant dans ${typeName}`,
+            title: t("MoveGearSuccess", "Your gear was moved"),
+            description: t(
+              "MoveGearSuccesDescription",
+              "This was moved into your {{typename}} successfully",
+              { typename: typeName }
+            ),
             status: "success",
           });
 
@@ -74,8 +82,10 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
           }
         } catch (error: unknown) {
           return {
-            [FORM_ERROR]:
-              "Sorry, there was an unexpected error. Please try again.",
+            [FORM_ERROR]: t(
+              "MoveGearError",
+              "Sorry, there was an unexpected error. Please try again."
+            ),
           };
         }
       }}
@@ -89,13 +99,19 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
             <Stack spacing={3}>
               {!categories?.length && (
                 <Text>
-                  Avant de commencer vous devez créer une catégorie dans{" "}
-                  {typeName}
+                  {t(
+                    "NeedCategoryCreationError",
+                    "Before you can start adding gear you need to create a category in your {{typename}}",
+                    { typename: typeName }
+                  )}
                 </Text>
               )}
 
               {categories?.length && (
-                <SelectField name="categoryId" label="Choisir une catégorie">
+                <SelectField
+                  name="categoryId"
+                  label={t("ChooseCategory", "Choose a category")}
+                >
                   {categories?.map((category) => (
                     <option value={category.id} key={category.id}>
                       {category.name}

@@ -2,6 +2,7 @@ import type { FormComponent } from "../types/form-component";
 
 import { validateZodSchema } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Form as FinalForm } from "react-final-form";
 import { Stack, HStack } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
@@ -23,7 +24,7 @@ const ModalTabForm: FormComponent<ModalTabFormProps> = ({
   ...props
 }) => {
   const stickyBg = useColorModeValue("white", "gray.700");
-
+  const { t } = useTranslation();
   return (
     <FinalForm
       initialValues={initialValues}
@@ -58,7 +59,7 @@ const ModalTabForm: FormComponent<ModalTabFormProps> = ({
             >
               {submitText}
             </Button>
-            <Button onClick={onClose}>Annuler</Button>
+            <Button onClick={onClose}>{t("Cancel", "Cancel")}</Button>
           </HStack>
         </form>
       )}

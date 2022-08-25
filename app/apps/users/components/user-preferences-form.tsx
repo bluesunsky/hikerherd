@@ -1,28 +1,49 @@
 import type { BlitzPage } from "blitz";
 
 import { useMutation } from "blitz";
-import { Fragment } from "react";
+import {
+  Fragment,
+  // useContext
+} from "react";
 
 import { useToast } from "@chakra-ui/toast";
 import { FORM_ERROR } from "final-form";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 import SimpleForm from "app/components/forms/components/simple-form";
 import SelectField from "app/components/forms/components/select-field";
 import TextField from "app/components/forms/components/text-field";
-import i18n from "app/i18n";
+//import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
 
-import { Currency, WeightUnit, Language } from "db";
+import {
+  Currency,
+  WeightUnit,
+  //  Language
+} from "db";
 
 import useCurrentUser from "../hooks/use-current-user";
 import updatePreferencesSchema from "../schemas/update-preferences-schema";
 import updatePreferencesMutation from "../mutations/update-preferences-mutation";
-
 const UserPreferencesForm: BlitzPage = () => {
+  const { t } = useTranslation();
   const user = useCurrentUser();
   const toast = useToast();
   const [updatePreferences] = useMutation(updatePreferencesMutation);
+  //const { setLanguage } = useContext(userPreferencesContext);
 
+  /*
+          <SelectField name="language" label={t("Language", "Language")}>
+            <option value="DE" hidden>
+              🍺 Deutsh (German)
+            </option>
+            <option value={Language.EN}>☕ English</option>
+            <option value="ES" hidden>
+              🥘 Español (Spanish)
+            </option>
+            <option value={Language.FR}>🧀 Français (French)</option>
+          </SelectField>
+
+  */
   return (
     <SimpleForm
       schema={updatePreferencesSchema}
@@ -31,13 +52,13 @@ const UserPreferencesForm: BlitzPage = () => {
         currency: user?.currency,
         firstname: user?.firstname,
         lastname: user?.lastname,
-        language: user?.language,
+        //language: user?.language,
       }}
       submitText={t("Save", "Save")}
       onSubmit={async (values) => {
         try {
           await updatePreferences(values);
-          i18n.changeLanguage(values.language);
+          //setLanguage(values.language);
           toast({
             title: t("UpdatePreferencesSuccess", "Preferences updated."),
             description: t(
@@ -67,16 +88,6 @@ const UserPreferencesForm: BlitzPage = () => {
             placeholder={t("LastnamePlaceholder", "Enter your lastname")}
             size="lg"
           />
-          <SelectField name="language" label={t("Language", "Language")}>
-            <option value="DE" hidden>
-              🍺 Deutsh (German)
-            </option>
-            <option value={Language.EN}>☕ English</option>
-            <option value="ES" hidden>
-              🥘 Español (Spanish)
-            </option>
-            <option value={Language.FR}>🧀 Français (French)</option>
-          </SelectField>
 
           <SelectField
             name="weightUnit"

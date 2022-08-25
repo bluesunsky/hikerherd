@@ -5,6 +5,7 @@ import type { FC } from "react";
 import { useQuery, Link, Routes } from "blitz";
 import { Fragment } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Heading, Box, Container, SimpleGrid, Text } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
 import { Icon } from "@chakra-ui/icon";
@@ -69,214 +70,240 @@ const IconCard: FC<IconCardProps> = ({
 
 const HomePage: BlitzPage = () => {
   const [userCount] = useQuery(userCountQuery, {}, { suspense: false });
-
+  const { t } = useTranslation();
   return (
-    <Fragment>
-      <Box bg={useColorModeValue("gray.50", "gray.800")}>
-        <Container
-          as="main"
-          maxW="container.sm"
-          textAlign="center"
-          py={{ base: 12, md: 20 }}
-        >
-          <Heading size="xl" mb={4} display="flex" justifyContent="center">
-            <LogoIcon w={20} h={20} />
-            <div>
-              Pack your pack
-              <Text fontSize="lg" opacity="0.8" mt={2}>
-                Prépare ton sac
-              </Text>
-            </div>
-            <LogoIcon2 w={20} h={20} />
-          </Heading>
-          <Text fontSize="lg" opacity="0.8">
-            Rejoignez les autres randonneurs, routards et minimalistes qui
-            utilisent déjà <strong>Pack&nbsp;your&nbsp;pack</strong> pour gérer
-            leurs équipements, alléger leur sac et planifier leurs aventures.
-          </Text>
-          <Link href={Routes.SignupPage()} passHref>
-            <Button
-              ml={3}
-              mr={3}
-              mt={8}
-              size="lg"
-              as="a"
-              rightIcon={<FaArrowRight />}
-              colorScheme="blue"
-            >
-              S&lsquo;enregistrer
-            </Button>
-          </Link>
-          <Link href="/packs/share/cl6trymg601300gjqt9mthm37" passHref>
-            <Button
-              ml={3}
-              mr={3}
-              mt={8}
-              size="lg"
-              as="a"
-              rightIcon={<RiLayoutGridFill />}
-              colorScheme="gray"
-            >
-              Voir un exemple
-            </Button>
-          </Link>
-        </Container>
-      </Box>
+    <PlainLayout>
+      <Fragment>
+        <Box bg={useColorModeValue("gray.50", "gray.800")}>
+          <Container
+            as="main"
+            maxW="container.sm"
+            textAlign="center"
+            py={{ base: 12, md: 20 }}
+          >
+            <Heading size="xl" mb={4} display="flex" justifyContent="center">
+              <LogoIcon w={20} h={20} />
+              <div>
+                {t("AppliName")}
+                <Text fontSize="lg" opacity="0.8" mt={2}>
+                  {t("AppliSubName", "Lighten your pack with {{appliname}}", {
+                    appliname: t("AppliName"),
+                  })}
+                </Text>
+              </div>
+              <LogoIcon2 w={20} h={20} />
+            </Heading>
+            <Text fontSize="lg" opacity="0.8">
+              {t(
+                "AppliDescription",
+                "Join the other hikers, backpackers & minimalists who are already \
+using {{appliname}} to manage their gear and plan their \
+adventures.",
+                { appliname: t("AppliName") }
+              )}
+            </Text>
+            <Link href={Routes.SignupPage()} passHref>
+              <Button
+                ml={3}
+                mr={3}
+                mt={8}
+                size="lg"
+                as="a"
+                rightIcon={<FaArrowRight />}
+                colorScheme="blue"
+              >
+                {t("GetStarted", "Get started today")}
+              </Button>
+            </Link>
+            <Link href={t("AppliExample")} passHref>
+              <Button
+                ml={3}
+                mr={3}
+                mt={8}
+                size="lg"
+                as="a"
+                rightIcon={<RiLayoutGridFill />}
+                colorScheme="gray"
+              >
+                {t("SeeExample", "See an example")}
+              </Button>
+            </Link>
+          </Container>
+        </Box>
 
-      <Container
-        as="main"
-        maxW="container.lg"
-        pb={{ base: 16, md: 24 }}
-        pt={{ base: 12, md: 20 }}
-        textAlign="center"
-      >
-        <Heading size="lg" mb={4}>
-          Comment ça marche ?
-        </Heading>
-        <Text fontSize="lg" opacity="0.8">
-          Consignez vos équipements puis organiser les dans des packs.
-        </Text>
-
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mt={12}>
-          <IconCard
-            icon={FcList}
-            title="Constituez votre inventaire"
-            text="Gérez tous vos équipements qui pourraient vous être utiles."
-          />
-
-          <IconCard
-            icon={FcRating}
-            title="Etablissez vos souhaits"
-            text="Identifiez ce que vous voulez acheter pour améliorer votre sac."
-          />
-
-          <IconCard
-            icon={FcTimeline}
-            title="Organisez vos Packs"
-            text="Faites des configurations de sacs pour optimiser vos expéditions."
-          />
-        </SimpleGrid>
-      </Container>
-
-      <Box bg="gray.700" color="white">
         <Container
           as="main"
           maxW="container.lg"
-          py={16}
-          textAlign={{ base: "center", lg: "left" }}
+          pb={{ base: 16, md: 24 }}
+          pt={{ base: 12, md: 20 }}
+          textAlign="center"
         >
-          <SimpleGrid
-            columns={{ base: 1, lg: 2 }}
-            spacing={8}
-            alignItems="center"
-          >
-            <Box>
-              <Heading size="lg" mb={4}>
-                Analyse du poids
-              </Heading>
-              <Text color="blue.300" fontWeight="bold" fontSize="lg" mb={2}>
-                Vous pouvez identifier rapidement les équipements les plus
-                lourds.
-              </Text>
-              <Text fontSize="lg" opacity="0.8">
-                Avec la vue graphique, vous voyez rapidement l&lsquo;impact
-                d&lsquo;un type d&lsquo;équipement ou d&lsquo;un équipement afin
-                de juger s&lsquo;il convient ou nom de le prendre avec vous.
-              </Text>
-            </Box>
+          <Heading size="lg" mb={4}>
+            {t("HowDoesItWork", "How does it work?")}
+          </Heading>
+          <Text fontSize="lg" opacity="0.8">
+            {t(
+              "HowDoesItWorkDescription",
+              "Organizing your gear closet and planning packing lists has never been so easy."
+            )}
+          </Text>
 
-            <Box>
-              <Image
-                mx="auto"
-                alt="Screenshot of piechart and table"
-                borderRadius="md"
-                w="100%"
-                src="/pack-analytics.png"
-                boxShadow="lg"
-              />
-            </Box>
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mt={12}>
+            <IconCard
+              icon={FcList}
+              title={t("Inventory", "Inventory")}
+              text={t("InventoryDescription", "Manage your backpacking gear")}
+            />
+
+            <IconCard
+              icon={FcRating}
+              title={t("WishList", "Wish list")}
+              text={t("WishListDescription", "Track the gear you want to buy")}
+            />
+
+            <IconCard
+              icon={FcTimeline}
+              title={t("Packs", "Packs")}
+              text={t("PacksDescription", "Organize your gear into packs")}
+            />
           </SimpleGrid>
         </Container>
-      </Box>
 
-      <Container
-        as="main"
-        maxW="container.lg"
-        py={{ base: 16, md: 24 }}
-        textAlign="center"
-      >
-        <Heading size="lg" mb={4}>
-          Découvrir
-        </Heading>
-        <Text fontSize="lg" opacity="0.8" maxW="container.md" mx="auto">
-          Besoin d&lsquo;inspiration ? Vous pouvez rechercher parmis les
-          équipements d&lsquo;autres utilisateurs.
-        </Text>
+        <Box bg="gray.700" color="white">
+          <Container
+            as="main"
+            maxW="container.lg"
+            py={16}
+            textAlign={{ base: "center", lg: "left" }}
+          >
+            <SimpleGrid
+              columns={{ base: 1, lg: 2 }}
+              spacing={8}
+              alignItems="center"
+            >
+              <Box>
+                <Heading size="lg" mb={4}>
+                  {t("PackWeightAnalytics", "Pack weight analytics")}
+                </Heading>
+                <Text color="blue.300" fontWeight="bold" fontSize="lg" mb={2}>
+                  {t(
+                    "PackWeightAnalyticsDescription",
+                    "You need to know where your weight is coming from."
+                  )}
+                </Text>
+                <Text fontSize="lg" opacity="0.8">
+                  {t(
+                    "PackWeightAnalyticsDescriptionAddOn",
+                    "The <strong>hikerherd</strong> analytics tools help you to see \
+which items are weighing you down and what to leave at home."
+                  )}
+                </Text>
+              </Box>
 
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} mt={12}>
-          <IconCard
-            icon={FcBinoculars}
-            title="Equipements partagés"
-            actionLink={Routes.DiscoverGearPage()}
-            actionText="Chercher un équipement"
-            text="Rechercher un équipement parmis ceux des autres utilisateurs"
-          />
+              <Box>
+                <Image
+                  mx="auto"
+                  alt="Screenshot of piechart and table"
+                  borderRadius="md"
+                  w="100%"
+                  src="/pack-analytics.png"
+                  boxShadow="lg"
+                />
+              </Box>
+            </SimpleGrid>
+          </Container>
+        </Box>
 
-          <IconCard
-            icon={FcSearch}
-            title="Packs partagés"
-            actionLink={Routes.DiscoverPacksPage()}
-            actionText="Chercher un pack"
-            text="Rechercher un pack parmis ceux des autres utilisateurs"
-          />
-          <IconCard
-            icon={FcContacts}
-            title="Utilisateurs"
-            actionLink={Routes.DiscoverUsersPage()}
-            actionText="Chercher un pack"
-            text="Rechercher un utilisateur"
-          />
-        </SimpleGrid>
-      </Container>
-
-      <Box bg={useColorModeValue("gray.50", "gray.800")}>
         <Container
           as="main"
-          maxW="container.sm"
+          maxW="container.lg"
           py={{ base: 16, md: 24 }}
           textAlign="center"
         >
           <Heading size="lg" mb={4}>
-            Prêt à commencer ?
+            {t("Discover", "Discover")}
           </Heading>
-          <Text fontSize="lg" opacity="0.8">
-            Rejoindre les{" "}
-            <Tag my="2px" fontWeight="bold" colorScheme="teal">
-              <TagLeftIcon boxSize="12px" as={FaUser} />
-              <TagLabel>{userCount ? userCount : "..."}</TagLabel>
-            </Tag>{" "}
-            autres utilisateurs de <strong>Pack&nbsp;your&nbsp;pack</strong>
+          <Text fontSize="lg" opacity="0.8" maxW="container.md" mx="auto">
+            {t(
+              "DiscoverDescription",
+              "Need some inspiration? Search for packs and gear created by other users."
+            )}
           </Text>
 
-          <Link href={Routes.SignupPage()} passHref>
-            <Button
-              mt={8}
-              size="lg"
-              as="a"
-              rightIcon={<FaArrowRight />}
-              colorScheme="blue"
-            >
-              S&lsquo;enregistrer gratuitement
-            </Button>
-          </Link>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} mt={12}>
+            <IconCard
+              icon={FcBinoculars}
+              title={t("GearSearch", "Gear search")}
+              actionLink={Routes.DiscoverGearPage()}
+              actionText={t("GearSearchAction", "Search for gear")}
+              text={t(
+                "GearSearchDescription",
+                "Search the hikerherd database for gear"
+              )}
+            />
+
+            <IconCard
+              icon={FcSearch}
+              title={t("PackSearch", "Pack search")}
+              actionLink={Routes.DiscoverPacksPage()}
+              actionText={t("PackSearchAction", "Search for pack")}
+              text={t(
+                "PackSearchDescription",
+                "Look for packs created by other hikers"
+              )}
+            />
+            <IconCard
+              icon={FcContacts}
+              title={t("UserSearch", "User search")}
+              actionLink={Routes.DiscoverUsersPage()}
+              actionText={t("UserSearchAction", "Search for user")}
+              text={t("UserSearchDescription", "Look for hiker")}
+            />
+          </SimpleGrid>
         </Container>
-      </Box>
-    </Fragment>
+
+        <Box bg={useColorModeValue("gray.50", "gray.800")}>
+          <Container
+            as="main"
+            maxW="container.sm"
+            py={{ base: 16, md: 24 }}
+            textAlign="center"
+          >
+            <Heading size="lg" mb={4}>
+              {t("ReadyToGetStarted", "Ready to get started?")}
+            </Heading>
+            <Text fontSize="lg" opacity="0.8">
+              {t("JoinThe", "Join the")}{" "}
+              <Tag my="2px" fontWeight="bold" colorScheme="teal">
+                <TagLeftIcon boxSize="12px" as={FaUser} />
+                <TagLabel>{userCount ? userCount : "..."}</TagLabel>
+              </Tag>{" "}
+              {t("OtherUserOf", "other hikers who are already using")}{" "}
+              <strong>{t("AppliName")}</strong>{" "}
+              {t(
+                "ToManage",
+                "to manage their gear and reduce their pack weight."
+              )}
+            </Text>
+
+            <Link href={Routes.SignupPage()} passHref>
+              <Button
+                mt={8}
+                size="lg"
+                as="a"
+                rightIcon={<FaArrowRight />}
+                colorScheme="blue"
+              >
+                {t("SignupForFree", "Sign up for free")}
+              </Button>
+            </Link>
+          </Container>
+        </Box>
+      </Fragment>
+    </PlainLayout>
   );
 };
 
 HomePage.redirectAuthenticatedTo = Routes.StartPage();
-
-HomePage.getLayout = (page) => <PlainLayout>{page}</PlainLayout>;
 
 export default HomePage;

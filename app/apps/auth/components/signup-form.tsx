@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { useMutation } from "blitz";
 
 import { FORM_ERROR } from "final-form";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 import TextField from "app/components/forms/components/text-field";
 import SimpleForm from "app/components/forms/components/simple-form";
@@ -20,7 +20,7 @@ type SignupFormProps = {
 
 const SignupForm: FC<SignupFormProps> = ({ onSuccess }) => {
   const [signup] = useMutation(signupMutation);
-
+  const { t } = useTranslation();
   const handleError = (error: unknown) => {
     if (error instanceof UserCreateError && error.emailTaken) {
       return {

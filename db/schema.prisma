@@ -30,8 +30,12 @@ enum Currency {
 }
 
 enum Language {
+  DE
   EN
+  ES
   FR
+  IT
+  US
 }
 
 model User {

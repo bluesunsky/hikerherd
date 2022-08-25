@@ -4,6 +4,7 @@ import type { DragAndDropState } from "app/components/drag-and-drop/contexts/gea
 import { useState } from "react";
 import { useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { FcPlus, FcList, FcRating, FcSearch } from "react-icons/fc";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
@@ -33,7 +34,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
 }) => {
   const [addGearToPack] = useMutation(addGearToPackMutation);
   const toast = useToast();
-
+  const { t } = useTranslation();
   const [isAddingFromSearch, setIsAddingFromSearch] = useState<string | null>(
     null
   );
@@ -41,8 +42,8 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
   const handleSuccess = () => {
     onSuccess();
     toast({
-      title: "Succès",
-      description: "Cet équipement a été ajouté à votre pack.",
+      title: t("Success", "Succes"),
+      description: t("AddItemSuccess", "L'élément a été ajouté."),
       status: "success",
     });
   };
@@ -60,7 +61,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
       onClose={onClose}
       tabs={[
         {
-          title: "Inventaire",
+          title: t("Inventory", "Inventory"),
           icon: FcList,
           content: (
             <PackAddInventoryItem
@@ -71,7 +72,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
           ),
         },
         {
-          title: "Souhaits",
+          title: t("WishList", "Wish list"),
           icon: FcRating,
           content: (
             <PackAddInventoryItem
@@ -82,7 +83,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
           ),
         },
         {
-          title: "Nouveau",
+          title: t("New", "New"),
           icon: FcPlus,
           content: (
             <AddPackGearForm
@@ -96,7 +97,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
           ),
         },
         {
-          title: "Recherche",
+          title: t("Search", "Search"),
           icon: FcSearch,
           content: (
             <GlobalGearSearch
@@ -114,7 +115,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
                     }
                   }}
                 >
-                  Ajouter
+                  {t("Add", "Add")}
                 </Button>
               )}
             />

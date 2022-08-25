@@ -35,18 +35,16 @@ const PackSharePage: BlitzPage = () => {
   );
 
   return (
-    <Fragment>
-      <Seo
-        title={packOrganizer.name}
-        description={description.replace(/(\n)+/g, " ")}
-      />
-      <DragAndDrop state={packOrganizer.categories} readonly />
-    </Fragment>
+    <FixedLayout subheader={<PackSubheader share />}>
+      <Fragment>
+        <Seo
+          title={packOrganizer.name}
+          description={description.replace(/(\n)+/g, " ")}
+        />
+        <DragAndDrop state={packOrganizer.categories} readonly />
+      </Fragment>
+    </FixedLayout>
   );
-};
-
-PackSharePage.getLayout = (page) => {
-  return <FixedLayout subheader={<PackSubheader share />}>{page}</FixedLayout>;
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

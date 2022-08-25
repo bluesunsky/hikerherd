@@ -4,6 +4,7 @@ import type { PromiseReturnType } from "blitz";
 import { useContext } from "react";
 import { useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { FORM_ERROR } from "final-form";
 
 import { ozTog } from "app/helpers/display-weight";
@@ -27,7 +28,7 @@ const AddPackGearForm: FC<AddPackGearFormProps> = ({
 }) => {
   const [createGear] = useMutation(createPackGearMutation);
   const { weightUnit, currency } = useContext(userPreferencesContext);
-
+  const { t } = useTranslation();
   if (!categoryId) return null;
 
   const initialValues = {
@@ -53,7 +54,7 @@ const AddPackGearForm: FC<AddPackGearFormProps> = ({
     <ModalTabForm
       schema={createPackGearSchema}
       onClose={onClose}
-      submitText="Ajouter"
+      submitText={t("Add", "Add")}
       initialValues={initialValues}
       onSubmit={async (values) => {
         try {
@@ -74,8 +75,10 @@ const AddPackGearForm: FC<AddPackGearFormProps> = ({
           }
         } catch (error: unknown) {
           return {
-            [FORM_ERROR]:
-              "Sorry, there was an unexpected error. Please try again.",
+            [FORM_ERROR]: t(
+              "AddPackGearError",
+              "Sorry, there was an unexpected error. Please try again."
+            ),
           };
         }
       }}

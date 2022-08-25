@@ -5,6 +5,7 @@ import { Fragment, useContext } from "react";
 import { useMutation, useQuery } from "blitz";
 
 import { FORM_ERROR } from "final-form";
+import { useTranslation } from "react-i18next";
 import { Center } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 
@@ -34,7 +35,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
 }) => {
   const [updateGear] = useMutation(updateCategoryGearMutation);
   const { weightUnit } = useContext(userPreferencesContext);
-
+  const { t } = useTranslation();
   const [gearItem, { isLoading }] = useQuery(
     categoryGearQuery,
     { id: id },
@@ -67,11 +68,13 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={`Modifier ${gearItem ? gearItem?.gear.name : ""}`}
+      title={t("UpdateGear", "Editing {{gearname}}", {
+        gearname: gearItem ? gearItem?.gear.name : "",
+      })}
       schema={updateCategoryGearSchema}
       initialValues={initialValues}
       size="lg"
-      submitText={id ? "Modifier" : "Créer"}
+      submitText={id ? t("Update", "Update") : t("Create", "Create")}
       onSubmit={async (values) => {
         try {
           const vals = { ...values };
@@ -92,8 +95,10 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
           }
         } catch (error: unknown) {
           return {
-            [FORM_ERROR]:
-              "Oops! Something went wrong saving your gear. Please try again.",
+            [FORM_ERROR]: t(
+              "SaveGearError",
+              "Sorry, there was an unexpected error. Please try again."
+            ),
           };
         }
       }}

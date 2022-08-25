@@ -2,6 +2,7 @@ import type { FC } from "react";
 
 import { memo } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Link, Wrap } from "@chakra-ui/layout";
 import { Tag } from "@chakra-ui/tag";
 import { Icon } from "@chakra-ui/icon";
@@ -27,10 +28,11 @@ type GearCardTagsProps = {
 
 const GearCardTags: FC<GearCardTagsProps> = memo(
   ({ link, consumable, replaceable, notes, list, isprivate }) => {
+    const { t } = useTranslation();
     return (
       <Wrap>
         {link && (
-          <Tooltip label="Lien">
+          <Tooltip label={t("Link", "Link")}>
             <Link href={link} isExternal display="inline-flex">
               <Tag size="sm" borderRadius="full">
                 <Icon as={FaLink} />
@@ -40,7 +42,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
         )}
 
         {consumable && (
-          <Tooltip label="Consommable">
+          <Tooltip label={t("Consumable", "Consumable")}>
             <Tag colorScheme="pink" size="sm" borderRadius="full">
               <Icon as={FaHamburger} />
             </Tag>
@@ -56,12 +58,14 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
           >
             {replaceable && (
               <>
-                A remplacer ! <br />
+                {t("ToReplace", "To Replace!")}
+                <br />
               </>
             )}
             {list == "WISH_LIST" && (
               <>
-                Non possédé <br />
+                {t("NotOwned", "Not owned!")}
+                <br />
               </>
             )}
           </Popover>
@@ -79,7 +83,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
         )}
 
         {isprivate && (
-          <Tooltip label="Privé">
+          <Tooltip label={t("Private", "Private")}>
             <Tag bg="black" color="white" size="sm" borderRadius="full">
               <Icon as={FaLock} />
             </Tag>

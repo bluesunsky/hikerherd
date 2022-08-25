@@ -4,6 +4,7 @@ import type { IconType } from "react-icons";
 
 import { Link, Routes, useRouter } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import {
   Stack,
   HStack,
@@ -75,40 +76,41 @@ const NavigationSection: FC<{ title: string }> = ({ title, children }) => {
 };
 
 const Navigation: FC = () => {
+  const { t } = useTranslation();
   return (
     <Box as="aside">
       <Stack as="aside" spacing={8}>
         <NavigationSection title="Pack your pack">
           <NavigationItem route={Routes.HomePage()} icon={FcHome}>
-            Accueil
+            {t("Home", "Home")}
           </NavigationItem>
         </NavigationSection>
 
-        <NavigationSection title="Organiser">
+        <NavigationSection title={t("GearTools", "Gear tools")}>
           <NavigationItem route={Routes.InventoryPage()} icon={FcList}>
-            Inventaire
+            {t("Inventory", "Inventory")}
           </NavigationItem>
           <NavigationItem route={Routes.WishListPage()} icon={FcRating}>
-            Souhaits
+            {t("WishList", "Wish list")}
           </NavigationItem>
           <NavigationItem route={Routes.PacksPage()} icon={FcTimeline}>
-            Packs
+            {t("Packs", "Packs")}
           </NavigationItem>
         </NavigationSection>
 
-        <NavigationSection title="Découvrir">
+        <NavigationSection title={t("Discover", "Discover")}>
           <NavigationItem route={Routes.DiscoverGearPage()} icon={FcBinoculars}>
-            Equipements partagés
+            {t("GearSearch", "Gear search")}
           </NavigationItem>
           <NavigationItem route={Routes.DiscoverPacksPage()} icon={FcSearch}>
-            Packs partagés
+            {t("PackSearch", "Pack search")}
           </NavigationItem>
           <NavigationItem route={Routes.DiscoverUsersPage()} icon={FcContacts}>
-            Utilisateurs
+            {t("UserSearch", "User search")}
           </NavigationItem>
         </NavigationSection>
 
-        <NavigationSection title="A propos">
+        <NavigationSection title={t("About", "About")}>
           <Text fontSize="sm" opacity="0.6" mt={3} py={-3} px={3}>
             <strong>Pack your pack</strong> est une déclinaison et une version
             française de

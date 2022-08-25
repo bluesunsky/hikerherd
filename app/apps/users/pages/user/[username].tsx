@@ -25,7 +25,7 @@ import useCurrentUser from "../../hooks/use-current-user";
 import AvatarUploader from "../../components/avatar-uploader";
 import CoverUploader from "../../components/cover-uploader";
 import InventoryCard from "../../components/inventory-card";
-import WhishListCard from "../../components/whish-list-card";
+import WishListCard from "../../components/wish-list-card";
 import getAvatarUrl from "../../helpers/get-avatar-url";
 import getCoverUrl from "../../helpers/get-cover-url";
 
@@ -64,62 +64,66 @@ const ProfilePage: BlitzPage = () => {
       textShadow: "0 0 5px #fff",
     };
   return (
-    <Fragment>
-      <Seo
-        title={user.username}
-        description={`${user.username} est sur Pack your pack. Consulter ses listes d'équipements et pourquoi pas créer les vôtres.`}
-      />
+    <PlainLayout>
+      <Fragment>
+        <Seo
+          title={user.username}
+          description={`${user.username} est sur Pack your pack. Consulter ses listes d'équipements et pourquoi pas créer les vôtres.`}
+        />
 
-      <Box bg={useColorModeValue("gray.50", "gray.800")} style={styles.box}>
-        <Container as="main" maxW="container.lg" py={{ base: 12, md: 20 }}>
-          <Stack align="center" spacing={4}>
-            <Avatar size="2xl" src={getAvatarUrl(user, 300)} />
-            <Heading size="xl" style={styles.username}>
-              {username}
-            </Heading>
-            {user.id === currentUser?.id && (
-              <>
-                <Container style={styles.buttons}>
-                  <AvatarUploader />
-                  <Box mx={3}></Box>
-                  <CoverUploader />
-                </Container>
-              </>
-            )}
-          </Stack>
-        </Container>
-      </Box>
+        <Box bg={useColorModeValue("gray.50", "gray.800")} style={styles.box}>
+          <Container as="main" maxW="container.lg" py={{ base: 12, md: 20 }}>
+            <Stack align="center" spacing={4}>
+              <Avatar size="2xl" src={getAvatarUrl(user, 300)} />
+              <Heading size="xl" style={styles.username}>
+                {username}
+              </Heading>
+              {user.id === currentUser?.id && (
+                <>
+                  <Container style={styles.buttons}>
+                    <AvatarUploader />
+                    <Box mx={3}></Box>
+                    <CoverUploader />
+                  </Container>
+                </>
+              )}
+            </Stack>
+          </Container>
+        </Box>
 
-      <Container as="main" maxW="container.lg" py={{ base: 4, lg: 12 }}>
-        {!!user.packs.length && (
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4} mt={2}>
-            <InventoryCard user={user} />
-            <WhishListCard user={user} />
-            {user.packs.map((pack) => (
-              <PackCard key={pack.id} pack={pack} shareLink />
-            ))}
-          </SimpleGrid>
-        )}
-
-        {!user.packs.length && (
-          <>
+        <Container as="main" maxW="container.lg" py={{ base: 4, lg: 12 }}>
+          {!!user.packs.length && (
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4} mt={2}>
               <InventoryCard user={user} />
-              <WhishListCard user={user} />
-              <Center p={6} borderRadius="md" bg={emptyBg}>
-                <Text size="md" opacity="0.4" textAlign="center">
-                  {username} n&lsquo;a pas encore de packs publics
-                </Text>
-              </Center>
+              <WishListCard user={user} />
+              {user.packs.map((pack) => (
+                <PackCard key={pack.id} pack={pack} shareLink />
+              ))}
             </SimpleGrid>
-          </>
-        )}
-      </Container>
-    </Fragment>
+          )}
+
+          {!user.packs.length && (
+            <>
+              <SimpleGrid
+                columns={{ base: 1, md: 2, lg: 3 }}
+                spacing={4}
+                mt={2}
+              >
+                <InventoryCard user={user} />
+                <WishListCard user={user} />
+                <Center p={6} borderRadius="md" bg={emptyBg}>
+                  <Text size="md" opacity="0.4" textAlign="center">
+                    {username} n&lsquo;a pas encore de packs publics
+                  </Text>
+                </Center>
+              </SimpleGrid>
+            </>
+          )}
+        </Container>
+      </Fragment>
+    </PlainLayout>
   );
 };
-
-ProfilePage.getLayout = (page) => <PlainLayout>{page}</PlainLayout>;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const client = new PrefetchQueryClient(ctx);

@@ -2,6 +2,7 @@ import type { FC } from "react";
 
 import { useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { HStack, Text } from "@chakra-ui/layout";
 import {
   Modal,
@@ -30,7 +31,7 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
   description,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
-
+  const { t } = useTranslation();
   const confirm = async () => {
     setIsLoading(true);
     await onConfirm();
@@ -53,9 +54,9 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
         <ModalFooter>
           <HStack spacing={3}>
             <Button colorScheme="red" onClick={confirm} isLoading={isLoading}>
-              Supprimer
+              {t("Delete", "Delete")}
             </Button>
-            <Button onClick={onClose}>Annuler</Button>
+            <Button onClick={onClose}>{t("Cancel", "Cancel")}</Button>
           </HStack>
         </ModalFooter>
       </ModalContent>

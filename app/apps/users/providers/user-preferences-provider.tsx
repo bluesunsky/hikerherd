@@ -22,9 +22,31 @@ const UserPreferencesProvider: FC<Props> = ({ children }) => {
     user?.currency || Currency.USD
   );
 
-  const [language, changeLanguage] = useState<Language>(
-    user?.language || Language.EN
-  );
+  var userlanguage = user?.language;
+  if (!userlanguage) {
+    switch (i18n.language) {
+      case "EN":
+        userlanguage = Language.EN;
+        break;
+      case "ES":
+        userlanguage = Language.ES;
+        break;
+      case "FR":
+        userlanguage = Language.FR;
+        break;
+      case "IT":
+        userlanguage = Language.IT;
+        break;
+      case "US":
+        userlanguage = Language.US;
+        break;
+      default:
+        console.log(user?.language, i18n.language);
+        userlanguage = Language.EN;
+    }
+  }
+
+  const [language, changeLanguage] = useState<Language>(userlanguage);
 
   useEffect(() => {
     if (user?.weightUnit) setWeightUnit(user.weightUnit);
@@ -44,6 +66,8 @@ const UserPreferencesProvider: FC<Props> = ({ children }) => {
   const setLanguage = (language: Language) => {
     i18n.changeLanguage(language);
     changeLanguage(language);
+    localStorage.setItem("lng", language);
+    console.log(language);
   };
 
   return (

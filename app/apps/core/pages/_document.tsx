@@ -6,6 +6,7 @@ import {
   BlitzScript,
 } from "blitz";
 
+import i18next from "i18next";
 const Analytics = () => {
   const script =
     process.env.NODE_ENV === "production"
@@ -18,7 +19,7 @@ const Analytics = () => {
 class Document extends BlitzDocument {
   render() {
     return (
-      <Html lang="fr">
+      <Html lang={i18next.language.toLowerCase()}>
         <DocumentHead />
         <body>
           <Main />

@@ -23,14 +23,13 @@ import InventorySubheader from "../../../components/inventory-subheader";
 
 const WishListSharePage: BlitzPage = () => {
   const router = useRouter();
-  return <GearOrganizer type="WISH_LIST" username={router.query.username} />;
+  return (
+    <FixedLayout subheader={<InventorySubheader type="WISH_LIST" />}>
+      <GearOrganizer type="WISH_LIST" username={router.query.username} />
+    </FixedLayout>
+  );
 };
 
 WishListSharePage.authenticate = { redirectTo: Routes.LoginPage() };
-WishListSharePage.getLayout = (page) => (
-  <FixedLayout subheader={<InventorySubheader type="WISH_LIST" />}>
-    {page}
-  </FixedLayout>
-);
 
 export default WishListSharePage;

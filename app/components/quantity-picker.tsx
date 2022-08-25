@@ -2,6 +2,7 @@ import type { FC } from "react";
 
 import { useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { HStack, Text } from "@chakra-ui/layout";
 import { Icon } from "@chakra-ui/icon";
 import { IconButton } from "@chakra-ui/button";
@@ -21,6 +22,7 @@ const QuantityPicker: FC<QuantityPickerProps> = ({
   onDecrement,
   value,
 }) => {
+  const { t } = useTranslation();
   const [isDecrementing, setIsDecrementing] = useState(false);
   const [isIncrementing, setIsIncrementing] = useState(false);
 
@@ -28,7 +30,7 @@ const QuantityPicker: FC<QuantityPickerProps> = ({
     <HStack py={1} px={3} justify="space-between">
       <HStack spacing={3}>
         <Icon w={3} h={3} as={GrClose} />
-        <Text>Quantité</Text>
+        <Text>{t("Quantity", "Quantity")}</Text>
       </HStack>
 
       <HStack border="1px solid" borderColor="gray.100" rounded="full" p="2px">

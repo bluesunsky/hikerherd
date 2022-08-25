@@ -3,6 +3,7 @@ import type { ModalProps } from "@chakra-ui/modal";
 
 import { validateZodSchema } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import {
   ModalFooter,
   ModalBody,
@@ -39,6 +40,7 @@ const ModalForm: FormComponent<ModalFormProps> = ({
   isDisabled,
   ...props
 }) => {
+  const { t } = useTranslation();
   return (
     <Modal
       isOpen={isOpen}
@@ -86,7 +88,7 @@ const ModalForm: FormComponent<ModalFormProps> = ({
                   >
                     {submitText}
                   </Button>
-                  <Button onClick={onClose}>Annuler</Button>
+                  <Button onClick={onClose}>{t("Cancel", "Cancel")}</Button>
                 </HStack>
               </ModalFooter>
             </ModalContent>

@@ -14,7 +14,7 @@ type InventoryCardProps = {
   user: Pick<User, "username">;
 };
 
-const WhishListCard: FC<InventoryCardProps & BoxProps> = ({
+const WishListCard: FC<InventoryCardProps & BoxProps> = ({
   user,
   ...props
 }) => {
@@ -54,4 +54,4 @@ const WhishListCard: FC<InventoryCardProps & BoxProps> = ({
   );
 };
 
-export default WhishListCard;
+export default WishListCard;

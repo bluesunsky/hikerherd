@@ -2,6 +2,7 @@ import type { FC } from "react";
 
 import { useContext } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Grid, Stack, HStack } from "@chakra-ui/layout";
 import {
   FaImage,
@@ -31,26 +32,38 @@ type GearFormFieldsProps = {
 
 const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
   const { weightUnit } = useContext(userPreferencesContext);
+  const { t } = useTranslation();
   return (
     <Stack spacing={4}>
-      <TextField name="name" label="Nom" placeholder="Nom (Obligatoire)" />
-      <TextField name="kind" label="Type" placeholder="Type (Facultatif)" />
+      <TextField
+        name="name"
+        label={t("Name", "Name")}
+        placeholder={t("NamePlaceholder", "Name (Mandatory)")}
+      />
+      <TextField
+        name="kind"
+        label={t("Kind", "Kind")}
+        placeholder={t("KindPlaceholder", "Kind (Optional)")}
+      />
       <TextField
         name="manufacturer"
-        label="Marque"
-        placeholder="Marque (Facultatif)"
+        label={t("Manufacturer", "Manufacturer")}
+        placeholder={t("ManufacturerPlaceholder", "Manufacturer (Optional)")}
       />
       <TextAreaField
         name="notes"
-        label="Description"
-        placeholder="Information à propos de l'équipement"
+        label={t("Notes", "Notes")}
+        placeholder={t(
+          "NotesPlaceholder",
+          "Extra notes about this gear (Optional)"
+        )}
       />
 
       <TextField
         type="number"
         name="weight"
-        label="Poids & Type de poids"
-        placeholder="Poids"
+        label={t("WeightAndType", "Weight & Type of weight")}
+        placeholder={t("Weight", "Weight")}
         suffix={weightUnit === "METRIC" ? "g" : "oz"}
         icon={<Icon color="teal.400" as={FaWeightHanging} />}
       />
@@ -58,20 +71,22 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
       <HStack>
         <Tag colorScheme="pink" flexShrink={0}>
           <TagLeftIcon as={FaHamburger} />
-          <TagLabel>Consommable ?</TagLabel>
+          <TagLabel>{t("Consumbable?", "Consumbable?")}</TagLabel>
         </Tag>
         <CheckboxField name="consumable" />
         {includeWorn && (
           <>
             <Tag colorScheme="blue" flexShrink={0}>
               <TagLeftIcon as={FaTshirt} />
-              <TagLabel>Porté ?</TagLabel>
+              <TagLabel>{t("Worn?", "Worn?")}</TagLabel>
             </Tag>
             <CheckboxField name="worn" />
           </>
         )}
       </HStack>
-      <FormLabel>Coût & Date d&lsquo;achat</FormLabel>
+      <FormLabel>
+        {t("PriceAndPurchaseDate", "Price & Purchase date")}
+      </FormLabel>
       <Grid templateColumns="70px 1fr" gap={2} alignItems="flex-end">
         <SelectField name="currency">
           <option value="USD">$</option>
@@ -89,26 +104,26 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
 
       <TextField
         name="imageUrl"
-        label="Image"
+        label={t("Image", "Image")}
         placeholder="https://..."
         icon={<Icon color="gray.400" as={FaImage} />}
       />
       <TextField
         name="link"
-        label="Lien"
+        label={t("Link", "Link")}
         placeholder="https://..."
         icon={<Icon color="gray.400" as={FaLink} />}
       />
-      <FormLabel>Compléments</FormLabel>
+      <FormLabel>{t("MoreInformation", "More information")}</FormLabel>
       <HStack>
         <Tag bg="red" color="white" flexShrink={0}>
           <TagLeftIcon as={FaExclamationTriangle} />
-          <TagLabel>A remplacer ?</TagLabel>
+          <TagLabel>{t("ToReplace?", "To replace?")}</TagLabel>
         </Tag>
         <CheckboxField name="replaceable" />
         <Tag flexShrink={0}>
           <TagLeftIcon as={FaLock} />
-          <TagLabel>Privé ?</TagLabel>
+          <TagLabel>{t("Private?", "Private?")}</TagLabel>
         </Tag>
         <CheckboxField name="private" />
       </HStack>

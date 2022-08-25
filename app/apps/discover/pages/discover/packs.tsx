@@ -13,22 +13,22 @@ import GlobalPacksSearch from "../../components/global-packs-search";
 const DiscoverPacksPage: BlitzPage = () => {
   const textColor = useColorModeValue("gray.600", "gray.400");
   return (
-    <Fragment>
-      <Heading mb={4} size="md">
-        Packs partagés
-      </Heading>
+    <SidebarLayout>
+      <Fragment>
+        <Heading mb={4} size="md">
+          Packs partagés
+        </Heading>
 
-      <Text mb={5} color={textColor}>
-        Rechercher des packs créés par d&lsquo;autres utilisateurs.
-      </Text>
+        <Text mb={5} color={textColor}>
+          Rechercher des packs créés par d&lsquo;autres utilisateurs.
+        </Text>
 
-      <Card>
-        <GlobalPacksSearch />
-      </Card>
-    </Fragment>
+        <Card>
+          <GlobalPacksSearch />
+        </Card>
+      </Fragment>
+    </SidebarLayout>
   );
 };
-
-DiscoverPacksPage.getLayout = (page) => <SidebarLayout>{page}</SidebarLayout>;
 
 export default DiscoverPacksPage;

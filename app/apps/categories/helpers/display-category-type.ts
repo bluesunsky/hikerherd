@@ -1,11 +1,12 @@
 import type { CategoryType } from "db";
 
+import { t } from "i18next";
 const displayCategoryType = (type: CategoryType) => {
   switch (type) {
     case "INVENTORY":
-      return "l'inventaire";
+      return t("InventoryType", "inventory");
     case "WISH_LIST":
-      return "les souhaits";
+      return t("WishListType", "wish list");
   }
 };
 

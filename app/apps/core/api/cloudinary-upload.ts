@@ -2,6 +2,7 @@ import type { BlitzApiHandler, BlitzApiRequest } from "blitz";
 
 import { getSession } from "blitz";
 
+import { t } from "i18next";
 import { Formidable } from "formidable";
 
 import cloudinary from "integrations/cloudinary";
@@ -22,19 +23,27 @@ const uploadFile = (req: BlitzApiRequest) => {
       }
 
       if (typeof fields.folder !== "string") {
-        return reject(new Error("You must provide a folder"));
+        return reject(
+          new Error(t("CloudinaryFolderError", "You must provide a folder"))
+        );
       }
 
       if (typeof fields.filename !== "string") {
-        return reject(new Error("You must provide a filename"));
+        return reject(
+          new Error(t("CloudinaryFilenameError", "You must provide a filename"))
+        );
       }
 
       if (!files.file) {
-        return reject(new Error("No file found"));
+        return reject(new Error(t("CloudinaryFileError", "No file found")));
       }
 
       if (Array.isArray(files.file)) {
-        return reject(new Error("Only one file can be uploaded at a time"));
+        return reject(
+          new Error(
+            t("CloudinaryFilesError", "Only one file can be uploaded at a time")
+          )
+        );
       }
 
       cloudinary.uploader.upload(
