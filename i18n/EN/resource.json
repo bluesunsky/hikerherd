@@ -210,7 +210,7 @@
   "NightToDay": "You'r using night hike. \nClick to use day hike",
   "NoGear": "No gear",
   "NoPacksError": "You have not created any packs yet",
-  "NoResultFor": "No result for &quot;{{query}}&quot;",
+  "NoResultFor": "No result for '{{query}}'",
   "NotFound": "Not found",
   "NotFoundDetail": "Are you lost?",
   "NotOwned": "Not owned!",

@@ -208,7 +208,7 @@
   "NightToDay": "Stai usando la modalità oscura. \nFai clic per usare la modalità luce",
   "NoGear": "Nessuna marcia",
   "NoPacksError": "You have not created any packs yet",
-  "NoResultFor": "No result for &quot;{{query}}&quot;",
+  "NoResultFor": "No result for '{{query}}'",
   "NotFound": "Non trovato",
   "NotFoundDetail": "Ti sei perso?",
   "NotOwned": "Non di proprietà!",

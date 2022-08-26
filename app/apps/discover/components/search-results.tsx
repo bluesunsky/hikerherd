@@ -29,7 +29,7 @@ const SearchResults: FC<SearchResultsProps> = ({
 
       {!isLoading && items?.length === 0 && (
         <Text pl={0} fontSize="lg" color={textColor}>
-          {t("NoResultFor", "No result for &quot;{{query}}&quot;", {
+          {t("NoResultFor", "No result for '{{query}}'", {
             query: query,
           })}
         </Text>
