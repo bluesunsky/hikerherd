@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { useState } from "react";
 import { invalidateQuery, useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { useDropzone } from "react-dropzone";
 import { Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
@@ -19,7 +20,7 @@ const AvatarUploader: FC = () => {
   const currentUser = useCurrentUser();
   const [changeAvatar] = useMutation(changeAvatarMutation);
   const toast = useToast();
-
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -44,12 +45,18 @@ const AvatarUploader: FC = () => {
             invalidateQuery(currentUserQuery);
 
             toast({
-              title: "Votre avatar a bien été modifié",
+              title: t(
+                "ChangeAvatarSuccess",
+                "Your avatar was changed successfully"
+              ),
               status: "success",
             });
           } catch (error) {
             toast({
-              title: "Oops, there was a problem changing your avatar ",
+              title: t(
+                "ChangeAvatarError",
+                "Oops, there was a problem changing your avatar"
+              ),
               status: "error",
             });
           }
@@ -64,7 +71,7 @@ const AvatarUploader: FC = () => {
     <Box {...getRootProps()}>
       <input {...getInputProps()} />
       <Button isLoading={loading} size="sm">
-        Changer l&lsquo;avatar
+        {t("ChangeAvatar", "Change avatar")}
       </Button>
     </Box>
   );

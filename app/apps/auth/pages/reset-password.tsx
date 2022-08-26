@@ -18,7 +18,7 @@ const ResetPasswordPage: BlitzPage = () => {
     toast({
       title: t("ResetPasswordSuccess", "Password changed"),
       description: t(
-        "ResetPasswordSuccessDescription",
+        "ResetPasswordSuccessDetail",
         "You have successfully changed your password."
       ),
       status: "success",
@@ -29,7 +29,7 @@ const ResetPasswordPage: BlitzPage = () => {
     <BoxLayout
       title={t("ResetPassword", "Reset Your Password")}
       description={t(
-        "ResetPasswordDescription",
+        "ResetPasswordDetail",
         "What would you like your new password to be?"
       )}
     >

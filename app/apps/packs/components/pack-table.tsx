@@ -118,7 +118,7 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
 
             <TotalRow
               description={t(
-                "TotalDescription",
+                "TotalDetail",
                 "Total including your worn items and your consumables."
               )}
               name={t("Total", "Total")}
@@ -153,7 +153,7 @@ const PackTable: FC<PackTableProps> = ({ colors }) => {
               fontWeight="normal"
             />
             <TotalRow
-              description={t("OnOneselfDescription", "Items Worn on oneself")}
+              description={t("OnOneselfDetail", "Items Worn on oneself")}
               name={t("OnOneself", "On oneself")}
               weight={totalWeight - packWeight}
             />

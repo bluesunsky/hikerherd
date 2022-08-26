@@ -6,6 +6,7 @@ import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Placeholder from "@tiptap/extension-placeholder";
 import Focus from "@tiptap/extension-focus";
+import { t } from "i18next";
 
 export type EditorFeatures = {
   horizontalRule?: boolean;
@@ -25,7 +26,7 @@ const getEditorExtensions = (features: EditorFeatures = {}) => {
     StarterKit.configure(starterKitOptions),
     Placeholder.configure({
       // Use a placeholder:
-      placeholder: "Ecrire quelque chose…",
+      placeholder: t("WriteSomething", "Write someting…"),
     }),
     Focus,
     Link.configure({ openOnClick: false }),

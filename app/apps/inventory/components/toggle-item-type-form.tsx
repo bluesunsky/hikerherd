@@ -70,7 +70,7 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
           toast({
             title: t("MoveGearSuccess", "Your gear was moved"),
             description: t(
-              "MoveGearSuccesDescription",
+              "MoveGearSuccesDetail",
               "This was moved into your {{typename}} successfully",
               { typename: typeName }
             ),

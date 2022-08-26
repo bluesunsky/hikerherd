@@ -2,6 +2,7 @@ import type { ChangeEventHandler, FC } from "react";
 
 import { useCallback, useEffect, useMemo } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Icon } from "@chakra-ui/icon";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/input";
 import { FaSearch } from "react-icons/fa";
@@ -18,7 +19,7 @@ const SearchInput: FC<SearchInputProps> = ({ setQuery, ...props }) => {
     },
     [setQuery]
   );
-
+  const { t } = useTranslation();
   const debouncedChangeHandler = useMemo(
     () => debounce(changeHandler, 300),
     [changeHandler]
@@ -37,7 +38,7 @@ const SearchInput: FC<SearchInputProps> = ({ setQuery, ...props }) => {
       </InputLeftElement>
       <Input
         onChange={debouncedChangeHandler}
-        placeholder="Rechercher..."
+        placeholder={t("Search...", "Search…")}
         variant="filled"
         {...props}
       />

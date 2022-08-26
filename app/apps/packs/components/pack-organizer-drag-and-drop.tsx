@@ -82,7 +82,7 @@ const PackOrganizerDragAndDrop: FC = () => {
       toast({
         title: t("ItemDropError", "Something went wrong"),
         description: t(
-          "ItemDropErrorDescription",
+          "ItemDropErrorDetail",
           "There was a problem moving that item."
         ),
         status: "error",

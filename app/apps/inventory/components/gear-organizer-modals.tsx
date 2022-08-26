@@ -69,7 +69,7 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
         onClose={closeModals}
         title={t("DeleteCategoryConfirm", "Delete this category?")}
         description={t(
-          "DeleteCategoryConfirmDescription",
+          "DeleteCategoryConfirmDetail",
           "Are you sure you want to delete this category? All the items inside the category will be deleted as well."
         )}
         onConfirm={async () => {
@@ -85,7 +85,7 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
         onClose={closeModals}
         title={t("DeleteGearConfirm", "Delete this gear?")}
         description={t(
-          "DeleteGearConfirmDescription",
+          "DeleteGearConfirmDetail",
           "Are you sure you want to delete this gear?"
         )}
         onConfirm={async () => {

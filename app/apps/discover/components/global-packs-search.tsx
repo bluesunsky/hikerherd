@@ -4,6 +4,7 @@ import type { FC } from "react";
 import { useQuery } from "blitz";
 import { useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { SimpleGrid, Stack, HStack, Text } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/button";
@@ -22,7 +23,7 @@ type GlobalPacksSearchProps = {
 
 const GlobalPacksSearch: FC<GlobalPacksSearchProps> = ({ packActions }) => {
   const [query, setQuery] = useState("");
-
+  const { t } = useTranslation();
   const cardBg = useColorModeValue("gray.50", "gray.800");
   const border = useColorModeValue("gray.100", "gray.900");
 
@@ -47,7 +48,7 @@ const GlobalPacksSearch: FC<GlobalPacksSearchProps> = ({ packActions }) => {
       />
       <HStack justifyContent="space-between">
         <HStack>
-          <Text fontSize="sm">Page</Text>
+          <Text fontSize="sm">{t("Page", "Page")}</Text>
           <HStack
             border="1px solid"
             borderColor="gray.100"
@@ -82,8 +83,12 @@ const GlobalPacksSearch: FC<GlobalPacksSearchProps> = ({ packActions }) => {
         {items && (
           <Text fontSize="sm">
             {(page - 1) * take + (items ? items.length : 0)}{" "}
-            {items && items?.length > 1 ? "résultats" : "résultat"}
-            {items && items?.length < take ? "" : "  et plus"}
+            {items && items?.length > 1
+              ? t("Packs", "Packs").toLowerCase()
+              : t("Pack", "Pack").toLowerCase()}
+            {items && items?.length < take
+              ? ""
+              : " " + t("AndMore", "and more")}
           </Text>
         )}
       </HStack>

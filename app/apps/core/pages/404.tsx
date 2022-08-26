@@ -9,7 +9,7 @@ const NotFoundPage: BlitzPage = () => {
   return (
     <BoxLayout
       title={t("NotFound", "Not found")}
-      description={t("NotFoundDescription", "Are you lost?")}
+      description={t("NotFoundDetail", "Are you lost?")}
     ></BoxLayout>
   );
 };

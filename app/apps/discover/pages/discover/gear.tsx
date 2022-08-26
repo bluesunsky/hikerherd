@@ -4,6 +4,7 @@ import type { CategoryType, Gear } from "db";
 import { useSession } from "blitz";
 import { Fragment, useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Button } from "@chakra-ui/button";
 import { useToast } from "@chakra-ui/toast";
 import { Heading, SimpleGrid, Text } from "@chakra-ui/layout";
@@ -20,7 +21,7 @@ const DiscoverGearPage: BlitzPage = () => {
   const session = useSession({ suspense: false });
   const toast = useToast();
   const textColor = useColorModeValue("gray.600", "gray.400");
-
+  const { t } = useTranslation();
   const [adding, setAdding] = useState<{
     type: CategoryType;
     gear: Gear;
@@ -37,26 +38,37 @@ const DiscoverGearPage: BlitzPage = () => {
           onSuccess={() => {
             setAdding(null);
             toast({
-              title: "Succès",
-              description: "L'équipement a été ajouté.",
+              title: t("Success", "Success"),
+              description: t("AddItemSuccess", "The item has been added."),
               status: "success",
             });
           }}
         />
 
         <Heading mb={4} size="md">
-          Equipements partagés
+          {t("GearSearch", "Gear search")}
         </Heading>
 
-        <Text mb={2} color={textColor}>
-          Chaque fois que de nouveaux équipements sont ajoutés, ils peuvent être
-          trouvés ici.
-        </Text>
-        <Text mb={5} color={textColor}>
-          Les données sur l&lsquo;équipement sont collectées par{" "}
-          <strong>vous</strong>, donc plus vous utilisez application, plus il
-          s&lsquo;améliorera !
-        </Text>
+        <Text
+          mb={2}
+          color={textColor}
+          dangerouslySetInnerHTML={{
+            __html: t(
+              "GearSearchInformation",
+              "Whenever new gear is added to hikerherd it can be found here."
+            ),
+          }}
+        ></Text>
+        <Text
+          mb={5}
+          color={textColor}
+          dangerouslySetInnerHTML={{
+            __html: t(
+              "GearSearchInformation2",
+              "The gear data is crowd-sourced by you, so the more you use hikerherd the better it will get!"
+            ),
+          }}
+        ></Text>
 
         <Card>
           <GlobalGearSearch
@@ -74,7 +86,7 @@ const DiscoverGearPage: BlitzPage = () => {
                       leftIcon={<FcList />}
                       onClick={() => setAdding({ type: "INVENTORY", gear })}
                     >
-                      Ajouter à l&lsquo;inventaire
+                      {t("AddToInventory", "Add to inventory")}
                     </Button>
                     <Button
                       isFullWidth
@@ -82,7 +94,7 @@ const DiscoverGearPage: BlitzPage = () => {
                       leftIcon={<FcRating />}
                       onClick={() => setAdding({ type: "WISH_LIST", gear })}
                     >
-                      Ajouter aux souhaits
+                      {t("AddToWishList", "Add to wish list")}
                     </Button>
                   </SimpleGrid>
                 )}

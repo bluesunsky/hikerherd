@@ -1,5 +1,6 @@
 import type { FC } from "react";
 
+import { useTranslation } from "react-i18next";
 import { useColorModeValue } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/spinner";
 import { Center, Box, Text } from "@chakra-ui/layout";
@@ -17,7 +18,7 @@ const SearchResults: FC<SearchResultsProps> = ({
   items,
 }) => {
   const textColor = useColorModeValue("gray.500", "gray.400");
-
+  const { t } = useTranslation();
   return (
     <Box>
       {isLoading && (
@@ -28,7 +29,9 @@ const SearchResults: FC<SearchResultsProps> = ({
 
       {!isLoading && items?.length === 0 && (
         <Text pl={0} fontSize="lg" color={textColor}>
-          Pas de résultat pour &quot;{query}&quot;.
+          {t("NoResultFor", "No result for &quot;{{query}}&quot;", {
+            query: query,
+          })}
         </Text>
       )}
 

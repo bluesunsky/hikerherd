@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { useState } from "react";
 import { invalidateQuery, useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { useDropzone } from "react-dropzone";
 import { Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/button";
@@ -19,7 +20,7 @@ const CoverUploader: FC = () => {
   const currentUser = useCurrentUser();
   const [changeCover] = useMutation(changeCoverMutation);
   const toast = useToast();
-
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -44,12 +45,18 @@ const CoverUploader: FC = () => {
             invalidateQuery(currentUserQuery);
 
             toast({
-              title: "Votre image de couverture a bien été modifiée",
+              title: t(
+                "ChangeCoverSuccess",
+                "Your cover was changed successfully"
+              ),
               status: "success",
             });
           } catch (error) {
             toast({
-              title: "Oops, there was a problem changing your cover ",
+              title: t(
+                "ChangeCoverError",
+                "Oops, there was a problem changing your cover"
+              ),
               status: "error",
             });
           }
@@ -64,7 +71,7 @@ const CoverUploader: FC = () => {
     <Box {...getRootProps()}>
       <input {...getInputProps()} />
       <Button isLoading={loading} size="sm">
-        Changer l&lsquo;image de couverture
+        {t("ChangeCover", "Change cover")}
       </Button>
     </Box>
   );

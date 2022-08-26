@@ -18,7 +18,7 @@ const AppErrorFallback: FC<ErrorFallbackProps> = ({
       <BoxLayout
         title={t("LoginRequired", "Log in")}
         description={t(
-          "LoginRequiredDescription",
+          "LoginRequiredDetail",
           "You aren't logged in! You need to log in to continue."
         )}
       >
@@ -32,7 +32,7 @@ const AppErrorFallback: FC<ErrorFallbackProps> = ({
       <BoxLayout
         title={t("Unauthorized", "Unauthorized")}
         description={t(
-          "UnauthorizedDescription",
+          "UnauthorizedDetail",
           "Sorry, you are not allowed to do that."
         )}
       />
@@ -43,7 +43,7 @@ const AppErrorFallback: FC<ErrorFallbackProps> = ({
     return (
       <BoxLayout
         title={t("NotFound", "Not found")}
-        description={t("NotFoundDescription", "Are you lost?")}
+        description={t("NotFoundDetail", "Are you lost?")}
       />
     );
   }

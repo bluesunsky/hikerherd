@@ -4,6 +4,7 @@ import type { FC } from "react";
 import { useQuery } from "blitz";
 import { useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { useColorModeValue } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { Tooltip } from "@chakra-ui/tooltip";
@@ -27,7 +28,7 @@ type GlobalGearSearchProps = {
 
 const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
   const [query, setQuery] = useState("");
-
+  const { t } = useTranslation();
   const take = 10;
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(0);
@@ -38,7 +39,6 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
   const [items, { isLoading }] = useQuery(
     searchGearQuery,
     { query, take, skip },
-    //{ suspense: false, enabled: !!query }
     { suspense: false }
   );
 
@@ -53,7 +53,7 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
       />
       <HStack justifyContent="space-between">
         <HStack>
-          <Text fontSize="sm">Page</Text>
+          <Text fontSize="sm">{t("Page", "Page")}</Text>
           <HStack
             border="1px solid"
             borderColor="gray.100"
@@ -88,8 +88,12 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
         {items && (
           <Text fontSize="sm">
             {(page - 1) * take + (items ? items.length : 0)}{" "}
-            {items && items?.length > 1 ? "résultats" : "résultat"}
-            {items && items?.length < take ? "" : "  et plus"}
+            {items && items?.length > 1
+              ? t("Gears", "Gears").toLowerCase()
+              : t("Gear", "Gear").toLowerCase()}
+            {items && items?.length < take
+              ? ""
+              : " " + t("AndMore", "and more")}
           </Text>
         )}
       </HStack>
@@ -114,7 +118,7 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
             >
               {gearActions(item)}
               <HStack justifyContent="space-between" mt={2}>
-                <Tooltip label="Mise à jour">
+                <Tooltip label={t("UpdateTime", "Update time")}>
                   <Tag size="sm" borderRadius="full" bg={updateBgColor}>
                     <Icon as={FaCalendarAlt} />
                     &nbsp;

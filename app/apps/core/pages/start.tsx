@@ -20,6 +20,7 @@ import { useColorModeValue } from "@chakra-ui/react";
 import PlainLayout from "app/layouts/plain-layout";
 import useCurrentUser from "app/apps/users/hooks/use-current-user";
 
+import getCoverUrl from "../../users/helpers/get-cover-url";
 import IndexCard from "../components/index-card";
 
 const StartPage: BlitzPage = () => {
@@ -28,20 +29,38 @@ const StartPage: BlitzPage = () => {
   const username = user
     ? user.username.charAt(0).toUpperCase() + user.username.slice(1)
     : "";
+  var styles = {
+    box: {
+      backgroundImage: `url(${getCoverUrl(user, 1024)})`,
+      backgroundSize: "cover",
+      backgroundPositionY: "center",
+      backgroundPositionX: "center",
+    },
+    text: {},
+  };
+  if (user && user.cover_id)
+    styles.text = {
+      color: "#fff",
+      textShadow: "0 0 5px #000",
+    };
+  else
+    styles.text = {
+      textShadow: "0 0 5px #fff",
+    };
   return (
     <PlainLayout>
       <Fragment>
-        <Box bg={useColorModeValue("gray.50", "gray.800")}>
+        <Box bg={useColorModeValue("gray.50", "gray.800")} style={styles.box}>
           <Container
             as="main"
             maxW="container.sm"
             textAlign="center"
             py={{ base: 12, md: 20 }}
           >
-            <Heading size="2xl" mb={2}>
+            <Heading size="2xl" mb={2} style={styles.text}>
               {username}
             </Heading>
-            <Text fontSize="xl" opacity="0.8">
+            <Text fontSize="xl" opacity="0.8" style={styles.text}>
               {t("WelcomeTo", "Welcome to {{appliname}}", {
                 appliname: t("AppliName"),
               })}
@@ -63,21 +82,21 @@ const StartPage: BlitzPage = () => {
               icon={FcRating}
               href={Routes.WishListPage()}
               title={t("WishList", "Wish list")}
-              text={t("WishListDescription", "Track the gear you want to buy")}
+              text={t("WishListDetail", "Track the gear you want to buy")}
             />
 
             <IndexCard
               icon={FcList}
               href={Routes.InventoryPage()}
               title={t("Inventory", "Inventory")}
-              text={t("InventoryDescription", "Manage your backpacking gear")}
+              text={t("InventoryDetail", "Manage your backpacking gear")}
             />
 
             <IndexCard
               icon={FcTimeline}
               href={Routes.PacksPage()}
               title={t("Packs", "Packs")}
-              text={t("PacksDescription", "Organize your gear into packs")}
+              text={t("PacksDetail", "Organize your gear into packs")}
             />
           </SimpleGrid>
 
@@ -96,7 +115,7 @@ const StartPage: BlitzPage = () => {
               href={Routes.DiscoverGearPage()}
               title={t("GearSearch", "Gear search")}
               text={t(
-                "GearSearchDescription",
+                "GearSearchDetail",
                 "Search the hikerherd database for gear"
               )}
             />
@@ -106,7 +125,7 @@ const StartPage: BlitzPage = () => {
               href={Routes.DiscoverPacksPage()}
               title={t("PackSearch", "Pack search")}
               text={t(
-                "PackSearchDescription",
+                "PackSearchDetail",
                 "Look for packs created by other hikers"
               )}
             />
@@ -114,7 +133,7 @@ const StartPage: BlitzPage = () => {
               icon={FcContacts}
               href={Routes.DiscoverUsersPage()}
               title={t("UserSearch", "User search")}
-              text={t("UserSearchDescription", "Look for hiker")}
+              text={t("UserSearchDetail", "Look for hiker")}
             />
           </SimpleGrid>
 
@@ -132,10 +151,7 @@ const StartPage: BlitzPage = () => {
               icon={FcPortraitMode}
               href={Routes.ProfilePage({ username: user?.username || "" })}
               title={t("Profile", "My profile")}
-              text={t(
-                "ProfileDescription",
-                "View your own hikerherd profile page"
-              )}
+              text={t("ProfileDetail", "View your own hikerherd profile page")}
             />
 
             <IndexCard
@@ -143,7 +159,7 @@ const StartPage: BlitzPage = () => {
               href={Routes.PreferencesPage()}
               title={t("Preferences", "My preferences")}
               text={t(
-                "PreferencesDescription",
+                "PreferencesDetail",
                 "Set your preferred units and currency"
               )}
             />

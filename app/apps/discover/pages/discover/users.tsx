@@ -2,6 +2,7 @@ import type { BlitzPage } from "blitz";
 
 import { Fragment } from "react";
 
+import { useTranslation } from "react-i18next";
 import { Heading, Text } from "@chakra-ui/layout";
 import { useColorModeValue } from "@chakra-ui/react";
 
@@ -12,17 +13,21 @@ import GlobalUsersSearch from "../../components/global-users-search";
 // <QuantityPicker
 const DiscoverUsersPage: BlitzPage = () => {
   const textColor = useColorModeValue("gray.600", "gray.400");
-
+  const { t } = useTranslation();
   return (
     <SidebarLayout>
       <Fragment>
         <Heading mb={4} size="md">
-          Utilisateurs
+          {t("UserSearch", "User search")}
         </Heading>
 
-        <Text mb={5} color={textColor}>
-          Rechercher des utilisateurs de Pack your pack.
-        </Text>
+        <Text
+          mb={5}
+          color={textColor}
+          dangerouslySetInnerHTML={{
+            __html: t("UserSearchInformation", "Look for hiker."),
+          }}
+        ></Text>
 
         <Card>
           <GlobalUsersSearch />

@@ -50,7 +50,7 @@ const PackSubheaderActions: FC = () => {
       toast({
         title: t("CopyLinkConfirm", "Share link copied."),
         description: t(
-          "CopyLinkConfirmDescription",
+          "CopyLinkConfirmDetail",
           "A share link for your pack has been copied to your clipboard."
         ),
         status: "success",
@@ -115,7 +115,7 @@ const PackSubheaderActions: FC = () => {
           <SettingsMenuButton>
             <MenuList>
               <MenuItem icon={<FaEdit />} onClick={editPack}>
-                {t("Edit", "Edit")}
+                {t("EditPack", "Edit")}
               </MenuItem>
               <MenuItem
                 icon={<FaShare />}

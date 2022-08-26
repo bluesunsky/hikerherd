@@ -51,8 +51,10 @@ const PackCategoryForm: FC<PackCategoryFormProps> = ({
       onClose={onClose}
       title={
         categoryId
-          ? t("EditCategory", "Edit category")
-          : t("CreateCategory", "Create a category")
+          ? t("UpdateCategory", "Editing {{categoryname}}", {
+              categoryname: category ? category.name : "",
+            })
+          : t("CreateCategory", "Create a new category")
       }
       schema={createPackCategorySchema}
       submitText={categoryId ? t("Update", "Update") : t("Create", "Create")}

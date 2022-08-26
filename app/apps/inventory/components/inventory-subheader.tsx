@@ -73,7 +73,7 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
           toast({
             title: t("ImportInventorySuccess", "Your gear has been imported"),
             description: t(
-              "ImportInventorySuccessDescription",
+              "ImportInventorySuccessDetail",
               "Your new gear has been imported, you'll find it at the end of your inventory."
             ),
             status: "success",

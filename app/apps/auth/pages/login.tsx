@@ -22,7 +22,7 @@ const LoginPage: BlitzPage = () => {
   return (
     <BoxLayout
       title={t("Login", "Log in")}
-      description={t("LoginDescription", "Sign the trail register.")}
+      description={t("LoginDetail", "Sign the trail register.")}
     >
       <Stack spacing={8}>
         <LoginForm
@@ -36,7 +36,7 @@ const LoginPage: BlitzPage = () => {
                   : "",
               }),
               description: t(
-                "LoginSuccessDescription",
+                "LoginSuccessDetail",
                 "You have logged in successfully."
               ),
               status: "success",

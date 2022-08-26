@@ -65,7 +65,9 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={t("EditGearTitle", "Edit gear")}
+      title={t("UpdateGear", "Editing {{gearname}}", {
+        gearname: gearItem ? gearItem?.gear.name : "",
+      })}
       schema={updatePackGearSchema}
       size="lg"
       submitText={t("Update", "Update")}

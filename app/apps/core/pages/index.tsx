@@ -95,7 +95,7 @@ const HomePage: BlitzPage = () => {
             </Heading>
             <Text fontSize="lg" opacity="0.8">
               {t(
-                "AppliDescription",
+                "AppliDetail",
                 "Join the other hikers, backpackers & minimalists who are already \
 using {{appliname}} to manage their gear and plan their \
 adventures.",
@@ -143,7 +143,7 @@ adventures.",
           </Heading>
           <Text fontSize="lg" opacity="0.8">
             {t(
-              "HowDoesItWorkDescription",
+              "HowDoesItWorkDetail",
               "Organizing your gear closet and planning packing lists has never been so easy."
             )}
           </Text>
@@ -152,19 +152,19 @@ adventures.",
             <IconCard
               icon={FcRating}
               title={t("WishList", "Wish list")}
-              text={t("WishListDescription", "Track the gear you want to buy")}
+              text={t("WishListDetail", "Track the gear you want to buy")}
             />
 
             <IconCard
               icon={FcList}
               title={t("Inventory", "Inventory")}
-              text={t("InventoryDescription", "Manage your backpacking gear")}
+              text={t("InventoryDetail", "Manage your backpacking gear")}
             />
 
             <IconCard
               icon={FcTimeline}
               title={t("Packs", "Packs")}
-              text={t("PacksDescription", "Organize your gear into packs")}
+              text={t("PacksDetail", "Organize your gear into packs")}
             />
           </SimpleGrid>
         </Container>
@@ -187,13 +187,13 @@ adventures.",
                 </Heading>
                 <Text color="blue.300" fontWeight="bold" fontSize="lg" mb={2}>
                   {t(
-                    "PackWeightAnalyticsDescription",
+                    "PackWeightAnalyticsDetail",
                     "You need to know where your weight is coming from."
                   )}
                 </Text>
                 <Text fontSize="lg" opacity="0.8">
                   {t(
-                    "PackWeightAnalyticsDescriptionAddOn",
+                    "PackWeightAnalyticsDetailAddOn",
                     "The <strong>hikerherd</strong> analytics tools help you to see \
 which items are weighing you down and what to leave at home."
                   )}
@@ -225,7 +225,7 @@ which items are weighing you down and what to leave at home."
           </Heading>
           <Text fontSize="lg" opacity="0.8" maxW="container.md" mx="auto">
             {t(
-              "DiscoverDescription",
+              "DiscoverDetail",
               "Need some inspiration? Search for packs and gear created by other users."
             )}
           </Text>
@@ -237,7 +237,7 @@ which items are weighing you down and what to leave at home."
               actionLink={Routes.DiscoverGearPage()}
               actionText={t("GearSearchAction", "Search for gear")}
               text={t(
-                "GearSearchDescription",
+                "GearSearchDetail",
                 "Search the hikerherd database for gear"
               )}
             />
@@ -248,7 +248,7 @@ which items are weighing you down and what to leave at home."
               actionLink={Routes.DiscoverPacksPage()}
               actionText={t("PackSearchAction", "Search for pack")}
               text={t(
-                "PackSearchDescription",
+                "PackSearchDetail",
                 "Look for packs created by other hikers"
               )}
             />
@@ -257,7 +257,7 @@ which items are weighing you down and what to leave at home."
               title={t("UserSearch", "User search")}
               actionLink={Routes.DiscoverUsersPage()}
               actionText={t("UserSearchAction", "Search for user")}
-              text={t("UserSearchDescription", "Look for hiker")}
+              text={t("UserSearchDetail", "Look for hiker")}
             />
           </SimpleGrid>
         </Container>
@@ -276,7 +276,7 @@ which items are weighing you down and what to leave at home."
               {t("JoinThe", "Join the")}{" "}
               <Tag my="2px" fontWeight="bold" colorScheme="teal">
                 <TagLeftIcon boxSize="12px" as={FaUser} />
-                <TagLabel>{userCount ? userCount : "..."}</TagLabel>
+                <TagLabel>{userCount ? userCount : "…"}</TagLabel>
               </Tag>{" "}
               {t("OtherUserOf", "other hikers who are already using")}{" "}
               <strong>{t("AppliName")}</strong>{" "}

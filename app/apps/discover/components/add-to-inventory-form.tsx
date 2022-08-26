@@ -5,6 +5,7 @@ import type { PromiseReturnType } from "blitz";
 import { Fragment } from "react";
 import { useMutation, useQuery } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Center, Text } from "@chakra-ui/layout";
 import { Spinner } from "@chakra-ui/spinner";
 import { FORM_ERROR } from "final-form";
@@ -35,7 +36,7 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
   onClose,
 }) => {
   const [add] = useMutation(addToInventoryMutation);
-
+  const { t } = useTranslation();
   const [categories, { isLoading }] = useQuery(
     categoriesQuery,
     { type },
@@ -48,12 +49,13 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={`Ajouter l'équipement '${gear.name}' dans ${displayCategoryType(
-        type
-      )}`}
+      title={t("AddGearTo", "Add {{gearname}} to your {{listname}}", {
+        gearname: gear.name,
+        listname: displayCategoryType(type),
+      })}
       isDisabled={!categories?.length}
       schema={addToInventorySchema}
-      submitText="Ajouter"
+      submitText={t("Add", "Add")}
       initialValues={{
         gearId: gear?.id,
         categoryId: categories?.[0]?.id,
@@ -69,8 +71,10 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
           }
         } catch (error: unknown) {
           return {
-            [FORM_ERROR]:
-              "Sorry, there was an unexpected error. Please try again.",
+            [FORM_ERROR]: t(
+              "AddGearToError",
+              "Sorry, there was an unexpected error. Please try again."
+            ),
           };
         }
       }}
@@ -84,8 +88,11 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
             <Fragment>
               {!categories?.length && (
                 <Text>
-                  Avant de commencer vous avez besoin de créer une catégorie
-                  dans {displayCategoryType(type)}
+                  {t(
+                    "NeedCategoryIn",
+                    "Before you can start adding gear you need to create a category in your {{listname}}",
+                    { listname: displayCategoryType(type) }
+                  )}
                 </Text>
               )}
 

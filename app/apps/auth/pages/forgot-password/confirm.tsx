@@ -12,7 +12,7 @@ const ForgotPasswordConfirmPage: BlitzPage = () => {
     <BoxLayout
       title={t("ForgotPasswordConfirm", "Your email is on the way")}
       description={t(
-        "ForgotPasswordConfirmDescription",
+        "ForgotPasswordConfirmDetail",
         "If your email address has a hikerherd account then you have been sent a password reset link."
       )}
     >

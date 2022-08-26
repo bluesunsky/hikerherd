@@ -18,7 +18,7 @@ const ForgotPasswordPage: BlitzPage = () => {
     <BoxLayout
       title={t("ForgotYourPassword", "Forgot Your Password?")}
       description={t(
-        "ForgotYourPasswordDescription",
+        "ForgotYourPasswordDetail",
         "No worries. Tell us your email and you will be sent instructions for resetting your password."
       )}
     >

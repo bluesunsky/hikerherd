@@ -46,7 +46,7 @@ i18n
       cookieOptions: { path: "/", sameSite: "strict" },
     },
     fallbackLng: "EN",
-    debug: true,
+    debug: false,
     interpolation: { escapeValue: false }, // React already does escaping
     //lng: "EN", // language to use
     resources: {

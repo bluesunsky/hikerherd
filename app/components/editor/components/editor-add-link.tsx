@@ -38,7 +38,7 @@ const EditorAddLink = () => {
         toggleAddingLink();
       }}
       render={() => (
-        <TextField name="link" label="Link" placeholder="https://..." />
+        <TextField name="link" label="Link" placeholder="https://…" />
       )}
     />
   );

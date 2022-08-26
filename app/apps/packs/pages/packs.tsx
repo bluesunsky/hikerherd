@@ -120,7 +120,7 @@ const PacksPage: BlitzPage = () => {
           onClose={() => setDeletingPack(null)}
           title={t("DeletePackConfirm", "Delete pack")}
           description={t(
-            "DeletePackConfirmDescription",
+            "DeletePackConfirmDetail",
             "Are you sure? This will also delete the categories and gear inside of the pack."
           )}
           onConfirm={async () => {
@@ -130,7 +130,7 @@ const PacksPage: BlitzPage = () => {
               toast({
                 title: t("DeletePackSuccess", "The pack was deleted"),
                 description: t(
-                  "DeletePackSuccessDescription",
+                  "DeletePackSuccessDetail",
                   "Your pack was deleted along with the categories and gear inside."
                 ),
                 status: "success",

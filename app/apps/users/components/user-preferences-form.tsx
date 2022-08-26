@@ -42,7 +42,7 @@ const UserPreferencesForm: BlitzPage = () => {
           toast({
             title: t("UpdatePreferencesSuccess", "Preferences updated."),
             description: t(
-              "UpdatePreferencesSuccessDescription",
+              "UpdatePreferencesSuccessDetail",
               "Your new user preferences have been saved."
             ),
             status: "success",

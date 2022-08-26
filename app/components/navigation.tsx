@@ -5,14 +5,7 @@ import type { IconType } from "react-icons";
 import { Link, Routes, useRouter } from "blitz";
 
 import { useTranslation } from "react-i18next";
-import {
-  Stack,
-  HStack,
-  Text,
-  Heading,
-  Box,
-  Link as Anchor,
-} from "@chakra-ui/layout";
+import { Stack, HStack, Text, Heading, Box } from "@chakra-ui/layout";
 import {
   FcList,
   FcRating,
@@ -111,28 +104,38 @@ const Navigation: FC = () => {
         </NavigationSection>
 
         <NavigationSection title={t("About", "About")}>
-          <Text fontSize="sm" opacity="0.6" mt={3} py={-3} px={3}>
-            <strong>Pack your pack</strong> est une déclinaison et une version
-            française de
-            <br />
-            <strong>Hikerherd</strong>
-            {" ("}
-            <Anchor
-              isExternal
-              href="https://github.com/benhoneywill/hikerherd/blob/main/LICENCE"
-            >
-              &copy; Ben Honeywill
-            </Anchor>
-            ), <br></br>un site gratuit et{" "}
-            <Anchor
-              textDecoration="underline"
-              isExternal
-              href="https://github.com/benhoneywill/hikerherd"
-            >
-              open-source
-            </Anchor>
-            .
-          </Text>
+          <Text
+            fontSize="sm"
+            opacity="0.6"
+            mt={3}
+            py={-3}
+            px={3}
+            dangerouslySetInnerHTML={{
+              __html: t(
+                "AboutInformation1",
+                "<strong>{{appliname}}</strong> (&copy; Benjamin Sérant) bring functional and gui changes to<br />\
+<strong>Hikerherd</strong> \
+(&copy; <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd/blob/main/LICENCE'>Ben Honeywill</a>), <br />\
+a free and <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd'>open-source</a> website.",
+                { appliname: t("AppliName") }
+              ),
+            }}
+          ></Text>
+          <Text
+            fontSize="sm"
+            opacity="0.6"
+            mt={3}
+            py={-3}
+            px={3}
+            dangerouslySetInnerHTML={{
+              __html: t(
+                "AboutInformation2",
+                "<strong>{{appliname}}</strong> is also<br />\
+a free and <a target='_blank' style='text-decoration:underline' href='https://github.com/bluesunsky/hikerherd'>open-source</a> website.",
+                { appliname: t("AppliName") }
+              ),
+            }}
+          ></Text>
         </NavigationSection>
       </Stack>
     </Box>

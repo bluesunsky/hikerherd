@@ -28,7 +28,9 @@ const Popover: FC<PopoverProps & PopoverBodyProps> = ({
         <Portal>
           <PopoverContent>
             <PopoverArrow />
-            <PopoverBody {...props}>{children}</PopoverBody>
+            <PopoverBody {...props} whiteSpace="pre-wrap">
+              {children}
+            </PopoverBody>
           </PopoverContent>
         </Portal>
       )}

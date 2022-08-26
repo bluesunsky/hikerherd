@@ -3,6 +3,7 @@ import type { CategoryType } from "db";
 
 import { useMutation } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { FORM_ERROR } from "final-form";
 import { z } from "zod";
 import { Stack, Text, Link } from "@chakra-ui/layout";
@@ -29,20 +30,20 @@ const ImportInventoryCsvForm: FC<ImportInventoryCsvFormProps> = ({
   onClose,
 }) => {
   const [importCsv] = useMutation(inventoryImportCsvMutation);
-
+  const { t } = useTranslation();
   return (
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
       size="xl"
-      title="Importer depuis un CSV"
+      title={t("ImportCSV", "Import CSV")}
       schema={z.object({ file: z.any() })}
-      submitText="Importer"
+      submitText={t("Import", "Import")}
       initialValues={{}}
       onSubmit={async ({ file }) => {
         if (!file) {
           return {
-            [FORM_ERROR]: "Un fichier est nécessaire.",
+            [FORM_ERROR]: t("ImportNoFileError", "A file is required."),
           };
         }
 
@@ -61,8 +62,10 @@ const ImportInventoryCsvForm: FC<ImportInventoryCsvFormProps> = ({
             return { [FORM_ERROR]: error.message };
           } else {
             return {
-              [FORM_ERROR]:
-                "Sorry, there was an unexpected error. Please try again.",
+              [FORM_ERROR]: t(
+                "ImportError",
+                "Sorry, there was an unexpected error. Please try again."
+              ),
             };
           }
         }
@@ -70,21 +73,33 @@ const ImportInventoryCsvForm: FC<ImportInventoryCsvFormProps> = ({
       render={() => (
         <Stack spacing={6}>
           <Text>
-            Lorsque vous importez de l&lsquo;équipement, il sera ajouté à ce que
-            vous avez déjà. Rien ne sera supprimé ou modifié.
+            {t(
+              "ImportInformation1",
+              "When you import gear it will be appended to what you already have. Nothing will be deleted or modified."
+            )}
           </Text>
           <Text>
-            <strong>Votre fichier CSV doit être dans le bon format.</strong>{" "}
+            <strong>
+              {t(
+                "ImportInformation2",
+                "Your CSV file must be in the correct format."
+              )}
+            </strong>{" "}
+            <br />
             <Link
               href="https://blog.hikerherd.com/the-csv-import-guide/"
               isExternal
               textDecoration="underline"
             >
-              Lire le guide d&lsquo;importation
+              {t("ImportInformation3", "Read the importing guide")}
             </Link>{" "}
-            pour plus de détail.
+            {t("ImportInformation4", "for more details.")}
           </Text>
-          <FileField name="file" label="Fichier CSV" accept="text/csv" />
+          <FileField
+            name="file"
+            label={t("CsvFile", "CSV file")}
+            accept="text/csv"
+          />
         </Stack>
       )}
     />

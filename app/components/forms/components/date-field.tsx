@@ -2,6 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import { forwardRef, useRef } from "react";
 
+import { useTranslation } from "react-i18next";
 import { format } from "date-fns";
 import DateObject from "react-date-object";
 import DatePicker from "react-multi-date-picker";
@@ -29,15 +30,10 @@ type TextFieldProps = ComponentPropsWithoutRef<typeof Input> & {
 };
 
 const DateField = forwardRef<HTMLInputElement, TextFieldProps>(
-  ({ name, label, icon, suffix, ...props }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ({ name, label, icon, suffix, ...props }, _) => {
     const datePickerRef = useRef(null);
-    /*const {
-      input: { value, ...input },
-      meta,
-    } = useField<Date | string>(name, {
-      type: "string",
-    });
-*/
+    const { t } = useTranslation();
     const {
       input: { value, ...input },
       meta,
@@ -50,20 +46,28 @@ const DateField = forwardRef<HTMLInputElement, TextFieldProps>(
     });
 
     const error = getFieldErrorMessage(meta);
-    const weekDays = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
+    const weekDays = [
+      t("DayShort01", "Sun"),
+      t("DayShort02", "Mon"),
+      t("DayShort03", "Tue"),
+      t("DayShort04", "Wed"),
+      t("DayShort05", "Thu"),
+      t("DayShort06", "Fri"),
+      t("DayShort07", "Sat"),
+    ];
     const months = [
-      "Janv",
-      "Févr",
-      "Mars",
-      "Avr",
-      "Mai",
-      "Juin",
-      "Juil",
-      "Août",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Déc",
+      t("MonthShort01", "Jan"),
+      t("MonthShort02", "Feb"),
+      t("MonthShort03", "Mar"),
+      t("MonthShort04", "Apr"),
+      t("MonthShort05", "May"),
+      t("MonthShort06", "Jun"),
+      t("MonthShort07", "Jul"),
+      t("MonthShort08", "Aug"),
+      t("MonthShort09", "Sep"),
+      t("MonthShort10", "Oct"),
+      t("MonthShort11", "Nov"),
+      t("MonthShort12", "Dec"),
     ];
 
     return (
@@ -111,7 +115,7 @@ const DateField = forwardRef<HTMLInputElement, TextFieldProps>(
                 current.closeCalendar();
               }}
             >
-              Effacer
+              {t("Clear", "Clear")}
             </button>
             <button
               style={{ margin: "5px" }}
@@ -120,11 +124,11 @@ const DateField = forwardRef<HTMLInputElement, TextFieldProps>(
                 current.closeCalendar();
               }}
             >
-              Fermer
+              {t("Close", "Close")}
             </button>
           </DatePicker>
           <Input
-            placeholder="Sélectionner une date…"
+            placeholder={t("SelectDate", "Select a date…")}
             onClick={() => {
               const current: any = datePickerRef?.current;
               if (current != null) current.openCalendar();

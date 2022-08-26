@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { useQuery } from "blitz";
 import { useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { SimpleGrid, Stack, HStack, Text } from "@chakra-ui/layout";
 import { IconButton } from "@chakra-ui/button";
 import { FaMinus, FaPlus } from "react-icons/fa";
@@ -18,7 +19,7 @@ type GlobalUsersSearchProps = {};
 
 const GlobalUsersSearch: FC<GlobalUsersSearchProps> = () => {
   const [query, setQuery] = useState("");
-
+  const { t } = useTranslation();
   const take = 10;
   const [page, setPage] = useState(1);
   const [skip, setSkip] = useState(0);
@@ -40,7 +41,7 @@ const GlobalUsersSearch: FC<GlobalUsersSearchProps> = () => {
       />
       <HStack justifyContent="space-between">
         <HStack>
-          <Text fontSize="sm">Page</Text>
+          <Text fontSize="sm">{t("Page", "Page")}</Text>
           <HStack
             border="1px solid"
             borderColor="gray.100"
@@ -75,8 +76,12 @@ const GlobalUsersSearch: FC<GlobalUsersSearchProps> = () => {
         {items && (
           <Text fontSize="sm">
             {(page - 1) * take + (items ? items.length : 0)}{" "}
-            {items && items?.length > 1 ? "résultats" : "résultat"}
-            {items && items?.length < take ? "" : "  et plus"}
+            {items && items?.length > 1
+              ? t("Users", "Users").toLowerCase()
+              : t("User", "User").toLowerCase()}
+            {items && items?.length < take
+              ? ""
+              : "  " + t("AndMore", "and more")}
           </Text>
         )}
       </HStack>

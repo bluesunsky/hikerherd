@@ -3,6 +3,7 @@ import type { BlitzPage, GetServerSideProps } from "blitz";
 import { useQuery, useRouter, NotFoundError } from "blitz";
 import { Fragment } from "react";
 
+import { useTranslation } from "react-i18next";
 import {
   Container,
   Box,
@@ -32,7 +33,7 @@ import getCoverUrl from "../../helpers/get-cover-url";
 const ProfilePage: BlitzPage = () => {
   const router = useRouter();
   const currentUser = useCurrentUser({ suspense: false });
-
+  const { t } = useTranslation();
   const [user] = useQuery(userQuery, {
     username: router.query.username as string,
   });
@@ -68,7 +69,11 @@ const ProfilePage: BlitzPage = () => {
       <Fragment>
         <Seo
           title={user.username}
-          description={`${user.username} est sur Pack your pack. Consulter ses listes d'équipements et pourquoi pas créer les vôtres.`}
+          description={t(
+            "UserInformation",
+            "{{username}} is on {{appliname}}. Check out their gear lists and then use the gear tools to create your own.",
+            { username: user.username, appliname: t("AppliName") }
+          )}
         />
 
         <Box bg={useColorModeValue("gray.50", "gray.800")} style={styles.box}>
@@ -113,7 +118,11 @@ const ProfilePage: BlitzPage = () => {
                 <WishListCard user={user} />
                 <Center p={6} borderRadius="md" bg={emptyBg}>
                   <Text size="md" opacity="0.4" textAlign="center">
-                    {username} n&lsquo;a pas encore de packs publics
+                    {t(
+                      "UserNoPack",
+                      "{{username}} has not made any packs yet",
+                      { username: user.username }
+                    )}
                   </Text>
                 </Center>
               </SimpleGrid>

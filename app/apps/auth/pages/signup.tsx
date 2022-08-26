@@ -20,7 +20,7 @@ const SignupPage: BlitzPage = () => {
     <BoxLayout
       title={t("Signup", "Sign up")}
       description={t(
-        "SignupDescription",
+        "SignupDetail",
         "You are at the trailhead, time to take your first step."
       )}
     >

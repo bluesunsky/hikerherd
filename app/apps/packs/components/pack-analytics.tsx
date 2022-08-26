@@ -48,7 +48,7 @@ const PackAnalytics: FC = () => {
         <Heading size="md">{t("PackEmpty", "This pack is empty")}</Heading>
         <Text>
           {t(
-            "PackEmptyDescription",
+            "PackEmptyDetail",
             "You need to add some gear to the pack before you can view analytics"
           )}
         </Text>

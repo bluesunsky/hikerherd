@@ -2,6 +2,7 @@ import type { ComponentPropsWithoutRef, MutableRefObject } from "react";
 
 import { useRef, forwardRef } from "react";
 
+import { useTranslation } from "react-i18next";
 import {
   FormControl,
   FormLabel,
@@ -28,7 +29,7 @@ const FileField = forwardRef<HTMLInputElement, FileFieldProps>(
     } = useField<File | null>(name, {
       type: "file",
     });
-
+    const { t } = useTranslation();
     const error = getFieldErrorMessage(meta);
 
     return (
@@ -59,7 +60,7 @@ const FileField = forwardRef<HTMLInputElement, FileFieldProps>(
             style={{ display: "none" }}
           ></input>
           <Input
-            placeholder="Sélectionner votre fichier…"
+            placeholder={t("SelectFilePlaceholder", "Select your file…")}
             onClick={() => inputRef?.current?.click()}
             variant="filled"
             cursor="pointer"

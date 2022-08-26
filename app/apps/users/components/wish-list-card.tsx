@@ -4,6 +4,7 @@ import type { BoxProps } from "@chakra-ui/layout";
 
 import { Link, Routes } from "blitz";
 
+import { useTranslation } from "react-i18next";
 import { Center, Heading, HStack, Stack, LinkOverlay } from "@chakra-ui/layout";
 import { Icon } from "@chakra-ui/icon";
 import { FcRating } from "react-icons/fc";
@@ -19,9 +20,14 @@ const WishListCard: FC<InventoryCardProps & BoxProps> = ({
   ...props
 }) => {
   const route = Routes.WishListSharePage;
-  const username = user
-    ? user.username.charAt(0).toUpperCase() + user.username.slice(1)
-    : "";
+  const { t } = useTranslation();
+  var listname = t("UsersList", "{{username}}'s {{title}}", {
+    username: user
+      ? user.username.charAt(0).toUpperCase() + user.username.slice(1)
+      : "",
+    title: t("WishList", "Wish list").toLowerCase(),
+  });
+  listname = listname.charAt(0).toUpperCase() + listname.slice(1);
   return (
     <LinkCard
       {...props}
@@ -43,7 +49,7 @@ const WishListCard: FC<InventoryCardProps & BoxProps> = ({
                   textShadow="0 0 5px #fff"
                   isTruncated
                 >
-                  Souhaits de {username}
+                  {listname}
                 </Heading>
               </LinkOverlay>
             </Link>
