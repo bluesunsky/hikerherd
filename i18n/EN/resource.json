@@ -1,6 +1,6 @@
 {
   "About": "About",
-  "AboutInformation1": "<strong>{{appliname}}</strong> (&copy; Benjamin Sérant) bring functional and gui changes to<br /><strong>Hikerherd</strong> (&copy; <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd/blob/main/LICENCE'>Ben Honeywill</a>), <br />a free and <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd'>open-source</a> website.",
+  "AboutInformation1": "<strong>{{appliname}}</strong> (&copy; <a target='_blank' style='text-decoration:underline' href='https://github.com/bluesunsky/hikerherd/issues/new/choose'>Benjamin Sérant</a>) bring functional and gui changes to<br /><strong>Hikerherd</strong> (&copy; <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd/blob/main/LICENCE'>Ben Honeywill</a>), <br />a free and <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd'>open-source</a> website.",
   "AboutInformation2": "<strong>{{appliname}}</strong> is also<br />a free and <a target='_blank' style='text-decoration:underline' href='https://github.com/bluesunsky/hikerherd'>open-source</a> website.",
   "Add": "Add",
   "AddGearTo": "Add {{gearname}} to your {{listname}}",

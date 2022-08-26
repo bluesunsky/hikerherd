@@ -1,6 +1,6 @@
 {
   "About": "A propos",
-  "AboutInformation1": "<strong>{{appliname}}</strong> (&copy; Benjamin Sérant) apporte des améliorations fonctionnelles et ergonomiques à <br /><strong>Hikerherd</strong> (&copy; <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd/blob/main/LICENCE'>Ben Honeywill</a>), <br />un site gratuit et <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd'>open-source</a>.",
+  "AboutInformation1": "<strong>{{appliname}}</strong> (&copy; <a target='_blank' style='text-decoration:underline' href='https://github.com/bluesunsky/hikerherd/issues/new/choose'>Benjamin Sérant</a>) apporte des améliorations fonctionnelles et ergonomiques à <br /><strong>Hikerherd</strong> (&copy; <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd/blob/main/LICENCE'>Ben Honeywill</a>), <br />un site gratuit et <a target='_blank' style='text-decoration:underline' href='https://github.com/benhoneywill/hikerherd'>open-source</a>.",
   "AboutInformation2": "<strong>{{appliname}}</strong> est aussi <br />un site gratuit et <a target='_blank' style='text-decoration:underline' href='https://github.com/bluesunsky/hikerherd'>open-source</a>.",
   "Add": "Ajouter",
   "AddGearTo": "Ajouter {{gearname}} à {{listname}}",
@@ -159,7 +159,7 @@
   "ManufacturerPlaceholder": "Marque (Facultatif)",
   "Metric": "Métrique (g / kg)",
   "MetricToImperial": "Vous utilisez les unités métriques. \nCliquez pour utiliser les unités impériales",
-  "ModeratePack": "Moderate pack",
+  "ModeratePack": "Modérer le pack",
   "Month": "mois",
   "Month(s)": "mois",
   "Month01": "janvier",

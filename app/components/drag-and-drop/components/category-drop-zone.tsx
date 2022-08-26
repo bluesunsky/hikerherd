@@ -37,7 +37,6 @@ const CategoryDropZone: FC = () => {
             bg={snapshot.isDraggingOver ? dragColor : ""}
             height="100%"
             flex="1 0 auto"
-            userSelect="none"
           >
             <HStack
               spacing={0}

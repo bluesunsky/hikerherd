@@ -68,7 +68,6 @@ const Category: BlitzPage<CategoryProps> = ({
       key={category.id}
       ref={provided.innerRef}
       style={provided.draggableProps.style}
-      userSelect="none"
       pointerEvents="all"
       px={2}
       pb={2}
