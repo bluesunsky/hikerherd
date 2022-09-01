@@ -24,7 +24,7 @@ const GearOrganizerItemMenu: FC<GearOrganizerItemMenuProps> = ({
   type,
 }) => {
   const { t } = useTranslation();
-  const { editItem, deleteItem, toggleMetaItem, refetch } =
+  const { editItem, deleteItem, toInventory, toWishList, toArchive, refetch } =
     useContext(gearOrganizerContext);
 
   const [updateQuantity, { isLoading }] = useMutation(
@@ -41,14 +41,24 @@ const GearOrganizerItemMenu: FC<GearOrganizerItemMenuProps> = ({
       </MenuItem>
 
       {type === "WISH_LIST" && (
-        <MenuItem icon={<FaList />} onClick={() => toggleMetaItem(item.id)}>
+        <MenuItem icon={<FaList />} onClick={() => toInventory(item.id)}>
           {t("MoveToInventory", "Move to inventory")}
         </MenuItem>
       )}
 
       {type === "INVENTORY" && (
-        <MenuItem icon={<FaStar />} onClick={() => toggleMetaItem(item.id)}>
-          {t("MoveToWishList", "Move to wish list")}
+        <>
+          <MenuItem icon={<FaStar />} onClick={() => toWishList(item.id)}>
+            {t("MoveToWishList", "Move to wish list")}
+          </MenuItem>
+          <MenuItem icon={<FaStar />} onClick={() => toArchive(item.id)}>
+            {t("MoveToArchive", "Move to archive")}
+          </MenuItem>
+        </>
+      )}
+      {type === "ARCHIVE" && (
+        <MenuItem icon={<FaList />} onClick={() => toInventory(item.id)}>
+          {t("MoveToInventory", "Move to inventory")}
         </MenuItem>
       )}
 

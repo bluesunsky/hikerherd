@@ -7,6 +7,8 @@ const displayCategoryType = (type: CategoryType) => {
       return t("InventoryType", "inventory");
     case "WISH_LIST":
       return t("WishListType", "wish list");
+    case "ARCHIVE":
+      return t("ArchiveType", "archive");
   }
 };
 

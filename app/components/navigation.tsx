@@ -14,6 +14,7 @@ import {
   FcBinoculars,
   FcHome,
   FcContacts,
+  FcPackage,
 } from "react-icons/fc";
 import { Icon } from "@chakra-ui/icon";
 import { useColorModeValue } from "@chakra-ui/react";
@@ -88,6 +89,9 @@ const Navigation: FC = () => {
           </NavigationItem>
           <NavigationItem route={Routes.PacksPage()} icon={FcTimeline}>
             {t("Packs", "Packs")}
+          </NavigationItem>
+          <NavigationItem route={Routes.ArchivePage()} icon={FcPackage}>
+            {t("Archive", "Archive")}
           </NavigationItem>
         </NavigationSection>
 

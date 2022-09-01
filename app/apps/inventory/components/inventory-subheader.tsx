@@ -32,7 +32,9 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
   const title =
     type === "INVENTORY"
       ? t("Inventory", "Inventory")
-      : t("WishList", "Wish list");
+      : type === "WISH_LIST"
+      ? t("WishList", "Wish list")
+      : t("Archive", "Archive");
   const icon = type === "INVENTORY" ? FcList : FcRating;
 
   const toast = useToast();

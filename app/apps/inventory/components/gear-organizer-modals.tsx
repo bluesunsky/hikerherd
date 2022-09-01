@@ -32,7 +32,10 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
     addingItemToCategory,
     deletingItem,
     editingItem,
-    togglingMetaItem,
+    //togglingMetaItem,
+    movingToInventory,
+    movingToWishList,
+    movingToArchive,
 
     closeModals,
   } = useContext(gearOrganizerContext);
@@ -97,10 +100,22 @@ const GearOrganizerModals: FC<GearOrganizerModalsProps> = ({ type }) => {
       />
 
       <ToggleItemTypeForm
-        type={type === "INVENTORY" ? "WISH_LIST" : "INVENTORY"}
-        itemId={togglingMetaItem}
+        type={
+          !!movingToInventory
+            ? "INVENTORY"
+            : !!movingToWishList
+            ? "WISH_LIST"
+            : "ARCHIVE"
+        }
+        itemId={
+          !!movingToInventory
+            ? movingToInventory
+            : !!movingToWishList
+            ? movingToWishList
+            : movingToArchive
+        }
         onSuccess={() => refetch()}
-        isOpen={!!togglingMetaItem}
+        isOpen={!!movingToArchive || !!movingToInventory || !!movingToWishList}
         onClose={closeModals}
       />
     </Fragment>

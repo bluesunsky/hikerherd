@@ -31,6 +31,12 @@ const GearOrganizerProvider: FC<GearOrganizerProviderProps> = ({
 
   const [togglingMetaItem, setTogglingMetaItem] = useState<Id>(null);
 
+  const [movingToInventory, moveToInventory] = useState<Id>(null);
+
+  const [movingToWishList, moveToWishList] = useState<Id>(null);
+
+  const [movingToArchive, moveToArchive] = useState<Id>(null);
+
   const closeModals = () => {
     setAddingCategory(false);
     setEditingCategory(null);
@@ -39,6 +45,9 @@ const GearOrganizerProvider: FC<GearOrganizerProviderProps> = ({
     setDeletingItem(null);
     setTogglingMetaItem(null);
     setAddingItemToCategory(null);
+    moveToInventory(null);
+    moveToArchive(null);
+    moveToWishList(null);
   };
 
   return (
@@ -70,6 +79,15 @@ const GearOrganizerProvider: FC<GearOrganizerProviderProps> = ({
 
         togglingMetaItem,
         toggleMetaItem: (id: string) => setTogglingMetaItem(id),
+
+        movingToInventory,
+        toInventory: (id: string) => moveToInventory(id),
+
+        movingToWishList,
+        toWishList: (id: string) => moveToWishList(id),
+
+        movingToArchive,
+        toArchive: (id: string) => moveToArchive(id),
       }}
     >
       {children}

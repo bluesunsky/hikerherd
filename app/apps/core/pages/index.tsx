@@ -18,6 +18,7 @@ import {
   FcBinoculars,
   FcList,
   FcRating,
+  FcPackage,
   FcSearch,
   FcTimeline,
   FcContacts,
@@ -165,6 +166,12 @@ adventures.",
               icon={FcTimeline}
               title={t("Packs", "Packs")}
               text={t("PacksDetail", "Organize your gear into packs")}
+            />
+
+            <IconCard
+              icon={FcPackage}
+              title={t("Archive", "Archive")}
+              text={t("ArchiveDetail", "Keep your old gear")}
             />
           </SimpleGrid>
         </Container>

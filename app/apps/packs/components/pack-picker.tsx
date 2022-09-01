@@ -15,7 +15,7 @@ import {
   MenuList,
 } from "@chakra-ui/menu";
 import { FaChevronDown } from "react-icons/fa";
-import { FcList, FcRating, FcTimeline } from "react-icons/fc";
+import { FcList, FcPackage, FcRating, FcTimeline } from "react-icons/fc";
 
 import packsQuery from "../queries/packs-query";
 
@@ -70,6 +70,12 @@ const PackPicker: FC<PackPickerProps> = ({ icon, title }) => {
             </MenuItem>
           </Link>
         ))}
+        <MenuDivider />
+        <Link href={Routes.ArchivePage()} passHref>
+          <MenuItem as="a" icon={<FcPackage />}>
+            {t("Archive", "Archive")}
+          </MenuItem>
+        </Link>
       </MenuList>
     </Menu>
   );

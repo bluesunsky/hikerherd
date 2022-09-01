@@ -29,6 +29,15 @@ type GearOrganizerContext = {
 
   togglingMetaItem: string | null;
   toggleMetaItem: (id: string) => void;
+
+  movingToInventory: string | null;
+  toInventory: (id: string) => void;
+
+  movingToWishList: string | null;
+  toWishList: (id: string) => void;
+
+  movingToArchive: string | null;
+  toArchive: (id: string) => void;
 };
 
 const gearOrganizerContext = createContext<GearOrganizerContext>(

@@ -48,7 +48,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
             </Tag>
           </Tooltip>
         )}
-        {(replaceable || list == "WISH_LIST") && (
+        {(replaceable || list == "WISH_LIST" || list == "ARCHIVE") && (
           <Popover
             trigger={
               <Tag bg="red" color="white" size="sm" borderRadius="full">
@@ -65,6 +65,12 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
             {list == "WISH_LIST" && (
               <>
                 {t("NotOwned", "Not owned!")}
+                <br />
+              </>
+            )}
+            {list == "ARCHIVE" && (
+              <>
+                {t("OldGear", "Old gear!")}
                 <br />
               </>
             )}

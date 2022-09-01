@@ -50,6 +50,7 @@ const ToggleItemTypeForm: FC<ToggleItemTypeFormProps> = ({
   return (
     <ModalForm
       isOpen={isOpen}
+      isDisabled={!categories?.length}
       onClose={onClose}
       title={t("MoveGearTo", "Move this gear to your {{typename}}", {
         typename: typeName,

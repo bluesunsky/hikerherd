@@ -14,6 +14,7 @@ import {
   FcSettings,
   FcTimeline,
   FcContacts,
+  FcPackage,
 } from "react-icons/fc";
 import { useColorModeValue } from "@chakra-ui/react";
 
@@ -97,6 +98,12 @@ const StartPage: BlitzPage = () => {
               href={Routes.PacksPage()}
               title={t("Packs", "Packs")}
               text={t("PacksDetail", "Organize your gear into packs")}
+            />
+            <IndexCard
+              icon={FcPackage}
+              href={Routes.ArchivePage()}
+              title={t("Archive", "Archive")}
+              text={t("ArchiveDetail", "Keep your old gear")}
             />
           </SimpleGrid>
 

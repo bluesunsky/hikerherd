@@ -107,6 +107,7 @@ model Token {
 enum CategoryType {
   INVENTORY
   WISH_LIST
+  ARCHIVE
 }
 
 model Gear {
