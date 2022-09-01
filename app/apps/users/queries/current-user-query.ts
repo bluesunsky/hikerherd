@@ -3,7 +3,7 @@ import { resolver } from "blitz";
 import db from "db";
 
 const currentUserQuery = resolver.pipe(async (_, ctx) => {
-  if (!ctx.session.userId) return null;
+  if (!ctx.session || !ctx.session.userId) return null;
 
   const user = await db.user.findFirst({
     where: { id: ctx.session.userId },
