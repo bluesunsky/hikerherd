@@ -66,7 +66,6 @@ const CategoryDropZone: FC = () => {
                   onMouseDown={(e) => e.stopPropagation()}
                 >
                   <Button
-                    isFullWidth
                     size="sm"
                     colorScheme="blue"
                     onClick={addCategory}

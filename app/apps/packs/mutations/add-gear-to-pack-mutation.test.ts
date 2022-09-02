@@ -2,7 +2,7 @@ import type { User, PackCategory, Pack, Gear } from "db";
 
 import { AuthenticationError, AuthorizationError, NotFoundError } from "blitz";
 
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 import createMockContext from "test/helpers/create-mock-context";
 import createUser from "test/factories/create-user";

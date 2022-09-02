@@ -81,7 +81,7 @@ const DiscoverGearPage: BlitzPage = () => {
                     alignItems="center"
                   >
                     <Button
-                      isFullWidth
+                      width="full"
                       size="sm"
                       leftIcon={<FcList />}
                       onClick={() => setAdding({ type: "INVENTORY", gear })}
@@ -89,7 +89,7 @@ const DiscoverGearPage: BlitzPage = () => {
                       {t("AddToInventory", "Add to inventory")}
                     </Button>
                     <Button
-                      isFullWidth
+                      width="full"
                       size="sm"
                       leftIcon={<FcRating />}
                       onClick={() => setAdding({ type: "WISH_LIST", gear })}

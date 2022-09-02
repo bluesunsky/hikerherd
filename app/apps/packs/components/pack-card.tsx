@@ -66,8 +66,8 @@ const PackCard: FC<PackCardProps & BoxProps> = ({
             {pack.private && <Icon as={FcLock} h={4} w={4} />}
 
             <Link href={route({ packId: pack.id })} passHref>
-              <LinkOverlay isTruncated>
-                <Heading size="md" isTruncated>
+              <LinkOverlay noOfLines={1}>
+                <Heading size="md" noOfLines={1}>
                   {pack.name}
                 </Heading>
               </LinkOverlay>

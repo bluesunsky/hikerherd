@@ -1,6 +1,6 @@
 import type { User } from "db";
 
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 import createUser from "test/factories/create-user";
 

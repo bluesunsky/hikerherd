@@ -66,13 +66,13 @@ const UserCard: FC<UserCardProps & BoxProps> = ({ user, ...props }) => {
         <Stack maxW="100%" px={0} align="center" spacing={2}>
           <HStack maxW="100%">
             <Link href={route({ username: user.username })} passHref>
-              <LinkOverlay isTruncated>
+              <LinkOverlay noOfLines={1}>
                 <Avatar size="xl" src={getAvatarUrl(user, 96)} />
                 <Heading
                   size="md"
                   textAlign="center"
                   style={styles.username}
-                  isTruncated
+                  noOfLines={1}
                 >
                   {username}
                 </Heading>

@@ -2,7 +2,7 @@ import type { User } from "db";
 
 import { AuthenticationError } from "blitz";
 
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 import createMockContext from "test/helpers/create-mock-context";
 import createUser from "test/factories/create-user";

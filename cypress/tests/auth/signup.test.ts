@@ -1,4 +1,4 @@
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 describe("SignupPage", () => {
   it("errors if the username is taken", () => {

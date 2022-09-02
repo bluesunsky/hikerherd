@@ -39,7 +39,7 @@ const WishListCard: FC<InventoryCardProps & BoxProps> = ({
         <Stack maxW="100%" px={0} align="center" spacing={2}>
           <HStack maxW="100%">
             <Link href={route({ username: user.username })} passHref>
-              <LinkOverlay isTruncated>
+              <LinkOverlay noOfLines={1}>
                 <Center>
                   <Icon as={FcRating} w={8} h={8} mb={2} />
                 </Center>
@@ -47,7 +47,7 @@ const WishListCard: FC<InventoryCardProps & BoxProps> = ({
                   size="md"
                   textAlign="center"
                   textShadow="0 0 5px #fff"
-                  isTruncated
+                  noOfLines={1}
                 >
                   {typename}
                 </Heading>

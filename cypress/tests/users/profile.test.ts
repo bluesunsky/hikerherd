@@ -1,4 +1,4 @@
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 describe("ProfilePage", () => {
   it("shows the users profile", () => {

@@ -48,12 +48,12 @@ const LoginPage: BlitzPage = () => {
 
         <Stack spacing={4}>
           <Link href={Routes.SignupPage()} passHref>
-            <Button as="a" isFullWidth size="lg">
+            <Button as="a" width="full" size="lg">
               {t("Signup", "Sign up")}
             </Button>
           </Link>
           <Link href={Routes.ForgotPasswordPage()} passHref>
-            <Button as="a" isFullWidth size="lg">
+            <Button as="a" width="full" size="lg">
               {t("ResetPassword", "Reset password")}
             </Button>
           </Link>

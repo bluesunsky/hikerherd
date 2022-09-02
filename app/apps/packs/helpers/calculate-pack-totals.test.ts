@@ -1,6 +1,6 @@
 import type { DragAndDropState } from "app/components/drag-and-drop/contexts/gear-dnd-context";
 
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 import getGearData from "test/data/get-gear-data";
 import getPackCategoryItemData from "test/data/get-pack-category-item-data";

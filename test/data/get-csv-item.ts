@@ -1,6 +1,6 @@
 import type { CurrencySign } from "app/helpers/sign-to-currency";
 
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 import displayCurrency from "app/helpers/display-currency";
 

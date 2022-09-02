@@ -60,7 +60,7 @@ const IconCard: FC<IconCardProps> = ({
 
       {actionLink && actionText && (
         <Link href={actionLink} passHref>
-          <Button isFullWidth as="a" mt={5}>
+          <Button as="a" width="full" mt={5}>
             {actionText}
           </Button>
         </Link>
@@ -149,7 +149,7 @@ adventures.",
             )}
           </Text>
 
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mt={12}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} mt={12}>
             <IconCard
               icon={FcRating}
               title={t("WishList", "Wish list")}

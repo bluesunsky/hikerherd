@@ -124,7 +124,7 @@ const LngPicker: FC<LngPickerProps> = () => {
   return (
     <Menu>
       <Tooltip label={label} whiteSpace="pre-wrap">
-        <MenuButton as={Button} size="sm" variant="ghost" px={1} isTruncated>
+        <MenuButton as={Button} size="sm" variant="ghost" px={1} noOfLines={1}>
           <Icon as={icon} w={5} h={5} />
         </MenuButton>
       </Tooltip>

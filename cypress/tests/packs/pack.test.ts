@@ -1,4 +1,4 @@
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 describe("PackPage", () => {
   it("should redirect to login if not logged in", () => {

@@ -1,5 +1,5 @@
 import { ZodError } from "zod";
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 import createMockContext from "test/helpers/create-mock-context";
 import getUserData from "test/data/get-user-data";

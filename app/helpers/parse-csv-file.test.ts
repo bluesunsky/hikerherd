@@ -1,6 +1,6 @@
 import type { TestCsvItem } from "test/data/get-csv-item";
 
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 import getCsv from "test/data/get-csv";
 import getCsvData from "test/data/get-csv-data";

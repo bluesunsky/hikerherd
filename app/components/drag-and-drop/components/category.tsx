@@ -240,7 +240,7 @@ const Category: BlitzPage<CategoryProps> = ({
       {!username && addItemToCategory && (
         <Box p={1}>
           <Button
-            isFullWidth
+            width="full"
             size="sm"
             onClick={() => addItemToCategory(category.id)}
             colorScheme="blue"

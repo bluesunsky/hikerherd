@@ -1,4 +1,4 @@
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 
 describe("LoginPage", () => {
   it("shows an error with an email that doesnt exist", () => {

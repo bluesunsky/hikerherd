@@ -103,7 +103,7 @@ const PackAddItemModal: FC<PackAddItemModalProps> = ({
             <GlobalGearSearch
               gearActions={(gear) => (
                 <Button
-                  isFullWidth
+                  width="full"
                   size="sm"
                   colorScheme="green"
                   isLoading={isAddingFromSearch === gear.id}

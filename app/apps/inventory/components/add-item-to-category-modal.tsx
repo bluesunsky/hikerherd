@@ -65,7 +65,7 @@ const AddItemToCategoryModal: FC<AddItemToCategoryModalProps> = ({
             <GlobalGearSearch
               gearActions={(gear) => (
                 <Button
-                  isFullWidth
+                  width="full"
                   isLoading={isAdding === gear.id}
                   size="sm"
                   colorScheme="green"

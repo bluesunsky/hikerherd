@@ -132,7 +132,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                         <Button
                           size="sm"
                           colorScheme="gray"
-                          isFullWidth
+                          width="full"
                           isLoading={isAddingTo === item.id}
                           onClick={() => {
                             setIsAddingTo(item.id);
@@ -149,7 +149,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                       <Button
                         size="sm"
                         colorScheme="green"
-                        isFullWidth
+                        width="full"
                         isLoading={isAddingTo === item.id}
                         onClick={() => {
                           setIsAddingTo(item.id);
