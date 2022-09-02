@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { Heading, HStack } from "@chakra-ui/layout";
 import { MenuItem, MenuList } from "@chakra-ui/menu";
 import { FaFileExport, FaFileImport } from "react-icons/fa";
-import { FcList, FcRating, FcTimeline } from "react-icons/fc";
+import { FcList, FcPackage, FcRating, FcTimeline } from "react-icons/fc";
 import { useToast } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/icon";
 
@@ -35,7 +35,8 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
       : type === "WISH_LIST"
       ? t("WishList", "Wish list")
       : t("Archive", "Archive");
-  const icon = type === "INVENTORY" ? FcList : FcRating;
+  const icon =
+    type === "INVENTORY" ? FcList : type === "WISH_LIST" ? FcRating : FcPackage;
 
   const toast = useToast();
   const [importing, setImporting] = useState(false);
