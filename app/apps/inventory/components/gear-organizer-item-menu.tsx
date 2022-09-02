@@ -7,7 +7,7 @@ import { useMutation } from "blitz";
 
 import { useTranslation } from "react-i18next";
 import { MenuItem, MenuList } from "@chakra-ui/menu";
-import { FaEdit, FaList, FaStar, FaTrash } from "react-icons/fa";
+import { FaArchive, FaEdit, FaList, FaStar, FaTrash } from "react-icons/fa";
 
 import QuantityPicker from "app/components/quantity-picker";
 import updateCategoryGearQuantityMutation from "app/apps/category-gear/mutations/update-category-gear-quantity-mutation";
@@ -51,7 +51,7 @@ const GearOrganizerItemMenu: FC<GearOrganizerItemMenuProps> = ({
           <MenuItem icon={<FaStar />} onClick={() => toWishList(item.id)}>
             {t("MoveToWishList", "Move to wish list")}
           </MenuItem>
-          <MenuItem icon={<FaStar />} onClick={() => toArchive(item.id)}>
+          <MenuItem icon={<FaArchive />} onClick={() => toArchive(item.id)}>
             {t("MoveToArchive", "Move to archive")}
           </MenuItem>
         </>

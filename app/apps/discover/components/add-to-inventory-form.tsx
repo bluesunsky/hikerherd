@@ -49,9 +49,9 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
     <ModalForm
       isOpen={isOpen}
       onClose={onClose}
-      title={t("AddGearTo", "Add {{gearname}} to your {{listname}}", {
+      title={t("AddGearTo", "Add {{gearname}} to your {{typename}}", {
         gearname: gear.name,
-        listname: displayCategoryType(type),
+        typename: displayCategoryType(type),
       })}
       isDisabled={!categories?.length}
       schema={addToInventorySchema}
@@ -89,9 +89,9 @@ const AddToInventoryForm: FC<AddToInventoryFormProps> = ({
               {!categories?.length && (
                 <Text>
                   {t(
-                    "NeedCategoryIn",
-                    "Before you can start adding gear you need to create a category in your {{listname}}",
-                    { listname: displayCategoryType(type) }
+                    "NeedCategoryCreationError",
+                    "Before you can start adding gear you need to create a category in your {{typename}}",
+                    { typename: displayCategoryType(type) }
                   )}
                 </Text>
               )}

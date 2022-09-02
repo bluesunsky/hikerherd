@@ -20,13 +20,13 @@ const InventoryCard: FC<InventoryCardProps & BoxProps> = ({
 }) => {
   const route = Routes.InventorySharePage;
   const { t } = useTranslation();
-  var listname = t("UsersList", "{{username}}'s {{title}}", {
+  var typename = t("UsersList", "{{username}}'s {{title}}", {
     username: user
       ? user.username.charAt(0).toUpperCase() + user.username.slice(1)
       : "",
     title: t("Inventory", "Inventory").toLowerCase(),
   });
-  listname = listname.charAt(0).toUpperCase() + listname.slice(1);
+  typename = typename.charAt(0).toUpperCase() + typename.slice(1);
   return (
     <LinkCard
       {...props}
@@ -48,7 +48,7 @@ const InventoryCard: FC<InventoryCardProps & BoxProps> = ({
                   textShadow="0 0 5px #fff"
                   isTruncated
                 >
-                  {listname}
+                  {typename}
                 </Heading>
               </LinkOverlay>
             </Link>

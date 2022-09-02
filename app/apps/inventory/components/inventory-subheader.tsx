@@ -48,17 +48,17 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
   };
   const username = router.query.username;
   if (typeof username == "string") {
-    var listname = t("UsersList", "{{username}}'s {{title}}", {
+    var typename = t("UsersList", "{{username}}'s {{title}}", {
       username: username.charAt(0).toUpperCase() + username.slice(1),
       title: title.toLowerCase(),
     });
-    listname = listname.charAt(0).toUpperCase() + listname.slice(1);
+    typename = typename.charAt(0).toUpperCase() + typename.slice(1);
     return (
       <Subheader>
         <HStack pl={1} isTruncated>
           <Icon as={FcTimeline} w={5} h={5} />
           <Heading size="sm" isTruncated>
-            {listname}
+            {typename}
           </Heading>
         </HStack>
       </Subheader>
