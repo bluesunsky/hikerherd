@@ -8,8 +8,6 @@ export const loginMutation = resolver.pipe(
 
   async ({ email, password }, ctx) => {
     const user = await authenticateOrError(email, password);
-    console.log("ctx2");
-    console.log(ctx);
     await ctx.session.$create({ userId: user.id, role: user.role });
     return user;
   }
