@@ -22,7 +22,7 @@ const SubheaderPackPicker: FC = () => {
     return (
       <HStack pl={1} noOfLines={1}>
         <Icon as={FcTimeline} w={5} h={5} />
-        <Heading size="sm" noOfLines={1}>
+        <Heading size="sm" noOfLines={1} display="flex">
           {pack.name}
         </Heading>
       </HStack>
