@@ -9,7 +9,7 @@ import { Menu, MenuButton } from "@chakra-ui/menu";
 import { Portal } from "@chakra-ui/portal";
 import { IconButton } from "@chakra-ui/button";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { useColorModeValue } from "@chakra-ui/react";
+//import { useColorModeValue } from "@chakra-ui/react";
 
 import Popover from "app/components/popover";
 
@@ -30,7 +30,7 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
   imageUrl,
   onHeadingClick,
 }) => {
-  const avatarColor = useColorModeValue("gray.200", "gray.600");
+  //const avatarColor = useColorModeValue("gray.200", "gray.600");
 
   return (
     <HStack justify="space-between" p={2} pb={0}>
@@ -41,13 +41,16 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
           alignItems="center"
           justifyContent="center"
           hideContent={!imageUrl}
+          background="white"
+          p="1px"
+          overflow="hidden"
           trigger={
             <Avatar
               src={imageUrl || ""}
               size="xl"
               borderRadius="5px"
               icon={<Icon as={FaImage} />}
-              bg={avatarColor}
+              bg="transparent"
             />
           }
         >
@@ -56,6 +59,7 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
             display="inline-block"
             src={imageUrl || ""}
             alt={name}
+            background="white"
           />
         </Popover>
 

@@ -158,6 +158,7 @@ const Category: BlitzPage<CategoryProps> = ({
             <Tooltip
               label={
                 t("WeightWorn", "Worn weight:") +
+                " " +
                 displayWeight(category.wornWeight, weightUnit, true)
               }
             >
