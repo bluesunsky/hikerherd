@@ -5,7 +5,7 @@ import { useState } from "react";
 import { invalidateQuery, useMutation, useRouter } from "blitz";
 
 import { useTranslation } from "react-i18next";
-import { Heading, HStack } from "@chakra-ui/layout";
+import { Heading, HStack, Flex } from "@chakra-ui/layout";
 import { MenuItem, MenuList } from "@chakra-ui/menu";
 import { FaFileExport, FaFileImport } from "react-icons/fa";
 import { FcList, FcPackage, FcRating, FcTimeline } from "react-icons/fc";
@@ -56,12 +56,12 @@ const InventorySubheader: FC<InventorySubheaderProps> = ({ type }) => {
     typename = typename.charAt(0).toUpperCase() + typename.slice(1);
     return (
       <Subheader>
-        <HStack pl={1} noOfLines={1}>
+        <Flex>
           <Icon as={FcTimeline} w={5} h={5} />
           <Heading size="sm" noOfLines={1}>
             {typename}
           </Heading>
-        </HStack>
+        </Flex>
       </Subheader>
     );
   }

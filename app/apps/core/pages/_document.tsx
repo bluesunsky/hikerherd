@@ -7,15 +7,15 @@ import {
 } from "blitz";
 
 import i18next from "i18next";
-const Analytics = () => {
+/*const Analytics = () => {
   const script =
     process.env.NODE_ENV === "production"
       ? "https://scripts.simpleanalyticscdn.com/latest.js"
       : "https://scripts.simpleanalyticscdn.com/latest.dev.js";
 
   return <script async defer src={script} />;
-};
-
+};*/
+// <Analytics />
 class Document extends BlitzDocument {
   render() {
     return (
@@ -24,7 +24,6 @@ class Document extends BlitzDocument {
         <body>
           <Main />
           <BlitzScript />
-          <Analytics />
         </body>
       </Html>
     );

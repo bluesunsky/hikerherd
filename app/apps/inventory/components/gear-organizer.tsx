@@ -13,7 +13,7 @@ import GearOrganizerDragAndDrop from "./gear-organizer-drag-and-drop";
 
 type GearOrganizerProps = {
   type: CategoryType;
-  username?: String | String[];
+  username?: string | null;
 };
 
 const GearOrganizer: FC<GearOrganizerProps> = ({ type, username }) => {

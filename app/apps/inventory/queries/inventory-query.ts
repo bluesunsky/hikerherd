@@ -5,7 +5,6 @@ import db from "db";
 import getInventorySchema from "../schemas/get-inventory-schema";
 
 const inventoryQuery = resolver.pipe(
-  resolver.authorize(),
   resolver.zod(getInventorySchema),
 
   async ({ type, username }, ctx) => {
@@ -14,7 +13,7 @@ const inventoryQuery = resolver.pipe(
       userWhere = { username: username };
       withPrivate = false;
     } else {
-      userWhere = { id: ctx.session.userId };
+      userWhere = { id: ctx.session.userId ? ctx.session.userId : "" };
       withPrivate = true;
     }
     const user = await db.user.findUnique({
@@ -58,7 +57,8 @@ const inventoryQuery = resolver.pipe(
 
     if (!withPrivate && user) {
       user.categories.forEach(
-        (cat) => (cat.items = cat.items.filter((item) => !item.gear.private))
+        (cat: any) =>
+          (cat.items = cat.items.filter((item: any) => !item.gear.private))
       );
     }
 
