@@ -29,7 +29,7 @@ const DiscoverUsersPage: BlitzPage = () => {
           }}
         ></Text>
 
-        <Card>
+        <Card minH={"calc(100vh - 185px)"}>
           <GlobalUsersSearch />
         </Card>
       </Fragment>

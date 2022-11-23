@@ -70,7 +70,7 @@ const DiscoverGearPage: BlitzPage = () => {
           }}
         ></Text>
 
-        <Card>
+        <Card minH={"calc(100vh - 215px)"}>
           <GlobalGearSearch
             gearActions={(gear) => (
               <Fragment>

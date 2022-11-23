@@ -29,7 +29,7 @@ import {
   FaTag,
   FaClock,
 } from "react-icons/fa";
-import { MdOutlineSubtitles } from "react-icons/md";
+import { BsCardText } from "react-icons/bs";
 
 import GearCard from "app/apps/gear/components/gear-card/components/gear-card";
 import UserTag from "app/components/user-tag";
@@ -72,13 +72,111 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
 
   return (
     <Stack spacing={3}>
-      <SearchInput
-        setQuery={async (x) => {
-          setQuery(x);
-          setSkip(0);
-          setPage(1);
-        }}
-      />
+      <Flex align="center" gap="5px">
+        <SearchInput
+          setQuery={async (x) => {
+            setQuery(x);
+            setSkip(0);
+            setPage(1);
+          }}
+        />
+
+        <Menu>
+          <MenuButton
+            as={Button}
+            size="sm"
+            variant="ghost"
+            px={1}
+            noOfLines={1}
+          >
+            <Icon
+              position="relative"
+              top="2px"
+              left="1px"
+              as={
+                sortBy == "name"
+                  ? BsCardText
+                  : sortBy == "weight"
+                  ? FaWeightHanging
+                  : sortBy == "price"
+                  ? FaTag
+                  : FaClock
+              }
+              w={5}
+              h={5}
+            />
+          </MenuButton>
+
+          <MenuList>
+            <MenuItem
+              icon={<BsCardText />}
+              onClick={() => {
+                setSortBy("name");
+                setSortDir(UserStatus.asc);
+                setSkip(0);
+                setPage(1);
+              }}
+            >
+              {t("Name", "Name")}
+            </MenuItem>
+            <MenuItem
+              icon={<FaWeightHanging />}
+              onClick={() => {
+                setSortBy("weight");
+                setSortDir(UserStatus.asc);
+                setSkip(0);
+                setPage(1);
+              }}
+            >
+              {t("Weight", "Weight")}
+            </MenuItem>
+            <MenuItem
+              icon={<FaTag />}
+              onClick={() => {
+                setSortBy("price");
+                setSortDir(UserStatus.asc);
+                setSkip(0);
+                setPage(1);
+              }}
+            >
+              {t("Price", "Price")}
+            </MenuItem>
+            <MenuItem
+              icon={<FaClock />}
+              onClick={() => {
+                setSortBy("purchaseDate");
+                setSortDir(UserStatus.desc);
+                setSkip(0);
+                setPage(1);
+              }}
+            >
+              {t("PurchaseDate", "PurchaseDate")}
+            </MenuItem>
+          </MenuList>
+        </Menu>
+
+        <HeaderIconButton
+          label=""
+          onClick={() => {
+            if (sortDir == UserStatus.desc) {
+              setSortDir(UserStatus.asc);
+            } else {
+              setSortDir(UserStatus.desc);
+            }
+          }}
+          icon={
+            <Icon
+              as={
+                sortDir == UserStatus.desc
+                  ? FaSortAlphaDownAlt
+                  : FaSortAlphaDown
+              }
+              w={5}
+              h={5}
+            />
+          }
+        />
+      </Flex>
       <HStack justifyContent="space-between">
         <HStack>
           <Text fontSize="sm">{t("Page", "Page")}</Text>
@@ -113,101 +211,6 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
             />
           </HStack>
         </HStack>
-
-        <Flex>
-          <Menu>
-            <MenuButton
-              as={Button}
-              size="sm"
-              variant="ghost"
-              px={1}
-              noOfLines={1}
-            >
-              <Icon
-                as={
-                  sortBy == "name"
-                    ? MdOutlineSubtitles
-                    : sortBy == "weight"
-                    ? FaWeightHanging
-                    : sortBy == "price"
-                    ? FaTag
-                    : FaClock
-                }
-                w={5}
-                h={5}
-              />
-            </MenuButton>
-
-            <MenuList>
-              <MenuItem
-                icon={<MdOutlineSubtitles />}
-                onClick={() => {
-                  setSortBy("name");
-                  setSortDir(UserStatus.asc);
-                  setSkip(0);
-                  setPage(1);
-                }}
-              >
-                {t("Name", "Name")}
-              </MenuItem>
-              <MenuItem
-                icon={<FaWeightHanging />}
-                onClick={() => {
-                  setSortBy("weight");
-                  setSortDir(UserStatus.asc);
-                  setSkip(0);
-                  setPage(1);
-                }}
-              >
-                {t("Weight", "Weight")}
-              </MenuItem>
-              <MenuItem
-                icon={<FaTag />}
-                onClick={() => {
-                  setSortBy("price");
-                  setSortDir(UserStatus.asc);
-                  setSkip(0);
-                  setPage(1);
-                }}
-              >
-                {t("Price", "Price")}
-              </MenuItem>
-              <MenuItem
-                icon={<FaClock />}
-                onClick={() => {
-                  setSortBy("purchaseDate");
-                  setSortDir(UserStatus.desc);
-                  setSkip(0);
-                  setPage(1);
-                }}
-              >
-                {t("PurchaseDate", "PurchaseDate")}
-              </MenuItem>
-            </MenuList>
-          </Menu>
-
-          <HeaderIconButton
-            label=""
-            onClick={() => {
-              if (sortDir == UserStatus.desc) {
-                setSortDir(UserStatus.asc);
-              } else {
-                setSortDir(UserStatus.desc);
-              }
-            }}
-            icon={
-              <Icon
-                as={
-                  sortDir == UserStatus.desc
-                    ? FaSortAlphaDownAlt
-                    : FaSortAlphaDown
-                }
-                w={5}
-                h={5}
-              />
-            }
-          />
-        </Flex>
         {items && (
           <Text fontSize="sm">
             {(page - 1) * take + (items ? items.length : 0)}{" "}

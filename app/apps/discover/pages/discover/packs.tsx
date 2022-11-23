@@ -33,7 +33,7 @@ const DiscoverPacksPage: BlitzPage = () => {
           }}
         ></Text>
 
-        <Card>
+        <Card minH={"calc(100vh - 185px)"}>
           <GlobalPacksSearch />
         </Card>
       </Fragment>
