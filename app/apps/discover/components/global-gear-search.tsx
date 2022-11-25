@@ -106,7 +106,6 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
               h={5}
             />
           </MenuButton>
-
           <MenuList>
             <MenuItem
               icon={<BsCardText />}
