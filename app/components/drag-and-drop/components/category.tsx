@@ -79,8 +79,8 @@ const Category: BlitzPage<CategoryProps> = ({
       mx={1}
       width="400px"
       maxW="calc(100vw - 10px);"
-      //maxH="calc(100vh - 168px);"
-      maxH="calc(100vh - 145px);"
+      //maxH="calc(100vh - 145px);"
+      maxH="100%;"
       direction="column"
     >
       <HStack
