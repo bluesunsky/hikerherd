@@ -237,6 +237,7 @@ const GlobalGearSearch: FC<GlobalGearSearchProps> = ({ gearActions }) => {
               consumable={item.consumable}
               replaceable={item.replaceable}
               isprivate={item.private}
+              location={item.location}
               link={item.link}
               notes={item.notes}
               imageUrl={item.imageUrl}

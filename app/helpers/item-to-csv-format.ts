@@ -20,6 +20,7 @@ export type ParsedCsvItem = {
     consumable: boolean;
     replaceable: boolean;
     private: boolean;
+    location: string | null;
     link: string | null;
     notes: string | null;
     imageUrl: string | null;
@@ -37,6 +38,7 @@ export type CsvItem = {
   notes: string | null;
   price: number | null;
   currency: CurrencySign;
+  location: string | null;
   link: string | null;
   image: string | null;
   consumable: string | null;
@@ -68,6 +70,7 @@ const itemToCsvFormat = ({
     notes: notes ? notes.replaceAll(/\n/g, " ").replaceAll(/  /g, " ") : null,
     price: item.gear.price && item.gear.price / 100,
     currency: displayCurrency(item.gear.currency),
+    location: item.gear.location,
     link: item.gear.link,
     image: item.gear.imageUrl,
     consumable: item.gear.consumable ? "consumable" : null,

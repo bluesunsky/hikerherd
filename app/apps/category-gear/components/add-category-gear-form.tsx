@@ -42,6 +42,7 @@ const AddCategoryGearForm: FC<AddCategoryGearFormProps> = ({
     weight: 0,
     price: null,
     currency: currency,
+    location: null,
     link: null,
     imageUrl: null,
     notes: null,

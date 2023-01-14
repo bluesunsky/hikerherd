@@ -16,6 +16,7 @@ export type TestCsvItem = {
   notes: string;
   price: string;
   currency: CurrencySign | "";
+  location: string | null;
   link: string;
   image: string;
   consumable: string;
@@ -37,6 +38,7 @@ const getCsvItem = (values: Partial<TestCsvItem> = {}): TestCsvItem => {
     unit: "gram",
     notes: gear.notes,
     currency: displayCurrency(gear.currency),
+    location: gear.location,
     link: gear.link,
     image: gear.imageUrl,
     weight: `${gear.weight}`,

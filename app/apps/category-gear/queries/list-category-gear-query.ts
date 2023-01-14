@@ -33,6 +33,7 @@ const listCategoryGearQuery = resolver.pipe(
             weight: true,
             price: true,
             currency: true,
+            location: true,
             link: true,
             imageUrl: true,
             notes: true,

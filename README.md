@@ -10,6 +10,12 @@
 
 ## Developer quick start
 
+### Command
+
+- npm run build
+- npm run start
+- npx yarn prisma migrate dev --name [sql_patch_name]
+
 ### Prerequisites
 
 - [Node JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)

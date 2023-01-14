@@ -20,7 +20,7 @@ const SubheaderPackPicker: FC = () => {
 
   if (share) {
     return (
-      <HStack pl={1} noOfLines={1}>
+      <HStack display="inline-flex">
         <Icon as={FcTimeline} w={5} h={5} />
         <Heading size="sm" noOfLines={1} display="flex">
           {pack.name}

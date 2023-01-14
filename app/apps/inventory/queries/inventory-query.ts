@@ -42,6 +42,7 @@ const inventoryQuery = resolver.pipe(
                     consumable: true,
                     replaceable: true,
                     private: true,
+                    location: withPrivate,
                     link: true,
                     notes: true,
                     imageUrl: true,

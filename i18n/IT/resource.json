@@ -155,6 +155,8 @@
   "Lastname": "Cognome",
   "LastnamePlaceholder": "Inserisci il tuo cognome",
   "Link": "Collegamento",
+  "Location": "Location",
+  "LocationPlaceholder": "Location (Optional)",
   "Login": "Entra",
   "LoginDetail": "Entra in Pack your pack",
   "LoginRequired": "Login richiesto",

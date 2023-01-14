@@ -25,6 +25,7 @@ export type DragAndDropItem = {
     consumable: boolean;
     replaceable: boolean;
     private: boolean;
+    location: string | null;
     link: string | null;
     notes: string | null;
     imageUrl: string | null;

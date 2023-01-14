@@ -46,6 +46,7 @@ const updatePackGearMutation = resolver.pipe(
             kind: values.kind,
             weight: values.weight,
             imageUrl: values.imageUrl,
+            location: values.location,
             link: values.link,
             notes: values.notes,
             consumable: values.consumable,

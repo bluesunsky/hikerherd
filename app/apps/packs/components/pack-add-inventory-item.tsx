@@ -117,6 +117,7 @@ const PackAddInventoryItem: FC<PackAddInventoryItemProps> = ({
                     consumable={item.gear.consumable}
                     replaceable={item.gear.replaceable}
                     isprivate={item.gear.private}
+                    location={item.gear.location}
                     link={item.gear.link}
                     notes={item.gear.notes}
                     imageUrl={item.gear.imageUrl}

@@ -152,6 +152,8 @@
   "Lastname": "Nom de famille",
   "LastnamePlaceholder": "Saisir votre nom de famille",
   "Link": "Lien",
+  "Location": "Localisation",
+  "LocationPlaceholder": "Localisation (Facultatif)",
   "Login": "Connexion",
   "LoginDetail": "Entrer dans Pack your pack.",
   "LoginRequired": "Connexion requise",

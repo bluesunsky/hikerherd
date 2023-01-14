@@ -39,6 +39,7 @@ const addToInventoryMutation = resolver.pipe(
         manufacturer: gear.manufacturer,
         kind: gear.kind,
         imageUrl: gear.imageUrl,
+        location: gear.location,
         link: gear.link,
         //notes: gear.notes,
         consumable: gear.consumable,

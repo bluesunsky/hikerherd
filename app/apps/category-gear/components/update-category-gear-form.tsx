@@ -55,6 +55,7 @@ const UpdateCategoryGearForm: FC<UpdateCategoryGearFormProps> = ({
         : Math.round(gearItem?.gear.weight || 0),
     price: gearItem?.gear.price && gearItem?.gear.price / 100,
     currency: gearItem?.gear.currency,
+    location: gearItem?.gear.location,
     link: gearItem?.gear.link,
     imageUrl: gearItem?.gear.imageUrl,
     notes: gearItem?.gear.notes,

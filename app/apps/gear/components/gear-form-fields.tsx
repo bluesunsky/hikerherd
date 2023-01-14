@@ -32,6 +32,7 @@ import {
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/image";
 import { useField } from "react-final-form";
+import { MdLocationOn } from "react-icons/md";
 
 import userPreferencesContext from "app/apps/users/contexts/user-preferences-context";
 import TextField from "app/components/forms/components/text-field";
@@ -277,6 +278,12 @@ const GearFormFields: FC<GearFormFieldsProps> = ({ includeWorn }) => {
           label={t("Link", "Link")}
           placeholder="https://…"
           icon={<Icon color="gray.400" as={FaLink} />}
+        />
+        <TextField
+          name="location"
+          label={t("Location", "Location")}
+          placeholder={t("LocationPlaceholder", "Location (Optional)")}
+          icon={<Icon color="gray.400" as={MdLocationOn} />}
         />
         <FormLabel>{t("MoreInformation", "More information")}</FormLabel>
         <HStack>

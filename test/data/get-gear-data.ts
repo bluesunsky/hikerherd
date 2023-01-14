@@ -8,6 +8,7 @@ export type GearValues = {
   kind?: string;
   weight?: number;
   imageUrl?: string;
+  location?: string;
   link?: string;
   notes?: string;
   consumable?: boolean;
@@ -24,6 +25,7 @@ const getGearData = (values: GearValues = {}) => ({
   kind: faker.random.words(10),
   weight: faker.datatype.number({ min: 20, max: 1200 }),
   imageUrl: faker.internet.url(),
+  location: faker.random.words(10),
   link: faker.internet.url(),
   notes: faker.random.words(10),
   consumable: faker.datatype.boolean(),

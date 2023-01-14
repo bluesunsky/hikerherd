@@ -14,12 +14,14 @@ import {
   FaLock,
 } from "react-icons/fa";
 import { Tooltip } from "@chakra-ui/tooltip";
+import { MdLocationOn } from "react-icons/md";
 
 import Popover from "app/components/popover";
 
 type GearCardTagsProps = {
   consumable?: boolean;
   replaceable?: boolean;
+  location?: string | null;
   link?: string | null;
   notes?: string | null;
   list?: string | null;
@@ -27,14 +29,14 @@ type GearCardTagsProps = {
 };
 
 const GearCardTags: FC<GearCardTagsProps> = memo(
-  ({ link, consumable, replaceable, notes, list, isprivate }) => {
+  ({ link, consumable, replaceable, notes, location, list, isprivate }) => {
     const { t } = useTranslation();
     return (
       <Wrap>
         {link && (
           <Tooltip label={t("Link", "Link")}>
             <Link href={link} isExternal display="inline-flex">
-              <Tag size="sm" borderRadius="full">
+              <Tag size="sm" borderRadius="md">
                 <Icon as={FaLink} />
               </Tag>
             </Link>
@@ -43,7 +45,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
 
         {consumable && (
           <Tooltip label={t("Consumable", "Consumable")}>
-            <Tag colorScheme="pink" size="sm" borderRadius="full">
+            <Tag colorScheme="pink" size="sm" borderRadius="md">
               <Icon as={FaHamburger} />
             </Tag>
           </Tooltip>
@@ -51,7 +53,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
         {(replaceable || list == "WISH_LIST" || list == "ARCHIVE") && (
           <Popover
             trigger={
-              <Tag bg="red" color="white" size="sm" borderRadius="full">
+              <Tag bg="red" color="white" size="sm" borderRadius="md">
                 <Icon as={FaExclamationTriangle} />
               </Tag>
             }
@@ -79,7 +81,7 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
         {notes && (
           <Popover
             trigger={
-              <Tag colorScheme="yellow" size="sm" borderRadius="full">
+              <Tag colorScheme="yellow" size="sm" borderRadius="md">
                 <Icon as={FaRegStickyNote} />
               </Tag>
             }
@@ -88,9 +90,17 @@ const GearCardTags: FC<GearCardTagsProps> = memo(
           </Popover>
         )}
 
+        {location && (
+          <Tooltip label={location}>
+            <Tag bg="#ebccac" size="sm" borderRadius="md">
+              <Icon as={MdLocationOn} />
+            </Tag>
+          </Tooltip>
+        )}
+
         {isprivate && (
           <Tooltip label={t("Private", "Private")}>
-            <Tag bg="black" color="white" size="sm" borderRadius="full">
+            <Tag bg="black" color="white" size="sm" borderRadius="md">
               <Icon as={FaLock} />
             </Tag>
           </Tooltip>

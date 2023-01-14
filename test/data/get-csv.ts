@@ -12,6 +12,7 @@ export const CSV_HEADING = [
   "notes",
   "price",
   "currency",
+  "location",
   "link",
   "image",
   "consumable",

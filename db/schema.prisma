@@ -121,6 +121,7 @@ model Gear {
   notes        String?
   manufacturer String?
   kind         String?
+  location     String?
   consumable   Boolean   @default(false)
   replaceable  Boolean   @default(false)
   private      Boolean   @default(false)

@@ -20,6 +20,7 @@ type GearCardProps = {
   consumable?: boolean;
   replaceable?: boolean;
   isprivate?: boolean;
+  location?: string | null;
   link?: string | null;
   notes?: string | null;
   list?: string | null;
@@ -44,6 +45,7 @@ const GearCard: FC<GearCardProps> = ({
   consumable,
   replaceable,
   isprivate,
+  location,
   link,
   notes,
   list,
@@ -95,6 +97,7 @@ const GearCard: FC<GearCardProps> = ({
         <GearCardTags
           consumable={consumable}
           replaceable={replaceable}
+          location={location}
           link={link}
           notes={notes}
           list={list}

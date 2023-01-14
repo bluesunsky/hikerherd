@@ -26,6 +26,7 @@ const getCsvRow = (values: CsvRowValues = {}) => {
     gear.notes || "",
     gear.price ? `${gear.price / 100}` : "",
     displayCurrency(gear.currency),
+    gear.location || "",
     gear.link || "",
     gear.imageUrl || "",
     gear.consumable ? "consumable" : "",

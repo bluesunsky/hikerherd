@@ -157,6 +157,8 @@
   "Lastname": "Lastname",
   "LastnamePlaceholder": "Enter your lastname",
   "Link": "Link",
+  "Location": "Location",
+  "LocationPlaceholder": "Location (Optional)",
   "Login": "Log in",
   "LoginDetail": "Sign the trail register.",
   "LoginRequired": "Log in",

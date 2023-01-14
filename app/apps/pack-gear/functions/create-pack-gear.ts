@@ -10,6 +10,7 @@ type Params = {
     kind: string | null;
     weight: number;
     imageUrl: string | null;
+    location: string | null;
     link: string | null;
     notes?: string | null;
     consumable: boolean;
@@ -48,6 +49,7 @@ const createPackGear: TransactionFunction<Params, CategoryItem> = async (
           kind: values.kind,
           weight: values.weight,
           imageUrl: values.imageUrl,
+          location: values.location,
           link: values.link,
           notes: values.notes,
           consumable: values.consumable,

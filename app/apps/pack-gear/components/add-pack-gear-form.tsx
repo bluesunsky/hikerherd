@@ -39,6 +39,7 @@ const AddPackGearForm: FC<AddPackGearFormProps> = ({
     price: null,
     type: null,
     currency: currency,
+    location: null,
     link: null,
     imageUrl: null,
     notes: null,

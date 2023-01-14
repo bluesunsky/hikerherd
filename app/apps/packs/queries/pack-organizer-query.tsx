@@ -47,6 +47,7 @@ const packOrganizerQuery = resolver.pipe(
                     consumable: true,
                     replaceable: true,
                     private: true,
+                    location: true,
                     link: true,
                     notes: true,
                     imageUrl: true,
@@ -80,7 +81,13 @@ const packOrganizerQuery = resolver.pipe(
     }
     if (pack.userId !== ctx.session.userId) {
       pack.categories.forEach(
-        (cat) => (cat.items = cat.items.filter((item) => !item.gear.private))
+        (cat) =>
+          (cat.items = cat.items
+            .filter((item) => !item.gear.private)
+            .map((item) => {
+              item.gear.location = null;
+              return item;
+            }))
       );
     }
 

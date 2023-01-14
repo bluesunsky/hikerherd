@@ -16,6 +16,7 @@ const gearSchema = z.object({
   private: z.boolean().default(false),
   price: z.number().nullable().default(null),
   currency: z.nativeEnum(Currency),
+  location: z.string().nullable().default(null),
   link: z.string().url().nullable().default(null),
   purchaseDate: z.date().nullable().default(null),
 });

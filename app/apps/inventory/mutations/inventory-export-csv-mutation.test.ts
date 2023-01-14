@@ -106,6 +106,7 @@ describe("inventoryExportCsvMutation", () => {
         notes: item.gear.notes || "",
         price: item.gear.price ? `${item.gear.price / 100}` : "",
         currency: displayCurrency(item.gear.currency),
+        location: item.gear.location || "",
         link: item.gear.link || "",
         image: item.gear.imageUrl || "",
         consumable: item.gear.consumable ? "consumable" : "",
