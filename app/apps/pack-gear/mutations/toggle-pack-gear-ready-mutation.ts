@@ -4,37 +4,15 @@ import idSchema from "app/schemas/id-schema";
 
 import db from "db";
 
-const packGearQuery = resolver.pipe(
-  resolver.authorize(),
+const togglePackGearReadyMutation = resolver.pipe(
   resolver.zod(idSchema),
+  resolver.authorize(),
 
   async ({ id }, ctx) => {
     const item = await db.packCategoryItem.findUnique({
       where: { id },
       select: {
-        id: true,
-        worn: true,
         ready: true,
-        quantity: true,
-        gear: {
-          select: {
-            id: true,
-            name: true,
-            manufacturer: true,
-            kind: true,
-            weight: true,
-            price: true,
-            currency: true,
-            location: true,
-            link: true,
-            imageUrl: true,
-            notes: true,
-            consumable: true,
-            replaceable: true,
-            private: true,
-            purchaseDate: true,
-          },
-        },
         category: {
           select: {
             pack: {
@@ -58,8 +36,11 @@ const packGearQuery = resolver.pipe(
       throw new AuthorizationError();
     }
 
-    return item;
+    return db.packCategoryItem.update({
+      where: { id },
+      data: { ready: !item.ready },
+    });
   }
 );
 
-export default packGearQuery;
+export default togglePackGearReadyMutation;

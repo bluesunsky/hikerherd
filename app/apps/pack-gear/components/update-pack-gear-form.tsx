@@ -59,6 +59,7 @@ const UpdatePackGearForm: FC<UpdatePackGearFormProps> = ({
     replaceable: gearItem?.gear.replaceable,
     private: gearItem?.gear.private,
     worn: gearItem?.worn,
+    ready: gearItem?.ready,
     purchaseDate: gearItem?.gear.purchaseDate,
   };
 

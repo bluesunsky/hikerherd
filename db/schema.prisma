@@ -210,6 +210,7 @@ model PackCategoryItem {
   index    Int
   notes    String?
   worn     Boolean
+  ready    Boolean @default(false)
   quantity Int     @default(1)
 
   category   PackCategory @relation(fields: [categoryId], references: [id])

@@ -87,6 +87,7 @@ const packImportCsvMutation = resolver.pipe(
                     values: {
                       ...item.gear,
                       worn: !!item.worn,
+                      ready: false,
                       notes: item.notes,
                       quantity: item.quantity || 1,
                     },

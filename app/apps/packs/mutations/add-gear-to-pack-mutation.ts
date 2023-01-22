@@ -80,6 +80,7 @@ const addGearToPackMutation = resolver.pipe(
           categoryId,
           gearId: itemGearId,
           worn: false,
+          ready: false,
           index,
         },
       });

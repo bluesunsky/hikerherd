@@ -9,6 +9,7 @@ import GearCardValues from "./gear-card-values";
 import GearCardTags from "./gear-card-tags";
 
 type GearCardProps = {
+  id?: string;
   name: string;
   manufacturer: string | null;
   kind: string | null;
@@ -17,6 +18,7 @@ type GearCardProps = {
   price?: number | null;
   currency?: Currency;
   worn?: boolean;
+  ready?: boolean;
   consumable?: boolean;
   replaceable?: boolean;
   isprivate?: boolean;
@@ -32,6 +34,7 @@ type GearCardProps = {
 };
 
 const GearCard: FC<GearCardProps> = ({
+  id,
   name,
   manufacturer,
   kind,
@@ -42,6 +45,7 @@ const GearCard: FC<GearCardProps> = ({
   currency,
   quantity,
   worn,
+  ready,
   consumable,
   replaceable,
   isprivate,
@@ -69,9 +73,11 @@ const GearCard: FC<GearCardProps> = ({
     >
       <GearCardHeader
         menu={menu}
+        id={id}
         name={name}
         manufacturer={manufacturer}
         kind={kind}
+        ready={ready}
         imageUrl={imageUrl}
         onHeadingClick={onHeadingClick}
       />

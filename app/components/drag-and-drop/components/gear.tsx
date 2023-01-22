@@ -37,6 +37,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
       py={1}
     >
       <GearCard
+        id={item.id}
         name={item.gear.name}
         manufacturer={item.gear.manufacturer}
         kind={item.gear.kind}
@@ -44,6 +45,7 @@ const Gear: BlitzPage<GearProps> = ({ item, isDragging, provided }) => {
         price={item.gear.price}
         currency={item.gear.currency}
         worn={item.worn}
+        ready={item.ready}
         consumable={item.gear.consumable}
         replaceable={item.gear.replaceable}
         isprivate={item.gear.private}

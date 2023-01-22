@@ -39,6 +39,7 @@ const updatePackGearMutation = resolver.pipe(
       where: { id },
       data: {
         worn: values.worn,
+        ready: values.ready,
         gear: {
           update: {
             name: values.name,

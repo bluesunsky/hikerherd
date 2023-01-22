@@ -113,6 +113,7 @@ describe("inventoryExportCsvMutation", () => {
         replaceable: item.gear.replaceable ? "replaceable" : "",
         private: item.gear.private ? "private" : "",
         worn: "",
+        ready: "",
         quantity: "1",
         purchaseDate: null,
       });

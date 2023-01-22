@@ -9,6 +9,7 @@ export type PackCategoryItemValues = {
 const getPackCategoryItemData = (values: PackCategoryItemValues = {}) => ({
   index: 0,
   worn: faker.datatype.boolean(),
+  ready: faker.datatype.boolean(),
   quantity: faker.datatype.number({ min: 1, max: 9 }),
   ...values,
 });

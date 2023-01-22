@@ -53,7 +53,7 @@ const PackOrganizerItemMenu: FC<PackOrganizerItemMenuProps> = ({ item }) => {
             refetch();
           }}
         >
-          {t("WormIt", "Worm it")}
+          {t("WornIt", "Worn it")}
         </MenuItem>
       )}
       <QuantityPicker

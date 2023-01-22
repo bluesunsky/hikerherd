@@ -12,6 +12,7 @@ type CategoryItems = {
 export type DragAndDropItem = {
   id: string;
   worn?: boolean;
+  ready?: boolean;
   quantity: number;
   notes?: string | null;
   gear: {
