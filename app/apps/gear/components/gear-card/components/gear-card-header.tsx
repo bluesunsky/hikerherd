@@ -96,8 +96,8 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
             <MenuButton
               as={IconButton}
               borderRadius="full"
-              icon={<BsThreeDotsVertical />}
-              size="xs"
+              icon={<Icon as={BsThreeDotsVertical} w={5} h={5} />}
+              size="sm"
               aria-label="actions"
             />
             <Portal>{menu}</Portal>
@@ -106,7 +106,7 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
             <Tooltip label={readyLabel}>
               <IconButton
                 borderRadius="full"
-                size="xs"
+                size="sm"
                 onClick={async () => {
                   await toggleReady({ id: id });
                   refetch();
@@ -114,8 +114,8 @@ const GearCardHeader: FC<GearCardHeaderProps> = ({
                 icon={
                   <Icon
                     as={readyImage}
-                    w={5}
-                    h={5}
+                    w={8}
+                    h={8}
                     color={ready ? "blue.500" : "gray.100"}
                   />
                 }
